@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerController))]
 public class PlayerController : MonoBehaviour {
@@ -18,6 +19,10 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        
         if (Input.GetMouseButtonDown(0)) {
             // We create a ray
             var ray = cam.ScreenPointToRay(Input.mousePosition);
