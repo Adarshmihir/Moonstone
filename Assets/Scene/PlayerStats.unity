@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 37552120}
   - component: {fileID: 37552122}
   - component: {fileID: 37552121}
+  - component: {fileID: 37552123}
   m_Layer: 0
   m_Name: UIStatsPanel
   m_TagString: Untagged
@@ -277,6 +278,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37552119}
   m_CullTransparentMesh: 0
+--- !u!114 &37552123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37552119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86773490260ca34ab6f1f950b29bc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Strength:
+    statGameObjectField: {fileID: 1546942250}
+    BaseValue: 6.86
+  Stamina:
+    statGameObjectField: {fileID: 1788383613}
+    BaseValue: 5
+  Perception:
+    statGameObjectField: {fileID: 1326782321}
+    BaseValue: 5
+  Intelligence:
+    statGameObjectField: {fileID: 1737080437}
+    BaseValue: 5
+  Agility:
+    statGameObjectField: {fileID: 13722806}
+    BaseValue: 5
 --- !u!1 &117693648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.399994, y: 162.2}
+  m_AnchoredPosition: {x: -3.4000244, y: 162.20001}
   m_SizeDelta: {x: -77.60559, y: -559.4437}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164857583
@@ -1289,7 +1317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: -110.3}
+  m_AnchoredPosition: {x: 0, y: -110.3}
   m_SizeDelta: {x: -77.60559, y: -386.80765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225453926
