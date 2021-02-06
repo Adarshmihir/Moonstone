@@ -1,114 +1,141 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using UnityEngine;using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
+using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-[Serializable]
-public class CharacterStat
+namespace Stats
 {
-    public GameObject statGameObjectField;
-    public float BaseValue;
-    public virtual float Value
+    [Serializable]
+    public class CharacterStat
     {
-        get
+        //PUBLIC VARIABLES
+        public GameObject statGameObjectField;
+        public float BaseValue;
+        public string StatName;
+        public virtual float Value
         {
-            if (isDirty || BaseValue != lastBaseValue)
+            get
             {
-                lastBaseValue = BaseValue;
-                _value = CalculateFinalValue();
-                isDirty = false;
-                StatTextUpdate();
+                //base value modified only if there is a modification notified or if value is different from last base value
+                if (isDirty || BaseValue != lastBaseValue)
+                {
+                    lastBaseValue = BaseValue;
+                    _value = CalculateFinalValue();
+                    isDirty = false;
+                }
+                return _value;
             }
-            return _value;
         }
-    }
+        //PRIVATE VARIABLES
+        private bool isDirty = true; //used when there is a value modification
+        private float _value; //store the Stat value after calculation
+        private float lastBaseValue = float.MinValue;
+        
+        //READONLY VARIABLES - STATMODIFIERS LISTS
+        private readonly List<StatModifier> statModifiers;
+        public readonly ReadOnlyCollection<StatModifier> StatModifiers;
+        
     
-    public void StatTextUpdate()
-    {
-        if (statGameObjectField)
+        public void StatTextUpdate()
         {
-            statGameObjectField.GetComponent<Text>().text = Value.ToString();
-        }
-    }
-    
-    private bool isDirty = true;
-    private float _value;
-    private float lastBaseValue = float.MinValue;
-    
-    private readonly List<StatModifier> statModifiers;
-    public readonly ReadOnlyCollection<StatModifier> StatModifiers;
-
-    public CharacterStat()
-    {
-        statModifiers = new List<StatModifier>();
-        StatModifiers = statModifiers.AsReadOnly();
-    }
-    
-    public CharacterStat(float baseValue, GameObject statField) : this()
-    {
-        BaseValue = baseValue;
-        statGameObjectField = statField;
-    }
-
-    protected void AddModifier(StatModifier mod)
-    {
-        isDirty = true;
-        statModifiers.Add(mod);
-        statModifiers.Sort();
-    }
-
-    public virtual bool RemoveAllModifiersFromSource(object source)
-    {
-        bool didRemove = false;
-        for (int i = statModifiers.Count - 1; i >= 0; i--)
-        {
-            if (statModifiers[i].Source == source)
+            if (statGameObjectField)
             {
-                isDirty = true;
-                didRemove = true;
-                statModifiers.RemoveAt(i);
-            }   
+                Debug.Log("basevalue" + BaseValue);
+                Debug.Log("value" + Value);
+                if (BaseValue == Value)
+                {
+                    statGameObjectField.GetComponent<Text>().text = BaseValue.ToString();
+                }
+                else
+                {
+                    statGameObjectField.GetComponent<Text>().text = BaseValue.ToString() + " (+" + (Value-BaseValue).ToString()+")";
+                }
+            }
         }
-
-        return didRemove;
-    }
+        
+        //CONSTRUCTOR
+        public CharacterStat()
+        {
+            statModifiers = new List<StatModifier>();
+            StatModifiers = statModifiers.AsReadOnly();
+        }
     
-    public virtual bool RemoveModifier(StatModifier mod)
-    {
-        if (statModifiers.Remove(mod))
+        public CharacterStat(string statName, float baseValue, GameObject statField) : this()
+        {
+            StatName = statName;
+            BaseValue = baseValue;
+        }
+        
+        
+        //Increment base value (level up)
+        public virtual void IncrementBaseValue(float value)
+        {
+            BaseValue += value;
+            StatTextUpdate();
+        }
+        
+        //Add modifier (percent or flat) to stat
+        public virtual void AddModifier(StatModifier mod)
         {
             isDirty = true;
-            return true;
+            statModifiers.Add(mod);
+            StatTextUpdate();
+            //statModifiers.Sort();
         }
-        return false;
-    }
-
-    protected virtual float CalculateFinalValue()
-    {
-        float finalValue = BaseValue;
-
-        for (int i = 0; i < statModifiers.Count; i++)
+        
+        //Removes all modifiers (percent and flat) from stat
+        public virtual bool RemoveAllModifiersFromSource(object source)
         {
-            StatModifier mod = statModifiers[i];
-            switch (mod.Type)
+            bool didRemove = false;
+            for (int i = statModifiers.Count - 1; i >= 0; i--)
             {
-                case StatModType.Flat:
-                    finalValue += statModifiers[i].Value;
-                    break;
-                case StatModType.Percent:
-                    finalValue = (BaseValue * mod.Value) + finalValue;
-                    break;
-                default:
-                    throw new NoStatModTypeException();
+                if (statModifiers[i].Source == source)
+                {
+                    isDirty = true;
+                    didRemove = true;
+                    statModifiers.RemoveAt(i);
+                }   
             }
+            StatTextUpdate();
+            return didRemove;
+        }
+    
+        //Removes modifier (percent or flat) from stat
+        public virtual bool RemoveModifier(StatModifier mod)
+        {
+            if (statModifiers.Remove(mod))
+            {
+                isDirty = true;
+                return true;
+            }
+            StatTextUpdate();
+            return false;
+        }
+        
+        //Calculate value with all modifiers (percent and flat)
+        protected virtual float CalculateFinalValue()
+        {
+            float finalValue = BaseValue;
+
+            for (int i = 0; i < statModifiers.Count; i++)
+            {
+                StatModifier mod = statModifiers[i];
+                switch (mod.Type)
+                {
+                    case StatModType.Flat:
+                        finalValue += statModifiers[i].Value;
+                        break;
+                    case StatModType.Percent:
+                        finalValue = (BaseValue * mod.Value) + finalValue;
+                        break;
+                    default:
+                        throw new NoStatModTypeException();
+                }
+            }
+            return (float) Math.Round(finalValue, 3);
         }
 
-        return (float) Math.Round(finalValue, 3);
+
     }
-
-
 }
