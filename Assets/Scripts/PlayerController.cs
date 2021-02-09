@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerController))]
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
         
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(0)) {
             // We create a ray
             var ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
