@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Movement;
+using UnityEngine;
 
 public class Interactable : MonoBehaviour {
     public float radius = 3f;
@@ -13,9 +14,14 @@ public class Interactable : MonoBehaviour {
     private void Update() {
         if (isFocused && !hasInteracted) {
             var distance = Vector3.Distance(player.position, interactionTransform.position);
-            if (distance <= radius) {
+            if (distance <= radius)
+            {
                 Interact();
                 hasInteracted = true;
+            }
+            else
+            {
+                player.GetComponent<Mover>().StartMoveAction(interactionTransform.position);
             }
         }
     }

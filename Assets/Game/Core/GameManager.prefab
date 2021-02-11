@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5833590639734953498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5833590639734953508}
+  - component: {fileID: 5833590639734953509}
+  - component: {fileID: 5833590639734953499}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5833590639734953508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.692513, y: -15.02734, z: -10.592447}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5833590639734953509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e2e98fc9be7be45a84826b6f420ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultItems:
+  - {fileID: 11400000, guid: 2cdcf5a598b5bc640b6765d60b2010ae, type: 2}
+  - {fileID: 11400000, guid: 6f07f71f17d893c498132521493896ef, type: 2}
+  - {fileID: 11400000, guid: 4344597e0a87f7240ba0eb02b41bf6f2, type: 2}
+  - {fileID: 11400000, guid: f7edb97c871328347a145dc939c18779, type: 2}
+  targetMesh: {fileID: 0}
+--- !u!114 &5833590639734953499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3189649e50c33934fa9fc61f7ea9678d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 20
+  items: []
