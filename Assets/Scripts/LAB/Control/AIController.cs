@@ -8,6 +8,7 @@ namespace Control
 {
     public class AIController : MonoBehaviour
     {
+        [SerializeField] private Patroller patroller;
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float maxDistance = 15f;
         [SerializeField] private float aggroTimer = 1f;
@@ -20,6 +21,8 @@ namespace Control
 
         private Vector3 _initialPosition;
         private float _timeSinceLastAggro;
+        private int _currentWaypoint;
+        private float _waypointDistTolerance = 1f;
             
         // Start is called before the first frame update
         private void Start()
@@ -51,8 +54,23 @@ namespace Control
                     _timeSinceLastAggro = 0;
                 }
 
-                _mover.StartMoveAction(_initialPosition);
+                //_mover.StartMoveAction(_initialPosition);
+                PatrolBehaviour();
             }
+        }
+
+        private void PatrolBehaviour()
+        {
+            if (patroller != null)
+            {
+                if (Vector3.Distance(transform.position, patroller.GetWaypoint(_currentWaypoint)) < _waypointDistTolerance)
+                {
+                    _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
+                    _initialPosition = patroller.GetWaypoint(_currentWaypoint);
+                }
+            }
+            
+            _mover.StartMoveAction(_initialPosition);
         }
 
         private bool DistanceToPlayer()

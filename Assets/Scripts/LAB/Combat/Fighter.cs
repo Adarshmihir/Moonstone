@@ -24,10 +24,10 @@ namespace Combat
         // Start is called before the first frame update
         private void Start()
         {
-            SpawnWeapon();
-
             _mover = GetComponent<Mover>();
             _animator = GetComponent<Animator>();
+            
+            SpawnWeapon();
         }
     
         // Update is called once per frame
