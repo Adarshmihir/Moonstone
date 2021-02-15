@@ -7,11 +7,15 @@ namespace Movement
     public class Mover : MonoBehaviour, IAction
     {
         private NavMeshAgent _navMeshAgent;
+        private Animator _animator;
+        private ActionScheduler _actionScheduler;
 
         // Start is called before the first frame update
         private void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
+            _actionScheduler = GetComponent<ActionScheduler>();
         }
 
         // Update is called once per frame
@@ -22,7 +26,7 @@ namespace Movement
 
         public void StartMoveAction(Vector3 destination)
         {
-            GetComponent<ActionScheduler>().StartAction(this);
+            _actionScheduler.StartAction(this);
             MoveTo(destination);
         }
 
@@ -43,7 +47,7 @@ namespace Movement
             var localVelocity = transform.InverseTransformDirection(velocity);
             var speed = localVelocity.z;
 
-            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+            _animator.SetFloat("forwardSpeed", speed);
         }
 
         // Animation event : Foot left

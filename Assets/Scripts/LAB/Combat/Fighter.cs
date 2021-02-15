@@ -15,6 +15,8 @@ namespace Combat
         [SerializeField] private Transform leftHandTransform;
 
         private Health _target;
+        private Mover _mover;
+        private Animator _animator;
         private float _timeSinceLastAttack = Mathf.Infinity;
 
         public Health Target => _target;
@@ -23,6 +25,9 @@ namespace Combat
         private void Start()
         {
             SpawnWeapon();
+
+            _mover = GetComponent<Mover>();
+            _animator = GetComponent<Animator>();
         }
     
         // Update is called once per frame
@@ -36,12 +41,12 @@ namespace Combat
             if (!GetIsInRange())
             {
                 // Move towards the target until it is close enough
-                GetComponent<Mover>().MoveTo(_target.transform.position);
+                _mover.MoveTo(_target.transform.position);
             }
             else
             {
                 // Cancel movement action and start attack
-                GetComponent<Mover>().Cancel();
+                _mover.Cancel();
                 AttackBehavior();
             }
         }
@@ -51,8 +56,7 @@ namespace Combat
             if (weapon == null) return;
             
             // Spawn weapon(s) in hand(s)
-            var animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
         }
     
         private void AttackBehavior()
@@ -70,20 +74,20 @@ namespace Combat
         private void TriggerAttack()
         {
             // Start random attack animation
-            GetComponent<Animator>().ResetTrigger("stopAttack");
+            _animator.ResetTrigger("stopAttack");
 
             var attackAnimationToPlay = Random.Range(0, weapon.AnimationTotalPlayChance);
             if (attackAnimationToPlay < weapon.AnimationOnePlayChance)
             {
-                GetComponent<Animator>().SetTrigger("attack1");
+                _animator.SetTrigger("attack1");
             }
             else if (attackAnimationToPlay < weapon.AnimationOnePlayChance + weapon.AnimationTwoPlayChance)
             {
-                GetComponent<Animator>().SetTrigger("attack2");
+                _animator.SetTrigger("attack2");
             }
             else
             {
-                GetComponent<Animator>().SetTrigger("attack3");
+                _animator.SetTrigger("attack3");
             }
         }
         
@@ -174,10 +178,10 @@ namespace Combat
         private void StopAttack()
         {
             // Stop attack animation
-            GetComponent<Animator>().ResetTrigger("attack1");
-            GetComponent<Animator>().ResetTrigger("attack2");
-            GetComponent<Animator>().ResetTrigger("attack3");
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            _animator.ResetTrigger("attack1");
+            _animator.ResetTrigger("attack2");
+            _animator.ResetTrigger("attack3");
+            _animator.SetTrigger("stopAttack");
         }
     }
 }
