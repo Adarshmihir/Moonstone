@@ -16,12 +16,6 @@ public class Patroller : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
     public Vector3 GetWaypoint(int currentWaypoint)
     {
         return _waypoints[currentWaypoint].position;

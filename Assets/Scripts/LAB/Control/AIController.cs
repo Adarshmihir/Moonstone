@@ -12,6 +12,7 @@ namespace Control
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float maxDistance = 15f;
         [SerializeField] private float aggroTimer = 1f;
+        [SerializeField] private float breakTimer = 5f;
 
         private Fighter _fighter;
         private Health _health;
@@ -21,9 +22,10 @@ namespace Control
 
         private Vector3 _initialPosition;
         private float _timeSinceLastAggro;
+        private float _timeSinceLastBreak;
         private int _currentWaypoint;
-        private float _waypointDistTolerance = 1f;
-            
+        private const float WaypointDistTolerance = 1f;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -53,24 +55,29 @@ namespace Control
                 {
                     _timeSinceLastAggro = 0;
                 }
-
-                //_mover.StartMoveAction(_initialPosition);
+                
                 PatrolBehaviour();
             }
+            
+            _timeSinceLastBreak += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
         {
             if (patroller != null)
             {
-                if (Vector3.Distance(transform.position, patroller.GetWaypoint(_currentWaypoint)) < _waypointDistTolerance)
+                if (Vector3.Distance(transform.position, patroller.GetWaypoint(_currentWaypoint)) < WaypointDistTolerance)
                 {
                     _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
                     _initialPosition = patroller.GetWaypoint(_currentWaypoint);
+                    _timeSinceLastBreak = 0;
                 }
             }
-            
-            _mover.StartMoveAction(_initialPosition);
+
+            if (_timeSinceLastBreak > breakTimer)
+            {
+                _mover.StartMoveAction(_initialPosition);
+            }
         }
 
         private bool DistanceToPlayer()

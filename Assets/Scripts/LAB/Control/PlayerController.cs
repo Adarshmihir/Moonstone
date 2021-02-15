@@ -46,6 +46,7 @@ namespace Control
                 var target = hit.transform.GetComponent<CombatTarget>();
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
 
+                // Input.GetMouseButton(0)
                 if (Input.GetMouseButtonDown(0))
                 {
                     _fighter.Attack(target.gameObject);
