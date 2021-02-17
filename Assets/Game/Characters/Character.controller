@@ -128,8 +128,8 @@ AnimatorState:
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_CycleOffsetParameter: forwardSpeed
+  m_TimeParameter: forwardSpeed
 --- !u!1102 &-2812378598961055505
 AnimatorState:
   serializedVersion: 5

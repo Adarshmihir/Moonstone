@@ -12,12 +12,12 @@ namespace Resources
         [SerializeField] private float maxHealthPoints = 100f;
         [SerializeField] private float destroyTime = 5f;
 
-        private LifeBarController _lifeBarController;
-        private DamageTextSpawner _damageTextSpawner;
-        private Animator _animator;
-        private ActionScheduler _actionScheduler;
-        private CapsuleCollider _capsuleCollider;
-        private NavMeshAgent _navMeshAgent;
+        private LifeBarController lifeBarController;
+        private DamageTextSpawner damageTextSpawner;
+        private Animator animator;
+        private ActionScheduler actionScheduler;
+        private CapsuleCollider capsuleCollider;
+        private NavMeshAgent navMeshAgent;
 
         public float HealthPoints { get; private set; }
         public float MaxHealthPoints => maxHealthPoints;
@@ -29,28 +29,26 @@ namespace Resources
         {
             HealthPoints = maxHealthPoints;
             
-            _damageTextSpawner = GetComponentInChildren<DamageTextSpawner>();
-            _lifeBarController = GetComponent<LifeBarController>();
-            _animator = GetComponent<Animator>();
-            _actionScheduler = GetComponent<ActionScheduler>();
-            _capsuleCollider = GetComponent<CapsuleCollider>();
-            _navMeshAgent = GetComponent<NavMeshAgent>();
+            damageTextSpawner = GetComponentInChildren<DamageTextSpawner>();
+            lifeBarController = GetComponent<LifeBarController>();
+            animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
+            capsuleCollider = GetComponent<CapsuleCollider>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         public void TakeDamage(float damage, bool criticalHit)
         {
             HealthPoints = Mathf.Max(HealthPoints - damage, 0);
 
-            var lifeBarController = _lifeBarController;
             if (lifeBarController != null)
             {
                 lifeBarController.UpdateLifeBar();
             }
 
-            var damageSpawner = _damageTextSpawner;
-            if (damageSpawner != null)
+            if (damageTextSpawner != null)
             {
-                damageSpawner.Spawn(damage, criticalHit ? DamageType.Critical : DamageType.Normal);
+                damageTextSpawner.Spawn(damage, criticalHit ? DamageType.Critical : DamageType.Normal);
             }
 
             if (HealthPoints <= 0)
@@ -64,11 +62,11 @@ namespace Resources
             if (IsDead) return;
 
             IsDead = true;
-            _animator.SetTrigger("die");
-            _actionScheduler.CancelCurrentAction();
+            animator.SetTrigger("die");
+            actionScheduler.CancelCurrentAction();
             
-            _capsuleCollider.enabled = false;
-            _navMeshAgent.enabled = false;
+            capsuleCollider.enabled = false;
+            navMeshAgent.enabled = false;
 
             StartCoroutine(DestroyEnemy());
         }

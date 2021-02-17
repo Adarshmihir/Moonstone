@@ -35,11 +35,6 @@ namespace Combat
 
         public float WeaponDamage => (float) Math.Round(Random.Range(weaponMinDamage, weaponMaxDamage), MidpointRounding.AwayFromZero);
         public WeaponType WeaponType => weaponType;
-        
-        public float AnimationOnePlayChance => animationOnePlayChance;
-        public float AnimationTwoPlayChance => animationTwoPlayChance;
-        public float AnimationThreePlayChance => animationThreePlayChance;
-        public float AnimationTotalPlayChance => animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
 
         public void Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
         {
@@ -57,6 +52,16 @@ namespace Combat
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        public string SelectAnAnimation()
+        {
+            var animationTotalPlayChance = animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
+            var attackAnimationToPlay = Random.Range(0, animationTotalPlayChance);
+            
+            if (attackAnimationToPlay < animationOnePlayChance) return "attack1";
+
+            return attackAnimationToPlay < animationOnePlayChance + animationTwoPlayChance ? "attack2" : "attack3";
         }
     }
 }

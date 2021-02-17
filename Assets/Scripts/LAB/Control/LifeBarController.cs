@@ -10,12 +10,12 @@ namespace Control
         [SerializeField] private Slider healthSlider;
         [SerializeField] private GameObject healthBarUI;
 
-        private Health _health;
+        private Health health;
 
         // Start is called before the first frame update
         private void Start()
         {
-            _health = GetComponent<Health>();
+            health = GetComponent<Health>();
             healthSlider.value = CalculateHealthSlider();
         }
         
@@ -31,12 +31,12 @@ namespace Control
         public void UpdateLifeBar()
         {
             healthSlider.value = CalculateHealthSlider();
-            healthBarUI.SetActive(_health.HealthPoints > 0);
+            healthBarUI.SetActive(health.HealthPoints > 0);
         }
     
         private float CalculateHealthSlider()
         {
-            return _health.HealthPoints / _health.MaxHealthPoints;
+            return health.HealthPoints / health.MaxHealthPoints;
         }
     }
 }

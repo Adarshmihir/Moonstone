@@ -27,10 +27,11 @@ namespace Core
         {
             if (target == null) return;
 
-            transform.position = target.position;
-            transform.localScale = new Vector3(zoom, zoom, zoom);
+            var charTransform = transform;
+            charTransform.position = target.position;
+            charTransform.localScale = new Vector3(zoom, zoom, zoom);
             
-            transform.RotateAround(transform.position, Vector3.up, 60 * Time.deltaTime * newAngle);
+            transform.RotateAround(charTransform.position, Vector3.up, 60 * Time.deltaTime * newAngle);
         }
     }
 }

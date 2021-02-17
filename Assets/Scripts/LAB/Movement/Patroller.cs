@@ -1,24 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Patroller : MonoBehaviour
 {
-    private List<Transform> _waypoints;
+    private readonly List<Transform> waypoints = new List<Transform>();
     
     // Start is called before the first frame update
     private void Start()
     {
-        _waypoints = new List<Transform>();
         for (var i = 0; i < transform.childCount; i++)
         {
-            _waypoints.Add(transform.GetChild(i));
+            waypoints.Add(transform.GetChild(i));
         }
     }
 
     public Vector3 GetWaypoint(int currentWaypoint)
     {
-        return _waypoints[currentWaypoint].position;
+        return waypoints[currentWaypoint].position;
     }
 
     public int GetNextWaypoint(int currentWaypoint)

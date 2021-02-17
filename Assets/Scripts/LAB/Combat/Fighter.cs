@@ -14,18 +14,17 @@ namespace Combat
         [SerializeField] private Transform rightHandTransform;
         [SerializeField] private Transform leftHandTransform;
 
-        private Health _target;
-        private Mover _mover;
-        private Animator _animator;
-        private float _timeSinceLastAttack = Mathf.Infinity;
+        private Mover mover;
+        private Animator animator;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
-        public Health Target => _target;
+        public Health Target { get; private set; }
 
         // Start is called before the first frame update
         private void Start()
         {
-            _mover = GetComponent<Mover>();
-            _animator = GetComponent<Animator>();
+            mover = GetComponent<Mover>();
+            animator = GetComponent<Animator>();
             
             SpawnWeapon();
         }
@@ -33,20 +32,20 @@ namespace Combat
         // Update is called once per frame
         private void Update()
         {
-            _timeSinceLastAttack += Time.deltaTime;
+            timeSinceLastAttack += Time.deltaTime;
 
-            if (_target == null || _target.IsDead) return;
+            if (Target == null || Target.IsDead) return;
 
             // Check if target is not too far
             if (!GetIsInRange())
             {
                 // Move towards the target until it is close enough
-                _mover.MoveTo(_target.transform.position);
+                mover.MoveTo(Target.transform.position);
             }
             else
             {
                 // Cancel movement action and start attack
-                _mover.Cancel();
+                mover.Cancel();
                 AttackBehavior();
             }
         }
@@ -56,99 +55,93 @@ namespace Combat
             if (weapon == null) return;
             
             // Spawn weapon(s) in hand(s)
-            weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
     
         private void AttackBehavior()
         {
             // Rotate the character in direction of the target
-            transform.LookAt(_target.transform);
+            transform.LookAt(Target.transform);
             // Check if weapon cooldown is elapsed and if target if visible
-            if (!(_timeSinceLastAttack > weapon.TimeBetweenAttack) || !GetIsAccessible(_target.transform)) return;
+            if (!(timeSinceLastAttack > weapon.TimeBetweenAttack)/* || !GetIsAccessible(target.transform)*/) return;
 
             // Start attack
             TriggerAttack();
-            _timeSinceLastAttack = 0;
+            timeSinceLastAttack = 0;
         }
 
         private void TriggerAttack()
         {
             // Start random attack animation
-            _animator.ResetTrigger("stopAttack");
-
-            var attackAnimationToPlay = Random.Range(0, weapon.AnimationTotalPlayChance);
-            if (attackAnimationToPlay < weapon.AnimationOnePlayChance)
-            {
-                _animator.SetTrigger("attack1");
-            }
-            else if (attackAnimationToPlay < weapon.AnimationOnePlayChance + weapon.AnimationTwoPlayChance)
-            {
-                _animator.SetTrigger("attack2");
-            }
-            else
-            {
-                _animator.SetTrigger("attack3");
-            }
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger(weapon.SelectAnAnimation());
         }
         
         // Animation event : Attack
         private void Hit()
         {
-            if (_target == null) return;
+            if (Target == null) return;
 
             // Unarmed attack
             if (weapon.WeaponType == WeaponType.Unarmed)
             {
                 // Check if target is in front of character and visible
-                if (!GetIsInFieldOfView(_target.transform) || !GetIsAccessible(_target.transform)) return;
+                if (!GetIsInFieldOfView(Target.transform)/* || !GetIsAccessible(target.transform)*/) return;
                 
                 // Deal damage
-                _target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+                Target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
             }
             // Armed attack
             else
             {
-                // Get all enemies in front of character depending on weapon radius and weapon range
-                var spherePosition = (transform.position + _target.transform.position) / 2;
-                var colliders = Physics.OverlapSphere(spherePosition, weapon.WeaponRange);
-                foreach (var target in colliders)
-                {
-                    // Check if the target has health, is in front of character and visible
-                    if (!CanAttack(target.gameObject) || !GetIsInFieldOfView(target.transform) || !GetIsAccessible(target.transform) || CompareTag(target.tag)) continue;
-                    
-                    Hit(target.GetComponent<Health>());
-                }
+                // Deal damage to all enemies around
+                AttackAllEnemiesAround();
             }
         }
 
-        private void Hit(Health target)
+        private void AttackAllEnemiesAround()
         {
-            if (target == null) return;
+            // Get all enemies in front of character depending on weapon radius and weapon range
+            var spherePosition = (transform.position + Target.transform.position) / 2;
+            var colliders = Physics.OverlapSphere(spherePosition, weapon.WeaponRange);
+            foreach (var newTarget in colliders)
+            {
+                // Check if the target has health, is in front of character and visible
+                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
+                    
+                Hit(newTarget.GetComponent<Health>());
+            }
+        }
+
+        private void Hit(Health targetHealth)
+        {
+            if (targetHealth == null) return;
             
             // Deal damage
-            target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+            targetHealth.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
         }
     
         private bool GetIsInRange()
         {
             // Check if the target is in range of weapon
-            return Vector3.Distance(transform.position, _target.transform.position) < weapon.WeaponRange;
+            return Vector3.Distance(transform.position, Target.transform.position) < weapon.WeaponRange;
         }
 
-        private bool GetIsInFieldOfView(Transform target)
+        private bool GetIsInFieldOfView(Transform targetTransform)
         {
             // Check if the target is in front of character
-            return Vector3.Angle(target.position - transform.position, transform.forward) <= weapon.WeaponRadius;
+            var charTransform = transform;
+            return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= weapon.WeaponRadius;
         }
 
-        private bool GetIsAccessible(Transform target)
+        /*private bool GetIsAccessible(Transform target)
         {
             // Check if target is visible from the character
             var position = transform.position;
             Physics.Raycast(position, target.position - position, out var hit);
 
             return true; //hit.collider == null || hit.collider.GetComponent<Health>() != null;
-        }
+        }*/
 
         public static bool CanAttack(GameObject combatTarget)
         {
@@ -164,7 +157,7 @@ namespace Combat
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
             // Define target
-            _target = combatTarget.GetComponent<Health>();
+            Target = combatTarget.GetComponent<Health>();
         }
 
         public void Cancel()
@@ -172,16 +165,16 @@ namespace Combat
             // Stop attack action
             StopAttack();
             // Remove target
-            _target = null;
+            Target = null;
         }
         
         private void StopAttack()
         {
             // Stop attack animation
-            _animator.ResetTrigger("attack1");
-            _animator.ResetTrigger("attack2");
-            _animator.ResetTrigger("attack3");
-            _animator.SetTrigger("stopAttack");
+            animator.ResetTrigger("attack1");
+            animator.ResetTrigger("attack2");
+            animator.ResetTrigger("attack3");
+            animator.SetTrigger("stopAttack");
         }
     }
 }

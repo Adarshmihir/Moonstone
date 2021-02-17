@@ -14,80 +14,85 @@ namespace Control
         [SerializeField] private float aggroTimer = 1f;
         [SerializeField] private float breakTimer = 5f;
 
-        private Fighter _fighter;
-        private Health _health;
-        private GameObject _player;
-        private Mover _mover;
-        private ActionScheduler _actionScheduler;
+        private Fighter fighter;
+        private Health health;
+        private GameObject player;
+        private Mover mover;
+        private ActionScheduler actionScheduler;
 
-        private Vector3 _initialPosition;
-        private float _timeSinceLastAggro;
-        private float _timeSinceLastBreak;
-        private int _currentWaypoint;
+        private Vector3 initialPosition;
+        private float timeSinceLastAggro;
+        private float timeSinceLastBreak;
+        private int currentWaypoint;
         private const float WaypointDistTolerance = 1f;
 
         // Start is called before the first frame update
         private void Start()
         {
-            _player = GameObject.FindWithTag("Player");
-            _fighter = GetComponent<Fighter>();
-            _health = GetComponent<Health>();
-            _mover = GetComponent<Mover>();
-            _actionScheduler = GetComponent<ActionScheduler>();
+            player = GameObject.FindWithTag("Player");
+            fighter = GetComponent<Fighter>();
+            health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
+            actionScheduler = GetComponent<ActionScheduler>();
 
-            _initialPosition = transform.position;
-            _timeSinceLastAggro = aggroTimer + 1;
+            initialPosition = transform.position;
+            timeSinceLastAggro = aggroTimer + 1;
         }
         
         // Update is called once per frame
         private void Update()
         {
-            if (_health.IsDead || _player == null) return;
+            if (health.IsDead || player == null) return;
             
-            if (DistanceToPlayer() && Fighter.CanAttack(_player) && DistanceToInitialPosition() && _timeSinceLastAggro > aggroTimer)
+            if (DistanceToPlayer() && Fighter.CanAttack(player) && DistanceToInitialPosition() && timeSinceLastAggro > aggroTimer)
             {
-                _fighter.Attack(_player);
+                fighter.Attack(player);
             }
             else
             {
-                _timeSinceLastAggro += Time.deltaTime;
-                if (ReferenceEquals(_actionScheduler.CurrentAction, _fighter))
+                timeSinceLastAggro += Time.deltaTime;
+                if (ReferenceEquals(actionScheduler.CurrentAction, fighter))
                 {
-                    _timeSinceLastAggro = 0;
+                    timeSinceLastAggro = 0;
                 }
                 
                 PatrolBehaviour();
             }
             
-            _timeSinceLastBreak += Time.deltaTime;
+            timeSinceLastBreak += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
         {
             if (patroller != null)
             {
-                if (Vector3.Distance(transform.position, patroller.GetWaypoint(_currentWaypoint)) < WaypointDistTolerance)
+                if (DistanceToWaypoint())
                 {
-                    _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
-                    _initialPosition = patroller.GetWaypoint(_currentWaypoint);
-                    _timeSinceLastBreak = 0;
+                    currentWaypoint = patroller.GetNextWaypoint(currentWaypoint);
+                    initialPosition = patroller.GetWaypoint(currentWaypoint);
+                    timeSinceLastBreak = 0;
                 }
             }
 
-            if (_timeSinceLastBreak > breakTimer)
+            if (timeSinceLastBreak > breakTimer)
             {
-                _mover.StartMoveAction(_initialPosition);
+                mover.StartMoveAction(initialPosition);
             }
+        }
+
+        private bool DistanceToWaypoint()
+        {
+            return Vector3.Distance(transform.position, patroller.GetWaypoint(currentWaypoint)) < WaypointDistTolerance;
         }
 
         private bool DistanceToPlayer()
         {
-            return Vector3.Distance(_player.transform.position, transform.position) < chaseDistance;
+            return Vector3.Distance(player.transform.position, transform.position) < chaseDistance;
         }
 
         private bool DistanceToInitialPosition()
         {
-            return Vector3.Distance(_initialPosition, transform.position) < maxDistance;
+            return Vector3.Distance(initialPosition, transform.position) < maxDistance;
         }
     }
 }

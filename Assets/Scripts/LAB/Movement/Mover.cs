@@ -6,16 +6,16 @@ namespace Movement
 {
     public class Mover : MonoBehaviour, IAction
     {
-        private NavMeshAgent _navMeshAgent;
-        private Animator _animator;
-        private ActionScheduler _actionScheduler;
+        private NavMeshAgent navMeshAgent;
+        private Animator animator;
+        private ActionScheduler actionScheduler;
 
         // Start is called before the first frame update
         private void Start()
         {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            _animator = GetComponent<Animator>();
-            _actionScheduler = GetComponent<ActionScheduler>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         // Update is called once per frame
@@ -26,28 +26,28 @@ namespace Movement
 
         public void StartMoveAction(Vector3 destination)
         {
-            _actionScheduler.StartAction(this);
+            actionScheduler.StartAction(this);
             MoveTo(destination);
         }
 
         public void MoveTo(Vector3 destination)
         {
-            _navMeshAgent.destination = destination;
-            _navMeshAgent.isStopped = false;
+            navMeshAgent.destination = destination;
+            navMeshAgent.isStopped = false;
         }
 
         public void Cancel()
         {
-            _navMeshAgent.isStopped = true;
+            navMeshAgent.isStopped = true;
         }
 
         private void UpdateAnimator()
         {
-            var velocity = _navMeshAgent.velocity;
+            var velocity = navMeshAgent.velocity;
             var localVelocity = transform.InverseTransformDirection(velocity);
             var speed = localVelocity.z;
 
-            _animator.SetFloat("forwardSpeed", speed);
+            animator.SetFloat("forwardSpeed", speed);
         }
 
         // Animation event : Foot left
