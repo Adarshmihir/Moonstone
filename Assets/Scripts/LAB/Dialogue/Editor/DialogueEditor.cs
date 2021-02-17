@@ -8,6 +8,8 @@ namespace Dialogue.Editor
 {
     public class DialogueEditor : EditorWindow
     {
+        Dialogue selectedDialogue = null;
+
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowDialogueEditor()
         {
@@ -23,5 +25,31 @@ namespace Dialogue.Editor
             ShowDialogueEditor();
             return true;
         }
-    }
+
+		private void OnEnable()
+		{
+            Selection.selectionChanged += OnSelectionChanged;
+		}
+
+        private void OnSelectionChanged()
+		{
+            var dialogue = Selection.activeObject as Dialogue;
+            if (dialogue == null) return;
+
+            selectedDialogue = dialogue;
+            Repaint();
+        }
+
+		private void OnGUI()
+		{
+            if (selectedDialogue == null)
+			{
+                EditorGUILayout.LabelField("Aucun dialogue sélectionné.");
+            }
+			else
+			{
+                EditorGUILayout.LabelField(selectedDialogue.name);
+            }
+		}
+	}
 }
