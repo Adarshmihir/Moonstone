@@ -1,7 +1,10 @@
-﻿[System.Serializable]
-public class DialogueNode
+﻿namespace Dialogue
 {
-    public string id;
-    public string text;
-    public string[] children;
+    [System.Serializable]
+    public class DialogueNode
+    {
+        public string id;
+        public string text;
+        public string[] children;
+    }
 }
