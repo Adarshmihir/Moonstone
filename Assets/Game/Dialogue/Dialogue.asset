@@ -14,11 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueNodes:
   - id: a
-    text: 
+    text: yydzqdqzdgdggdrgdrdrrg
     children: []
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 304
+      width: 250
+      height: 100
   - id: 
-    text: 
+    text: fsefsefdqzdefsg
     children: []
+    rect:
+      serializedVersion: 2
+      x: 677
+      y: 205
+      width: 250
+      height: 100
   - id: 
-    text: 
+    text: sef
     children: []
+    rect:
+      serializedVersion: 2
+      x: 484
+      y: 336
+      width: 100
+      height: 100

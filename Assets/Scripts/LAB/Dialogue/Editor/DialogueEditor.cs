@@ -60,9 +60,13 @@ namespace Dialogue.Editor
 			else
             {
 	            DragDialogueEvent();
+	            foreach (var dialogueNode in _selectedDialogue.DialogueNodes)
+	            {
+		            DrawConnections(dialogueNode);
+	            }
 				foreach (var dialogueNode in _selectedDialogue.DialogueNodes)
                 {
-	                OnGUINode(dialogueNode);
+	                DrawNode(dialogueNode);
                 }
             }
 		}
@@ -88,12 +92,12 @@ namespace Dialogue.Editor
 			}
 		}
 
-		private void OnGUINode(DialogueNode dialogueNode)
+		private void DrawNode(DialogueNode dialogueNode)
 		{
 			GUILayout.BeginArea(dialogueNode.rect, _guiStyle);
 			EditorGUI.BeginChangeCheck();
 	            
-			//EditorGUILayout.LabelField("Noeud :", EditorStyles.whiteLabel);
+			EditorGUILayout.LabelField("Noeud :", EditorStyles.whiteLabel);
 			var newID = EditorGUILayout.TextField(dialogueNode.id);
 			var newText = EditorGUILayout.TextField(dialogueNode.text);
 
@@ -105,6 +109,19 @@ namespace Dialogue.Editor
 			}
 			
 			GUILayout.EndArea();
+		}
+
+		private void DrawConnections(DialogueNode dialogueNode)
+		{
+			var startPosition = new Vector2(dialogueNode.rect.xMax, dialogueNode.rect.center.y);
+			foreach (var dialogue in _selectedDialogue.GetAllChildren(dialogueNode))
+			{
+				var endPosition = new Vector2(dialogue.rect.xMin, dialogue.rect.center.y);
+				var offset = endPosition - startPosition;
+				offset.x *= 0.8f;
+				offset.y = 0;
+				Handles.DrawBezier(startPosition, endPosition, startPosition + offset, endPosition - offset, Color.white, null, 4f);
+			}
 		}
 
 		private DialogueNode GetDialogueAtPos(Vector2 mousePosition)
