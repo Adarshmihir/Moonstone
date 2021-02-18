@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditor.Callbacks;
-using UnityEngine;
 
 namespace Dialogue.Editor
 {
     public class DialogueEditor : EditorWindow
     {
-        Dialogue selectedDialogue = null;
+	    private Dialogue _selectedDialogue;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowDialogueEditor()
@@ -36,19 +33,26 @@ namespace Dialogue.Editor
             var dialogue = Selection.activeObject as Dialogue;
             if (dialogue == null) return;
 
-            selectedDialogue = dialogue;
+            _selectedDialogue = dialogue;
             Repaint();
         }
 
 		private void OnGUI()
 		{
-            if (selectedDialogue == null)
+            if (_selectedDialogue == null)
 			{
                 EditorGUILayout.LabelField("Aucun dialogue sélectionné.");
             }
 			else
 			{
-                EditorGUILayout.LabelField(selectedDialogue.name);
+				foreach (var dialogueNode in _selectedDialogue.DialogueNodes)
+                {
+	                var newText = EditorGUILayout.TextField(dialogueNode.text);
+	                if (newText == dialogueNode.text) continue;
+
+	                dialogueNode.text = newText;
+	                EditorUtility.SetDirty(_selectedDialogue);
+                }
             }
 		}
 	}
