@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
         stats = new List<Stat>();
         foreach (StatTypes stat in Enum.GetValues(typeof(StatTypes)))
         {
-            Stat statToAdd = new Stat(new CharacterStat(stat, 0),
-                GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().getNumberGameObject(stat));
+            Stat statToAdd = new Stat(new CharacterStat(0),
+                GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().getNumberGameObject(stat), stat);
             stats.Add(statToAdd);
         }
         StatTextUpdate();
@@ -39,6 +39,17 @@ public class Player : MonoBehaviour
         InitializeStats();
     }
     
+    public void AddModifier(StatModifier statMod)
+    {
+        foreach (var stat in stats) {
+            if (stat.StatName == statMod.statType)
+            {
+                stat.charStat.AddModifier(statMod);
+            }
+        }
+        StatTextUpdate();
+    }
+
     public void StatTextUpdate()
     {
         foreach (var stat in stats)

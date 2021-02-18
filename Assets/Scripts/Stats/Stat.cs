@@ -9,11 +9,13 @@ namespace Stats
     {
         public CharacterStat charStat;
         public GameObject statGameObject;
+        public StatTypes StatName;
 
-        public Stat(CharacterStat stat, GameObject GO)
+        public Stat(CharacterStat stat, GameObject GO, StatTypes StatName)
         {
             charStat = stat;
             statGameObject = GO;
+            this.StatName = StatName;
         }
         
     }

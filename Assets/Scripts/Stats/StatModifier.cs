@@ -33,13 +33,14 @@ public class StatModifier : ScriptableObject
     public StatTypes statType;
     
     //CONSTRUCTOR
-    public StatModifier(float value, StatModType type, object source)
+    public StatModifier(float value, StatModType type, object source, StatTypes statType)
     {
         Value = value;
         Type = type;
         Source = source;
+        this.statType = statType;
     }
 
-    public StatModifier(float value, StatModType type) : this(value, type, null) { }
+    public StatModifier(float value, StatModType type, StatTypes statType) : this(value, type, null, statType) { }
 
 }
