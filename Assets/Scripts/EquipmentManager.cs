@@ -22,7 +22,7 @@ public class EquipmentManager : MonoBehaviour {
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
-    private void Start() {
+    public void Initialize_EquipmentManager() {
         // Initialize currentEquipment based on number of equipment slots
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];

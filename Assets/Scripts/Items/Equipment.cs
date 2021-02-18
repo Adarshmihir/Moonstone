@@ -11,6 +11,7 @@ public class Equipment : Item {
     public EquipmentMeshRegion[] coveredMeshRegions;
     
     public int armorModifier;
+    public StatModifier[] StatModifiers;
     public int damageModifier;
 
     public override void Use() {

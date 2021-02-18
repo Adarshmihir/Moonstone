@@ -12,7 +12,7 @@ namespace Stats
         //PUBLIC VARIABLES
         public GameObject statGameObjectField;
         public float BaseValue;
-        public string StatName;
+        public StatTypes StatName;
         public virtual float Value
         {
             get
@@ -61,7 +61,7 @@ namespace Stats
             StatModifiers = statModifiers.AsReadOnly();
         }
     
-        public CharacterStat(string statName, float baseValue, GameObject statField) : this()
+        public CharacterStat(StatTypes statName, float baseValue) : this()
         {
             StatName = statName;
             BaseValue = baseValue;
