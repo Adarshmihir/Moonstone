@@ -1,11 +1,13 @@
 ﻿using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEngine;
 
 namespace Dialogue.Editor
 {
     public class DialogueEditor : EditorWindow
     {
 	    private Dialogue _selectedDialogue;
+	    private GUIStyle _guiStyle;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowDialogueEditor()
@@ -26,6 +28,16 @@ namespace Dialogue.Editor
 		private void OnEnable()
 		{
             Selection.selectionChanged += OnSelectionChanged;
+            _guiStyle = new GUIStyle
+            {
+	            normal =
+	            {
+		            background = EditorGUIUtility.Load("node0") as Texture2D,
+		            textColor = Color.white
+	            }, 
+	            padding = new RectOffset(20, 20, 20, 20),
+	            border = new RectOffset(12, 12, 12, 12),
+            };
 		}
 
         private void OnSelectionChanged()
@@ -47,13 +59,28 @@ namespace Dialogue.Editor
 			{
 				foreach (var dialogueNode in _selectedDialogue.DialogueNodes)
                 {
-	                var newText = EditorGUILayout.TextField(dialogueNode.text);
-	                if (newText == dialogueNode.text) continue;
-
-	                dialogueNode.text = newText;
-	                EditorUtility.SetDirty(_selectedDialogue);
+	                OnGUINode(dialogueNode);
                 }
             }
+		}
+
+		private void OnGUINode(DialogueNode dialogueNode)
+		{
+			GUILayout.BeginArea(dialogueNode.position, _guiStyle);
+			EditorGUI.BeginChangeCheck();
+	            
+			EditorGUILayout.LabelField("Noeud :", EditorStyles.whiteLabel);
+			var newID = EditorGUILayout.TextField(dialogueNode.id);
+			var newText = EditorGUILayout.TextField(dialogueNode.text);
+
+			if (EditorGUI.EndChangeCheck())
+			{
+				Undo.RecordObject(_selectedDialogue, "Dialogue Node Update");
+				dialogueNode.id = newID;
+				dialogueNode.text = newText;
+			}
+			
+			GUILayout.EndArea();
 		}
 	}
 }
