@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -7,9 +8,11 @@ namespace Dialogue.Editor
     public class DialogueEditor : EditorWindow
     {
 	    private Dialogue _selectedDialogue;
-	    private GUIStyle _guiStyle;
-	    private DialogueNode _dialogueNodeDragged;
-	    private Vector2 _dialogueNodeDraggedPos;
+	    
+	    [NonSerialized] private GUIStyle _guiStyle;
+	    [NonSerialized] private DialogueNode _dialogueNodeDragged;
+	    [NonSerialized] private Vector2 _dialogueNodeDraggedPos;
+	    [NonSerialized] private DialogueNode _addingNode;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowDialogueEditor()
@@ -68,6 +71,13 @@ namespace Dialogue.Editor
                 {
 	                DrawNode(dialogueNode);
                 }
+
+				if (_addingNode != null)
+				{
+					Undo.RecordObject(_selectedDialogue, "Dialogue Node Create");
+					_selectedDialogue.CreateNode(_addingNode);
+					_addingNode = null;
+				}
             }
 		}
 
@@ -96,16 +106,18 @@ namespace Dialogue.Editor
 		{
 			GUILayout.BeginArea(dialogueNode.rect, _guiStyle);
 			EditorGUI.BeginChangeCheck();
-	            
-			EditorGUILayout.LabelField("Noeud :", EditorStyles.whiteLabel);
-			var newID = EditorGUILayout.TextField(dialogueNode.id);
+			
 			var newText = EditorGUILayout.TextField(dialogueNode.text);
 
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(_selectedDialogue, "Dialogue Node Update");
-				dialogueNode.id = newID;
 				dialogueNode.text = newText;
+			}
+
+			if (GUILayout.Button("Ajouter un noeud"))
+			{
+				_addingNode = dialogueNode;
 			}
 			
 			GUILayout.EndArea();
@@ -135,5 +147,5 @@ namespace Dialogue.Editor
 			}
 			return dialogueNode;
 		}
-	}
+    }
 }

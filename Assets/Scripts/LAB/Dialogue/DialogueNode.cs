@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Dialogue
 {
@@ -7,7 +8,7 @@ namespace Dialogue
     {
         public string id;
         public string text;
-        public string[] children;
-        public Rect rect = new Rect(0, 0, 0, 0);
+        public List<string> children = new List<string>();
+        public Rect rect = new Rect(0, 0, 150, 100);
     }
 }

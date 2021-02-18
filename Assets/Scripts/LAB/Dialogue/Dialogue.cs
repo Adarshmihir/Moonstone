@@ -17,10 +17,10 @@ namespace Dialogue
 #if UNITY_EDITOR
         private void Awake()
         {
-            if (dialogueNodes.Count == 0)
-            {
-                dialogueNodes.Add(new DialogueNode());
-            }
+            if (dialogueNodes.Count != 0) return;
+            
+            var dialogue = new DialogueNode {id = Guid.NewGuid().ToString()};
+            dialogueNodes.Add(dialogue);
         }
 #endif
 
@@ -36,6 +36,14 @@ namespace Dialogue
         public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parent)
         {
             return from child in parent.children where _nodeLookup.ContainsKey(child) select _nodeLookup[child];
+        }
+        
+        public void CreateNode(DialogueNode parent)
+        {
+            var dialogue = new DialogueNode {id = Guid.NewGuid().ToString()};
+            parent.children.Add(dialogue.id);
+			dialogueNodes.Add(dialogue);
+            OnValidate();
         }
     }
 }
