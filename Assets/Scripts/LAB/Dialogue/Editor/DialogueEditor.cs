@@ -8,6 +8,8 @@ namespace Dialogue.Editor
     {
 	    private Dialogue _selectedDialogue;
 	    private GUIStyle _guiStyle;
+	    private DialogueNode _dialogueNodeDragged;
+	    private Vector2 _dialogueNodeDraggedPos;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowDialogueEditor()
@@ -56,7 +58,8 @@ namespace Dialogue.Editor
                 EditorGUILayout.LabelField("Aucun dialogue sélectionné.");
             }
 			else
-			{
+            {
+	            DragDialogueEvent();
 				foreach (var dialogueNode in _selectedDialogue.DialogueNodes)
                 {
 	                OnGUINode(dialogueNode);
@@ -64,12 +67,33 @@ namespace Dialogue.Editor
             }
 		}
 
+		private void DragDialogueEvent()
+		{
+			if (Event.current.type == EventType.MouseDown && _dialogueNodeDragged == null)
+			{
+				_dialogueNodeDragged = GetDialogueAtPos(Event.current.mousePosition);
+				if (_dialogueNodeDragged == null) return;
+				
+				_dialogueNodeDraggedPos = _dialogueNodeDragged.rect.position - Event.current.mousePosition;
+			}
+			else if (Event.current.type == EventType.MouseDrag && _dialogueNodeDragged != null)
+			{
+				Undo.RecordObject(_selectedDialogue, "Dialogue Node Move");
+				_dialogueNodeDragged.rect.position = Event.current.mousePosition + _dialogueNodeDraggedPos;
+				Repaint();
+			}
+			else if (Event.current.type == EventType.MouseUp && _dialogueNodeDragged != null)
+			{
+				_dialogueNodeDragged = null;
+			}
+		}
+
 		private void OnGUINode(DialogueNode dialogueNode)
 		{
-			GUILayout.BeginArea(dialogueNode.position, _guiStyle);
+			GUILayout.BeginArea(dialogueNode.rect, _guiStyle);
 			EditorGUI.BeginChangeCheck();
 	            
-			EditorGUILayout.LabelField("Noeud :", EditorStyles.whiteLabel);
+			//EditorGUILayout.LabelField("Noeud :", EditorStyles.whiteLabel);
 			var newID = EditorGUILayout.TextField(dialogueNode.id);
 			var newText = EditorGUILayout.TextField(dialogueNode.text);
 
@@ -81,6 +105,18 @@ namespace Dialogue.Editor
 			}
 			
 			GUILayout.EndArea();
+		}
+
+		private DialogueNode GetDialogueAtPos(Vector2 mousePosition)
+		{
+			DialogueNode dialogueNode = null;
+			foreach (var node in _selectedDialogue.DialogueNodes)
+			{
+				if (!node.rect.Contains(mousePosition)) continue;
+
+				dialogueNode = node;
+			}
+			return dialogueNode;
 		}
 	}
 }
