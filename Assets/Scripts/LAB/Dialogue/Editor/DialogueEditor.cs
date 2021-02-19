@@ -8,10 +8,12 @@ namespace Dialogue.Editor
     public class DialogueEditor : EditorWindow
     {
 	    private Dialogue _selectedDialogue;
+	    private Vector2 _scrollPosition;
 	    
 	    [NonSerialized] private GUIStyle _guiStyle;
 	    [NonSerialized] private DialogueNode _dialogueNodeDragged;
 	    [NonSerialized] private Vector2 _dialogueNodeDraggedPos;
+	    [NonSerialized] private Vector2 _canvasDraggedPos;
 	    [NonSerialized] private DialogueNode _addingNode;
 	    [NonSerialized] private DialogueNode _removingNode;
 	    [NonSerialized] private DialogueNode _linkingNode;
@@ -65,6 +67,9 @@ namespace Dialogue.Editor
 			else
             {
 	            DragDialogueEvent();
+	            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+	            GUILayoutUtility.GetRect(5000, 5000);
+	            
 	            foreach (var dialogueNode in _selectedDialogue.DialogueNodes)
 	            {
 		            DrawConnections(dialogueNode);
@@ -73,6 +78,8 @@ namespace Dialogue.Editor
                 {
 	                DrawNode(dialogueNode);
                 }
+				
+				EditorGUILayout.EndScrollView();
 
 				if (_addingNode != null)
 				{
@@ -81,12 +88,11 @@ namespace Dialogue.Editor
 					_addingNode = null;
 				}
 
-				if (_removingNode != null)
-				{
-					Undo.RecordObject(_selectedDialogue, "Dialogue Node Delete");
-					_selectedDialogue.DeleteNode(_removingNode);
-					_removingNode = null;
-				}
+				if (_removingNode == null) return;
+				
+				Undo.RecordObject(_selectedDialogue, "Dialogue Node Delete");
+				_selectedDialogue.DeleteNode(_removingNode);
+				_removingNode = null;
             }
 		}
 
@@ -94,15 +100,27 @@ namespace Dialogue.Editor
 		{
 			if (Event.current.type == EventType.MouseDown && _dialogueNodeDragged == null)
 			{
-				_dialogueNodeDragged = GetDialogueAtPos(Event.current.mousePosition);
-				if (_dialogueNodeDragged == null) return;
-				
-				_dialogueNodeDraggedPos = _dialogueNodeDragged.rect.position - Event.current.mousePosition;
+				_dialogueNodeDragged = GetDialogueAtPos(Event.current.mousePosition + _scrollPosition);
+				if (_dialogueNodeDragged != null)
+				{
+					_dialogueNodeDraggedPos = _dialogueNodeDragged.rect.position - Event.current.mousePosition;
+				}
+				else
+				{
+					_canvasDraggedPos = Event.current.mousePosition + _scrollPosition;
+				}
 			}
-			else if (Event.current.type == EventType.MouseDrag && _dialogueNodeDragged != null)
+			else if (Event.current.type == EventType.MouseDrag)
 			{
-				Undo.RecordObject(_selectedDialogue, "Dialogue Node Move");
-				_dialogueNodeDragged.rect.position = Event.current.mousePosition + _dialogueNodeDraggedPos;
+				if (_dialogueNodeDragged != null)
+				{
+					Undo.RecordObject(_selectedDialogue, "Dialogue Node Move");
+					_dialogueNodeDragged.rect.position = Event.current.mousePosition + _dialogueNodeDraggedPos;
+				}
+				else
+				{
+					_scrollPosition = _canvasDraggedPos - Event.current.mousePosition;
+				}
 				Repaint();
 			}
 			else if (Event.current.type == EventType.MouseUp && _dialogueNodeDragged != null)
