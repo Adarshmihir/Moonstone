@@ -19,6 +19,18 @@ public class GameManager : MonoBehaviour
         get { return _instance; }
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Inventory"))
+        {
+            uiManager.InventoryGO.SetActive(!uiManager.InventoryGO.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            uiManager.StatsCanvasGO.SetActive(!uiManager.StatsCanvasGO.activeSelf);
+        }
+    }
+
     private void Start()
     {
         if (_instance != null && _instance != this)
@@ -31,7 +43,7 @@ public class GameManager : MonoBehaviour
         uiManager.InitializeUIManager();
         player.InitializePlayer();
         equipementManager.Initialize_EquipmentManager();
-
+        uiManager.HideUIAtLaunch();
     }
  
     // Add your game mananger members here

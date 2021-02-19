@@ -23,12 +23,6 @@ namespace Control
         private void Update()
         {
             if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Canvas statsCanvas = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<Canvas>();
-                statsCanvas.gameObject.SetActive(!statsCanvas.gameObject.activeSelf);
-            }
             
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;

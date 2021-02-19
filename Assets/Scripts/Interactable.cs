@@ -6,13 +6,19 @@ public class Interactable : MonoBehaviour {
 
     public Transform interactionTransform;
 
-    private bool hasInteracted;
+    protected bool hasInteracted;
 
-    private bool isFocused;
-    private Transform player;
+    protected bool isFocused;
+    protected Transform player;
 
     private void Update() {
-        if (isFocused && !hasInteracted) {
+        checkFocus();
+    }
+
+    protected virtual void checkFocus()
+    {
+        if (isFocused && !hasInteracted)
+        {
             var distance = Vector3.Distance(player.position, interactionTransform.position);
             if (distance <= radius)
             {
