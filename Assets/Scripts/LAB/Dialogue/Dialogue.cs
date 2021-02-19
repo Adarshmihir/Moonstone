@@ -45,5 +45,16 @@ namespace Dialogue
 			dialogueNodes.Add(dialogue);
             OnValidate();
         }
+
+        public void DeleteNode(DialogueNode node)
+        {
+            dialogueNodes.Remove(node);
+            OnValidate();
+
+            foreach (var dialogueNode in dialogueNodes)
+            {
+                dialogueNode.children.Remove(node.id);
+            }
+        }
     }
 }

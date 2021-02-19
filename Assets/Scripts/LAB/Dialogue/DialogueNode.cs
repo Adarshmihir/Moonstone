@@ -9,6 +9,6 @@ namespace Dialogue
         public string id;
         public string text;
         public List<string> children = new List<string>();
-        public Rect rect = new Rect(0, 0, 150, 100);
+        public Rect rect = new Rect(0, 0, 300, 150);
     }
 }
