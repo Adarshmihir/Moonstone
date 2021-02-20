@@ -6,7 +6,7 @@ namespace Dialogue
 {
     public class DialogueNode : ScriptableObject
     {
-        [SerializeField] private bool isPlayerTurn = false;
+        [SerializeField] private bool isPlayerTurn;
         [SerializeField] private string text;
         [SerializeField] private List<string> children = new List<string>();
         [SerializeField] private Rect rect = new Rect(0, 0, 200, 100);
