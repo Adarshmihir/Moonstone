@@ -11,22 +11,22 @@ namespace Control
         [SerializeField] private Canvas statsCanvas;
         public Interactable focus;
 
-        private Health health;
-        private Mover mover;
-        private Fighter fighter;
+        private Health _health;
+        private Mover _mover;
+        private Fighter _fighter;
 
         // Start is called before the first frame update
         private void Start()
         {
-            health = GetComponent<Health>();
-            mover = GetComponent<Mover>();
-            fighter = GetComponent<Fighter>();
+            _health = GetComponent<Health>();
+            _mover = GetComponent<Mover>();
+            _fighter = GetComponent<Fighter>();
         }
         
         // Update is called once per frame
         private void Update()
         {
-            if (health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
+            if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
 
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -49,7 +49,7 @@ namespace Control
                 // Input.GetMouseButton(0)
                 if (Input.GetMouseButtonDown(0))
                 {
-                    fighter.Attack(target.gameObject);
+                    _fighter.Attack(target.gameObject);
                 }
                 return true;
             }
@@ -77,7 +77,7 @@ namespace Control
             
             if (Input.GetMouseButton(0))
             {
-                mover.StartMoveAction(hit.point);
+                _mover.StartMoveAction(hit.point);
             }
             return true;
         }

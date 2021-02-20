@@ -10,14 +10,14 @@ namespace Control
         [SerializeField] private Color nonSelectedColor = new Color(1f, 0.46f, 0f);
         [SerializeField] private Color selectedColor = Color.red;
         
-        private Outline outline;
-        private GameObject player;
+        private Outline _outline;
+        private GameObject _player;
     
         // Start is called before the first frame update
         private void Start()
         {
-            outline = GetComponent<Outline>();
-            player = GameObject.FindWithTag("Player");
+            _outline = GetComponent<Outline>();
+            _player = GameObject.FindWithTag("Player");
         }
         
         // Update is called once per frame
@@ -35,27 +35,27 @@ namespace Control
             
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity, outlineLayer) && hit.transform == transform)
             {
-                outline.OutlineMode = Outline.Mode.OutlineAll;
-                outline.OutlineColor = selectedColor;
+                _outline.OutlineMode = Outline.Mode.OutlineAll;
+                _outline.OutlineColor = selectedColor;
             }
             else if (GetIsTargetOfPlayer())
             {
-                outline.OutlineMode = Outline.Mode.OutlineAll;
-                outline.OutlineColor = selectedColor;
+                _outline.OutlineMode = Outline.Mode.OutlineAll;
+                _outline.OutlineColor = selectedColor;
             }
             else
             {
-                outline.OutlineMode = Outline.Mode.OutlineHidden;
-                outline.OutlineColor = nonSelectedColor;
+                _outline.OutlineMode = Outline.Mode.OutlineHidden;
+                _outline.OutlineColor = nonSelectedColor;
             }
         }
 
         private bool GetIsTargetOfPlayer()
         {
             var health = GetComponent<Health>();
-            if (player == null || player.GetComponent<Fighter>().Target == null || health.IsDead) return false;
+            if (_player == null || _player.GetComponent<Fighter>().Target == null || health.IsDead) return false;
 
-            return player.GetComponent<Fighter>().Target.GetInstanceID() == GetComponent<Health>().GetInstanceID();
+            return _player.GetComponent<Fighter>().Target.GetInstanceID() == GetComponent<Health>().GetInstanceID();
         }
     }
 }

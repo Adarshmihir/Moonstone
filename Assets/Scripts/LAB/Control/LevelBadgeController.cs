@@ -10,14 +10,14 @@ namespace Control
         [SerializeField] private GameObject levelUI;
 
         // TODO : See stats
-        private readonly float level = 19;
+        private readonly float _level = 19;
         
         // Start is called before the first frame update
         private void Start()
         {
             // TODO : Move to another position
             levelUI.SetActive(true);
-            levelText.text = level.ToString(CultureInfo.InvariantCulture);
+            levelText.text = _level.ToString(CultureInfo.InvariantCulture);
         }
 
         // Update is called once per frame

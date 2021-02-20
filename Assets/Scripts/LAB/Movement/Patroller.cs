@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class Patroller : MonoBehaviour
 {
-    private readonly List<Transform> waypoints = new List<Transform>();
+    private readonly List<Transform> _waypoints = new List<Transform>();
     
     // Start is called before the first frame update
     private void Start()
     {
         for (var i = 0; i < transform.childCount; i++)
         {
-            waypoints.Add(transform.GetChild(i));
+            _waypoints.Add(transform.GetChild(i));
         }
     }
 
     public Vector3 GetWaypoint(int currentWaypoint)
     {
-        return waypoints[currentWaypoint].position;
+        return _waypoints[currentWaypoint].position;
     }
 
     public int GetNextWaypoint(int currentWaypoint)

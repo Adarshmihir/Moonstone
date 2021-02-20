@@ -14,17 +14,17 @@ namespace Combat
         [SerializeField] private Transform rightHandTransform;
         [SerializeField] private Transform leftHandTransform;
 
-        private Mover mover;
-        private Animator animator;
-        private float timeSinceLastAttack = Mathf.Infinity;
+        private Mover _mover;
+        private Animator _animator;
+        private float _timeSinceLastAttack = Mathf.Infinity;
 
         public Health Target { get; private set; }
 
         // Start is called before the first frame update
         private void Start()
         {
-            mover = GetComponent<Mover>();
-            animator = GetComponent<Animator>();
+            _mover = GetComponent<Mover>();
+            _animator = GetComponent<Animator>();
             
             SpawnWeapon();
         }
@@ -32,7 +32,7 @@ namespace Combat
         // Update is called once per frame
         private void Update()
         {
-            timeSinceLastAttack += Time.deltaTime;
+            _timeSinceLastAttack += Time.deltaTime;
 
             if (Target == null || Target.IsDead) return;
 
@@ -40,12 +40,12 @@ namespace Combat
             if (!GetIsInRange())
             {
                 // Move towards the target until it is close enough
-                mover.MoveTo(Target.transform.position);
+                _mover.MoveTo(Target.transform.position);
             }
             else
             {
                 // Cancel movement action and start attack
-                mover.Cancel();
+                _mover.Cancel();
                 AttackBehavior();
             }
         }
@@ -55,7 +55,7 @@ namespace Combat
             if (weapon == null) return;
             
             // Spawn weapon(s) in hand(s)
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
         }
     
         private void AttackBehavior()
@@ -63,18 +63,18 @@ namespace Combat
             // Rotate the character in direction of the target
             transform.LookAt(Target.transform);
             // Check if weapon cooldown is elapsed and if target if visible
-            if (!(timeSinceLastAttack > weapon.TimeBetweenAttack)/* || !GetIsAccessible(target.transform)*/) return;
+            if (!(_timeSinceLastAttack > weapon.TimeBetweenAttack)/* || !GetIsAccessible(target.transform)*/) return;
 
             // Start attack
             TriggerAttack();
-            timeSinceLastAttack = 0;
+            _timeSinceLastAttack = 0;
         }
 
         private void TriggerAttack()
         {
             // Start random attack animation
-            animator.ResetTrigger("stopAttack");
-            animator.SetTrigger(weapon.SelectAnAnimation());
+            _animator.ResetTrigger("stopAttack");
+            _animator.SetTrigger(weapon.SelectAnAnimation());
         }
         
         // Animation event : Attack
@@ -171,10 +171,10 @@ namespace Combat
         private void StopAttack()
         {
             // Stop attack animation
-            animator.ResetTrigger("attack1");
-            animator.ResetTrigger("attack2");
-            animator.ResetTrigger("attack3");
-            animator.SetTrigger("stopAttack");
+            _animator.ResetTrigger("attack1");
+            _animator.ResetTrigger("attack2");
+            _animator.ResetTrigger("attack3");
+            _animator.SetTrigger("stopAttack");
         }
     }
 }
