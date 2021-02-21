@@ -12,7 +12,6 @@ namespace Stats
         //PUBLIC VARIABLES
         public GameObject statGameObjectField;
         public float BaseValue;
-        public string StatName;
         public virtual float Value
         {
             get
@@ -61,9 +60,8 @@ namespace Stats
             StatModifiers = statModifiers.AsReadOnly();
         }
     
-        public CharacterStat(string statName, float baseValue, GameObject statField) : this()
+        public CharacterStat(float baseValue) : this()
         {
-            StatName = statName;
             BaseValue = baseValue;
         }
         
@@ -72,7 +70,6 @@ namespace Stats
         public virtual void IncrementBaseValue(float value)
         {
             BaseValue += value;
-            StatTextUpdate();
         }
         
         //Add modifier (percent or flat) to stat
@@ -80,7 +77,6 @@ namespace Stats
         {
             isDirty = true;
             statModifiers.Add(mod);
-            StatTextUpdate();
             //statModifiers.Sort();
         }
         

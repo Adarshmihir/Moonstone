@@ -26,6 +26,7 @@ namespace Control
 
             if (Input.GetKeyDown(KeyCode.A))
             {
+                Canvas statsCanvas = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<Canvas>();
                 statsCanvas.gameObject.SetActive(!statsCanvas.gameObject.activeSelf);
             }
             

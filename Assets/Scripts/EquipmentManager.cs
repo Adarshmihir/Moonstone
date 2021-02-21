@@ -22,7 +22,7 @@ public class EquipmentManager : MonoBehaviour {
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
-    private void Start() {
+    public void Initialize_EquipmentManager() {
         // Initialize currentEquipment based on number of equipment slots
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
@@ -89,9 +89,9 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     void SetEquipmentBlendShapes(Equipment item, int weight) {
-        foreach (EquipmentMeshRegion blendShape in item.coveredMeshRegions) {
+        /*foreach (EquipmentMeshRegion blendShape in item.coveredMeshRegions) {
             targetMesh.SetBlendShapeWeight((int)blendShape, weight);
-        }
+        }*/
     }
 
     private void Update() {
