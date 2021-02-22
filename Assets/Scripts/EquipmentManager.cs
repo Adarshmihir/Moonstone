@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Combat;
+using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour {
     
@@ -9,69 +11,51 @@ public class EquipmentManager : MonoBehaviour {
             instance = this;
         }
     #endregion
-
-    public Equipment[] defaultItems;
     
-    public SkinnedMeshRenderer targetMesh;
-    private Equipment[] currentEquipment; // items we currently have equipped
-    private SkinnedMeshRenderer[] currentMeshes;
-
+    private Item[] currentStuff; // items we currently have equipped
     private Inventory inventory; // Reference to the Inventory
 
     // Callback for when an item is equipped / unequipped
-    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+    public delegate void OnEquipmentChanged(Item newItem, Item oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
     public void Initialize_EquipmentManager() {
         // Initialize currentEquipment based on number of equipment slots
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-        currentEquipment = new Equipment[numSlots];
-        
+        currentStuff = new Item[numSlots];
+
+        currentStuff[currentStuff.Length - 1] = GameManager.Instance.player.GetComponent<Fighter>().weapon;
+
         inventory = Inventory.instance; // Get a reference to our inventory
-        currentMeshes = new SkinnedMeshRenderer[numSlots];
-        
-        EquipDefaultItems();
     }
 
     // Equip a new item
-    public void Equip(Equipment newItem) {
+    public void Equip(Item newItem) {
         // Find out what slot the item fits in
         int slotIndex = (int) newItem.equipSlot;
         Unequip(slotIndex);
-        Equipment oldItem = null;
-
+        Item oldItem = null;
+    
         // An item has been equipped so the callback is triggered
         if (onEquipmentChanged != null) {
             onEquipmentChanged.Invoke(newItem, oldItem);
         }
-        
-        SetEquipmentBlendShapes(newItem, 100);
-        
+            
         // Insert item into the slot
-        currentEquipment[slotIndex] = newItem;
-        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
-        newMesh.transform.parent = targetMesh.transform;
-
-        newMesh.bones = targetMesh.bones;
-        newMesh.rootBone = targetMesh.rootBone;
-
-        currentMeshes[slotIndex] = newMesh;
+        currentStuff[slotIndex] = newItem;
     }
 
     // Unequip an item with a particular index
-    public Equipment Unequip(int slotIndex) {
+    public Item Unequip(int slotIndex) {
         // Only do if an item is there
-        if (currentEquipment[slotIndex] != null) {
-            if (currentMeshes[slotIndex] != null) {
-                Destroy(currentMeshes[slotIndex].gameObject);
-            }
+        if (currentStuff[slotIndex] != null) {
+            
             // Add the item to the inventory
-            Equipment oldItem = currentEquipment[slotIndex];
-            SetEquipmentBlendShapes(oldItem, 0);
+            Item oldItem = currentStuff[slotIndex];
             inventory.Add(oldItem);
 
             // Remove the item from the equipment array
-            currentEquipment[slotIndex] = null;
+            currentStuff[slotIndex] = null;
             
             // Equipment has been removed so we trigger the callback
             if (onEquipmentChanged != null) {
@@ -83,24 +67,11 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     public void UnequipAll() {
-        for(int i=0; i<currentEquipment.Length; i++)
-            Unequip(i);
-         EquipDefaultItems(); //TODO: fix equiping by default. Current : Add all default items to inventory when picking up an item in the world 
-    }
-
-    void SetEquipmentBlendShapes(Equipment item, int weight) {
-        /*foreach (EquipmentMeshRegion blendShape in item.coveredMeshRegions) {
-            targetMesh.SetBlendShapeWeight((int)blendShape, weight);
-        }*/
+        for(int i=0; i<currentStuff.Length; i++)
+            Unequip(i); 
     }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.U)) UnequipAll();
-    }
-
-    void EquipDefaultItems() {
-        foreach (Equipment item in defaultItems) {
-            Equip(item);
-        }
     }
 }

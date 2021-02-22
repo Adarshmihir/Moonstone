@@ -12,7 +12,7 @@ namespace Combat
     }
     
     [CreateAssetMenu(fileName = "Weapon", menuName = "Moonstone/New Weapon", order = 0)]
-    public class Weapon : ScriptableObject
+    public class Weapon : Item
     {
         [SerializeField] private WeaponType weaponType;
         [SerializeField] private float weaponRange = 2f;
@@ -43,20 +43,43 @@ namespace Combat
 
         public void Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
         {
+            DestroyWeapon();
+            
             if (rightHandWeaponPrefab != null)
             {
-                Instantiate(rightHandWeaponPrefab, rightHandTransform);
+                GameManager.Instance.player.GetComponent<Fighter>().rightClone = Instantiate(rightHandWeaponPrefab, rightHandTransform);
+                //Debug.Log(rightClone.ToString());
             }
             
             if (leftHandWeaponPrefab != null)
             {
-                Instantiate(leftHandWeaponPrefab, leftHandTransform);
+                GameManager.Instance.player.GetComponent<Fighter>().leftClone= Instantiate(leftHandWeaponPrefab, leftHandTransform);
             }
 
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        private void DestroyWeapon() {
+            if (GameManager.Instance.player.GetComponent<Fighter>().rightClone != null) {
+                GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().rightClone);
+            }
+            
+            if (GameManager.Instance.player.GetComponent<Fighter>().leftClone != null)
+                GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().leftClone);
+        }
+
+        public override void Use() {
+            base.Use();
+            SwapWeapons();
+            Debug.Log("j'utilise mon arme");
+            
+        }
+        
+        private void SwapWeapons() {
+            this.Spawn(GameManager.Instance.player.GetComponent<Fighter>().rightHandTransform, GameManager.Instance.player.GetComponent<Fighter>().leftHandTransform, GameManager.Instance.player.GetComponent<Animator>());
         }
     }
 }

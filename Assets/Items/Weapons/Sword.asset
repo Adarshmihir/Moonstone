@@ -16,21 +16,21 @@ MonoBehaviour:
   icon: {fileID: 0}
   isDefaultItem: 0
   equipementMods:
-  - value: 10
+  - value: 150
     modType: 100
     statType: 0
   equipSlot: 4
-  weaponType: 1
+  weaponType: 2
   weaponRange: 2
   timeBetweenAttack: 1
   weaponMinDamage: 5
   weaponMaxDamage: 10
   weaponRadius: 45
-  animatorOverride: {fileID: 22100000, guid: c4070620c72ed4e87bc067bad7d36f09, type: 2}
+  animatorOverride: {fileID: 0}
   rightHandWeaponPrefab: {fileID: 6871013640540792565, guid: 8a8f59c89f16d42b9a836052bd4d1b0d,
     type: 3}
   leftHandWeaponPrefab: {fileID: 4374883928402124904, guid: ae07d400ef8be44f18b21f63a4541d7d,
     type: 3}
   animationOnePlayChance: 0.25
   animationTwoPlayChance: 0.25
-  animationThreePlayChance: 0.5
+  animationThreePlayChance: 0.25

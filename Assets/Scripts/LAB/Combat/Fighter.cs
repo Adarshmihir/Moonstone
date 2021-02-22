@@ -10,9 +10,12 @@ namespace Combat
     {
         [SerializeField] [Range(0f, 1f)] private float criticalChance = 0.5f;
 
-        [SerializeField] private Weapon weapon;
-        [SerializeField] private Transform rightHandTransform;
-        [SerializeField] private Transform leftHandTransform;
+        [SerializeField] public Weapon weapon;
+        [SerializeField] public Transform rightHandTransform;
+        [SerializeField] public Transform leftHandTransform;
+
+        public GameObject rightClone;
+        public GameObject leftClone;
 
         private Health _target;
         private float _timeSinceLastAttack = Mathf.Infinity;
@@ -52,7 +55,8 @@ namespace Combat
             
             // Spawn weapon(s) in hand(s)
             var animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            if(this.CompareTag("Player"))
+                weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
     
         private void AttackBehavior()

@@ -17,7 +17,9 @@ namespace Control
         private void Start()
         {
             _outline = GetComponent<Outline>();
-            _player = GameObject.FindWithTag("Player");
+
+            if (this.CompareTag("Player"))
+                _player = GameManager.Instance.player.gameObject;
         }
         
         // Update is called once per frame
