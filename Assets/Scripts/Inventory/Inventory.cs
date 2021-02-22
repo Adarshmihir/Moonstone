@@ -6,6 +6,8 @@ public class Inventory : MonoBehaviour {
 
     public int space = 20;
 
+    public int gold = 300;
+
     public List<Item> items = new List<Item>();
 
     public OnItemChanged onItemChangedCallback;

@@ -18,6 +18,11 @@ public class UI_Forgeron : MonoBehaviour
     private string textRepair = "Reparons donc tes babioles !";
     private string textForge = "Quoi qu'tu veux forger mon p'tit ?";
     private string textBuy = "Ahahah ! Tu veux voir mon stock !?";
+
+    public GameObject shopUI;
+    //public GameObject repairUI;
+    //public GameObject forgeUI;
+
     private void Awake()
     {
         messageText = transform.Find("Dialogue").Find("DialogueText").GetComponent<Text>();
@@ -30,6 +35,8 @@ public class UI_Forgeron : MonoBehaviour
         repairButton.gameObject.SetActive(false);
         forgeButton.gameObject.SetActive(false);
         buyButton.gameObject.SetActive(false);
+
+        shopUI.SetActive(false);
     }
 
     public void WriteText(int numText)
@@ -75,8 +82,17 @@ public class UI_Forgeron : MonoBehaviour
 
     public void onBuy()
     {
-        WriteText(6);
-        Debug.Log("Acheter");
+        if(shopUI.activeSelf == false)
+        {
+            shopUI.SetActive(true);
+            WriteText(6);
+            Debug.Log("Acheter");
+        }
+        else
+        {
+            shopUI.SetActive(false);
+            WriteText(2);
+        }
     }
 
     public void onRepair()
