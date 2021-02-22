@@ -25,6 +25,7 @@ namespace Resources
 
         public void TakeDamage(float damage, bool criticalHit)
         {
+            
             HealthPoints = Mathf.Max(HealthPoints - damage, 0);
 
             var lifeBarController = GetComponent<LifeBarController>();
@@ -36,7 +37,8 @@ namespace Resources
             var damageSpawner = GetComponentInChildren<DamageTextSpawner>();
             if (damageSpawner != null)
             {
-                damageSpawner.Spawn(damage, criticalHit ? DamageType.Critical : DamageType.Normal);
+                // If critical , damage * 2 else normal damage
+                damageSpawner.Spawn(criticalHit ? damage*2 : damage , criticalHit ? DamageType.Critical : DamageType.Normal);
             }
 
             if (HealthPoints <= 0)
