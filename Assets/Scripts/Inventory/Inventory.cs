@@ -12,6 +12,11 @@ public class Inventory : MonoBehaviour {
 
     public OnItemChanged onItemChangedCallback;
 
+    public List<Item> GetList()
+    {
+        return items;
+    }
+
     public bool Add(Item item) {
         if (!item.isDefaultItem) {
             if (items.Count >= space) {
