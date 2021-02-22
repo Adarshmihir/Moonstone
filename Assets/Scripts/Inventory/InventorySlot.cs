@@ -2,22 +2,21 @@
 using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour {
-    private Item item;
 
+public class InventorySlot : MonoBehaviour {
+    protected Item item;
     public Image icon;
 
     public Button removeButton;
 
-    public void AddItem(Item newItem) {
+    public virtual void AddItem(Item newItem) {
         item = newItem;
-
         icon.sprite = item.icon;
         icon.enabled = true;
         removeButton.interactable = true;
     }
 
-    public void ClearSlot() {
+    public virtual void ClearSlot() {
         item = null;
 
         icon.sprite = null;
@@ -25,11 +24,11 @@ public class InventorySlot : MonoBehaviour {
         removeButton.interactable = false;
     }
 
-    public void OnRemoveButton() {
+    public virtual void OnRemoveButton() {
         Inventory.instance.Remove(item);
     }
 
-    public void UseItem() {
+    public virtual void UseItem() {
         if (item != null) {
             item.Use();
         }

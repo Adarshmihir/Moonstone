@@ -28,6 +28,7 @@ public class Enchantress : Interactable
         if (GameManager.Instance.uiManager.EnchantressGO.activeSelf == false)
         {
             GameManager.Instance.uiManager.EnchantressGO.SetActive(true);
+            GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().inventoryenchantress.Initialize_InventoryEnchantressUI();
         }
     }
 }

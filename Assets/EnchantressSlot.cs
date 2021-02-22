@@ -1,21 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class EnchantressSlot : MonoBehaviour
+public class EnchantressSlot : InventorySlot
 {
+    
 
-    Item item;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public override void AddItem(Item newItem) {
+        base.AddItem(newItem);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void ClearSlot() {
+        base.ClearSlot();
+    }
+
+    public override void OnRemoveButton() {
+        base.OnRemoveButton();
+    }
+
+    public override void UseItem()
     {
-        
+        if (item != null) {
+            GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>()
+                .EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().AddItem(item);
+            item.RemoveFromInventory();
+        }
     }
 }

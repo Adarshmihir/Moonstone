@@ -32,7 +32,7 @@ public class Equipment : Item {
         // Equip the item
         EquipmentManager.instance.Equip(this);
         foreach (var mod in StatModifiers)
-        {
+        { 
             GameManager.Instance.player.AddModifier(mod);
         }
         // Remove it from the inventory
