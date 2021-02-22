@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   weaponRange: 2
-  timeBetweenAttack: 1
+  attackspeed: 1
   weaponMinDamage: 2
   weaponMaxDamage: 5
   weaponRadius: 45
@@ -24,3 +24,6 @@ MonoBehaviour:
   animationOnePlayChance: 0.25
   animationTwoPlayChance: 0.25
   animationThreePlayChance: 0.5
+  weaponDamageFlat: 1
+  weaponDamagePercent: 0.5
+  CurrentStatUsing: 0

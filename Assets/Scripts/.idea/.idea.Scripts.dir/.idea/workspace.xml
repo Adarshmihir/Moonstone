@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49b9c47e-053f-4340-8ebd-ee0c04e91552" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Plugins.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Plugins/GitHub.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Plugins/GitHub/Editor.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plugins/GitHub/Editor/x64.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CameraController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +20,8 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/CameraController.cs" />
       <option value="$PROJECT_DIR$/Test.cs" />
+      <option value="$PROJECT_DIR$/CameraController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oX6m4hSmoEALszCgfavFPQA1vh" />
@@ -36,7 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Unity" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -53,6 +51,7 @@
       <workItem from="1613422513464" duration="30000" />
       <workItem from="1613490791352" duration="81000" />
       <workItem from="1613490894360" duration="432000" />
+      <workItem from="1613928945327" duration="178000" />
     </task>
     <servers />
   </component>
