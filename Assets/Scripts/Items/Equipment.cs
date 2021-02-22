@@ -20,8 +20,9 @@ public class Equipment : Item {
     
     public equipementModifier[] equipementMods;
 
-    private List<StatModifier> StatModifiers;
-
+    //A PASSER EN PROTECTED QUAND ON AURA FAIT UN NAMESPACE INVENTAIRE-STATS
+    public List<StatModifier> StatModifiers;
+    
     private void OnEnable()
     {
         this.assignStatModifiers();

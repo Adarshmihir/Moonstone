@@ -6,7 +6,7 @@ public class EnchantressMainSlot : InventorySlot
 {
     public override void AddItem(Item newItem) {
         base.AddItem(newItem);
-        
+        GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().GenerateModifierList(newItem);
     }
 
     public override void ClearSlot() {
@@ -14,8 +14,12 @@ public class EnchantressMainSlot : InventorySlot
     }
 
     public override void OnRemoveButton() {
-        Inventory.instance.Add(item);
+        if (item != null)
+        {
+            Inventory.instance.Add(item);
+        }
         base.ClearSlot();
+        GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().ClearModifierList();
     }
 
     public override void UseItem()
