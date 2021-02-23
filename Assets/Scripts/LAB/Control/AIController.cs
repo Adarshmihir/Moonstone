@@ -1,4 +1,5 @@
-﻿using Combat;
+﻿using System.Collections.Generic;
+using Combat;
 using Core;
 using Movement;
 using Resources;
@@ -20,11 +21,16 @@ namespace Control
         private Mover _mover;
         private ActionScheduler _actionScheduler;
 
+        private readonly Dictionary<Fighter, float> _aggroRate = new Dictionary<Fighter, float>();
         private Vector3 _initialPosition;
         private float _timeSinceLastAggro;
         private float _timeSinceLastBreak;
         private int _currentWaypoint;
+        private bool _isAttacked;
+        private float _timeAttacked;
         private const float WaypointDistTolerance = 1f;
+
+        public bool IsGoingHome { get; private set; }
 
         // Start is called before the first frame update
         private void Start()
@@ -43,13 +49,29 @@ namespace Control
         private void Update()
         {
             if (_health.IsDead || _player == null) return;
-            
-            if (DistanceToPlayer() && Fighter.CanAttack(_player) && DistanceToInitialPosition() && _timeSinceLastAggro > aggroTimer)
+
+            if (DistanceToPlayer() && Fighter.CanAttack(_player) && _timeSinceLastAggro > aggroTimer && !IsGoingHome || _isAttacked)
             {
                 _fighter.Attack(_player);
+
+                if (!DistanceToInitialPosition())
+                {
+                    _isAttacked = false;
+                    IsGoingHome = true;
+                }
             }
             else
             {
+                if (_aggroRate.Count > 0)
+                {
+                    _aggroRate.Clear();
+                }
+                
+                if (IsGoingHome)
+                {
+                    _health.RegenLife();
+                }
+                
                 _timeSinceLastAggro += Time.deltaTime;
                 if (ReferenceEquals(_actionScheduler.CurrentAction, _fighter))
                 {
@@ -58,7 +80,7 @@ namespace Control
                 
                 PatrolBehaviour();
             }
-            
+
             _timeSinceLastBreak += Time.deltaTime;
         }
 
@@ -71,12 +93,49 @@ namespace Control
                     _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
                     _initialPosition = patroller.GetWaypoint(_currentWaypoint);
                     _timeSinceLastBreak = 0;
+                    IsGoingHome = false;
                 }
             }
 
             if (_timeSinceLastBreak > breakTimer)
             {
                 _mover.StartMoveAction(_initialPosition);
+            }
+        }
+
+        public void ConfigureTarget(Fighter attacker, float damage)
+        {
+            UpdateAggroDic(attacker, damage);
+            
+            /*var aggroDamage = _aggroRate[attacker];
+            var aggroTarget = attacker;
+                
+            foreach (var aggro in _aggroRate.Where(aggro => aggro.Value > aggroDamage))
+            {
+                aggroDamage = aggro.Value;
+                aggroTarget = aggro.Key;
+            }*/
+
+            //_fighter.Attack(aggroTarget.gameObject);
+
+            _isAttacked = true;
+            
+            // TODO : Cast call zone and dic
+            
+            //_fighter.Attack(_player);
+            
+            // TODO : Create call zone to allies mate around
+        }
+
+        private void UpdateAggroDic(Fighter attacker, float damage)
+        {
+            if (!_aggroRate.ContainsKey(attacker))
+            {
+                _aggroRate.Add(attacker, damage);
+            }
+            else
+            {
+                _aggroRate[attacker] += damage;
             }
         }
 

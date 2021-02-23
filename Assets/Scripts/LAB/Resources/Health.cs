@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Combat;
 using Control;
 using Core;
 using UI.DamageText;
@@ -18,6 +21,7 @@ namespace Resources
         private ActionScheduler _actionScheduler;
         private CapsuleCollider _capsuleCollider;
         private NavMeshAgent _navMeshAgent;
+        private AIController _aiController;
 
         public float HealthPoints { get; private set; }
         public float MaxHealthPoints => maxHealthPoints;
@@ -35,9 +39,10 @@ namespace Resources
             _actionScheduler = GetComponent<ActionScheduler>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _aiController = GetComponent<AIController>();
         }
 
-        public void TakeDamage(float damage, bool criticalHit)
+        public void TakeDamage(float damage, bool criticalHit, Fighter attacker)
         {
             HealthPoints = Mathf.Max(HealthPoints - damage, 0);
 
@@ -54,6 +59,22 @@ namespace Resources
             if (HealthPoints <= 0)
             {
                 Die();
+            }
+            else if (_aiController != null && !_aiController.IsGoingHome)
+            {
+                _aiController.ConfigureTarget(attacker, damage);
+            }
+        }
+
+        public void RegenLife()
+        {
+            if (HealthPoints >= maxHealthPoints) return;
+            
+            HealthPoints = maxHealthPoints;
+            
+            if (_lifeBarController != null)
+            {
+                _lifeBarController.UpdateLifeBar();
             }
         }
 

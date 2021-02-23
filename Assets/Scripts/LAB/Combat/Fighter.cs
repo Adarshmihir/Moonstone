@@ -89,7 +89,7 @@ namespace Combat
                 if (!GetIsInFieldOfView(Target.transform)/* || !GetIsAccessible(target.transform)*/) return;
                 
                 // Deal damage
-                Target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+                Target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance, this);
             }
             // Armed attack
             else
@@ -118,7 +118,7 @@ namespace Combat
             if (targetHealth == null) return;
             
             // Deal damage
-            targetHealth.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+            targetHealth.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance, this);
         }
     
         private bool GetIsInRange()
