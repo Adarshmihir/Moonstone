@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6b8a787816a49c6a61430c9421af72, type: 3}
   m_Name: Axe2Hand
   m_EditorClassIdentifier: 
+  name: Axe2Hand
+  icon: {fileID: 0}
+  isDefaultItem: 0
+  equipementMods: []
+  equipSlot: 4
   weaponType: 2
   weaponRange: 2
-  attackspeed: 1
+  attackspeed: 5
   weaponMinDamage: 5
-  weaponMaxDamage: 10
+  weaponMaxDamage: 20
   weaponRadius: 45
   animatorOverride: {fileID: 22100000, guid: e8c4bd2535d7f4449b88d81db6221808, type: 2}
   rightHandWeaponPrefab: {fileID: 168620, guid: b14df74153f401b47ae9629ec7b86dfb,

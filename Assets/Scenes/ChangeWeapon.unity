@@ -790,7 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactionTransform: {fileID: 915434520}
-  item: {fileID: 11400000, guid: 18cea2e13779a654bb541a45985101e4, type: 2}
+  item: {fileID: 11400000, guid: bfb3ffb142fe68c4aa9cfa1dbf5f905a, type: 2}
 --- !u!65 &915434522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1233,6 +1233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879218600441023797, guid: f16305d97a2c8494fbd01e7f4e8e505d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3879218600930568857, guid: f16305d97a2c8494fbd01e7f4e8e505d,
         type: 3}

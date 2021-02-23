@@ -4984,6 +4984,8 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: 411d9bc5583834d4f9e8b97c017d7742, type: 2}
   rightHandTransform: {fileID: 8591946088248800620}
   leftHandTransform: {fileID: 8591946088223175539}
+  rightClone: {fileID: 0}
+  leftClone: {fileID: 0}
 --- !u!95 &8591946088338967346
 Animator:
   serializedVersion: 3

@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6b8a787816a49c6a61430c9421af72, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
+  name: Unarmed
+  icon: {fileID: 0}
+  isDefaultItem: 0
+  equipementMods: []
+  equipSlot: 4
   weaponType: 0
   weaponRange: 2
   attackspeed: 1

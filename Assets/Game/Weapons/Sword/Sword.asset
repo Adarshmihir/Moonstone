@@ -34,6 +34,6 @@ MonoBehaviour:
   animationOnePlayChance: 0.25
   animationTwoPlayChance: 0.25
   animationThreePlayChance: 0.5
-  weaponDamageFlat: 3
+  weaponDamageFlat: 5
   weaponDamagePercent: 0.3
   CurrentStatUsing: 0

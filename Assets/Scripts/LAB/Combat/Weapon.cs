@@ -31,7 +31,7 @@ namespace Combat
         [SerializeField] [Range(0f, 1f)] private float animationThreePlayChance;
 
         // Damage flat and percent of stat 
-        [SerializeField] private float weaponDamageFlat = 5f;
+        [SerializeField] public float weaponDamageFlat = 5f;
         [SerializeField] [Range(0, 5)]private float weaponDamagePercent = 0.5f;
         [SerializeField] private StatTypes CurrentStatUsing = StatTypes.Strength;
         
@@ -75,7 +75,7 @@ namespace Combat
                 GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().rightClone);
             }
             
-            if (GameManager.Instance.player.GetComponent<Fighter>().leftClone != null)
+            if (GameManager.Instance.player.GetComponent<Fighter>().leftClone != null){}
                 GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().leftClone);
         }
 
@@ -83,17 +83,18 @@ namespace Combat
             base.Use();
             SwapWeapons();
             Debug.Log("j'utilise mon arme");
-            
         }
         
+        // /!\ SI 
         private void SwapWeapons() {
-            this.Spawn(GameManager.Instance.player.GetComponent<Fighter>().rightHandTransform, GameManager.Instance.player.GetComponent<Fighter>().leftHandTransform, GameManager.Instance.player.GetComponent<Animator>());
+            Spawn(GameManager.Instance.player.GetComponent<Fighter>().rightHandTransform, GameManager.Instance.player.GetComponent<Fighter>().leftHandTransform, GameManager.Instance.player.GetComponent<Animator>());
+            
+            GameManager.Instance.player.GetComponent<Fighter>().weapon = this;
         }
         
         // Function calculate Dmg with flat dmg of weapon  + percent of stat of player
         public float CalculateDamageWeapon()
-        {
- 
+        { 
             float statValue = GameManager.Instance.player.stats.Find(x => x.StatName == CurrentStatUsing).charStat.BaseValue;
             //Debug.Log(Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent)));
             return Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent));
