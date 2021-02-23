@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +16,8 @@ namespace Combat
     [CreateAssetMenu(fileName = "Weapon", menuName = "Moonstone/New Weapon", order = 0)]
     public class Weapon : ScriptableObject
     {
+        [SerializeField] public string weaponName;
+        [SerializeField] public Sprite icon;
         [SerializeField] private WeaponType weaponType;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float timeBetweenAttack = 1f;
@@ -28,6 +32,10 @@ namespace Combat
         [SerializeField] [Range(0f, 1f)] private float animationOnePlayChance;
         [SerializeField] [Range(0f, 1f)] private float animationTwoPlayChance;
         [SerializeField] [Range(0f, 1f)] private float animationThreePlayChance;
+
+        [SerializeField] public int ironToBuild;
+        [SerializeField] public int copperToBuild;
+        [SerializeField] public int silverToBuild;
 
         public float WeaponRange => weaponRange;
         public float WeaponRadius => weaponRadius;

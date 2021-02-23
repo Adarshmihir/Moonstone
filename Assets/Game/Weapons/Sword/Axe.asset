@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe6b8a787816a49c6a61430c9421af72, type: 3}
-  m_Name: Sword
+  m_Name: Axe
   m_EditorClassIdentifier: 
   weaponType: 1
   weaponRange: 2
@@ -23,9 +23,9 @@ MonoBehaviour:
     type: 3}
   leftHandWeaponPrefab: {fileID: 4374883928402124904, guid: ae07d400ef8be44f18b21f63a4541d7d,
     type: 3}
-  animationOnePlayChance: 0.25
-  animationTwoPlayChance: 0.25
-  animationThreePlayChance: 0.5
-  ironToBuild: 2
-  copperToBuild: 1
-  silverToBuild: 0
+  animationOnePlayChance: 0
+  animationTwoPlayChance: 0
+  animationThreePlayChance: 0
+  ironToBuild: 5
+  copperToBuild: 2
+  silverToBuild: 1

@@ -21,7 +21,7 @@ public class UI_Forgeron : MonoBehaviour
 
     public GameObject shopUI;
     public GameObject repairUI;
-    //public GameObject forgeUI;
+    public GameObject forgeUI;
 
     private void Awake()
     {
@@ -38,6 +38,7 @@ public class UI_Forgeron : MonoBehaviour
 
         shopUI.SetActive(false);
         repairUI.SetActive(false);
+        forgeUI.SetActive(false);
     }
 
     public void WriteText(int numText)
@@ -113,7 +114,16 @@ public class UI_Forgeron : MonoBehaviour
 
     public void onForge()
     {
-        WriteText(5);
-        Debug.Log("Forger");
+        if (forgeUI.activeSelf == false)
+        {
+            forgeUI.SetActive(true);
+            WriteText(5);
+            Debug.Log("Forger");
+        }
+        else
+        {
+            forgeUI.SetActive(false);
+            WriteText(2);
+        }
     }
 }
