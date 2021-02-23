@@ -125,7 +125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215, y: 0.000030517578}
+  m_AnchoredPosition: {x: 215, y: 0}
   m_SizeDelta: {x: 154.39445, y: 39.77262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &385035372514473466
@@ -556,7 +556,9 @@ MonoBehaviour:
   EnchantressMainSlotButton: {fileID: 7731844958207298311}
   ModTextPrefab: {fileID: 2796022003725061449, guid: cd72a5a171126af4395265ea13083d08,
     type: 3}
+  FinishEnchantButton: {fileID: 4956984612131096322}
   ListMod: {fileID: 5014272391666237188}
+  selectedButton: {fileID: 0}
 --- !u!1 &2410178600118063014
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +570,6 @@ GameObject:
   - component: {fileID: 652180272151248982}
   - component: {fileID: 4554329316808271389}
   - component: {fileID: 6879594020693689478}
-  - component: {fileID: 549119180622416734}
   m_Layer: 5
   m_Name: ListModEquipement
   m_TagString: Untagged
@@ -633,18 +634,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &549119180622416734
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410178600118063014}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &3926332827186386503
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +782,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4956984610984598647}
-  - component: {fileID: 6592538415728464308}
   m_Layer: 5
   m_Name: FinishEnchantSlot
   m_TagString: Untagged
@@ -821,20 +809,6 @@ RectTransform:
   m_AnchoredPosition: {x: 433.9, y: -319.5}
   m_SizeDelta: {x: 197.20282, y: 47.29605}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6592538415728464308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4956984610984598648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c5ec0f9147557a47851aa3936f19431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  removeButton: {fileID: 0}
 --- !u!1 &4956984612131096322
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,8 +928,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6592538415728464308}
-        m_MethodName: UseItem
+      - m_Target: {fileID: 50642863931907051}
+        m_MethodName: ValidateModifierChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
