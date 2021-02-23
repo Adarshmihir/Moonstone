@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Combat;
-using Core;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -12,18 +12,15 @@ namespace Control
         [SerializeField] private Patroller patroller;
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float maxDistance = 15f;
-        [SerializeField] private float aggroTimer = 1f;
         [SerializeField] private float breakTimer = 5f;
 
         private Fighter _fighter;
         private Health _health;
-        private GameObject _player;
+        private GameObject _target;
         private Mover _mover;
-        private ActionScheduler _actionScheduler;
 
         private readonly Dictionary<Fighter, float> _aggroRate = new Dictionary<Fighter, float>();
         private Vector3 _initialPosition;
-        private float _timeSinceLastAggro;
         private float _timeSinceLastBreak;
         private int _currentWaypoint;
         private bool _isAttacked;
@@ -35,53 +32,53 @@ namespace Control
         // Start is called before the first frame update
         private void Start()
         {
-            _player = GameObject.FindWithTag("Player");
+            _target = GameObject.FindWithTag("Player");
             _fighter = GetComponent<Fighter>();
             _health = GetComponent<Health>();
             _mover = GetComponent<Mover>();
-            _actionScheduler = GetComponent<ActionScheduler>();
 
             _initialPosition = transform.position;
-            _timeSinceLastAggro = aggroTimer + 1;
         }
         
         // Update is called once per frame
         private void Update()
         {
-            if (_health.IsDead || _player == null) return;
+            if (_health.IsDead || _target == null) return;
 
-            if (DistanceToPlayer() && Fighter.CanAttack(_player) && _timeSinceLastAggro > aggroTimer && !IsGoingHome || _isAttacked)
+            if (DistanceToPlayer() && Fighter.CanAttack(_target) && !IsGoingHome || _isAttacked)
             {
-                _fighter.Attack(_player);
-
-                if (!DistanceToInitialPosition())
-                {
-                    _isAttacked = false;
-                    IsGoingHome = true;
-                }
+                AttackBehaviour();
             }
             else
             {
-                if (_aggroRate.Count > 0)
-                {
-                    _aggroRate.Clear();
-                }
-                
-                if (IsGoingHome)
-                {
-                    _health.RegenLife();
-                }
-                
-                _timeSinceLastAggro += Time.deltaTime;
-                if (ReferenceEquals(_actionScheduler.CurrentAction, _fighter))
-                {
-                    _timeSinceLastAggro = 0;
-                }
-                
+                PreparePatrolBehaviour();
                 PatrolBehaviour();
             }
 
             _timeSinceLastBreak += Time.deltaTime;
+        }
+
+        private void PreparePatrolBehaviour()
+        {
+            if (_aggroRate.Count > 0)
+            {
+                _aggroRate.Clear();
+            }
+                
+            if (IsGoingHome)
+            {
+                _health.RegenLife();
+            }
+        }
+
+        private void AttackBehaviour()
+        {
+            _fighter.Attack(_target);
+
+            if (DistanceToInitialPosition()) return;
+            
+            _isAttacked = false;
+            IsGoingHome = true;
         }
 
         private void PatrolBehaviour()
@@ -105,26 +102,23 @@ namespace Control
 
         public void ConfigureTarget(Fighter attacker, float damage)
         {
-            UpdateAggroDic(attacker, damage);
-            
-            /*var aggroDamage = _aggroRate[attacker];
-            var aggroTarget = attacker;
-                
-            foreach (var aggro in _aggroRate.Where(aggro => aggro.Value > aggroDamage))
-            {
-                aggroDamage = aggro.Value;
-                aggroTarget = aggro.Key;
-            }*/
+            var newTarget = GetTargetFromDic(attacker, damage);
 
-            //_fighter.Attack(aggroTarget.gameObject);
+            if (_target == null || ReferenceEquals(_target.gameObject, newTarget.gameObject))
+            {
+                _target = newTarget.gameObject;
+            }
 
             _isAttacked = true;
             
-            // TODO : Cast call zone and dic
+            // TODO : Cast call zone
+        }
+
+        private Fighter GetTargetFromDic(Fighter attacker, float damage)
+        {
+            UpdateAggroDic(attacker, damage);
             
-            //_fighter.Attack(_player);
-            
-            // TODO : Create call zone to allies mate around
+            return _aggroRate.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
         }
 
         private void UpdateAggroDic(Fighter attacker, float damage)
@@ -146,7 +140,7 @@ namespace Control
 
         private bool DistanceToPlayer()
         {
-            return Vector3.Distance(_player.transform.position, transform.position) < chaseDistance;
+            return Vector3.Distance(_target.transform.position, transform.position) < chaseDistance;
         }
 
         private bool DistanceToInitialPosition()
