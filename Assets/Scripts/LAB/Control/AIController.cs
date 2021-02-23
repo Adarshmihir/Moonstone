@@ -13,6 +13,7 @@ namespace Control
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float maxDistance = 15f;
         [SerializeField] private float breakTimer = 5f;
+        [SerializeField] private float helpRadius = 5f;
 
         private Fighter _fighter;
         private Health _health;
@@ -73,6 +74,8 @@ namespace Control
 
         private void AttackBehaviour()
         {
+            GetMateAround();
+            
             _fighter.Attack(_target);
 
             if (DistanceToInitialPosition()) return;
@@ -87,17 +90,20 @@ namespace Control
             {
                 if (DistanceToWaypoint())
                 {
-                    _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
-                    _initialPosition = patroller.GetWaypoint(_currentWaypoint);
                     _timeSinceLastBreak = 0;
                     IsGoingHome = false;
                 }
             }
 
+            if (!(_timeSinceLastBreak > breakTimer) && !IsGoingHome) return;
+            
             if (_timeSinceLastBreak > breakTimer)
             {
-                _mover.StartMoveAction(_initialPosition);
+                _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
+                _initialPosition = patroller.GetWaypoint(_currentWaypoint);
             }
+                
+            _mover.StartMoveAction(_initialPosition);
         }
 
         public void ConfigureTarget(Fighter attacker, float damage)
@@ -110,8 +116,24 @@ namespace Control
             }
 
             _isAttacked = true;
-            
-            // TODO : Cast call zone
+        }
+
+        private void GetMateAround()
+        {
+            var colliders = Physics.OverlapSphere(transform.position, helpRadius);
+            foreach (var allies in colliders)
+            {
+                var alliesController = allies.GetComponent<AIController>();
+                if (alliesController == null) continue;
+                    
+                alliesController.CallForHelp(_target);
+            }
+        }
+
+        private void CallForHelp(GameObject target)
+        {
+            _isAttacked = true;
+            _target = target;
         }
 
         private Fighter GetTargetFromDic(Fighter attacker, float damage)
