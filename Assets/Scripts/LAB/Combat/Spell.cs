@@ -34,6 +34,7 @@ namespace Combat
         [field: NonSerialized]
         public float CurrentCooldown { get; set; }
         public bool IsAnimated => isAnimated;
+        public float SpellDamage => spellDamage;
 
         public void Launch(Transform output, Health target)
         {
@@ -54,6 +55,7 @@ namespace Combat
             
             particle.transform.parent = projectileInstance.transform;
             particle.transform.localScale = particleSize;
+            projectileInstance.Spell = this;
             projectileInstance.Target = target;
         }
 
