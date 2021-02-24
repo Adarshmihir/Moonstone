@@ -21,8 +21,10 @@ namespace Dialogue
 		{
             dialogue = newDialogue;
             _node = dialogue.GetRootNode();
-            OnUpdate();
-        }
+            
+            StartEnterAction();
+            OnUpdate?.Invoke();
+		}
 
         public string GetText()
 		{
@@ -37,34 +39,56 @@ namespace Dialogue
         public void SelectChoice(DialogueNode dialogueNode)
 		{
             _node = dialogueNode;
+            StartEnterAction();
             IsChoosing = false;
-            OnUpdate();
+            OnUpdate?.Invoke();
         }
 
         public void Next()
 		{
-            if (dialogue.GetSpecificChildren(_node, true).Count() > 0)
+            if (dialogue.GetSpecificChildren(_node, true).Any())
             {
                 IsChoosing = true;
-                OnUpdate();
+                StartExitAction();
+                OnUpdate?.Invoke();
                 return;
 			}
 
             var children = dialogue.GetSpecificChildren(_node, false).ToArray();
+            StartExitAction();
             _node = children[Random.Range(0, children.Count())];
+            StartEnterAction();
+            OnUpdate?.Invoke();
 		}
 
 		public void Quit()
 		{
             dialogue = null;
+            StartExitAction();
             _node = null;
             IsChoosing = false;
-            OnUpdate();
+            OnUpdate?.Invoke();
         }
 
 		public bool HasNextText()
 		{
-            return dialogue.GetAllChildren(_node).Count() > 0;
+            return dialogue.GetAllChildren(_node).Any();
+		}
+
+		private void StartEnterAction()
+		{
+			if (_node != null && _node.EnterAction != "")
+			{
+				print("cc enter");
+			}
+		}
+
+		private void StartExitAction()
+		{
+			if (_node != null && _node.ExitAction != "")
+			{
+				print("cc enter");
+			}
 		}
     }
 }

@@ -10,11 +10,15 @@ namespace Dialogue
         [SerializeField] private string text;
         [SerializeField] private List<string> children = new List<string>();
         [SerializeField] private Rect rect = new Rect(0, 0, 200, 100);
+        [SerializeField] private string enterAction;
+        [SerializeField] private string exitAction;
 
         public string Text => text;
         public List<string> Children => children;
         public Rect Rect => rect;
         public bool IsPlayerTurn => isPlayerTurn;
+        public string EnterAction => enterAction;
+        public string ExitAction => exitAction;
 
 #if UNITY_EDITOR
         public void SetRect(Vector2 position)

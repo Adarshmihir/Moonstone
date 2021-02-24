@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 9c2b0a8d-dfd4-44a2-8f43-3161684a43fe
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: 
+  text: 4
   children:
   - 37b1e1aa-46ee-430a-bc70-d146b449f3d8
   rect:
@@ -35,14 +35,14 @@ MonoBehaviour:
   m_Name: e4346962-9d22-4d3b-b30c-570d0af0e355
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: 
+  text: 1
   children:
   - 1dfec245-50bd-4812-a92c-9243d66d3163
   - b470692d-5d9f-4030-b2fe-56caf566e628
   rect:
     serializedVersion: 2
-    x: 254
-    y: 218
+    x: 246
+    y: 215
     width: 200
     height: 100
 --- !u!114 &11400000
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 1dfec245-50bd-4812-a92c-9243d66d3163
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: 
+  text: 2
   children: []
   rect:
     serializedVersion: 2
@@ -120,13 +120,13 @@ MonoBehaviour:
   m_Name: b470692d-5d9f-4030-b2fe-56caf566e628
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: 
+  text: 3
   children:
   - 9c2b0a8d-dfd4-44a2-8f43-3161684a43fe
   rect:
     serializedVersion: 2
-    x: 499
-    y: 291
+    x: 500
+    y: 289
     width: 200
     height: 100
 --- !u!114 &8427828453735984361

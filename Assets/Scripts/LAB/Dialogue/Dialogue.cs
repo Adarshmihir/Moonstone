@@ -32,13 +32,7 @@ namespace Dialogue
 
         public IEnumerable<DialogueNode> GetSpecificChildren(DialogueNode currNode, bool player)
         {
-            foreach (var node in GetAllChildren(currNode))
-            {
-                if (node.IsPlayerTurn == player)
-                {
-                    yield return node;
-                }
-            }
+            return GetAllChildren(currNode).Where(node => node.IsPlayerTurn == player);
         }
 
         public DialogueNode GetRootNode()
