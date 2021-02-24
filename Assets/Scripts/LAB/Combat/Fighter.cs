@@ -79,7 +79,7 @@ namespace Combat
             // Rotate the character in direction of the target
             transform.LookAt(Target.transform);
             // Check if weapon cooldown is elapsed and if target if visible
-            if (!(_timeSinceLastAttack > weapon.TimeBetweenAttack)/* || !GetIsAccessible(target.transform)*/) return;
+            if (!(_timeSinceLastAttack > weapon.AttackSpeed)/* || !GetIsAccessible(target.transform)*/) return;
 
             // Start attack
             TriggerAttack();
@@ -103,7 +103,7 @@ namespace Combat
             if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
             {
                 // Check if target is in front of character and visible
-                if (!GetIsInFieldOfView(_target.transform)/* || !GetIsAccessible(_target.transform)*/) return;
+                if (!GetIsInFieldOfView(Target.transform)/* || !GetIsAccessible(_target.transform)*/) return;
 
                 if (GetComponent<Player>())
                     // Deal damage
@@ -138,7 +138,7 @@ namespace Combat
             if (targetHealth == null) return;
 
             // Deal damage
-            target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
+            Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
         }
 
         private bool GetIsInRange()

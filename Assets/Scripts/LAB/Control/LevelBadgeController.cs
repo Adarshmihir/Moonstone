@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 ﻿using System.Globalization;
-=======
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
->>>>>>> origin/ui_magnify_LVL
 using UnityEngine;
 using UnityEngine.UI;
 

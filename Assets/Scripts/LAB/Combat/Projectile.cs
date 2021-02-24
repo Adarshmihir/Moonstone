@@ -10,6 +10,7 @@ namespace Combat
 
         public Spell Spell { get; set; }
         public Health Target { get; set; }
+        public Fighter Attacker { get; set; }
         
         // Update is called once per frame
         private void Update()
@@ -31,7 +32,7 @@ namespace Combat
         {
             if (other.GetComponent<Health>() == null) return;
             
-            Target.TakeDamage(Spell.SpellDamage, false);
+            Target.TakeDamage(Spell.SpellDamage, false, Attacker);
             StartCoroutine(StartGameObjectDestroy());
         }
 

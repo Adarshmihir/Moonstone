@@ -39,7 +39,7 @@ namespace Combat
         public float SpellDamage => spellDamage;
         public Texture SpellIcon => spellIcon;
 
-        public void Launch(Transform output, Health target)
+        public void Launch(Transform output, Health target, Fighter attacker)
         {
             if (projectile == null)
             {
@@ -47,11 +47,11 @@ namespace Combat
             }
             else
             {
-                LaunchProjectile(output, target);
+                LaunchProjectile(output, target, attacker);
             }
         }
 
-        private void LaunchProjectile(Transform output, Health target)
+        private void LaunchProjectile(Transform output, Health target, Fighter attacker)
         {
             var projectileInstance = Instantiate(projectile, output.position, Quaternion.identity);
             var particle = Instantiate(particleEffect, projectileInstance.transform.position, Quaternion.identity);
@@ -60,6 +60,7 @@ namespace Combat
             particle.transform.localScale = particleSize;
             projectileInstance.Spell = this;
             projectileInstance.Target = target;
+            projectileInstance.Attacker = attacker;
         }
 
         public void ResetCooldown()

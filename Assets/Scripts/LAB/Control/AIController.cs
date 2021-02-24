@@ -66,7 +66,7 @@ namespace Control
                 _aggroRate.Clear();
             }
 
-            if (IsGoingHome || b_returnToInitialPosition)
+            if (IsGoingHome)
             {
                 _health.RegenLife();
             }

@@ -124,7 +124,7 @@ namespace Combat
         // Animation event
         public void Shoot()
         {
-            _spellToCast.Launch(rightHandTransform, Target);
+            _spellToCast.Launch(rightHandTransform, Target, _fighter);
         }
 
         // Animation event
