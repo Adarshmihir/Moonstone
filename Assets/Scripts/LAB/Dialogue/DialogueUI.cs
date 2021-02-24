@@ -8,6 +8,10 @@ namespace Dialogue
 	{
 		[SerializeField] private TextMeshProUGUI questText;
 		[SerializeField] private Button nextButton;
+		[SerializeField] private Button quitButton;
+		[SerializeField] private Transform choiceList;
+		[SerializeField] private GameObject choicePrefab;
+		[SerializeField] private GameObject response;
 
 		private PlayerDialogue _playerDialogue;
 
@@ -15,27 +19,54 @@ namespace Dialogue
 		private void Start()
 		{
 			_playerDialogue = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDialogue>();
+			_playerDialogue.OnUpdate += UpdateUI;
 			nextButton.onClick.AddListener(Next);
+			quitButton.onClick.AddListener(Quit);
 
 			UpdateUI();
-		}
-
-		// Update is called once per frame
-		private void Update()
-		{
-
 		}
 
 		private void Next()
 		{
 			_playerDialogue.Next();
-			UpdateUI();
+		}
+
+		private void Quit()
+		{
+			_playerDialogue.Quit();
 		}
 
 		private void UpdateUI()
 		{
-			questText.text = _playerDialogue.GetText();
-			nextButton.gameObject.SetActive(_playerDialogue.HasNextText());
+			gameObject.SetActive(_playerDialogue.GetDialogue != null);
+
+			if (_playerDialogue.GetDialogue == null) return;
+
+			response.SetActive(!_playerDialogue.IsChoosing);
+			choiceList.gameObject.SetActive(_playerDialogue.IsChoosing);
+
+			if (_playerDialogue.IsChoosing)
+			{
+				CreateChoiceList();
+			}
+			else
+			{
+				questText.text = _playerDialogue.GetText();
+				nextButton.gameObject.SetActive(_playerDialogue.HasNextText());
+			}
+		}
+
+		private void CreateChoiceList()
+		{
+			choiceList.DetachChildren();
+			foreach (var choice in _playerDialogue.GetChoices())
+			{
+				var choiceInstance = Instantiate(choicePrefab, choiceList);
+				choiceInstance.GetComponentInChildren<TextMeshProUGUI>().text = choice.Text;
+
+				var button = choiceInstance.GetComponentInChildren<Button>();
+				button.onClick.AddListener(() => _playerDialogue.SelectChoice(choice));
+			}
 		}
 	}
 }

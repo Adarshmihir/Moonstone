@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Dialogue
 {
@@ -9,37 +12,57 @@ namespace Dialogue
 
         private DialogueNode _node;
 
-		private void Awake()
+        public Dialogue GetDialogue => dialogue;
+        public bool IsChoosing { get; private set; }
+
+        public event Action OnUpdate;
+
+        public void StartDialogue(Dialogue newDialogue)
 		{
+            dialogue = newDialogue;
             _node = dialogue.GetRootNode();
-		}
-
-		// Start is called before the first frame update
-		private void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-
+            OnUpdate();
         }
 
         public string GetText()
 		{
-            if (_node == null) return "";
-
-            return _node.Text;
+            return _node == null ? "" : _node.Text;
 		}
+
+        public IEnumerable<DialogueNode> GetChoices()
+		{
+            return dialogue.GetSpecificChildren(_node, true);
+        }
+
+        public void SelectChoice(DialogueNode dialogueNode)
+		{
+            _node = dialogueNode;
+            IsChoosing = false;
+            OnUpdate();
+        }
 
         public void Next()
 		{
-            var children = dialogue.GetAllChildren(_node).ToArray();
+            if (dialogue.GetSpecificChildren(_node, true).Count() > 0)
+            {
+                IsChoosing = true;
+                OnUpdate();
+                return;
+			}
+
+            var children = dialogue.GetSpecificChildren(_node, false).ToArray();
             _node = children[Random.Range(0, children.Count())];
 		}
 
-        public bool HasNextText()
+		public void Quit()
+		{
+            dialogue = null;
+            _node = null;
+            IsChoosing = false;
+            OnUpdate();
+        }
+
+		public bool HasNextText()
 		{
             return dialogue.GetAllChildren(_node).Count() > 0;
 		}

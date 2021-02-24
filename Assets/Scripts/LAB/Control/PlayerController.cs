@@ -1,4 +1,5 @@
 ﻿using Combat;
+using Dialogue;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -28,10 +29,28 @@ namespace Control
             {
                 statsCanvas.gameObject.SetActive(!statsCanvas.gameObject.activeSelf);
             }
-            
+
+            if (InteractWithDialogue()) return;
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
             if (InteractWithMovement()) return;
+        }
+
+        private bool InteractWithDialogue()
+		{
+            var hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
+            {
+                var dialogueTarget = hit.transform.GetComponent<AIDialogue>();
+                if (dialogueTarget == null || dialogueTarget.GetDialogue == null) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget.GetDialogue);
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithCombat()

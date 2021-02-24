@@ -30,6 +30,17 @@ namespace Dialogue
             return from child in parent.Children where _nodeLookup.ContainsKey(child) select _nodeLookup[child];
         }
 
+        public IEnumerable<DialogueNode> GetSpecificChildren(DialogueNode currNode, bool player)
+        {
+            foreach (var node in GetAllChildren(currNode))
+            {
+                if (node.IsPlayerTurn == player)
+                {
+                    yield return node;
+                }
+            }
+        }
+
         public DialogueNode GetRootNode()
 		{
             return dialogueNodes[0];
