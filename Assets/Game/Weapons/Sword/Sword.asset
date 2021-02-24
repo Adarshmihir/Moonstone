@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   weaponType: 1
-  weaponRange: 2
-  timeBetweenAttack: 1
+  weaponRange: 1
+  attackspeed: 1.2
   weaponMinDamage: 5
   weaponMaxDamage: 10
   weaponRadius: 45
@@ -26,3 +26,6 @@ MonoBehaviour:
   animationOnePlayChance: 0.25
   animationTwoPlayChance: 0.25
   animationThreePlayChance: 0.5
+  weaponDamageFlat: 3
+  weaponDamagePercent: 0.3
+  CurrentStatUsing: 0

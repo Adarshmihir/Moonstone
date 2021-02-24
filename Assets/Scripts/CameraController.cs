@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour {
 
         currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
     }
-
+    
     private void LateUpdate() {
         var position = target.position;
         transform.position = position - offset * currentZoom;

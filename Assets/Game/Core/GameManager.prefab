@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5833590639734953508}
   - component: {fileID: 5833590639734953509}
   - component: {fileID: 5833590639734953499}
+  - component: {fileID: 4372529562166264039}
+  - component: {fileID: 4364277797906430509}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -64,3 +66,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   space: 20
   items: []
+--- !u!114 &4372529562166264039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d023b0f67518854f93c0ba44137213e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MiniMapCanvas: {fileID: 8081278308412531707, guid: 40160f939eac848a2943ecfb9d08baae,
+    type: 3}
+  CanvasSpellsBar: {fileID: 6159434297075500487, guid: 356b1511dbd7a4cb0a78b7c4baa6e2cd,
+    type: 3}
+  StatsCanvas: {fileID: 453201558749873493, guid: 9d86402071b34430ea7305d738ca8212,
+    type: 3}
+  Inventory: {fileID: 3879218600441023797, guid: f16305d97a2c8494fbd01e7f4e8e505d,
+    type: 3}
+  HealthGlobe: {fileID: 6692951652927927558, guid: c4a66a69a4f8746fb9288fad7b2835b7,
+    type: 3}
+  CanvasRessource: {fileID: 3196753339656214411, guid: f3db5f7e3526d4382a4c28e8eb14e7c7,
+    type: 3}
+  MiniMapCanvasGO: {fileID: 0}
+  CanvasSpellsBarGO: {fileID: 0}
+  StatsCanvasGO: {fileID: 0}
+  InventoryGO: {fileID: 0}
+  HealthGlobeGO: {fileID: 0}
+  CanvasRessourceGO: {fileID: 0}
+--- !u!114 &4364277797906430509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6e44b65c04f914589f7db91704bfb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipementManager: {fileID: 5833590639734953509}
+  player: {fileID: 0}
+  uiManager: {fileID: 4372529562166264039}

@@ -30,7 +30,11 @@ namespace Combat
         {
             _timeSinceLastAttack += Time.deltaTime;
 
-            if (_target == null || _target.IsDead) return;
+            if (_target == null || _target.IsDead)
+            {
+                StopAttack();
+                return;
+            }
 
             // Check if target is not too far
             if (!GetIsInRange())
@@ -53,6 +57,8 @@ namespace Combat
             // Spawn weapon(s) in hand(s)
             var animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+
+            
         }
     
         private void AttackBehavior()
@@ -60,7 +66,7 @@ namespace Combat
             // Rotate the character in direction of the target
             transform.LookAt(_target.transform);
             // Check if weapon cooldown is elapsed and if target if visible
-            if (!(_timeSinceLastAttack > weapon.TimeBetweenAttack) || !GetIsAccessible(_target.transform)) return;
+            if (_target.HealthPoints<=0) return;
 
             // Start attack
             TriggerAttack();
@@ -71,7 +77,7 @@ namespace Combat
         {
             // Start random attack animation
             GetComponent<Animator>().ResetTrigger("stopAttack");
-
+            GetComponent<Animator>().speed = weapon.AttackSpeed;
             var attackAnimationToPlay = Random.Range(0, weapon.AnimationTotalPlayChance);
             if (attackAnimationToPlay < weapon.AnimationOnePlayChance)
             {
@@ -85,23 +91,25 @@ namespace Combat
             {
                 GetComponent<Animator>().SetTrigger("attack3");
             }
+           
         }
         
         // Animation event : Attack
         private void Hit()
         {
+
             if (_target == null) return;
 
-            // Unarmed attack
-            if (weapon.WeaponType == WeaponType.Unarmed)
+            // Unarmed attack and One Hand armed attack
+            if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
             {
                 // Check if target is in front of character and visible
                 if (!GetIsInFieldOfView(_target.transform) || !GetIsAccessible(_target.transform)) return;
                 
                 // Deal damage
-                _target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+                _target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance);
             }
-            // Armed attack
+            // Two hand Armed attack 
             else
             {
                 // Get all enemies in front of character depending on weapon radius and weapon range
@@ -122,7 +130,7 @@ namespace Combat
             if (target == null) return;
             
             // Deal damage
-            target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+            target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance);
         }
     
         private bool GetIsInRange()
@@ -174,6 +182,7 @@ namespace Combat
         private void StopAttack()
         {
             // Stop attack animation
+            GetComponent<Animator>().speed = 1;
             GetComponent<Animator>().ResetTrigger("attack1");
             GetComponent<Animator>().ResetTrigger("attack2");
             GetComponent<Animator>().ResetTrigger("attack3");

@@ -26,13 +26,16 @@ public class UIManager : MonoBehaviour
         InventoryGO = Instantiate(Inventory);
         HealthGlobeGO = Instantiate(HealthGlobe);
         CanvasRessourceGO = Instantiate(CanvasRessource);
-        //HideUIAtLaunch();
+        HideUIAtLaunch();
     }
 
     void HideUIAtLaunch()
     {
         StatsCanvasGO.SetActive(true);
         InventoryGO.SetActive(false);
+        MiniMapCanvasGO.SetActive(false);
+        HealthGlobeGO.SetActive(false);
+        CanvasRessourceGO.SetActive(false);
     }
     
 }
