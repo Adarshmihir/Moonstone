@@ -12,11 +12,15 @@ namespace Control
         public Interactable focus;
 
         private Health _health;
+        private Fighter _fighter;
+        private FighterSpell _fighterSpell;
 
         // Start is called before the first frame update
         private void Start()
         {
             _health = GetComponent<Health>();
+            _fighter = GetComponent<Fighter>();
+            _fighterSpell = GetComponent<FighterSpell>();
         }
         
         // Update is called once per frame
@@ -30,23 +34,29 @@ namespace Control
                 statsCanvas.gameObject.SetActive(!statsCanvas.gameObject.activeSelf);
             }
             
-            if (InteractWithCombat()) return;
+            if (InteractWithCombat(false)) return;
+            if (InteractWithCombat(true)) return;
             if (InteractWithObjects()) return;
-            if (InteractWithMovement()) return;
+            InteractWithMovement();
         }
 
-        private bool InteractWithCombat()
+        private bool InteractWithCombat(bool autoAttack)
         {
             var hits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in hits)
             {
                 var target = hit.transform.GetComponent<CombatTarget>();
-                var fighter = GetComponent<Fighter>();
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && autoAttack)
                 {
-                    fighter.Attack(target.gameObject);
+                    _fighter.Attack(target.gameObject);
+                }
+                else if (Input.GetMouseButtonDown(1) && !autoAttack)
+                {
+                    // TODO : Get Spell on Weapon
+                    _fighterSpell.Cast(target.gameObject, CastSource.Weapon);
+                    
                 }
                 return true;
             }
