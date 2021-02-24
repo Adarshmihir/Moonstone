@@ -8,7 +8,8 @@ public class LevelWindow : MonoBehaviour
     private Text levelText;
     private Image xpBarImage;
     private XpSystem levelSystem;
-    private void Awake()
+    
+    private void SetVariable()
     {
         levelText = transform.Find("levelText").GetComponent<Text>();
         xpBarImage = transform.Find("xpBar").Find("bar").GetComponent<Image>();
@@ -38,6 +39,8 @@ public class LevelWindow : MonoBehaviour
     public void SetLevelSystem(XpSystem levelSystem)
     {
         this.levelSystem = levelSystem;
+        
+        SetVariable();
 
         SetLevelNumber(levelSystem.GetLevelNumber());
 
