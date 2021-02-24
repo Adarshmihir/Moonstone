@@ -10,9 +10,12 @@ namespace Combat
     {
         [SerializeField] [Range(0f, 1f)] private float criticalChance = 0.5f;
 
-        [SerializeField] private Weapon weapon;
-        [SerializeField] private Transform rightHandTransform;
-        [SerializeField] private Transform leftHandTransform;
+        [SerializeField] public Weapon weapon;
+        [SerializeField] public Transform rightHandTransform;
+        [SerializeField] public Transform leftHandTransform;
+        
+        public GameObject rightClone;
+        public GameObject leftClone;
 
         private Health _target;
         private float _timeSinceLastAttack = Mathf.Infinity;
@@ -53,12 +56,11 @@ namespace Combat
         private void SpawnWeapon()
         {
             if (weapon == null) return;
-            
+
             // Spawn weapon(s) in hand(s)
             var animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
-
-            
+            if(this.CompareTag("Player"))
+                weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
     
         private void AttackBehavior()
@@ -91,7 +93,6 @@ namespace Combat
             {
                 GetComponent<Animator>().SetTrigger("attack3");
             }
-           
         }
         
         // Animation event : Attack
@@ -105,9 +106,12 @@ namespace Combat
             {
                 // Check if target is in front of character and visible
                 if (!GetIsInFieldOfView(_target.transform) || !GetIsAccessible(_target.transform)) return;
-                
-                // Deal damage
-                _target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance);
+
+                if (GetComponent<Player>())
+                    // Deal damage
+                    _target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance);
+                else
+                    _target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance);
             }
             // Two hand Armed attack 
             else

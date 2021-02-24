@@ -3906,6 +3906,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6764556888134618725, guid: 266f361b52ef24948ad1dce391603546,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3921,6 +3922,8 @@ PrefabInstance:
       propertyPath: type
       value: 100
       objectReference: {fileID: 0}
+=======
+>>>>>>> origin/cb_change_weapon
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 266f361b52ef24948ad1dce391603546, type: 3}
 --- !u!224 &3879218601172186071 stripped
@@ -3929,15 +3932,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7508987555982697787}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1042205880703130614 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7368980667432926925, guid: 266f361b52ef24948ad1dce391603546,
-    type: 3}
-  m_PrefabInstance: {fileID: 7508987555982697787}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff510becdd3c11438b277587a5f953c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

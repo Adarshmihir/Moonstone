@@ -17,12 +17,12 @@ public class Equipment : Item {
     public EquipmentSlot equipSlot;
     public SkinnedMeshRenderer mesh;
     public EquipmentMeshRegion[] coveredMeshRegions;
-    
+
     public equipementModifier[] equipementMods;
 
     //A PASSER EN PROTECTED QUAND ON AURA FAIT UN NAMESPACE INVENTAIRE-STATS
     public List<StatModifier> StatModifiers;
-    
+
     private void OnEnable()
     {
         this.assignStatModifiers();
@@ -33,7 +33,7 @@ public class Equipment : Item {
         // Equip the item
         EquipmentManager.instance.Equip(this);
         foreach (var mod in StatModifiers)
-        { 
+        {
             GameManager.Instance.player.AddModifier(mod);
         }
         // Remove it from the inventory
@@ -50,8 +50,5 @@ public class Equipment : Item {
         }
     }
 }
-
-public enum EquipmentSlot { Head, Body, Legs, Foot, Weapon}
-public enum EquipmentMeshRegion {Legs, Arms, Torso} // Corresponds to body blendshapes
 
 

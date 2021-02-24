@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   weaponName: Sword
   icon: {fileID: 21300000, guid: f3557a524f5b3af4e9ea62399a652287, type: 3}
+  isDefaultItem: 0
+  equipementMods:
+  - value: 10
+    modType: 100
+    statType: 0
+  equipSlot: 4
   weaponType: 1
   weaponRange: 1
   attackspeed: 1.2
@@ -28,7 +34,7 @@ MonoBehaviour:
   animationOnePlayChance: 0.25
   animationTwoPlayChance: 0.25
   animationThreePlayChance: 0.5
-  weaponDamageFlat: 3
+  weaponDamageFlat: 5
   weaponDamagePercent: 0.3
   CurrentStatUsing: 0
   ironToBuild: 2

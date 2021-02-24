@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5559088f79de2f6468ab691d90a76b09, type: 3}
-  m_Name: Default Shirt
+  m_Name: Platelegs
   m_EditorClassIdentifier: 
-  name: Default Shirt
-  icon: {fileID: 0}
-  isDefaultItem: 1
-  equipSlot: 1
-  mesh: {fileID: 8021478380553883826, guid: 8a940d57e8b3aee4197f9cb29c42549d, type: 3}
-  coveredMeshRegions: 
-  armorModifier: 0
-  damageModifier: 0
+  name: Platelegs
+  icon: {fileID: 21300000, guid: 2600231ae31ea3c4ead1bbdc9d7a1c0e, type: 3}
+  isDefaultItem: 0
+  equipementMods:
+  - value: 15
+    modType: 200
+    statType: 0
+  - value: 42
+    modType: 100
+    statType: 3
+  equipSlot: 0

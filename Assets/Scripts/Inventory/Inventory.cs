@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
     public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
 
     public int space = 20;
 

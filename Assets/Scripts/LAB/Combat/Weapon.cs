@@ -14,7 +14,7 @@ namespace Combat
     }
 
     [CreateAssetMenu(fileName = "Weapon", menuName = "Moonstone/New Weapon", order = 0)]
-    public class Weapon : ScriptableObject
+    public class Weapon : Item
     {
         [SerializeField] public string weaponName;
         [SerializeField] public Sprite icon;
@@ -58,14 +58,17 @@ namespace Combat
 
         public void Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
         {
+            DestroyWeapon();
+
             if (rightHandWeaponPrefab != null)
             {
-                Instantiate(rightHandWeaponPrefab, rightHandTransform);
+                GameManager.Instance.player.GetComponent<Fighter>().rightClone = Instantiate(rightHandWeaponPrefab, rightHandTransform);
+                //Debug.Log(rightClone.ToString());
             }
 
             if (leftHandWeaponPrefab != null)
             {
-                Instantiate(leftHandWeaponPrefab, leftHandTransform);
+                GameManager.Instance.player.GetComponent<Fighter>().leftClone= Instantiate(leftHandWeaponPrefab, leftHandTransform);
             }
 
             if (animatorOverride != null)
@@ -74,10 +77,31 @@ namespace Combat
             }
         }
 
+        private void DestroyWeapon() {
+            if (GameManager.Instance.player.GetComponent<Fighter>().rightClone != null) {
+                GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().rightClone);
+            }
+
+            if (GameManager.Instance.player.GetComponent<Fighter>().leftClone != null){}
+                GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().leftClone);
+        }
+
+        public override void Use() {
+            base.Use();
+            SwapWeapons();
+            Debug.Log("j'utilise mon arme");
+        }
+
+        // /!\ SI
+        private void SwapWeapons() {
+            Spawn(GameManager.Instance.player.GetComponent<Fighter>().rightHandTransform, GameManager.Instance.player.GetComponent<Fighter>().leftHandTransform, GameManager.Instance.player.GetComponent<Animator>());
+
+            GameManager.Instance.player.GetComponent<Fighter>().weapon = this;
+        }
+
         // Function calculate Dmg with flat dmg of weapon  + percent of stat of player
         public float CalculateDamageWeapon()
         {
-
             float statValue = GameManager.Instance.player.stats.Find(x => x.StatName == CurrentStatUsing).charStat.BaseValue;
             //Debug.Log(Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent)));
             return Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent));
