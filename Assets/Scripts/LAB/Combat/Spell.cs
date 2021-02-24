@@ -19,11 +19,13 @@ namespace Combat
     {
         [SerializeField] private SpellType spellType;
         [SerializeField] private Projectile projectile;
+        [SerializeField] private float spellDamage = 5f;
         [SerializeField] private float cooldown = 1f;
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private GameObject particleEffect;
         [SerializeField] private Vector3 particleSize;
-        [SerializeField] private float spellDamage = 5f;
+        [SerializeField] private Texture spellIcon;
+        
         // For UniqueEffect, ContactEffect and ZoneEffect
         [SerializeField] private float spellRange = 2f;
         // For ZoneEffect
@@ -35,6 +37,7 @@ namespace Combat
         public float CurrentCooldown { get; set; }
         public bool IsAnimated => isAnimated;
         public float SpellDamage => spellDamage;
+        public Texture SpellIcon => spellIcon;
 
         public void Launch(Transform output, Health target)
         {

@@ -1,7 +1,7 @@
-﻿using System;
-using Core;
+﻿using Core;
 using Resources;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Combat
 {
@@ -17,8 +17,15 @@ namespace Combat
         [SerializeField] private Spell weaponSpell;
         [SerializeField] private Spell armorSpell;
         [SerializeField] private Spell petSpell;
+
+        // TODO : Remove
+        [SerializeField] private Spell temp;
         
         [SerializeField] private Transform rightHandTransform;
+
+        [SerializeField] private RawImage weaponSlot;
+        [SerializeField] private RawImage armorSlot;
+        [SerializeField] private RawImage petSlot;
 
         private Spell _spellToCast;
         private Fighter _fighter;
@@ -28,6 +35,38 @@ namespace Combat
         private void Start()
         {
             _fighter = GetComponent<Fighter>();
+            
+            UpdateSpell(temp, CastSource.Weapon);
+            UpdateSpell(temp, CastSource.Armor);
+        }
+
+        private void UpdateSpell(Spell newSpell, CastSource castSource)
+        {
+            var slot = weaponSlot;
+            switch (castSource)
+            {
+                case CastSource.Weapon:
+                    weaponSpell = newSpell;
+                    UpdateSpellSlotUI(weaponSlot, newSpell.SpellIcon);
+                    break;
+                case CastSource.Armor:
+                    armorSpell = newSpell;
+                    slot = armorSlot;
+                    break;
+                case CastSource.Pet:
+                    petSpell = newSpell;
+                    slot = petSlot;
+                    break;
+                default:
+                    weaponSpell = newSpell;
+                    break;
+            }
+            UpdateSpellSlotUI(slot, newSpell.SpellIcon);
+        }
+
+        private static void UpdateSpellSlotUI(RawImage rawImage, Texture newSprite)
+        {
+            rawImage.texture = newSprite;
         }
 
         public void Cast(GameObject combatTarget, CastSource castSource)
