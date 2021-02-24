@@ -39,6 +39,7 @@ public class StatModifier : ScriptableObject
         Source = source;
         this.statType = statType;
     }
+    
     public static StatModifier CreateInstance(float value, StatModType type, object source, StatTypes statType)
     {
         var data = ScriptableObject.CreateInstance<StatModifier>();

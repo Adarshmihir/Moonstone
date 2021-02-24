@@ -15,8 +15,6 @@ public class Inventory : MonoBehaviour {
 
     public List<Item> items = new List<Item>();
 
-    public OnItemChanged onItemChangedCallback;
-
     public List<Item> GetList()
     {
         return items;

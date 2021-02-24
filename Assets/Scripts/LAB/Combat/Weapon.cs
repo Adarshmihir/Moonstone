@@ -34,7 +34,7 @@ namespace Combat
         [SerializeField] [Range(0f, 1f)] private float animationThreePlayChance;
 
         // Damage flat and percent of stat
-        [SerializeField] private float weaponDamageFlat = 5f;
+        [SerializeField] public float weaponDamageFlat = 5f;
         [SerializeField] [Range(0, 5)]private float weaponDamagePercent = 0.5f;
         [SerializeField] private StatTypes CurrentStatUsing = StatTypes.Strength;
 

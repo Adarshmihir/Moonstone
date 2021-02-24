@@ -16,7 +16,7 @@ public class Equipment : Item {
 
     public EquipmentSlot equipSlot;
     public SkinnedMeshRenderer mesh;
-    public EquipmentMeshRegion[] coveredMeshRegions;
+    //public EquipmentMeshRegion[] coveredMeshRegions;
 
     public equipementModifier[] equipementMods;
 
