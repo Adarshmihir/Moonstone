@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   spellType: 0
-  projectile: {fileID: 0}
-  cooldown: 1
+  projectile: {fileID: 6444211836996915594, guid: f3c4f28e42fcb4a4ca3c8823b542ae5a,
+    type: 3}
+  cooldown: 2
+  isAnimated: 1
   spellDamage: 5
   spellRange: 2
   spellZoneArea: 2
   damageRadius: 45
-  animatorOverride: {fileID: 0}
-  spellOutPrefab: {fileID: 0}
-  animationClip: {fileID: 0}

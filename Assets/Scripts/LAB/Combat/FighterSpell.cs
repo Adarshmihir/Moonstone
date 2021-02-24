@@ -75,6 +75,8 @@ namespace Combat
         
         private void CastAnimation()
         {
+            if (!_spellToCast.IsAnimated) return;
+            
             // Start cast
             GetComponent<Animator>().ResetTrigger("stopCast");
             GetComponent<Animator>().SetTrigger("cast");
