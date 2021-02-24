@@ -13,11 +13,15 @@ namespace Control
         public Interactable focus;
 
         private Health _health;
+        private Mover _mover;
+        private Fighter _fighter;
 
         // Start is called before the first frame update
         private void Start()
         {
             _health = GetComponent<Health>();
+            _mover = GetComponent<Mover>();
+            _fighter = GetComponent<Fighter>();
         }
 
         // Update is called once per frame
@@ -60,12 +64,12 @@ namespace Control
             foreach (var hit in hits)
             {
                 var target = hit.transform.GetComponent<CombatTarget>();
-                var fighter = GetComponent<Fighter>();
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
 
+                // Input.GetMouseButton(0)
                 if (Input.GetMouseButtonDown(0))
                 {
-                    fighter.Attack(target.gameObject);
+                    _fighter.Attack(target.gameObject);
                 }
                 return true;
             }
@@ -93,7 +97,7 @@ namespace Control
 
             if (Input.GetMouseButton(0))
             {
-                GetComponent<Mover>().StartMoveAction(hit.point);
+                _mover.StartMoveAction(hit.point);
             }
             return true;
         }

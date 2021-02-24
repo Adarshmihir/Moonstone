@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Combat;
 using Control;
 using Core;
 using UI.DamageText;
@@ -12,38 +15,68 @@ namespace Resources
         [SerializeField] private float maxHealthPoints = 100f;
         [SerializeField] private float destroyTime = 5f;
 
+        private LifeBarController _lifeBarController;
+        private DamageTextSpawner _damageTextSpawner;
+        private Animator _animator;
+        private ActionScheduler _actionScheduler;
+        private CapsuleCollider _capsuleCollider;
+        private NavMeshAgent _navMeshAgent;
+        private AIController _aiController;
+
         public float HealthPoints { get; private set; }
         public float MaxHealthPoints => maxHealthPoints;
 
         public bool IsDead { get; private set; }
-        
+
         // Start is called before the first frame update
         private void Start()
         {
             HealthPoints = maxHealthPoints;
+
+            _damageTextSpawner = GetComponentInChildren<DamageTextSpawner>();
+            _lifeBarController = GetComponent<LifeBarController>();
+            _animator = GetComponent<Animator>();
+            _actionScheduler = GetComponent<ActionScheduler>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _aiController = GetComponent<AIController>();
         }
 
-        public void TakeDamage(float damage, bool criticalHit)
+        public void TakeDamage(float damage, bool criticalHit, Fighter attacker)
         {
-            
+
             HealthPoints = Mathf.Max(HealthPoints - damage, 0);
 
-            var lifeBarController = GetComponent<LifeBarController>();
-            if (lifeBarController != null)
+            if (_lifeBarController != null)
             {
-                lifeBarController.UpdateLifeBar();
+                _lifeBarController.UpdateLifeBar();
             }
 
-            var damageSpawner = GetComponentInChildren<DamageTextSpawner>();
-            if (damageSpawner != null)
+            if (_damageTextSpawner != null)
             {
                 // If critical , damage * 2 else normal damage
-                damageSpawner.Spawn(criticalHit ? damage*2 : damage , criticalHit ? DamageType.Critical : DamageType.Normal);
+			    _damageTextSpawner.Spawn(criticalHit ? damage*2 : damage , criticalHit ? DamageType.Critical : DamageType.Normal);
             }
 
             if (HealthPoints <= 0)
             {
                 Die();
+            }
+            else if (_aiController != null && !_aiController.IsGoingHome)
+            {
+                _aiController.ConfigureTarget(attacker, damage);
+            }
+        }
+
+        public void RegenLife()
+        {
+            if (HealthPoints >= maxHealthPoints) return;
+
+            HealthPoints = maxHealthPoints;
+
+            if (_lifeBarController != null)
+            {
+                _lifeBarController.UpdateLifeBar();
             }
         }
 
@@ -52,11 +85,11 @@ namespace Resources
             if (IsDead) return;
 
             IsDead = true;
-            GetComponent<Animator>().SetTrigger("die");
-            GetComponent<ActionScheduler>().CancelCurrentAction();
-            
-            GetComponent<CapsuleCollider>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
+            _animator.SetTrigger("die");
+            _actionScheduler.CancelCurrentAction();
+
+            _capsuleCollider.enabled = false;
+            _navMeshAgent.enabled = false;
 
             StartCoroutine(DestroyEnemy());
         }
@@ -64,7 +97,7 @@ namespace Resources
         private IEnumerator DestroyEnemy()
         {
             yield return new WaitForSeconds(destroyTime);
-            
+
             Destroy(gameObject);
         }
     }

@@ -25,6 +25,11 @@ namespace Control
         // Update is called once per frame
         private void Update()
         {
+            UpdateOutlineType();
+        }
+
+        private void UpdateOutlineType()
+        {
             if (Camera.main is null) return;
 
             var outlineLayer = LayerMask.GetMask("Outline");

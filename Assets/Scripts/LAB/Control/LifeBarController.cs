@@ -31,7 +31,7 @@ namespace Control
         public void UpdateLifeBar()
         {
             healthSlider.value = CalculateHealthSlider();
-            healthBarUI.SetActive(_health.HealthPoints > 0);
+            healthBarUI.SetActive(_health.HealthPoints > 0 && _health.HealthPoints < _health.MaxHealthPoints);
         }
     
         private float CalculateHealthSlider()

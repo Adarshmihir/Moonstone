@@ -107,5 +107,14 @@ namespace Combat
             return Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent));
         }
 
+        public string SelectAnAnimation()
+        {
+            var animationTotalPlayChance = animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
+            var attackAnimationToPlay = Random.Range(0, animationTotalPlayChance);
+
+            if (attackAnimationToPlay < animationOnePlayChance) return "attack1";
+
+            return attackAnimationToPlay < animationOnePlayChance + animationTwoPlayChance ? "attack2" : "attack3";
+        }
     }
 }
