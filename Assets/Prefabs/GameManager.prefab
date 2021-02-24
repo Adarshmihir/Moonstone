@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14e2e98fc9be7be45a84826b6f420ce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   defaultItems:
   - {fileID: 11400000, guid: 2cdcf5a598b5bc640b6765d60b2010ae, type: 2}
   - {fileID: 11400000, guid: 6f07f71f17d893c498132521493896ef, type: 2}
@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3189649e50c33934fa9fc61f7ea9678d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   space: 20
   items: []
 --- !u!114 &3546296188873537620
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a6e44b65c04f914589f7db91704bfb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   equipementManager: {fileID: 5833590639734953509}
   player: {fileID: 0}
   uiManager: {fileID: 2738780856115648143}
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d023b0f67518854f93c0ba44137213e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   MiniMapCanvas: {fileID: 8081278308412531707, guid: 40160f939eac848a2943ecfb9d08baae,
     type: 3}
   CanvasSpellsBar: {fileID: 6159434297075500487, guid: 356b1511dbd7a4cb0a78b7c4baa6e2cd,
