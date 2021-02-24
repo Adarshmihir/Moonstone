@@ -11,14 +11,16 @@ namespace Dialogue
         [SerializeField] private Dialogue dialogue;
 
         private DialogueNode _node;
+        private AIDialogue _aiDialogue;
 
         public Dialogue GetDialogue => dialogue;
         public bool IsChoosing { get; private set; }
 
         public event Action OnUpdate;
 
-        public void StartDialogue(Dialogue newDialogue)
-		{
+        public void StartDialogue(AIDialogue aiDialogue, Dialogue newDialogue)
+        {
+	        _aiDialogue = aiDialogue;
             dialogue = newDialogue;
             _node = dialogue.GetRootNode();
             
@@ -30,6 +32,11 @@ namespace Dialogue
 		{
             return _node == null ? "" : _node.Text;
 		}
+
+        public string GetName()
+        {
+	        return IsChoosing ? name : _aiDialogue.name;
+        }
 
         public IEnumerable<DialogueNode> GetChoices()
 		{
@@ -63,10 +70,11 @@ namespace Dialogue
 
 		public void Quit()
 		{
-            dialogue = null;
+			dialogue = null;
             StartExitAction();
             _node = null;
             IsChoosing = false;
+            _aiDialogue = null;
             OnUpdate?.Invoke();
         }
 
@@ -77,17 +85,25 @@ namespace Dialogue
 
 		private void StartEnterAction()
 		{
-			if (_node != null && _node.EnterAction != "")
-			{
-				print("cc enter");
-			}
+			if (_node == null) return;
+			
+			TriggerAction(_node.EnterAction);
 		}
 
 		private void StartExitAction()
 		{
-			if (_node != null && _node.ExitAction != "")
+			if (_node == null) return;
+			
+			TriggerAction(_node.ExitAction);
+		}
+
+		private void TriggerAction(string action)
+		{
+			if (action == "") return;
+
+			foreach (var trigger in _aiDialogue.GetComponents<DialogueTrigger>())
 			{
-				print("cc enter");
+				trigger.Trigger(action);
 			}
 		}
     }

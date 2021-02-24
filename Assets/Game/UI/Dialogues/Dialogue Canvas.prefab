@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questText: {fileID: 5818880897886620389}
+  aiName: {fileID: 8950960227192540489}
   nextButton: {fileID: 5561078285652088531}
   quitButton: {fileID: 3333514041798057525}
   choiceList: {fileID: 3437141926453485963}

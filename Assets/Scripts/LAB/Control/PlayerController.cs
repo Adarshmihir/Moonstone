@@ -42,11 +42,11 @@ namespace Control
             foreach (var hit in hits)
             {
                 var dialogueTarget = hit.transform.GetComponent<AIDialogue>();
-                if (dialogueTarget == null || dialogueTarget.GetDialogue == null) continue;
+                if (dialogueTarget == null || !dialogueTarget.enabled || dialogueTarget.GetDialogue == null) continue;
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget.GetDialogue);
+                    GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget, dialogueTarget.GetDialogue);
                 }
                 return true;
             }

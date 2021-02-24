@@ -7,6 +7,7 @@ namespace Dialogue
 	public class DialogueUI : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI questText;
+		[SerializeField] private TextMeshProUGUI aiName;
 		[SerializeField] private Button nextButton;
 		[SerializeField] private Button quitButton;
 		[SerializeField] private Transform choiceList;
@@ -42,6 +43,7 @@ namespace Dialogue
 
 			if (_playerDialogue.GetDialogue == null) return;
 
+			aiName.text = _playerDialogue.GetName();
 			response.SetActive(!_playerDialogue.IsChoosing);
 			choiceList.gameObject.SetActive(_playerDialogue.IsChoosing);
 
