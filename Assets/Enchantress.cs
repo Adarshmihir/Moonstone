@@ -16,6 +16,7 @@ public class Enchantress : Interactable
                 if (GameManager.Instance.uiManager.EnchantressGO.activeSelf == true)
                 {
                     GameManager.Instance.uiManager.EnchantressGO.SetActive(false);
+                    GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().OnRemoveButton();
                 }
                 this.OnDefocused();
             }
@@ -28,6 +29,7 @@ public class Enchantress : Interactable
         if (GameManager.Instance.uiManager.EnchantressGO.activeSelf == false)
         {
             GameManager.Instance.uiManager.EnchantressGO.SetActive(true);
+            GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().inventoryenchantress.Initialize_InventoryEnchantressUI();
         }
     }
 }

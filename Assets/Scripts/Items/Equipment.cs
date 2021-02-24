@@ -20,8 +20,9 @@ public class Equipment : Item {
     
     public equipementModifier[] equipementMods;
 
-    private List<StatModifier> StatModifiers;
-
+    //A PASSER EN PROTECTED QUAND ON AURA FAIT UN NAMESPACE INVENTAIRE-STATS
+    public List<StatModifier> StatModifiers;
+    
     private void OnEnable()
     {
         this.assignStatModifiers();
@@ -32,7 +33,7 @@ public class Equipment : Item {
         // Equip the item
         EquipmentManager.instance.Equip(this);
         foreach (var mod in StatModifiers)
-        {
+        { 
             GameManager.Instance.player.AddModifier(mod);
         }
         // Remove it from the inventory

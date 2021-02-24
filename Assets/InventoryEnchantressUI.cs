@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour {
+public class InventoryEnchantressUI : MonoBehaviour
+{
     private Inventory inventory;
 
     public Transform itemsParent;
 
-    private InventorySlot[] slots;
+    private EnchantressSlot[] slots;
 
     // Start is called before the first frame update
-    public void Initialize_InventoryUI() {
+    public void Initialize_InventoryEnchantressUI() {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += updateUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        slots = itemsParent.GetComponentsInChildren<EnchantressSlot>();
     }
 
     // Update is called once per frame

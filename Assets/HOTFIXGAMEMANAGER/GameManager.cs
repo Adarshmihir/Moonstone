@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour
         } else {
             _instance = this;
         }
-
         uiManager.InitializeUIManager();
         player.InitializePlayer();
         equipementManager.Initialize_EquipmentManager();
         uiManager.HideUIAtLaunch();
     }
+
  
     // Add your game mananger members here
     public void Pause(bool paused) {
