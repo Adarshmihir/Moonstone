@@ -11,7 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe6b8a787816a49c6a61430c9421af72, type: 3}
   m_Name: Sword
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
+  weaponName: Sword
+  icon: {fileID: 21300000, guid: f3557a524f5b3af4e9ea62399a652287, type: 3}
   weaponType: 1
   weaponRange: 1
   attackspeed: 1.2
@@ -29,3 +31,6 @@ MonoBehaviour:
   weaponDamageFlat: 3
   weaponDamagePercent: 0.3
   CurrentStatUsing: 0
+  ironToBuild: 2
+  copperToBuild: 1
+  silverToBuild: 0

@@ -19,7 +19,7 @@ namespace Control
         {
             _health = GetComponent<Health>();
         }
-        
+
         // Update is called once per frame
         private void Update()
         {
@@ -78,10 +78,10 @@ namespace Control
             Physics.Raycast(GetMouseRay(), out var hit, 100);
             // Check if we hit an interactable
             if (hit.collider == null) return false;
-            
+
             var interactable = hit.collider.GetComponent<Interactable>();
             if (interactable == null || !Input.GetMouseButtonDown(1)) return false;
-            
+
             SetFocus(interactable);
             return true;
         }
@@ -90,14 +90,14 @@ namespace Control
         {
             var hasHit = Physics.Raycast(GetMouseRay(), out var hit);
             if (!hasHit || !DistanceToNewPosition(hit.point)) return false;
-            
+
             if (Input.GetMouseButton(0))
             {
                 GetComponent<Mover>().StartMoveAction(hit.point);
             }
             return true;
         }
-        
+
         private bool DistanceToNewPosition(Vector3 position)
         {
             return Vector3.Distance(position, transform.position) > 1f;
@@ -107,7 +107,7 @@ namespace Control
         {
             return !(Camera.main is null) ? Camera.main.ScreenPointToRay(Input.mousePosition) : default;
         }
-        
+
         private void SetFocus(Interactable newFocus)
         {
             if (newFocus != focus)

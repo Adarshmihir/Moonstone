@@ -10,13 +10,16 @@ public class UIManager : MonoBehaviour
     public GameObject Inventory;
     public GameObject HealthGlobe;
     public GameObject CanvasRessource;
+    public GameObject Enchantress;
+    public GameObject Forgeron;
     public GameObject MiniMapCanvasGO;
     public GameObject CanvasSpellsBarGO;
     public GameObject StatsCanvasGO;
     public GameObject InventoryGO;
     public GameObject HealthGlobeGO;
     public GameObject CanvasRessourceGO;
-
+    public GameObject EnchantressGO;
+    public GameObject ForgeronGO;
 
     public void InitializeUIManager()
     {
@@ -27,15 +30,19 @@ public class UIManager : MonoBehaviour
         HealthGlobeGO = Instantiate(HealthGlobe);
         CanvasRessourceGO = Instantiate(CanvasRessource);
         HideUIAtLaunch();
+        EnchantressGO = Instantiate(Enchantress);
+        ForgeronGO = Instantiate(Forgeron);
     }
 
-    void HideUIAtLaunch()
+   public void HideUIAtLaunch()
     {
-        StatsCanvasGO.SetActive(true);
+        StatsCanvasGO.SetActive(false);
         InventoryGO.SetActive(false);
         MiniMapCanvasGO.SetActive(false);
         HealthGlobeGO.SetActive(false);
         CanvasRessourceGO.SetActive(false);
+        EnchantressGO.SetActive(false);
+        ForgeronGO.SetActive(false);
     }
-    
+
 }

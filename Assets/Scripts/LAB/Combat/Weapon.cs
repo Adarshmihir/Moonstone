@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,39 +12,45 @@ namespace Combat
         OneHanded,
         TwoHanded
     }
-    
+
     [CreateAssetMenu(fileName = "Weapon", menuName = "Moonstone/New Weapon", order = 0)]
     public class Weapon : ScriptableObject
     {
+        [SerializeField] public string weaponName;
+        [SerializeField] public Sprite icon;
         [SerializeField] private WeaponType weaponType;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float attackspeed = 1f;
         [SerializeField] private float weaponMinDamage = 5f;
         [SerializeField] private float weaponMaxDamage = 10f;
         [SerializeField] [Range(0f, 180f)] private float weaponRadius = 45f;
-        
+
         [SerializeField] private AnimatorOverrideController animatorOverride;
         [SerializeField] private GameObject rightHandWeaponPrefab;
         [SerializeField] private GameObject leftHandWeaponPrefab;
-        
+
         [SerializeField] [Range(0f, 1f)] private float animationOnePlayChance;
         [SerializeField] [Range(0f, 1f)] private float animationTwoPlayChance;
         [SerializeField] [Range(0f, 1f)] private float animationThreePlayChance;
 
-        // Damage flat and percent of stat 
+        // Damage flat and percent of stat
         [SerializeField] private float weaponDamageFlat = 5f;
         [SerializeField] [Range(0, 5)]private float weaponDamagePercent = 0.5f;
         [SerializeField] private StatTypes CurrentStatUsing = StatTypes.Strength;
-        
+
         private List<StatModifier> StatModifiers;
-        
+
+        [SerializeField] public int ironToBuild;
+        [SerializeField] public int copperToBuild;
+        [SerializeField] public int silverToBuild;
+
         public float WeaponRange => weaponRange;
         public float WeaponRadius => weaponRadius;
         public float AttackSpeed => attackspeed;
 
         public float WeaponDamage => (float) Math.Round(Random.Range(weaponMinDamage, weaponMaxDamage), MidpointRounding.AwayFromZero);
         public WeaponType WeaponType => weaponType;
-        
+
         public float AnimationOnePlayChance => animationOnePlayChance;
         public float AnimationTwoPlayChance => animationTwoPlayChance;
         public float AnimationThreePlayChance => animationThreePlayChance;
@@ -55,7 +62,7 @@ namespace Combat
             {
                 Instantiate(rightHandWeaponPrefab, rightHandTransform);
             }
-            
+
             if (leftHandWeaponPrefab != null)
             {
                 Instantiate(leftHandWeaponPrefab, leftHandTransform);
@@ -66,15 +73,15 @@ namespace Combat
                 animator.runtimeAnimatorController = animatorOverride;
             }
         }
-        
+
         // Function calculate Dmg with flat dmg of weapon  + percent of stat of player
         public float CalculateDamageWeapon()
         {
- 
+
             float statValue = GameManager.Instance.player.stats.Find(x => x.StatName == CurrentStatUsing).charStat.BaseValue;
             //Debug.Log(Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent)));
             return Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent));
         }
-        
+
     }
 }

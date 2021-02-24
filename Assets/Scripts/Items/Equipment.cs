@@ -24,7 +24,6 @@ public class Equipment : Item {
 
     private void OnEnable()
     {
-        Debug.Log("cc");
         this.assignStatModifiers();
     }
 
@@ -45,7 +44,7 @@ public class Equipment : Item {
         StatModifiers.Clear();
         for (int i = 0; i < equipementMods.Length; i++)
         {
-            StatModifier newMod = new StatModifier(equipementMods[i].value, equipementMods[i].modType, this ,equipementMods[i].statType);
+            StatModifier newMod = StatModifier.CreateInstance(equipementMods[i].value, equipementMods[i].modType, this ,equipementMods[i].statType);
             StatModifiers.Add(newMod);
         }
     }

@@ -32,15 +32,25 @@ public class StatModifier : ScriptableObject
     public object Source;
     public StatTypes statType;
     
-    //CONSTRUCTOR
-    public StatModifier(float value, StatModType type, object source, StatTypes statType)
+    public void Init(float value, StatModType type, object source, StatTypes statType)
     {
         Value = value;
         Type = type;
         Source = source;
         this.statType = statType;
     }
+    public static StatModifier CreateInstance(float value, StatModType type, object source, StatTypes statType)
+    {
+        var data = ScriptableObject.CreateInstance<StatModifier>();
+        data.Init(value, type, source, statType);
+        return data;
+    }
 
-    public StatModifier(float value, StatModType type, StatTypes statType) : this(value, type, null, statType) { }
+    public static StatModifier CreateInstance(float value, StatModType type, StatTypes statType)
+    {
+        var data = ScriptableObject.CreateInstance<StatModifier>();
+        data.Init(value, type, null, statType);
+        return data;
+    }
 
 }
