@@ -29,6 +29,11 @@ namespace Dialogue
         {
             return from child in parent.Children where _nodeLookup.ContainsKey(child) select _nodeLookup[child];
         }
+
+        public DialogueNode GetRootNode()
+		{
+            return dialogueNodes[0];
+		}
         
 #if UNITY_EDITOR
         public void CreateNode(DialogueNode parent)

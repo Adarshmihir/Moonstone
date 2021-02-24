@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
 
 namespace Dialogue
@@ -8,8 +7,15 @@ namespace Dialogue
     {
         [SerializeField] private Dialogue dialogue;
 
-        // Start is called before the first frame update
-        private void Start()
+        private DialogueNode _node;
+
+		private void Awake()
+		{
+            _node = dialogue.GetRootNode();
+		}
+
+		// Start is called before the first frame update
+		private void Start()
         {
 
         }
@@ -22,9 +28,20 @@ namespace Dialogue
 
         public string GetText()
 		{
-            if (dialogue == null) return "";
+            if (_node == null) return "";
 
-            return "";
+            return _node.Text;
+		}
+
+        public void Next()
+		{
+            var children = dialogue.GetAllChildren(_node).ToArray();
+            _node = children[Random.Range(0, children.Count())];
+		}
+
+        public bool HasNextText()
+		{
+            return dialogue.GetAllChildren(_node).Count() > 0;
 		}
     }
 }
