@@ -15,6 +15,7 @@ namespace Control
         private Health _health;
         private Mover _mover;
         private Fighter _fighter;
+        private FighterSpell _fighterSpell;
 
         // Start is called before the first frame update
         private void Start()
@@ -22,6 +23,7 @@ namespace Control
             _health = GetComponent<Health>();
             _mover = GetComponent<Mover>();
             _fighter = GetComponent<Fighter>();
+            _fighterSpell = GetComponent<FighterSpell>();
         }
 
         // Update is called once per frame
@@ -36,9 +38,10 @@ namespace Control
             }
 
             if (InteractWithDialogue()) return;
-            if (InteractWithCombat()) return;
+            if (InteractWithCombat(false)) return;
+            if (InteractWithCombat(true)) return;
             if (InteractWithObjects()) return;
-            if (InteractWithMovement()) return;
+            InteractWithMovement();
         }
 
         private bool InteractWithDialogue()
@@ -58,7 +61,7 @@ namespace Control
             return false;
         }
 
-        private bool InteractWithCombat()
+        private bool InteractWithCombat(bool autoAttack)
         {
             var hits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in hits)
@@ -67,9 +70,14 @@ namespace Control
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
 
                 // Input.GetMouseButton(0)
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && autoAttack)
                 {
                     _fighter.Attack(target.gameObject);
+                }
+                else if (Input.GetMouseButtonDown(1) && !autoAttack)
+                {
+                    // TODO : Get Spell on Weapon
+                    _fighterSpell.Cast(target.gameObject, CastSource.Weapon);
                 }
                 return true;
             }

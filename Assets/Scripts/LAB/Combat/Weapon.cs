@@ -53,7 +53,6 @@ namespace Combat
 
         public float AnimationOnePlayChance => animationOnePlayChance;
         public float AnimationTwoPlayChance => animationTwoPlayChance;
-        public float AnimationThreePlayChance => animationThreePlayChance;
         public float AnimationTotalPlayChance => animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
 
         public void Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)

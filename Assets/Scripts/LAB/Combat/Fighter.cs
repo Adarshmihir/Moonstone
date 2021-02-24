@@ -61,6 +61,19 @@ namespace Combat
             weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
         }
 
+        public void ChangeWeaponVisibility(bool visible)
+        {
+            if (weapon.WeaponType == WeaponType.OneHanded)
+            {
+                rightHandTransform.GetChild(rightHandTransform.childCount - 1).gameObject.SetActive(visible);
+                leftHandTransform.GetChild(leftHandTransform.childCount - 1).gameObject.SetActive(visible);
+            }
+            else if (weapon.WeaponType == WeaponType.TwoHanded)
+            {
+                rightHandTransform.GetChild(rightHandTransform.childCount - 1).gameObject.SetActive(visible);
+            }
+        }
+
         private void AttackBehavior()
         {
             // Rotate the character in direction of the target
