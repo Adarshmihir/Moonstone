@@ -23,15 +23,15 @@ public class UIManager : MonoBehaviour
 
     public void InitializeUIManager()
     {
-        MiniMapCanvasGO = Instantiate(MiniMapCanvas);
+        //MiniMapCanvasGO = Instantiate(MiniMapCanvas);
         //CanvasSpellsBarGO = Instantiate(CanvasSpellsBar);
         StatsCanvasGO = Instantiate(StatsCanvas);
         InventoryGO = Instantiate(Inventory);
         InventoryGO.GetComponent<InventoryUI>().Initialize_InventoryUI();
         EnchantressGO = Instantiate(Enchantress);
         EnchantressGO.GetComponent<EnchantressUI>().Initialize_EnchantressUI();
-        HealthGlobeGO = Instantiate(HealthGlobe);
-        CanvasRessourceGO = Instantiate(CanvasRessource);
+        //HealthGlobeGO = Instantiate(HealthGlobe);
+        //CanvasRessourceGO = Instantiate(CanvasRessource);
         ForgeronGO = Instantiate(Forgeron);
     }
 
@@ -39,11 +39,10 @@ public class UIManager : MonoBehaviour
     {
         StatsCanvasGO.SetActive(false);
         InventoryGO.SetActive(false);
-        MiniMapCanvasGO.SetActive(false);
-        HealthGlobeGO.SetActive(false);
+        //MiniMapCanvasGO.SetActive(false);
+        //HealthGlobeGO.SetActive(false);
         //CanvasRessourceGO.SetActive(false);
         EnchantressGO.SetActive(false);
         ForgeronGO.SetActive(false);
     }
-
 }
