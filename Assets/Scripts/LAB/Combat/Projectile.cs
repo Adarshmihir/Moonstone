@@ -33,7 +33,6 @@ namespace Combat
             if (other.GetComponent<Health>() == null) return;
             
             Target.TakeDamage(Spell.SpellDamage, false, Attacker);
-            Debug.Log("start reduce");
             StartCoroutine(StartGameObjectDestroy());
         }
 

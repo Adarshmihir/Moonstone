@@ -75,10 +75,10 @@ namespace Combat
             
             if (_spellToCast.IsSpellOnCooldown()) return;
             
-            CastBehaviour(combatTarget);
+            CastBehaviour(combatTarget, castSource);
         }
 
-        private void CastBehaviour(GameObject combatTarget)
+        private void CastBehaviour(GameObject combatTarget, CastSource castSource)
         {
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
@@ -90,7 +90,7 @@ namespace Combat
             transform.LookAt(Target.transform);
             
             CastAnimation();
-            _spellToCast.PutOnCooldown();
+            _spellToCast.PutOnCooldown(castSource);
         }
 
         private void InitSpellToCast(CastSource castSource)

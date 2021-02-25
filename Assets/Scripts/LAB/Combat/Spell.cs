@@ -38,6 +38,7 @@ namespace Combat
         public bool IsAnimated => isAnimated;
         public float SpellDamage => spellDamage;
         public Texture SpellIcon => spellIcon;
+        public float Cooldown => cooldown;
 
         public void Launch(Transform output, Health target, Fighter attacker)
         {
@@ -68,9 +69,9 @@ namespace Combat
             CurrentCooldown = cooldown;
         }
 
-        public void PutOnCooldown()
+        public void PutOnCooldown(CastSource castSource)
         {
-            CooldownManager.instance.StartCooldown(this);
+            CooldownManager.instance.StartCooldown(this, castSource);
         }
 
         public bool IsSpellOnCooldown()
