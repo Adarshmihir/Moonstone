@@ -88,7 +88,7 @@ public class UI_Forgeron : MonoBehaviour
         {
             shopUI.SetActive(true);
             WriteText(6);
-            Debug.Log("Acheter");
+            //Debug.Log("Acheter");
         }
         else
         {
@@ -103,7 +103,7 @@ public class UI_Forgeron : MonoBehaviour
         {
             repairUI.SetActive(true);
             WriteText(4);
-            Debug.Log("Reparer");
+            //Debug.Log("Reparer");
         }
         else
         {
@@ -118,7 +118,7 @@ public class UI_Forgeron : MonoBehaviour
         {
             forgeUI.SetActive(true);
             WriteText(5);
-            Debug.Log("Forger");
+            //Debug.Log("Forger");
         }
         else
         {

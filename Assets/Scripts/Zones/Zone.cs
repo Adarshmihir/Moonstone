@@ -34,7 +34,6 @@ public class Zone : MonoBehaviour {
 
     protected virtual void UseTriggerZone(Collider col)
     {
-        Debug.Log("Entering in " + name + " zone !");
     }
 
 }

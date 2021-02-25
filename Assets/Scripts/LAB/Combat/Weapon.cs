@@ -18,7 +18,6 @@ namespace Combat
     public class Weapon : Item
     {
         [SerializeField] public string weaponName;
-        [SerializeField] public Sprite icon;
         [SerializeField] private WeaponType weaponType;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float attackspeed = 1f;
@@ -80,10 +79,8 @@ namespace Combat
 
         private void DestroyWeapon(GameObject rightClone, GameObject leftClone)
         {
-            Debug.Log("coucou del prev");
             
             if (rightClone != null) {
-                Debug.Log("coucou del");
                 Destroy(rightClone);
             }
 
@@ -94,7 +91,6 @@ namespace Combat
         public override void Use() {
             base.Use();
             SwapWeapons();
-            Debug.Log("j'utilise mon arme");
         }
 
         // /!\ SI
@@ -112,7 +108,6 @@ namespace Combat
         public float CalculateDamageWeapon()
         {
             float statValue = GameManager.Instance.player.stats.Find(x => x.StatName == CurrentStatUsing).charStat.BaseValue;
-            //Debug.Log(Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent)));
             return Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent));
         }
 

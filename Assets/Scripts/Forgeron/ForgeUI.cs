@@ -63,6 +63,6 @@ public class ForgeUI : MonoBehaviour
 
         //inventory.Add(weapon); Weapon have to be an Item
 
-        Debug.Log("Weapon forged : " + weapon.weaponName);
+        //Debug.Log("Weapon forged : " + weapon.weaponName);
     }
 }

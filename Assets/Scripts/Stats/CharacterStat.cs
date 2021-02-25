@@ -40,8 +40,6 @@ namespace Stats
         {
             if (statGameObjectField)
             {
-                Debug.Log("basevalue" + BaseValue);
-                Debug.Log("value" + Value);
                 if (BaseValue == Value)
                 {
                     statGameObjectField.GetComponent<Text>().text = BaseValue.ToString();
