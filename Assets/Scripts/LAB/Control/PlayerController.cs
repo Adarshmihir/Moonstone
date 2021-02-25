@@ -9,7 +9,6 @@ namespace Control
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Canvas statsCanvas;
         public Interactable focus;
 
         private Health _health;
@@ -31,15 +30,9 @@ namespace Control
         {
             if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Canvas statsCanvas = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<Canvas>();
-                statsCanvas.gameObject.SetActive(!statsCanvas.gameObject.activeSelf);
-            }
-
             if (InteractWithDialogue()) return;
-            if (InteractWithCombat(false)) return;
-            if (InteractWithCombat(true)) return;
+            //if (InteractWithCombat(false)) return;
+            if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
             InteractWithMovement();
         }
@@ -61,20 +54,19 @@ namespace Control
             return false;
         }
 
-        private bool InteractWithCombat(bool autoAttack)
+        private bool InteractWithCombat()
         {
             var hits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in hits)
             {
                 var target = hit.transform.GetComponent<CombatTarget>();
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
-
-                // Input.GetMouseButton(0)
-                if (Input.GetMouseButtonDown(0) && autoAttack)
+                
+                if (Input.GetMouseButtonDown(0))
                 {
                     _fighter.Attack(target.gameObject);
                 }
-                else if (Input.GetMouseButtonDown(1) && !autoAttack)
+                else if (Input.GetMouseButtonDown(1))
                 {
                     // TODO : Get Spell on Weapon
                     _fighterSpell.Cast(target.gameObject, CastSource.Weapon);

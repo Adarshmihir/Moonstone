@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -58,7 +59,7 @@ namespace Combat
             if (weapon == null) return;
 
             // Spawn weapon(s) in hand(s)
-            weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
+            (rightClone, leftClone) = weapon.Spawn(rightHandTransform, leftHandTransform, _animator, rightClone, leftClone);
         }
 
         public void ChangeWeaponVisibility(bool visible)

@@ -62,7 +62,7 @@ namespace Stats
 
         public GameObject getNumberGameObject(StatTypes type)
         {
-            GameObject gameObjectToReturn = GameObject.Find(""+type.ToString()+ "_Number");
+            GameObject gameObjectToReturn = GameObject.Find(type + "_Number");
             if (gameObjectToReturn)
             {
                 return gameObjectToReturn;

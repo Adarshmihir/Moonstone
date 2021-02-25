@@ -5091,8 +5091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14e24c420dc4054e90dc33e68024611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
-  mana: 0
+  life: 100
+  mana: 100
   stats: []
 --- !u!114 &5579161388114467999
 MonoBehaviour:

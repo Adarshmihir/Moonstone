@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public EquipmentManager equipementManager;
     public Player player;
     public UIManager uiManager;
-    
  
     private GameManager() {
         
@@ -44,8 +43,7 @@ public class GameManager : MonoBehaviour
         equipementManager.Initialize_EquipmentManager();
         uiManager.HideUIAtLaunch();
     }
-
- 
+    
     // Add your game mananger members here
     public void Pause(bool paused) {
         

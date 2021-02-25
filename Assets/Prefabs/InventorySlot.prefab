@@ -179,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff510becdd3c11438b277587a5f953c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 100
   icon: {fileID: 6764556887185845024}
   removeButton: {fileID: 6764556887124062057}
 --- !u!1 &6764556887185845030
@@ -376,7 +375,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7368980667432926925}
-        m_MethodName: Use
+        m_MethodName: UseItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

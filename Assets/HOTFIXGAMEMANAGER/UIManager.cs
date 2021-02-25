@@ -32,12 +32,10 @@ public class UIManager : MonoBehaviour
         EnchantressGO.GetComponent<EnchantressUI>().Initialize_EnchantressUI();
         HealthGlobeGO = Instantiate(HealthGlobe);
         CanvasRessourceGO = Instantiate(CanvasRessource);
-        HideUIAtLaunch();
-        EnchantressGO = Instantiate(Enchantress);
         ForgeronGO = Instantiate(Forgeron);
     }
 
-   public void HideUIAtLaunch()
+    public void HideUIAtLaunch()
     {
         StatsCanvasGO.SetActive(false);
         InventoryGO.SetActive(false);

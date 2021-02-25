@@ -44,7 +44,7 @@ namespace Resources
 
         public void TakeDamage(float damage, bool criticalHit, Fighter attacker)
         {
-
+            damage = criticalHit ? damage * 2 : damage;
             HealthPoints = Mathf.Max(HealthPoints - damage, 0);
 
             if (_lifeBarController != null)
@@ -55,7 +55,7 @@ namespace Resources
             if (_damageTextSpawner != null)
             {
                 // If critical , damage * 2 else normal damage
-			    _damageTextSpawner.Spawn(criticalHit ? damage*2 : damage , criticalHit ? DamageType.Critical : DamageType.Normal);
+			    _damageTextSpawner.Spawn(damage, criticalHit ? DamageType.Critical : DamageType.Normal);
             }
 
             if (HealthPoints <= 0)

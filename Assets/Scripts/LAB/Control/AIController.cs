@@ -90,19 +90,16 @@ namespace Control
             {
                 if (DistanceToWaypoint())
                 {
-                    _timeSinceLastBreak = 0;
                     IsGoingHome = false;
+                    _timeSinceLastBreak = 0;
+                    
+                    _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
+                    _initialPosition = patroller.GetWaypoint(_currentWaypoint);
                 }
             }
-
+            
             if (!(_timeSinceLastBreak > breakTimer) && !IsGoingHome) return;
-
-            if (_timeSinceLastBreak > breakTimer)
-            {
-                _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
-                _initialPosition = patroller.GetWaypoint(_currentWaypoint);
-            }
-
+            
             _mover.StartMoveAction(_initialPosition);
         }
 
@@ -173,7 +170,8 @@ namespace Control
         //Forces the AI to initial position
         public void returnToInitialPosition()
         {
-            IsGoingHome = true;
+            //_isAttacked = false;
+            //IsGoingHome = true;
         }
     }
 }

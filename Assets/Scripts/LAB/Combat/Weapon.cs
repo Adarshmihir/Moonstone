@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -55,34 +56,38 @@ namespace Combat
         public float AnimationTwoPlayChance => animationTwoPlayChance;
         public float AnimationTotalPlayChance => animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
 
-        public void Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator)
+        public Tuple<GameObject, GameObject> Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator, [CanBeNull] GameObject rightClone, [CanBeNull] GameObject leftClone)
         {
-            DestroyWeapon();
+            DestroyWeapon(rightClone, leftClone);
 
             if (rightHandWeaponPrefab != null)
             {
-                GameManager.Instance.player.GetComponent<Fighter>().rightClone = Instantiate(rightHandWeaponPrefab, rightHandTransform);
-                //Debug.Log(rightClone.ToString());
+                rightClone = Instantiate(rightHandWeaponPrefab, rightHandTransform);
             }
 
             if (leftHandWeaponPrefab != null)
             {
-                GameManager.Instance.player.GetComponent<Fighter>().leftClone= Instantiate(leftHandWeaponPrefab, leftHandTransform);
+                leftClone= Instantiate(leftHandWeaponPrefab, leftHandTransform);
             }
 
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+
+            return Tuple.Create(rightClone, leftClone);
         }
 
-        private void DestroyWeapon() {
-            if (GameManager.Instance.player.GetComponent<Fighter>().rightClone != null) {
-                GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().rightClone);
+        private void DestroyWeapon(GameObject rightClone, GameObject leftClone)
+        {
+            if (GameManager.Instance == null) return;
+            
+            if (rightClone != null) {
+                Destroy(rightClone);
             }
 
-            if (GameManager.Instance.player.GetComponent<Fighter>().leftClone != null){}
-                GameObject.Destroy(GameManager.Instance.player.GetComponent<Fighter>().leftClone);
+            if (leftClone != null){}
+                Destroy(leftClone);
         }
 
         public override void Use() {
@@ -92,10 +97,14 @@ namespace Combat
         }
 
         // /!\ SI
-        private void SwapWeapons() {
-            Spawn(GameManager.Instance.player.GetComponent<Fighter>().rightHandTransform, GameManager.Instance.player.GetComponent<Fighter>().leftHandTransform, GameManager.Instance.player.GetComponent<Animator>());
+        private void SwapWeapons()
+        {
+            var fighter = GameManager.Instance.player.GetComponent<Fighter>();
+            var animator = GameManager.Instance.player.GetComponent<Animator>();
+            
+            Spawn(fighter.rightHandTransform, fighter.leftHandTransform, animator, null, null);
 
-            GameManager.Instance.player.GetComponent<Fighter>().weapon = this;
+            fighter.weapon = this;
         }
 
         // Function calculate Dmg with flat dmg of weapon  + percent of stat of player

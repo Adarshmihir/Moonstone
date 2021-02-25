@@ -40,6 +40,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 4925386106320537232}
   levelUI: {fileID: 7728694669109470869}
+  initialScale: {x: 0, y: 0, z: 0}
 --- !u!114 &5488931745415643453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,8 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e85b3e09c1b44f1bc15050509665d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patroller: {fileID: 0}
   chaseDistance: 5
   maxDistance: 15
+  breakTimer: 5
+  helpRadius: 5
 --- !u!114 &5681596250381017213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 1401106119531886124, guid: fcb4db32f6881473baec42ac157df5ac,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1401106119531886131, guid: fcb4db32f6881473baec42ac157df5ac,
         type: 3}

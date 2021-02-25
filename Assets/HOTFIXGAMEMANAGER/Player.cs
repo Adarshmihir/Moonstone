@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using Control;
 using Stats;
 using UnityEngine;
@@ -37,7 +38,6 @@ public class Player : MonoBehaviour
     public void InitializePlayer()
     {
         InitializeStats();
-        
     }
     
     public void AddModifier(StatModifier statMod)
@@ -55,11 +55,8 @@ public class Player : MonoBehaviour
     {
         foreach (var stat in stats)
         {
-            Debug.Log("test");
             if (stat.statGameObject)
             {
-                Debug.Log("basevalue" + stat.charStat.BaseValue);
-                Debug.Log("value" + stat.charStat.Value);
                 if (stat.charStat.BaseValue == stat.charStat.Value)
                 {
                     stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString();
