@@ -45,6 +45,8 @@ namespace Dialogue
 
         public void SelectChoice(DialogueNode dialogueNode)
 		{
+			// TODO : FIX
+			
             _node = dialogueNode;
             StartEnterAction();
             IsChoosing = false;

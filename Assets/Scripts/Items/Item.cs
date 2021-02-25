@@ -9,7 +9,7 @@ public class Item : ScriptableObject {
     
     public equipementModifier[] equipementMods;
 
-    private List<StatModifier> StatModifiers;
+    private List<StatModifier> StatModifiers = new List<StatModifier>();
 
     private void OnEnable()
     {
