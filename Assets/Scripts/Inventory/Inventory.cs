@@ -3,12 +3,22 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
     public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
 
     public int space = 20;
 
+    public int gold = 300;
+
+    public int copper = 10;
+    public int iron = 10;
+    public int silver = 10;
+
     public List<Item> items = new List<Item>();
 
-    public OnItemChanged onItemChangedCallback;
+    public List<Item> GetList()
+    {
+        return items;
+    }
 
     public bool Add(Item item) {
         if (!item.isDefaultItem) {

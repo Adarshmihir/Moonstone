@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - HealBack
+  - HealFront
+  - LifeBar
+  - Enemy
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -14,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - CharacterPanel
-  - Minimap
   - Outline
+  - 
+  - 
+  - 
   - 
   - 
   - 

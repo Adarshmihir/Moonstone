@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6882918065024465723}
   - component: {fileID: 4294230343430975731}
+  - component: {fileID: 5887775055780106188}
   m_Layer: 0
   m_Name: Platebody
   m_TagString: Untagged
@@ -118,3 +119,11 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000000022118911, y: 0.003668428, z: -0.0004656416}
     m_Extent: {x: 0.0036120932, y: 0.0038026138, z: 0.0019848985}
   m_DirtyAABB: 0
+--- !u!33 &5887775055780106188
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5322538818415037393}
+  m_Mesh: {fileID: 6640332948465887969, guid: ab10b17b87973d643b2348b6b8b8900e, type: 3}

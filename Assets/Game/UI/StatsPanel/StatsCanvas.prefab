@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 453201558749873488}
   - component: {fileID: 453201558749873491}
   - component: {fileID: 453201558749873490}
+  - component: {fileID: 1873941144779713278}
   m_Layer: 5
   m_Name: StatsCanvas
   m_TagString: Untagged
@@ -99,6 +100,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1873941144779713278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453201558749873493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86773490260ca34ab6f1f950b29bc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelUpStatButtons: {fileID: 6140446207279227470}
+  PointsAvailable: {fileID: 6140446206594923574}
+  PointsToSpend: {fileID: 6140446207866693709}
+  bLvlupactive: 0
+  lvlup_Points: 0
 --- !u!1 &453201560273120263
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +128,6 @@ GameObject:
   - component: {fileID: 453201560273120260}
   - component: {fileID: 453201560273120259}
   - component: {fileID: 453201560273120258}
-  - component: {fileID: 453201560273120261}
   m_Layer: 5
   m_Name: StatsPanel
   m_TagString: Untagged
@@ -179,29 +196,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &453201560273120261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453201560273120263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c86773490260ca34ab6f1f950b29bc53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterStatsList:
-  - {fileID: 6140446206566579914}
-  - {fileID: 6140446207294483806}
-  - {fileID: 6140446206745540509}
-  - {fileID: 6140446206929098853}
-  - {fileID: 6140446206350515857}
-  LevelUpStatButtons: {fileID: 6140446207279227470}
-  PointsAvailable: {fileID: 6140446206594923574}
-  PointsToSpend: {fileID: 6140446207866693709}
-  bLvlupactive: 0
-  lvlup_Points: 0
 --- !u!1 &6140446206172588021
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,11 +473,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickIncrementBaseValue
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6140446206745540509}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 2
@@ -501,7 +495,6 @@ GameObject:
   - component: {fileID: 6140446206350515862}
   - component: {fileID: 6140446206350515856}
   - component: {fileID: 6140446206350515863}
-  - component: {fileID: 6140446206350515857}
   m_Layer: 5
   m_Name: Perception_Number
   m_TagString: Untagged
@@ -569,22 +562,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &6140446206350515857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140446206350515861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547e485e32465b7489c93c859486f26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stat:
-    statGameObjectField: {fileID: 0}
-    BaseValue: 5
-    StatName: perception
 --- !u!1 &6140446206378359886
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: -24.332}
+  m_AnchoredPosition: {x: -0.00024414062, y: -24.332031}
   m_SizeDelta: {x: -689.9579, y: -31.354889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6140446206384748675
@@ -839,7 +816,6 @@ GameObject:
   - component: {fileID: 6140446206566579919}
   - component: {fileID: 6140446206566579913}
   - component: {fileID: 6140446206566579912}
-  - component: {fileID: 6140446206566579914}
   m_Layer: 5
   m_Name: Strength_Number
   m_TagString: Untagged
@@ -907,22 +883,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &6140446206566579914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140446206566579918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547e485e32465b7489c93c859486f26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stat:
-    statGameObjectField: {fileID: 0}
-    BaseValue: 5
-    StatName: strength
 --- !u!1 &6140446206594923574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1009,6 @@ GameObject:
   - component: {fileID: 6140446206745540498}
   - component: {fileID: 6140446206745540508}
   - component: {fileID: 6140446206745540499}
-  - component: {fileID: 6140446206745540509}
   m_Layer: 5
   m_Name: Intelligence_Number
   m_TagString: Untagged
@@ -1117,22 +1076,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &6140446206745540509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140446206745540497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547e485e32465b7489c93c859486f26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stat:
-    statGameObjectField: {fileID: 0}
-    BaseValue: 5
-    StatName: intelligence
 --- !u!1 &6140446206768121198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,11 +1273,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickIncrementBaseValue
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6140446206350515857}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 2
@@ -1430,7 +1373,6 @@ GameObject:
   - component: {fileID: 6140446206929098906}
   - component: {fileID: 6140446206929098852}
   - component: {fileID: 6140446206929098907}
-  - component: {fileID: 6140446206929098853}
   m_Layer: 5
   m_Name: Stamina_Number
   m_TagString: Untagged
@@ -1498,22 +1440,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &6140446206929098853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140446206929098905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547e485e32465b7489c93c859486f26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stat:
-    statGameObjectField: {fileID: 0}
-    BaseValue: 5
-    StatName: stamina
 --- !u!1 &6140446206980739669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleLevelUp
         m_Mode: 6
         m_Arguments:
@@ -1841,11 +1767,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickIncrementBaseValue
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6140446206929098853}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 2
@@ -1971,11 +1897,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickIncrementBaseValue
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6140446206566579914}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2111,7 +2037,6 @@ GameObject:
   - component: {fileID: 6140446207294483795}
   - component: {fileID: 6140446207294483805}
   - component: {fileID: 6140446207294483804}
-  - component: {fileID: 6140446207294483806}
   m_Layer: 5
   m_Name: Agility_Number
   m_TagString: Untagged
@@ -2179,22 +2104,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &6140446207294483806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140446207294483794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547e485e32465b7489c93c859486f26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stat:
-    statGameObjectField: {fileID: 0}
-    BaseValue: 5
-    StatName: agility
 --- !u!1 &6140446207482465884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,7 +2433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6140446207833518611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2780,7 +2689,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickEquipRandomStuff
         m_Mode: 1
         m_Arguments:
@@ -3380,11 +3289,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 453201560273120261}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickIncrementBaseValue
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6140446207294483806}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 2

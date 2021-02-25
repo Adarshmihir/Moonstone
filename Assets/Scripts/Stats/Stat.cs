@@ -1,18 +1,23 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Stats
 {
     [Serializable] 
-    public class Stat : MonoBehaviour
+    public class Stat
     {
-        public CharacterStat stat;
+        public CharacterStat charStat;
+        public GameObject statGameObject;
+        public StatTypes StatName;
 
-        private void Start()
+        public Stat(CharacterStat stat, GameObject GO, StatTypes StatName)
         {
-            stat.statGameObjectField = gameObject;
-            stat.StatTextUpdate();
+            charStat = stat;
+            statGameObject = GO;
+            this.StatName = StatName;
         }
-    
+        
     }
+    
 }

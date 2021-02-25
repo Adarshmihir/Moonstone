@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -10,38 +11,45 @@ namespace Combat
     {
         [SerializeField] [Range(0f, 1f)] private float criticalChance = 0.5f;
 
-        [SerializeField] private Weapon weapon;
-        [SerializeField] private Transform rightHandTransform;
-        [SerializeField] private Transform leftHandTransform;
+        [SerializeField] public Weapon weapon;
+        [SerializeField] public Transform rightHandTransform;
+        [SerializeField] public Transform leftHandTransform;
 
-        private Health _target;
+        public GameObject rightClone;
+        public GameObject leftClone;
+
+        private Mover _mover;
+        private Animator _animator;
         private float _timeSinceLastAttack = Mathf.Infinity;
 
-        public Health Target => _target;
+        public Health Target { get; private set; }
 
         // Start is called before the first frame update
         private void Start()
         {
+            _mover = GetComponent<Mover>();
+            _animator = GetComponent<Animator>();
+
             SpawnWeapon();
         }
-    
+
         // Update is called once per frame
         private void Update()
         {
             _timeSinceLastAttack += Time.deltaTime;
 
-            if (_target == null || _target.IsDead) return;
+            if (Target == null || Target.IsDead) return;
 
             // Check if target is not too far
             if (!GetIsInRange())
             {
                 // Move towards the target until it is close enough
-                GetComponent<Mover>().MoveTo(_target.transform.position);
+                _mover.MoveTo(Target.transform.position);
             }
             else
             {
                 // Cancel movement action and start attack
-                GetComponent<Mover>().Cancel();
+                _mover.Cancel();
                 AttackBehavior();
             }
         }
@@ -49,18 +57,30 @@ namespace Combat
         private void SpawnWeapon()
         {
             if (weapon == null) return;
-            
+
             // Spawn weapon(s) in hand(s)
-            var animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            (rightClone, leftClone) = weapon.Spawn(rightHandTransform, leftHandTransform, _animator, rightClone, leftClone);
         }
-    
+
+        public void ChangeWeaponVisibility(bool visible)
+        {
+            if (weapon.WeaponType == WeaponType.OneHanded)
+            {
+                rightHandTransform.GetChild(rightHandTransform.childCount - 1).gameObject.SetActive(visible);
+                leftHandTransform.GetChild(leftHandTransform.childCount - 1).gameObject.SetActive(visible);
+            }
+            else if (weapon.WeaponType == WeaponType.TwoHanded)
+            {
+                rightHandTransform.GetChild(rightHandTransform.childCount - 1).gameObject.SetActive(visible);
+            }
+        }
+
         private void AttackBehavior()
         {
             // Rotate the character in direction of the target
-            transform.LookAt(_target.transform);
+            transform.LookAt(Target.transform);
             // Check if weapon cooldown is elapsed and if target if visible
-            if (!(_timeSinceLastAttack > weapon.TimeBetweenAttack) || !GetIsAccessible(_target.transform)) return;
+            if (!(_timeSinceLastAttack > weapon.AttackSpeed)/* || !GetIsAccessible(target.transform)*/) return;
 
             // Start attack
             TriggerAttack();
@@ -70,97 +90,95 @@ namespace Combat
         private void TriggerAttack()
         {
             // Start random attack animation
-            GetComponent<Animator>().ResetTrigger("stopAttack");
-
-            var attackAnimationToPlay = Random.Range(0, weapon.AnimationTotalPlayChance);
-            if (attackAnimationToPlay < weapon.AnimationOnePlayChance)
-            {
-                GetComponent<Animator>().SetTrigger("attack1");
-            }
-            else if (attackAnimationToPlay < weapon.AnimationOnePlayChance + weapon.AnimationTwoPlayChance)
-            {
-                GetComponent<Animator>().SetTrigger("attack2");
-            }
-            else
-            {
-                GetComponent<Animator>().SetTrigger("attack3");
-            }
+            _animator.ResetTrigger("stopAttack");
+			_animator.speed = weapon.AttackSpeed;
+            _animator.SetTrigger(weapon.SelectAnAnimation());
         }
-        
+
         // Animation event : Attack
         private void Hit()
         {
-            if (_target == null) return;
+            if (Target == null) return;
 
-            // Unarmed attack
-            if (weapon.WeaponType == WeaponType.Unarmed)
+            // Unarmed attack and One Hand armed attack
+            if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
             {
                 // Check if target is in front of character and visible
-                if (!GetIsInFieldOfView(_target.transform) || !GetIsAccessible(_target.transform)) return;
-                
-                // Deal damage
-                _target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+                if (!GetIsInFieldOfView(Target.transform)/* || !GetIsAccessible(_target.transform)*/) return;
+
+                if (GetComponent<Player>())
+                    // Deal damage
+                    Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
+                else
+                    Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance, this);
             }
-            // Armed attack
+            // Two hand Armed attack
             else
             {
-                // Get all enemies in front of character depending on weapon radius and weapon range
-                var spherePosition = (transform.position + _target.transform.position) / 2;
-                var colliders = Physics.OverlapSphere(spherePosition, weapon.WeaponRange);
-                foreach (var target in colliders)
-                {
-                    // Check if the target has health, is in front of character and visible
-                    if (!CanAttack(target.gameObject) || !GetIsInFieldOfView(target.transform) || !GetIsAccessible(target.transform) || CompareTag(target.tag)) continue;
-                    
-                    Hit(target.GetComponent<Health>());
-                }
+                // Deal damage to all enemies around
+                AttackAllEnemiesAround();
             }
         }
 
-        private void Hit(Health target)
+        private void AttackAllEnemiesAround()
         {
-            if (target == null) return;
-            
-            // Deal damage
-            target.TakeDamage(weapon.WeaponDamage, Random.Range(0, 100) / 100f < criticalChance);
+            // Get all enemies in front of character depending on weapon radius and weapon range
+            var spherePosition = (transform.position + Target.transform.position) / 2;
+            var colliders = Physics.OverlapSphere(spherePosition, weapon.WeaponRange);
+            foreach (var newTarget in colliders)
+            {
+                // Check if the target has health, is in front of character and visible
+                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
+
+                Hit(newTarget.GetComponent<Health>());
+            }
         }
-    
+
+        private void Hit(Health targetHealth)
+        {
+            if (targetHealth == null) return;
+
+            // Deal damage
+            Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
+        }
+
         private bool GetIsInRange()
         {
             // Check if the target is in range of weapon
-            return Vector3.Distance(transform.position, _target.transform.position) < weapon.WeaponRange;
+            return Vector3.Distance(transform.position, Target.transform.position) < weapon.WeaponRange;
         }
 
-        private bool GetIsInFieldOfView(Transform target)
+        private bool GetIsInFieldOfView(Transform targetTransform)
         {
             // Check if the target is in front of character
-            return Vector3.Angle(target.position - transform.position, transform.forward) <= weapon.WeaponRadius;
+            var charTransform = transform;
+            return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= weapon.WeaponRadius;
         }
 
-        private bool GetIsAccessible(Transform target)
+        /*private bool GetIsAccessible(Transform target)
         {
             // Check if target is visible from the character
             var position = transform.position;
             Physics.Raycast(position, target.position - position, out var hit);
 
             return true; //hit.collider == null || hit.collider.GetComponent<Health>() != null;
-        }
+        }*/
 
         public static bool CanAttack(GameObject combatTarget)
         {
             // Check if the target has health and is not already dead
             if (combatTarget == null) return false;
-            
+
             var targetHealth = combatTarget.GetComponent<Health>();
             return targetHealth != null && !targetHealth.IsDead;
         }
-    
+
         public void Attack(GameObject combatTarget)
         {
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
             // Define target
-            _target = combatTarget.GetComponent<Health>();
+            Target = combatTarget.GetComponent<Health>();
         }
 
         public void Cancel()
@@ -168,16 +186,17 @@ namespace Combat
             // Stop attack action
             StopAttack();
             // Remove target
-            _target = null;
+            Target = null;
         }
-        
+
         private void StopAttack()
         {
             // Stop attack animation
-            GetComponent<Animator>().ResetTrigger("attack1");
-            GetComponent<Animator>().ResetTrigger("attack2");
-            GetComponent<Animator>().ResetTrigger("attack3");
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            _animator.speed = 1;
+            _animator.ResetTrigger("attack1");
+            _animator.ResetTrigger("attack2");
+            _animator.ResetTrigger("attack3");
+            _animator.SetTrigger("stopAttack");
         }
     }
 }

@@ -14,21 +14,44 @@ public enum StatModSources
     Item = 200,
 }
 
-public class StatModifier
+public enum StatTypes
+{
+    Strength,
+    Stamina,
+    Intelligence,
+    Perception,
+    Agility
+}
+
+[CreateAssetMenu(fileName = "New Modifier", menuName = "Stat/StatModifier")]
+public class StatModifier : ScriptableObject
 {
     //PUBLIC VARIABLES
-    public readonly float Value;
-    public readonly StatModType Type;
-    public readonly object Source;
+    public float Value;
+    public StatModType Type;
+    public object Source;
+    public StatTypes statType;
     
-    //CONSTRUCTOR
-    public StatModifier(float value, StatModType type, object source)
+    public void Init(float value, StatModType type, object source, StatTypes statType)
     {
         Value = value;
         Type = type;
         Source = source;
+        this.statType = statType;
+    }
+    
+    public static StatModifier CreateInstance(float value, StatModType type, object source, StatTypes statType)
+    {
+        var data = ScriptableObject.CreateInstance<StatModifier>();
+        data.Init(value, type, source, statType);
+        return data;
     }
 
-    public StatModifier(float value, StatModType type) : this(value, type, null) { }
+    public static StatModifier CreateInstance(float value, StatModType type, StatTypes statType)
+    {
+        var data = ScriptableObject.CreateInstance<StatModifier>();
+        data.Init(value, type, null, statType);
+        return data;
+    }
 
 }
