@@ -56,7 +56,7 @@ namespace Combat
         public float AnimationTwoPlayChance => animationTwoPlayChance;
         public float AnimationTotalPlayChance => animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
 
-        public Tuple<GameObject, GameObject> Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator, [CanBeNull] GameObject rightClone, [CanBeNull] GameObject leftClone)
+        public Tuple<GameObject, GameObject> Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator, GameObject rightClone, GameObject leftClone)
         {
             DestroyWeapon(rightClone, leftClone);
 
@@ -80,13 +80,14 @@ namespace Combat
 
         private void DestroyWeapon(GameObject rightClone, GameObject leftClone)
         {
-            if (GameManager.Instance == null) return;
+            Debug.Log("coucou del prev");
             
             if (rightClone != null) {
+                Debug.Log("coucou del");
                 Destroy(rightClone);
             }
 
-            if (leftClone != null){}
+            if (leftClone != null)
                 Destroy(leftClone);
         }
 
@@ -102,7 +103,7 @@ namespace Combat
             var fighter = GameManager.Instance.player.GetComponent<Fighter>();
             var animator = GameManager.Instance.player.GetComponent<Animator>();
             
-            Spawn(fighter.rightHandTransform, fighter.leftHandTransform, animator, null, null);
+            (fighter.rightClone, fighter.leftClone) = Spawn(fighter.rightHandTransform, fighter.leftHandTransform, animator, fighter.rightClone, fighter.leftClone);
 
             fighter.weapon = this;
         }

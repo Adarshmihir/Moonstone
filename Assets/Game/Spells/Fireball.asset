@@ -15,9 +15,13 @@ MonoBehaviour:
   spellType: 0
   projectile: {fileID: 6444211836996915594, guid: f3c4f28e42fcb4a4ca3c8823b542ae5a,
     type: 3}
+  spellDamage: 10
   cooldown: 2
   isAnimated: 1
-  spellDamage: 5
+  particleEffect: {fileID: 1392961458021664, guid: 7c2d45330a7b1894ca1aacb0ebd30599,
+    type: 3}
+  particleSize: {x: 1, y: 1, z: 1}
+  spellIcon: {fileID: 2800000, guid: b9f7df66400b4354b98f61c735542521, type: 3}
   spellRange: 2
   spellZoneArea: 2
   damageRadius: 45

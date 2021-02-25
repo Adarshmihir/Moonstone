@@ -33,6 +33,7 @@ namespace Combat
             if (other.GetComponent<Health>() == null) return;
             
             Target.TakeDamage(Spell.SpellDamage, false, Attacker);
+            Debug.Log("start reduce");
             StartCoroutine(StartGameObjectDestroy());
         }
 
@@ -40,10 +41,10 @@ namespace Combat
         {
             var particle = transform.GetChild(0);
             var originalScale = particle.localScale;
+            
             while (particle.localScale.magnitude > originalScale.magnitude * 0.25f)
             {
-                particle.localScale *= 0.95f;
-                
+                particle.localScale *= 0.9f;
                 yield return new WaitForSeconds(0.2f);
             }
             
