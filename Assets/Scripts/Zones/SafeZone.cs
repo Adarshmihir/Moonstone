@@ -11,7 +11,7 @@ public class SafeZone : Zone
         base.UseTriggerZone(col);
         if (col.gameObject.CompareTag("Enemy"))
         {
-            col.gameObject.GetComponent<AIController>().returnToInitialPosition();
+            col.gameObject.GetComponent<AIController>().ReturnToInitialPosition();
         }
     }
 

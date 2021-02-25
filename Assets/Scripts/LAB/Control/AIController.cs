@@ -80,8 +80,7 @@ namespace Control
 
             if (DistanceToInitialPosition()) return;
 
-            _isAttacked = false;
-            IsGoingHome = true;
+            ReturnToInitialPosition();
         }
 
         private void PatrolBehaviour()
@@ -168,10 +167,10 @@ namespace Control
         }
 
         //Forces the AI to initial position
-        public void returnToInitialPosition()
+        public void ReturnToInitialPosition()
         {
-            //_isAttacked = false;
-            //IsGoingHome = true;
+            _isAttacked = false;
+            IsGoingHome = true;
         }
     }
 }
