@@ -1,4 +1,5 @@
 ﻿using Combat;
+using Dialogue;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -8,30 +9,49 @@ namespace Control
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Canvas statsCanvas;
         public Interactable focus;
 
         private Health _health;
+        private Mover _mover;
+        private Fighter _fighter;
+        private FighterSpell _fighterSpell;
 
         // Start is called before the first frame update
         private void Start()
         {
             _health = GetComponent<Health>();
+            _mover = GetComponent<Mover>();
+            _fighter = GetComponent<Fighter>();
+            _fighterSpell = GetComponent<FighterSpell>();
         }
-        
+
         // Update is called once per frame
         private void Update()
         {
             if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                statsCanvas.gameObject.SetActive(!statsCanvas.gameObject.activeSelf);
-            }
-            
+            if (InteractWithDialogue()) return;
+            //if (InteractWithCombat(false)) return;
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
-            if (InteractWithMovement()) return;
+            InteractWithMovement();
+        }
+
+        private bool InteractWithDialogue()
+		{
+            var hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
+            {
+                var dialogueTarget = hit.transform.GetComponent<AIDialogue>();
+                if (dialogueTarget == null || !dialogueTarget.enabled || dialogueTarget.GetDialogue == null) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget, dialogueTarget.GetDialogue);
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithCombat()
@@ -40,12 +60,16 @@ namespace Control
             foreach (var hit in hits)
             {
                 var target = hit.transform.GetComponent<CombatTarget>();
-                var fighter = GetComponent<Fighter>();
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
-
+                
                 if (Input.GetMouseButtonDown(0))
                 {
-                    fighter.Attack(target.gameObject);
+                    _fighter.Attack(target.gameObject);
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    // TODO : Get Spell on Weapon
+                    _fighterSpell.Cast(target.gameObject, CastSource.Weapon);
                 }
                 return true;
             }
@@ -58,10 +82,10 @@ namespace Control
             Physics.Raycast(GetMouseRay(), out var hit, 100);
             // Check if we hit an interactable
             if (hit.collider == null) return false;
-            
+
             var interactable = hit.collider.GetComponent<Interactable>();
             if (interactable == null || !Input.GetMouseButtonDown(1)) return false;
-            
+
             SetFocus(interactable);
             return true;
         }
@@ -70,14 +94,14 @@ namespace Control
         {
             var hasHit = Physics.Raycast(GetMouseRay(), out var hit);
             if (!hasHit || !DistanceToNewPosition(hit.point)) return false;
-            
+
             if (Input.GetMouseButton(0))
             {
-                GetComponent<Mover>().StartMoveAction(hit.point);
+                _mover.StartMoveAction(hit.point);
             }
             return true;
         }
-        
+
         private bool DistanceToNewPosition(Vector3 position)
         {
             return Vector3.Distance(position, transform.position) > 1f;
@@ -87,7 +111,7 @@ namespace Control
         {
             return !(Camera.main is null) ? Camera.main.ScreenPointToRay(Input.mousePosition) : default;
         }
-        
+
         private void SetFocus(Interactable newFocus)
         {
             if (newFocus != focus)

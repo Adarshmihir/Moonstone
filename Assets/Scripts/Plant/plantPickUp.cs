@@ -15,7 +15,7 @@ public class plantPickUp : Interactable
 
     private void PickUp()
     {
-        Debug.Log("Picking up " + plant.name + " !");
+        //Debug.Log("Picking up " + plant.name + " !");
         GameObject player = GameObject.Find("Player");
         switch (plant.name)
         {

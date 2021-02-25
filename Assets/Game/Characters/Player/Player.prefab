@@ -12,8 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cf89e51203642e48ae1c8a52b969bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsCanva: {fileID: 0}
+  statsCanvas: {fileID: 0}
   focus: {fileID: 0}
+--- !u!114 &859370110996144371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789706900591599424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5171b1a8c98a24890abeb25eac0be5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: ed94d96fe26e74249afe0184201445bc, type: 2}
 --- !u!1001 &3417460372594668911
 PrefabInstance:
   m_ObjectHideFlags: 0

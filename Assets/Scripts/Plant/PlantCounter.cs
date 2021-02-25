@@ -35,6 +35,6 @@ public class PlantCounter : MonoBehaviour
 
     public void showCount()
     {
-        Debug.Log("nbPlant1 = " + nbPlant1 + " nbPlant2 = " + nbPlant2 + " nbPlant3 = " + nbPlant3);
+        //Debug.Log("nbPlant1 = " + nbPlant1 + " nbPlant2 = " + nbPlant2 + " nbPlant3 = " + nbPlant3);
     }
 }

@@ -11,10 +11,10 @@ namespace Stats
     {
         //PUBLIC VARIABLES
         const int POINT_EACH_LEVEL = 2;
-        public List<Stat> characterStatsList;
         public GameObject LevelUpStatButtons;
         public GameObject PointsAvailable;
         public GameObject PointsToSpend;
+        
         public bool bLvlupactive;
         public int lvlup_Points;
 
@@ -39,9 +39,9 @@ namespace Stats
         
         
         //each click on the button increments the value
-        public void OnClickIncrementBaseValue(Stat characterStat)
+        public void OnClickIncrementBaseValue(CharacterStat characterStat)
         {
-            characterStat.stat.IncrementBaseValue(POINT_EACH_LEVEL);
+            characterStat.IncrementBaseValue(POINT_EACH_LEVEL);
             lvlup_Points -= 1;
             PointsToSpendTextUpdate(lvlup_Points);
             if (lvlup_Points == 0)
@@ -53,11 +53,21 @@ namespace Stats
         //DEBUG FUNCTION FOR STAT MODIFIER PERCENT TEST
         public void OnClickEquipRandomStuff()
         {
-            foreach (var characterStat in characterStatsList)
+            /*foreach (var characterStat in characterStatsList)
             {
                 StatModifier MODTEST = new StatModifier(10, StatModType.Percent, StatModSources.Item);
                 characterStat.stat.AddModifier(MODTEST);
+            }*/
+        }
+
+        public GameObject getNumberGameObject(StatTypes type)
+        {
+            GameObject gameObjectToReturn = GameObject.Find(type + "_Number");
+            if (gameObjectToReturn)
+            {
+                return gameObjectToReturn;
             }
+            return null;
         }
         
         //Update the points to spend number

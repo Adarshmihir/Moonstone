@@ -4,17 +4,17 @@ namespace Core
 {
     public class ActionScheduler : MonoBehaviour
     {
-        private IAction _currentAction;
-        
+        public IAction CurrentAction { get; private set; }
+
         public void StartAction(IAction action)
         {
-            if (_currentAction == action)
+            if (CurrentAction == action)
             {
                 return;
             }
 
-            _currentAction?.Cancel();
-            _currentAction = action;
+            CurrentAction?.Cancel();
+            CurrentAction = action;
         }
 
         public void CancelCurrentAction()

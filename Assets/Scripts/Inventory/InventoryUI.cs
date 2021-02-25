@@ -9,9 +9,8 @@ public class InventoryUI : MonoBehaviour {
 
     private InventorySlot[] slots;
 
-    public GameObject inventoryUI;
     // Start is called before the first frame update
-    void Start() {
+    public void Initialize_InventoryUI() {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += updateUI;
 
@@ -20,9 +19,7 @@ public class InventoryUI : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Inventory")) {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-        }
+ 
     }
 
     void updateUI() {
