@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Dialogue;
 
-namespace Dialogue
+namespace UI
 {
 	public class DialogueUI : MonoBehaviour
 	{
