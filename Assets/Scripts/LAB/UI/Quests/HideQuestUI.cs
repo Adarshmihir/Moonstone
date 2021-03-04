@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HideQuestUI : MonoBehaviour
+namespace UI.Quests
 {
-    // Start is called before the first frame update
-    private void Start()
+    public class HideQuestUI : MonoBehaviour
     {
-        gameObject.SetActive(false);
-    }
+        // Start is called before the first frame update
+        private void Start()
+        {
+            gameObject.SetActive(false);
+        }
 
-    public void Toggle()
-    {
-        gameObject.SetActive(!gameObject.activeSelf);
+        public void Toggle()
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+        }
     }
 }
