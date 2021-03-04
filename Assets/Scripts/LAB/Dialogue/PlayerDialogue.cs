@@ -45,12 +45,10 @@ namespace Dialogue
 
         public void SelectChoice(DialogueNode dialogueNode)
 		{
-			// TODO : FIX
-			
-            _node = dialogueNode;
+			_node = dialogueNode;
             StartEnterAction();
             IsChoosing = false;
-            OnUpdate?.Invoke();
+            Next();
         }
 
         public void Next()
@@ -65,9 +63,17 @@ namespace Dialogue
 
             var children = dialogue.GetSpecificChildren(_node, false).ToArray();
             StartExitAction();
-            _node = children[Random.Range(0, children.Length)];
-            StartEnterAction();
-            OnUpdate?.Invoke();
+
+            if (HasNextText())
+            {
+	            _node = children[Random.Range(0, children.Length)];
+	            StartEnterAction();
+	            OnUpdate?.Invoke();
+            }
+            else
+            {
+	            Quit();
+            }
 		}
 
 		public void Quit()

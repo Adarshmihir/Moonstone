@@ -47,7 +47,6 @@ namespace Control
                 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    print(dialogueTarget);
                     GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget, dialogueTarget.GetDialogue);
                 }
                 return true;
