@@ -9,14 +9,16 @@ namespace UI.Quests
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private Transform goalsParent;
         [SerializeField] private GameObject goalPrefab;
+        [SerializeField] private GameObject goalIncompletePrefab;
         [SerializeField] private TextMeshProUGUI rewards;
 
-        public void SetTooltipUI(Quest quest)
+        public void SetTooltipUI(QuestStatus questStatus)
         {
-            title.text = quest.Name;
-            foreach (var goal in quest.Goals)
+            title.text = questStatus.Quest.Name;
+            foreach (var goal in questStatus.Quest.Goals)
             {
-                var goalInstance = Instantiate(goalPrefab, goalsParent);
+                var prefab = questStatus.IsGoalComplete(goal) ? goalPrefab : goalIncompletePrefab;
+                var goalInstance = Instantiate(prefab, goalsParent);
                 var goalText = goalInstance.GetComponentInChildren<TextMeshProUGUI>();
                 
                 if (goalText == null) continue;

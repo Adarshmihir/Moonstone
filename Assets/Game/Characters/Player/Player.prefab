@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4202299118443311562
+--- !u!114 &773414289155920136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,11 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7789706900591599424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24cf89e51203642e48ae1c8a52b969bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c57ca07d326b4a79a13874fdfff4b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsCanvas: {fileID: 0}
-  focus: {fileID: 0}
+  questStatus:
+  - quest: {fileID: 11400000, guid: 2978926d7c6544d83a6bc3834b8813e2, type: 2}
+    status:
+    - KO
+    - ...
+  - quest: {fileID: 11400000, guid: b00bc4f2b464a42febc820917ddb2e12, type: 2}
+    status:
+    - Faire2
 --- !u!114 &859370110996144371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +33,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: ed94d96fe26e74249afe0184201445bc, type: 2}
+--- !u!114 &4202299118443311562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789706900591599424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cf89e51203642e48ae1c8a52b969bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focus: {fileID: 0}
 --- !u!1001 &3417460372594668911
 PrefabInstance:
   m_ObjectHideFlags: 0

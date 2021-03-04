@@ -44,9 +44,10 @@ namespace Control
             {
                 var dialogueTarget = hit.transform.GetComponent<AIDialogue>();
                 if (dialogueTarget == null || !dialogueTarget.enabled || dialogueTarget.GetDialogue == null) continue;
-
+                
                 if (Input.GetMouseButtonDown(0))
                 {
+                    print(dialogueTarget);
                     GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget, dialogueTarget.GetDialogue);
                 }
                 return true;
@@ -60,6 +61,7 @@ namespace Control
             foreach (var hit in hits)
             {
                 var target = hit.transform.GetComponent<CombatTarget>();
+                
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
                 
                 if (Input.GetMouseButtonDown(0))

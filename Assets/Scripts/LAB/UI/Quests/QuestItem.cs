@@ -9,14 +9,14 @@ namespace UI.Quests
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private TextMeshProUGUI progress;
         
-        public Quest Quest { get; private set; }
+        public QuestStatus QuestStatus { get; private set; }
 
-        public void UpdateUI(Quest quest)
+        public void UpdateUI(QuestStatus questStatus)
         {
-            Quest = quest;
+            QuestStatus = questStatus;
             
-            title.text = quest.Name;
-            progress.text = "0/" + quest.Count;
+            title.text = QuestStatus.Quest.Name;
+            progress.text = QuestStatus.Status.Count + "/" + QuestStatus.Quest.Count;
         }
     }
 }

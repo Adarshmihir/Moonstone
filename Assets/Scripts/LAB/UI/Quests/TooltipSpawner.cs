@@ -32,9 +32,9 @@ namespace UI.Quests
             var questItem = GetComponent<QuestItem>();
             var tooltipUI = _instanceTooltip.GetComponent<Toolltip>();
 
-            if (questItem == null || questItem.Quest == null || tooltipUI == null) return;
+            if (questItem == null || questItem.QuestStatus == null || tooltipUI == null) return;
             
-            tooltipUI.SetTooltipUI(questItem.Quest);
+            tooltipUI.SetTooltipUI(questItem.QuestStatus);
         }
 
         private void UpdateRectPosition()

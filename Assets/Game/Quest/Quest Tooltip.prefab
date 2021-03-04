@@ -732,4 +732,6 @@ MonoBehaviour:
   goalsParent: {fileID: 299155935827284762}
   goalPrefab: {fileID: 7616345599535635436, guid: 0029c32f9e73a47e18590d76fa126fad,
     type: 3}
+  goalIncompletePrefab: {fileID: 3559382426180468210, guid: e9695713d485d42c09c9c21496c2b186,
+    type: 3}
   rewards: {fileID: 2243014087525507315}
