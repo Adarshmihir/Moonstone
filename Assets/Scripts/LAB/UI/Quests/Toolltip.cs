@@ -15,6 +15,11 @@ namespace UI.Quests
 
         public void SetTooltipUI(QuestStatus questStatus)
         {
+            foreach (Transform goal in goalsParent)
+            {
+                Destroy(goal.gameObject);
+            }
+            
             title.text = questStatus.Quest.Name;
             foreach (var goal in questStatus.Quest.Goals)
             {

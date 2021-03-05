@@ -61,7 +61,10 @@ namespace UI
 
 		private void CreateChoiceList()
 		{
-			choiceList.DetachChildren();
+			foreach (Transform choice in choiceList)
+			{
+				Destroy(choice.gameObject);
+			}
 			foreach (var choice in _playerDialogue.GetChoices())
 			{
 				var choiceInstance = Instantiate(choicePrefab, choiceList);
