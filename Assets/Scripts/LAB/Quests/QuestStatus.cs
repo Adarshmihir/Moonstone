@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Quests
@@ -20,6 +21,13 @@ namespace Quests
         public bool IsGoalComplete(string goal)
         {
             return status.Contains(goal);
+        }
+
+        public void CompleteGoal(string goal)
+        {
+            if (!quest.Goals.Contains(goal) || status.Contains(goal)) return;
+            
+            status.Add(goal);
         }
     }
 }

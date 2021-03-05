@@ -377,6 +377,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 65127672}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &359327624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359327623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd112e6155932447b64100aa0c12c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 2978926d7c6544d83a6bc3834b8813e2, type: 2}
+  goal: KO
 --- !u!114 &359327625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +417,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: ad9b78e8432384d7cbe64dc86773e7aa, type: 2}
+--- !u!114 &359327627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359327623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5498e1ffdaa964671bbd073ca0cf7219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: TestCompletion
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 359327624}
+        m_MethodName: CompleteGoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &359327629
 MonoBehaviour:
   m_ObjectHideFlags: 0

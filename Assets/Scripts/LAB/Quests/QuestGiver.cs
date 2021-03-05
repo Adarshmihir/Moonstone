@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Quests;
+﻿using Quests;
 using UnityEngine;
 
 public class QuestGiver : MonoBehaviour

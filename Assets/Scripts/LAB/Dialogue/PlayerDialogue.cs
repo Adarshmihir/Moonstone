@@ -61,11 +61,10 @@ namespace Dialogue
                 return;
 			}
 
-            var children = dialogue.GetSpecificChildren(_node, false).ToArray();
-            StartExitAction();
-
             if (HasNextText())
             {
+	            var children = dialogue.GetSpecificChildren(_node, false).ToArray();
+	            StartExitAction();
 	            _node = children[Random.Range(0, children.Length)];
 	            StartEnterAction();
 	            OnUpdate?.Invoke();

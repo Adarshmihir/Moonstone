@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Quests
 {
@@ -11,29 +13,27 @@ namespace Quests
 
         public IEnumerable<QuestStatus> QuestStatuses => questStatus;
 
-        public event Action onUpdate;
+        public event Action OnUpdate;
 
         public void AddQuest(Quest quest)
         {
             if (HasQuest(quest)) return;
             
             questStatus.Add(new QuestStatus(quest));
-
-            if (onUpdate == null) return;
-            
-            onUpdate();
+            OnUpdate?.Invoke();
         }
 
-        private bool HasQuest(Quest quest)
+        private bool HasQuest(Object quest)
         {
-            foreach (var status in questStatus)
-            {
-                if (status.Quest == quest)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return questStatus.Any(status => status.Quest == quest);
+        }
+
+        public void CompleteGoal(Quest quest, string goal)
+        {
+            var status = questStatus.FirstOrDefault(element => element.Quest == quest);
+            
+            status?.CompleteGoal(goal);
+            OnUpdate?.Invoke();
         }
     }
 }

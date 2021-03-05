@@ -1,4 +1,5 @@
-﻿using Quests;
+﻿using System.Linq;
+using Quests;
 using UnityEngine;
 
 namespace UI.Quests
@@ -15,12 +16,16 @@ namespace UI.Quests
             var player = GameObject.FindGameObjectWithTag("Player");
             _questManager = player.GetComponent<QuestManager>();
 
-            _questManager.onUpdate += RefreshList;
+            _questManager.OnUpdate += RefreshList;
             RefreshList();
         }
 
         private void RefreshList()
         {
+            foreach (Transform child in transform) {
+                Destroy(child.gameObject);
+            }
+            
             foreach (var quest in _questManager.QuestStatuses)
             {
                 var instance = Instantiate(questPrefab, transform);

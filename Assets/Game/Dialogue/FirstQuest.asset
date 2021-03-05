@@ -40,6 +40,7 @@ MonoBehaviour:
   children:
   - 9b02552e-ea30-4c11-8665-3393e3628f78
   - dc164a36-57de-4e44-bfb0-6121a4057707
+  - f9da1b03-cbe8-422b-bbbf-1dd7641e90c1
   rect:
     serializedVersion: 2
     x: 131
@@ -65,6 +66,7 @@ MonoBehaviour:
   - {fileID: -9079662735766996000}
   - {fileID: 8801771783598027237}
   - {fileID: 64617581107869060}
+  - {fileID: 4910166782839961017}
   nodeOffset: {x: 250, y: 0}
 --- !u!114 &64617581107869060
 MonoBehaviour:
@@ -89,6 +91,29 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+--- !u!114 &4910166782839961017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: f9da1b03-cbe8-422b-bbbf-1dd7641e90c1
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: "Termin\xE9."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 389
+    y: 401
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: TestCompletion
 --- !u!114 &8801771783598027237
 MonoBehaviour:
   m_ObjectHideFlags: 0
