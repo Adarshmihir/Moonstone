@@ -33,7 +33,19 @@ namespace Quests
             var status = questStatus.FirstOrDefault(element => element.Quest == quest);
             
             status?.CompleteGoal(goal);
+            if (status != null && status.IsQuestDone())
+            {
+                GiveRewards(quest);
+            }
             OnUpdate?.Invoke();
+        }
+
+        private static void GiveRewards(Quest quest)
+        {
+            foreach (var reward in quest.Rewards)
+            {
+                // TODO : Add items to inventory
+            }
         }
     }
 }

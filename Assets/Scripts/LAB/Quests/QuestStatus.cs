@@ -25,9 +25,14 @@ namespace Quests
 
         public void CompleteGoal(string goal)
         {
-            if (!quest.Goals.Contains(goal) || status.Contains(goal)) return;
+            if (!quest.HasGoal(goal) || status.Contains(goal)) return;
             
             status.Add(goal);
+        }
+
+        public bool IsQuestDone()
+        {
+            return quest.Goals.All(goal => status.Contains(goal.id));
         }
     }
 }
