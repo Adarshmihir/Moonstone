@@ -24,6 +24,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &-2352814451908190078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,6 +52,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +98,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: Attack
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &5114746660291314733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +124,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: Attack
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &6104881993121722842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +151,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &8427828453735984361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +178,6 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []

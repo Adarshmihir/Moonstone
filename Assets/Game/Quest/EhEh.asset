@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: EhEh
   m_EditorClassIdentifier: 
   goals:
-  - OK
-  - KO
-  - ...
+  - id: id1
+    description: test1
+  - id: id2
+    description: test2
+  rewards:
+  - number: 1
+    item: {fileID: 11400000, guid: a2ca8be919987ca4692f1f8073718884, type: 2}
+  - number: 3
+    item: {fileID: 11400000, guid: 411d9bc5583834d4f9e8b97c017d7742, type: 2}

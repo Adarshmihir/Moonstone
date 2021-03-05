@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Quests
 {
-    public class QuestManager : MonoBehaviour
+    public class QuestManager : MonoBehaviour, IEvaluator
     {
         [SerializeField] private List<QuestStatus> questStatus = new List<QuestStatus>();
 
@@ -46,6 +47,13 @@ namespace Quests
             {
                 // TODO : Add items to inventory
             }
+        }
+
+        public bool? Evaluate(string evaluateName, string[] parameters)
+        {
+            if (evaluateName != "HasQuest") return null;
+            
+            return questStatus.Any(status => status.Quest.Name == parameters[0]);
         }
     }
 }

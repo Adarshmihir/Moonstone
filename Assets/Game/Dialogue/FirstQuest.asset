@@ -23,6 +23,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: GiveQuest
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &-1512488858590395843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,6 +52,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +97,9 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []
 --- !u!114 &4910166782839961017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +123,10 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: TestCompletion
+  condition:
+    name: HasQuest
+    parameters:
+    - EhEh
 --- !u!114 &8801771783598027237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,3 +151,6 @@ MonoBehaviour:
     height: 100
   enterAction: 
   exitAction: 
+  condition:
+    name: 
+    parameters: []

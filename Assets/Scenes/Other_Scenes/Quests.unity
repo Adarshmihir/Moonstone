@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quest: {fileID: 11400000, guid: 2978926d7c6544d83a6bc3834b8813e2, type: 2}
-  goal: KO
+  goal: id1
 --- !u!114 &359327625
 MonoBehaviour:
   m_ObjectHideFlags: 0

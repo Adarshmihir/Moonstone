@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Test1
   m_EditorClassIdentifier: 
   goals:
-  - faire1
-  - Faire2
+  - id: id1
+    description: test1
+  - id: id2
+    description: test2
+  rewards:
+  - number: 1
+    item: {fileID: 11400000, guid: 419c3526bcb3123478cc61cbc6b0e19f, type: 2}
