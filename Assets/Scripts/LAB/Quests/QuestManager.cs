@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
 using Core;
 using UnityEngine;
@@ -28,6 +29,11 @@ namespace Quests
         {
             return questStatus.Any(status => status.Quest == quest);
         }
+        
+        private Quest GetQuestByName(string questName)
+        {
+            return questStatus.FirstOrDefault(status => status.Quest.Name == questName)?.Quest;
+        }
 
         public void CompleteGoal(Quest quest, string goal)
         {
@@ -51,9 +57,18 @@ namespace Quests
 
         public bool? Evaluate(string evaluateName, string[] parameters)
         {
-            if (evaluateName != "HasQuest") return null;
+            if (parameters.Length == 0) return null;
             
-            return questStatus.Any(status => status.Quest.Name == parameters[0]);
+            var evaluatedQuest = GetQuestByName(parameters[0]);
+            switch (evaluateName)
+            {
+                case "HasQuest":
+                    return evaluatedQuest != null;
+                case "CompletedQuest":
+                    return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.IsQuestDone();
+                // TODO : Add evaluation ?
+            }
+            return null;
         }
     }
 }
