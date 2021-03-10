@@ -56,7 +56,7 @@ namespace Dialogue
 		{
             if (FilterByCondition(dialogue.GetSpecificChildren(_node, true)).Any())
             {
-                IsChoosing = true;
+	            IsChoosing = true;
                 StartExitAction();
                 OnUpdate?.Invoke();
                 return;

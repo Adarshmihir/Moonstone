@@ -28,6 +28,8 @@ namespace UI.Quests
             
             foreach (var quest in _questManager.QuestStatuses)
             {
+                if (quest.Done) continue;
+                
                 var instance = Instantiate(questPrefab, transform);
                 var questItem = instance.GetComponent<QuestItem>();
 

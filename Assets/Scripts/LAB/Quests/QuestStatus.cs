@@ -9,9 +9,11 @@ namespace Quests
     {
         [SerializeField] private Quest quest;
         [SerializeField] private List<string> status = new List<string>();
+        [SerializeField] private bool done;
 
         public Quest Quest => quest;
         public List<string> Status => status;
+        public bool Done => done;
 
         public QuestStatus(Quest newQuest)
         {
@@ -30,9 +32,14 @@ namespace Quests
             status.Add(goal);
         }
 
-        public bool IsQuestDone()
+        public bool IsQuestComplete()
         {
             return quest.Goals.All(goal => status.Contains(goal.id));
+        }
+
+        public void EndQuest()
+        {
+            done = true;
         }
     }
 }

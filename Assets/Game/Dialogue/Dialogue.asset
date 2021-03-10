@@ -25,8 +25,7 @@ MonoBehaviour:
   enterAction: 
   exitAction: 
   condition:
-    name: 
-    parameters: []
+    and: []
 --- !u!114 &-2352814451908190078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,21 +39,20 @@ MonoBehaviour:
   m_Name: e4346962-9d22-4d3b-b30c-570d0af0e355
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Bonjour! Il serait temps de commencer \xE0 explorer notre monde!"
+  text: "r notre monde!rait temps de commencer \xE0 explorer notre monde!"
   children:
   - 1dfec245-50bd-4812-a92c-9243d66d3163
   - b470692d-5d9f-4030-b2fe-56caf566e628
   rect:
     serializedVersion: 2
-    x: 199
-    y: 217
+    x: 206
+    y: 218
     width: 200
     height: 100
   enterAction: 
   exitAction: 
   condition:
-    name: 
-    parameters: []
+    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +97,7 @@ MonoBehaviour:
   enterAction: 
   exitAction: Attack
   condition:
-    name: 
-    parameters: []
+    and: []
 --- !u!114 &5114746660291314733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,8 +122,7 @@ MonoBehaviour:
   enterAction: 
   exitAction: Attack
   condition:
-    name: 
-    parameters: []
+    and: []
 --- !u!114 &6104881993121722842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +148,7 @@ MonoBehaviour:
   enterAction: 
   exitAction: 
   condition:
-    name: 
-    parameters: []
+    and: []
 --- !u!114 &8427828453735984361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,5 +174,4 @@ MonoBehaviour:
   enterAction: 
   exitAction: 
   condition:
-    name: 
-    parameters: []
+    and: []

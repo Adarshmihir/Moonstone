@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
 using System.Linq;
 using Core;
 using UnityEngine;
@@ -40,9 +38,17 @@ namespace Quests
             var status = questStatus.FirstOrDefault(element => element.Quest == quest);
             
             status?.CompleteGoal(goal);
-            if (status != null && status.IsQuestDone())
+            OnUpdate?.Invoke();
+        }
+
+        public void CompleteQuest(Quest quest)
+        {
+            var status = questStatus.FirstOrDefault(element => element.Quest == quest);
+            
+            if (status != null && status.IsQuestComplete())
             {
                 GiveRewards(quest);
+                status.EndQuest();
             }
             OnUpdate?.Invoke();
         }
@@ -60,12 +66,16 @@ namespace Quests
             if (parameters.Length == 0) return null;
             
             var evaluatedQuest = GetQuestByName(parameters[0]);
+            if (evaluatedQuest == null) return false;
+            
             switch (evaluateName)
             {
                 case "HasQuest":
                     return evaluatedQuest != null;
-                case "CompletedQuest":
-                    return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.IsQuestDone();
+                case "HasCompleted":
+                    return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.IsQuestComplete();
+                case "HasDone":
+                    return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.Done;
                 // TODO : Add evaluation ?
             }
             return null;

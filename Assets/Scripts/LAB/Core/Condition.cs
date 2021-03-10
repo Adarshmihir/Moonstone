@@ -34,7 +34,7 @@ namespace Core
 
             public bool CheckCondition(IEnumerable<IEvaluator> evaluators)
             {
-                return evaluators.Select(evaluator => evaluator.Evaluate(name, parameters)).All(result => result != negate);
+                return evaluators.Select(evaluator => evaluator.Evaluate(name, parameters)).All(result => result != negate);;
             }
         }
     }
