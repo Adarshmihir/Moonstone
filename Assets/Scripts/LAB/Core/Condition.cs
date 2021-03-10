@@ -29,12 +29,12 @@ namespace Core
         private class Predicate
         {
             [SerializeField] private string name;
-            [SerializeField] private string[] parameters;
+            [SerializeField] private string parameter;
             [SerializeField] private bool negate;
 
             public bool CheckCondition(IEnumerable<IEvaluator> evaluators)
             {
-                return evaluators.Select(evaluator => evaluator.Evaluate(name, parameters)).All(result => result != negate);;
+                return evaluators.Select(evaluator => evaluator.Evaluate(name, parameter)).All(result => result != negate);;
             }
         }
     }

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Test1
   m_EditorClassIdentifier: 
   goals:
-  - id: id1
+  - id: 0
     description: test1
-  - id: id2
+  - id: 1
     description: test2
   rewards:
   - number: 1

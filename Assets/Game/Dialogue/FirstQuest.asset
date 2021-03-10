@@ -20,8 +20,8 @@ MonoBehaviour:
   - a0025ccd-1f19-4217-8797-175f8e30938c
   rect:
     serializedVersion: 2
-    x: 391
-    y: 59
+    x: 395
+    y: 49
     width: 200
     height: 100
   enterAction: 
@@ -30,21 +30,17 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
       - name: HasDone
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
       - name: HasDone
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
 --- !u!114 &-8703829045236636436
 MonoBehaviour:
@@ -73,13 +69,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasCompleted
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
 --- !u!114 &-6579829516278299170
 MonoBehaviour:
@@ -134,21 +128,17 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
       - name: HasDone
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
       - name: HasDone
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
 --- !u!114 &-4145397816255022029
 MonoBehaviour:
@@ -177,13 +167,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasCompleted
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
 --- !u!114 &-3874062297560156844
 MonoBehaviour:
@@ -202,7 +190,7 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 903
+    x: 949
     y: 58
     width: 200
     height: 100
@@ -211,19 +199,16 @@ MonoBehaviour:
   condition:
     and:
     - or:
-      - name: HasCompleted
-        parameters:
-        - EhEh
+      - name: HasDone
+        parameter: 
         negate: 0
     - or:
       - name: HasCompleted
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
     - or:
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
 --- !u!114 &-3035257880739062494
 MonoBehaviour:
@@ -242,8 +227,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 680
-    y: 12
+    x: 688
+    y: 4
     width: 200
     height: 100
   enterAction: GiveEhEh
@@ -252,13 +237,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
     - or:
       - name: HasCompleted
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
 --- !u!114 &-2053929737758404127
 MonoBehaviour:
@@ -287,18 +270,15 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
     - or:
       - name: HasCompleted
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
     - or:
       - name: HasDone
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
 --- !u!114 &-1512488858590395843
 MonoBehaviour:
@@ -336,8 +316,7 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -420,13 +399,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
     - or:
       - name: HasCompleted
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
 --- !u!114 &2916637605522779511
 MonoBehaviour:
@@ -445,8 +422,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 371
-    y: 619
+    x: 390
+    y: 610
     width: 200
     height: 100
   enterAction: 
@@ -455,18 +432,15 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasDone
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
 --- !u!114 &4910166782839961017
 MonoBehaviour:
@@ -495,13 +469,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
     - or:
       - name: HasCompleted
-        parameters:
-        - EhEh
+        parameter: 
         negate: 1
 --- !u!114 &7538823131401107182
 MonoBehaviour:
@@ -530,13 +502,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameters:
-        - Test1
+        parameter: 
         negate: 1
     - or:
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 0
 --- !u!114 &8801771783598027237
 MonoBehaviour:
@@ -566,10 +536,8 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameters:
-        - EhEh
+        parameter: 
         negate: 0
       - name: HasQuest
-        parameters:
-        - Test1
+        parameter: 
         negate: 0

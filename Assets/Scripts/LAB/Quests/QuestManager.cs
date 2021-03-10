@@ -61,11 +61,11 @@ namespace Quests
             }
         }
 
-        public bool? Evaluate(string evaluateName, string[] parameters)
+        public bool? Evaluate(string evaluateName, string parameter)
         {
-            if (parameters.Length == 0) return null;
+            if (parameter.Length == 0) return null;
             
-            var evaluatedQuest = GetQuestByName(parameters[0]);
+            var evaluatedQuest = GetQuestByName(parameter);
             if (evaluatedQuest == null) return false;
             
             switch (evaluateName)
