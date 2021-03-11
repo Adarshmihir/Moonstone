@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Resources;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,12 +8,12 @@ public class Spawner : MonoBehaviour
     //PREFABS SETTINGS
     [Header("Prefabs Settings")]
     public List<GameObject> objectToSpawn;
-    
+
     [HideInInspector]
     public bool bDelay; //spawn every delay ?
-    
+
     private bool stopSpawning = false; //stop spawning ?
-    
+
     //SPAWNER SETTINGS
     private SphereCollider m_SpawnCollider;
     private Transform m_SpawnerTransform;
@@ -27,13 +27,16 @@ public class Spawner : MonoBehaviour
     [HideInInspector]
     public int maxArraySize; //maximum number of entities spawned
 
+    private bool isSpawning;
+
     public List<GameObject> arrayObjectSpawned; //list of prefab instantiated 
-    
+
     //draw method for spawner collider
-    private void OnDrawGizmosSelected() {
+    private void OnDrawGizmosSelected()
+    {
         if (m_SpawnerTransform == null)
             m_SpawnerTransform = transform;
-        Gizmos.color = new Color(0.58f,0.50f,0.16f, 1); //kaki
+        Gizmos.color = new Color(0.58f, 0.50f, 0.16f, 1); //kaki
         Gizmos.DrawWireSphere(m_SpawnerTransform.position, spawnerRadius);
     }
     private void Start()
@@ -44,13 +47,16 @@ public class Spawner : MonoBehaviour
         arrayObjectSpawned = new List<GameObject>();
         if (!bDelay)
         {
-            for (int i = 0; i<= maxArraySize; ++i)
+            for (int i = 0; i <= maxArraySize; ++i)
             {
                 Invoke(nameof(SpawnObject), 0.1f);
             }
         }
         InvokeRepeating(nameof(SpawnObject), spawnTime, spawnDelay);
+        isSpawning = true;
     }
+
+
 
     public void SpawnObject()
     {
@@ -62,27 +68,29 @@ public class Spawner : MonoBehaviour
         if (stopSpawning || arrayObjectSpawned.Count >= maxArraySize)
         {
             CancelInvoke(nameof(SpawnObject));
+            isSpawning = false;
         }
+        objectSpawned.GetComponent<Health>().setSpawner(this);
         arrayObjectSpawned.Add(objectSpawned);
     }
-    
-    
-    
+
+
+
     private GameObject GetRandomObjectToSpawn()
     {
         var countObjects = objectToSpawn.Count;
         if (countObjects < 1) return null; //if list is null/empty return null
-        
+
         if (countObjects == 1) //if there's only one object, spawn object
             return objectToSpawn[0];
 
-        var value = Random.Range(0,countObjects); //spawn a random object in list
+        var value = Random.Range(0, countObjects); //spawn a random object in list
         return objectToSpawn[value];
     }
 
     private Vector3 GetRandomVector3Spawn(float radius)
     {
-        var randPos = new Vector3(0,0,0);
+        var randPos = new Vector3(0, 0, 0);
         var bIsPosValid = true;
         randPos = Random.insideUnitSphere * spawnerRadius;
         randPos += transform.position;
@@ -93,26 +101,35 @@ public class Spawner : MonoBehaviour
     }
 
     // Clear the arrayObjectSpawned and objectToSpawn and Destroy the GameObject in arrayObjectSpawned
-    public void ClearSpawner() 
+    public void ClearSpawner()
     {
-        for (var i = 0; i < arrayObjectSpawned.Count; i++) {
+        for (var i = 0; i < arrayObjectSpawned.Count; i++)
+        {
             Destroy(this.arrayObjectSpawned[i]);
         }
         arrayObjectSpawned.Clear();
         objectToSpawn.Clear();
     }
-    
+
     // Remove the element toRemove from arrayObjectSpawned 
-    public void RemoveObject(GameObject toRemove) {
+    public void RemoveObject(GameObject toRemove)
+    {
         arrayObjectSpawned.Remove(toRemove);
+        if (!isSpawning)
+        {
+            isSpawning = true;
+            InvokeRepeating(nameof(SpawnObject), spawnDelay, spawnDelay);
+        }
     }
 
     // Add a new element to spawn in the list objectToSpawn
-    public void addObjectToSpawn(GameObject toAdd) {
+    public void addObjectToSpawn(GameObject toAdd)
+    {
         objectToSpawn.Add(toAdd);
     }
-     // Remove an element to spawn in the list objectToSpawn
-     public void removeObjectToSpawn(GameObject toRemove) {
+    // Remove an element to spawn in the list objectToSpawn
+    public void removeObjectToSpawn(GameObject toRemove)
+    {
         objectToSpawn.Remove(toRemove);
     }
 }

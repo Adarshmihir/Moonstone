@@ -22,6 +22,7 @@ namespace Resources
         private CapsuleCollider _capsuleCollider;
         private NavMeshAgent _navMeshAgent;
         private AIController _aiController;
+        private Spawner spawner;
 
         public float HealthPoints { get; private set; }
         public float MaxHealthPoints => maxHealthPoints;
@@ -80,6 +81,11 @@ namespace Resources
             }
         }
 
+        public void setSpawner(Spawner spawner)
+        {
+            this.spawner = spawner;
+        }
+
         private void Die()
         {
             if (IsDead) return;
@@ -90,8 +96,11 @@ namespace Resources
 
             _capsuleCollider.enabled = false;
             _navMeshAgent.enabled = false;
-
-            StartCoroutine(DestroyEnemy());
+            if (spawner != null)
+            {
+                spawner.RemoveObject(gameObject);
+            }
+            StartCoroutine(DestroyEnemy());            
         }
 
         private IEnumerator DestroyEnemy()
@@ -100,5 +109,6 @@ namespace Resources
 
             Destroy(gameObject);
         }
+
     }
 }
