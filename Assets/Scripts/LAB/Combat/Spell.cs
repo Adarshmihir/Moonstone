@@ -39,6 +39,7 @@ namespace Combat
         public float SpellDamage => spellDamage;
         public Texture SpellIcon => spellIcon;
         public float Cooldown => cooldown;
+        public float SpellRange => spellRange;
 
         public void Launch(Transform output, Health target, Fighter attacker)
         {

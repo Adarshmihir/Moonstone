@@ -41,7 +41,7 @@ namespace Combat
             if (Target == null || Target.IsDead) return;
 
             // Check if target is not too far
-            if (!GetIsInRange())
+            if (!GetIsInRange(Target.transform.position, weapon.WeaponRange))
             {
                 // Move towards the target until it is close enough
                 _mover.MoveTo(Target.transform.position);
@@ -142,10 +142,10 @@ namespace Combat
             Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
         }
 
-        private bool GetIsInRange()
+        public bool GetIsInRange(Vector3 targetPosition, float range)
         {
             // Check if the target is in range of weapon
-            return Vector3.Distance(transform.position, Target.transform.position) < weapon.WeaponRange;
+            return Vector3.Distance(transform.position, targetPosition) < range;
         }
 
         private bool GetIsInFieldOfView(Transform targetTransform)
