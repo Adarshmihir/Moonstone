@@ -28,6 +28,8 @@ namespace Resources
 
         public bool IsDead { get; private set; }
 
+        public List<string> Dots { get; } = new List<string>();
+
         // Start is called before the first frame update
         private void Start()
         {

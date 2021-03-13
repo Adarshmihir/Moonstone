@@ -20,6 +20,9 @@ namespace Combat
         [SerializeField] private SpellType spellType;
         [SerializeField] private Projectile projectile;
         [SerializeField] private float spellDamage = 5f;
+        [SerializeField] private float dotDamage;
+        [SerializeField] private float dotCount;
+        [SerializeField] private float dotTick;
         [SerializeField] private float cooldown = 1f;
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private GameObject particleEffect;
@@ -40,6 +43,9 @@ namespace Combat
         public Texture SpellIcon => spellIcon;
         public float Cooldown => cooldown;
         public float SpellRange => spellRange;
+        public float DotDamage => dotDamage;
+        public float DotCount => dotCount;
+        public float DotTick => dotTick;
 
         public void Launch(Transform output, Health target, Fighter attacker)
         {

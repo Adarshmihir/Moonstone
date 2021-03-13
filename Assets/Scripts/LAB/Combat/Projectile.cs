@@ -33,7 +33,30 @@ namespace Combat
             if (other.GetComponent<Health>() == null) return;
             
             Target.TakeDamage(Spell.SpellDamage, false, Attacker);
-            StartCoroutine(StartGameObjectDestroy());
+
+            if (Spell.DotCount > 0 && !Target.Dots.Contains(Spell.name))
+            {
+                Target.Dots.Add(Spell.name);
+                StartCoroutine(StartDot());
+            }
+            else
+            {
+                StartCoroutine(StartGameObjectDestroy());
+            }
+        }
+
+        private IEnumerator StartDot()
+        {
+            for (var i = 0; i < Spell.DotCount; i++)
+            {
+                yield return new WaitForSeconds(Spell.DotTick);
+                
+                Target.TakeDamage(Spell.DotDamage, false, Attacker);
+                transform.GetChild(0).localScale *= 0.85f;
+            }
+
+            Target.Dots.Remove(Spell.name);
+            Destroy(gameObject);
         }
 
         private IEnumerator StartGameObjectDestroy()
