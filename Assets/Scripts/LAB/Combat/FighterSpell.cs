@@ -150,6 +150,7 @@ namespace Combat
         private void StopCast()
         {
             // Stop cast animation
+            _fighter.ChangeWeaponVisibility(true);
             GetComponent<Animator>().ResetTrigger("cast");
             GetComponent<Animator>().SetTrigger("stopCast");
         }
