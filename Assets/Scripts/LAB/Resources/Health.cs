@@ -92,13 +92,19 @@ namespace Resources
             _navMeshAgent.enabled = false;
 
             StartCoroutine(DestroyEnemy());
+
+            if(!CompareTag("Player"))
+                PurgeManager.Instance.killedCount++;
         }
 
         private IEnumerator DestroyEnemy()
         {
             yield return new WaitForSeconds(destroyTime);
 
-            Destroy(gameObject);
+            if(transform.parent.gameObject != null)
+                Destroy(transform.parent.gameObject);
+            else
+                Destroy(gameObject);
         }
     }
 }

@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     public float life;
     public float mana;
     public List<Stat> stats;
-    
-    
+
+    public bool isInDungeon = false;
+    public bool hasKilledABoss = false;
     
     // Start is called before the first frame update
 

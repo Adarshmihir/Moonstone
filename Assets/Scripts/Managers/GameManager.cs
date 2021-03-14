@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Stats;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class GameManager : MonoBehaviour
 {   
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour
     //PUBLIC VARIABLES (SHOWN IN INSPECTOR)
     public Player player;
     private static GameManager _instance;
- 
+    public bool isPurgeActive = false;
+
     private GameManager() {
         
     }    
@@ -26,29 +28,35 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetButtonDown("Inventory"))
-        {
             uiManager.InventoryGO.SetActive(!uiManager.InventoryGO.activeSelf);
-        }
+        
         if (Input.GetKeyDown(KeyCode.A))
-        {
             uiManager.StatsCanvasGO.SetActive(!uiManager.StatsCanvasGO.activeSelf);
-        }
+
+        if (Input.GetButtonDown("PurgeMenu")) {
+            uiManager.PurgeMenuGO.SetActive(!uiManager.PurgeMenuGO.activeSelf);
+        }    
     }
 
-    private void Start()
-    {
+    private void Awake() {
         equipementManager = gameObject.GetComponent<EquipmentManager>();
         uiManager = gameObject.GetComponent<UIManager>();
+
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
         } else {
             _instance = this;
         }
+        
         uiManager.InitializeUIManager();
+        uiManager.HideUIAtLaunch();
         player.InitializePlayer();
         equipementManager.Initialize_EquipmentManager();
-        uiManager.HideUIAtLaunch();
+    }
+
+    private void Start() {
+        
     }
     
     // Add your game mananger members here

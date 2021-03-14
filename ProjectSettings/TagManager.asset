@@ -10,6 +10,12 @@ TagManager:
   - LifeBar
   - Enemy
   - Weapon
+  - Terrain
+  - Dungeon
+  - Purgium
+  - Enemy_mob
+  - Enemy_monster
+  - Timer
   layers:
   - Default
   - TransparentFX
@@ -20,10 +26,10 @@ TagManager:
   - 
   - 
   - Outline
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Enemy_monster
+  - Enemy_mob
   - 
   - 
   - 
