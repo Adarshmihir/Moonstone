@@ -33,7 +33,7 @@ namespace Combat
         private Fighter _fighter;
         private Mover _mover;
 
-        private Health Target { get; set; }
+        //private Health Target { get; set; }
 
         private void Start()
         {
@@ -47,10 +47,10 @@ namespace Combat
         // Update is called once per frame
         private void Update()
         {
-            if (Target == null || Target.IsDead  || _spellToCast.IsSpellOnCooldown()) return;
+            //if (/*Target == null || Target.IsDead  || */_spellToCast.IsSpellOnCooldown()) return;
 
             // Check if target is not too far
-            if (!_fighter.GetIsInRange(Target.transform.position, _spellToCast.SpellRange))
+            /*if (!_fighter.GetIsInRange(Target.transform.position, _spellToCast.SpellRange))
             {
                 // Move towards the target until it is close enough
                 _mover.MoveTo(Target.transform.position);
@@ -60,7 +60,7 @@ namespace Combat
                 // Cancel movement action and start attack
                 _mover.Cancel();
                 CastBehaviour();
-            }
+            }*/
         }
 
         private void UpdateSpell(Spell newSpell, CastSource castSource)
@@ -92,22 +92,28 @@ namespace Combat
             rawImage.texture = newSprite;
         }
 
-        public void Cast(GameObject combatTarget, CastSource castSource)
+        public void Cast(/*GameObject combatTarget, */CastSource castSource)
         {
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
             
             InitSpellToCast(castSource);
             
+            if (_spellToCast.IsSpellOnCooldown()) return;
+            
             // Define target
-            Target = combatTarget.GetComponent<Health>();
+            //Target = combatTarget.GetComponent<Health>();
             _castSource = castSource;
+            
+            CastBehaviour();
         }
 
         private void CastBehaviour()
         {
+            var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+            
             // Rotate the character in direction of the target
-            transform.LookAt(Target.transform);
+            transform.LookAt(hit.point);
             
             CastAnimation();
             _spellToCast.PutOnCooldown(_castSource);
@@ -144,7 +150,8 @@ namespace Combat
         // Animation event
         public void Shoot()
         {
-            _spellToCast.Launch(rightHandTransform, Target, _fighter);
+            //_spellToCast.Launch(rightHandTransform, Target, _fighter);
+            _spellToCast.Launch(rightHandTransform, _fighter);
         }
 
         // Animation event
@@ -164,7 +171,7 @@ namespace Combat
             // Stop cast action
             StopCast();
             // Remove target
-            Target = null;
+            //Target = null;
         }
         
         private void StopCast()

@@ -56,6 +56,12 @@ namespace Control
 
         private bool InteractWithCombat()
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                // TODO : Get Spell on Weapon
+                _fighterSpell.Cast(/*target.gameObject, */CastSource.Weapon);
+            }
+            
             var hits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in hits)
             {
@@ -65,11 +71,6 @@ namespace Control
                 if (Input.GetMouseButtonDown(0))
                 {
                     _fighter.Attack(target.gameObject);
-                }
-                else if (Input.GetMouseButtonDown(1))
-                {
-                    // TODO : Get Spell on Weapon
-                    _fighterSpell.Cast(target.gameObject, CastSource.Weapon);
                 }
                 return true;
             }

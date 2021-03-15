@@ -27,6 +27,8 @@ namespace Combat
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private GameObject particleEffect;
         [SerializeField] private Vector3 particleSize;
+        [SerializeField] private GameObject particleEffectImpact;
+        [SerializeField] private Vector3 particleSizeImpact;
         [SerializeField] private Texture spellIcon;
         
         // For UniqueEffect, ContactEffect and ZoneEffect
@@ -46,8 +48,10 @@ namespace Combat
         public float DotDamage => dotDamage;
         public float DotCount => dotCount;
         public float DotTick => dotTick;
+        public GameObject ParticleEffectImpact => particleEffectImpact;
+        public Vector3 ParticleSizeImpact => particleSizeImpact;
 
-        public void Launch(Transform output, Health target, Fighter attacker)
+        public void Launch(Transform output/*, Health target*/, Fighter attacker)
         {
             if (projectile == null)
             {
@@ -55,20 +59,22 @@ namespace Combat
             }
             else
             {
-                LaunchProjectile(output, target, attacker);
+                LaunchProjectile(output/*, target*/, attacker);
             }
         }
 
-        private void LaunchProjectile(Transform output, Health target, Fighter attacker)
+        private void LaunchProjectile(Transform output/*, Health target*/, Fighter attacker)
         {
             var projectileInstance = Instantiate(projectile, output.position, Quaternion.identity);
             var particle = Instantiate(particleEffect, projectileInstance.transform.position, Quaternion.identity);
             
             particle.transform.parent = projectileInstance.transform;
             particle.transform.localScale = particleSize;
+            
             projectileInstance.Spell = this;
-            projectileInstance.Target = target;
+            //projectileInstance.Target = target;
             projectileInstance.Attacker = attacker;
+            projectileInstance.StartCast();
         }
 
         public void ResetCooldown()

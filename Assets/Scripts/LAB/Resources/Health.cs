@@ -96,6 +96,27 @@ namespace Resources
             StartCoroutine(DestroyEnemy());
         }
 
+        public void TakeDot(Spell spell, Fighter fighter)
+        {
+            if (!(spell.DotCount > 0) || Dots.Contains(spell.name)) return;
+            
+            Dots.Add(spell.name);
+            StartCoroutine(StartDot(spell, fighter));
+        }
+        
+        private IEnumerator StartDot(Spell spell, Fighter fighter)
+        {
+            for (var i = 0; i < spell.DotCount; i++)
+            {
+                yield return new WaitForSeconds(spell.DotTick);
+                
+                TakeDamage(spell.DotDamage, false, fighter);
+                transform.GetChild(0).localScale *= 0.85f;
+            }
+
+            Dots.Remove(spell.name);
+        }
+
         private IEnumerator DestroyEnemy()
         {
             yield return new WaitForSeconds(destroyTime);
