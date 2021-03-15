@@ -12,8 +12,7 @@ public class AudioManager : MonoBehaviour {
     
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
     }
 
     // Update is called once per frame
@@ -30,10 +29,12 @@ public class AudioManager : MonoBehaviour {
                     purgeThemeSource.Play();
         }
         else {
-            sources = this.GetComponents<AudioSource>();
+            sources = GetComponents<AudioSource>();
             foreach (AudioSource audioSource in sources) {
                 audioSource.Stop();
             }
+
+            alertHasBeenPlayed = false;
         }
     }
 }

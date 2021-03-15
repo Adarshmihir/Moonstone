@@ -7,17 +7,39 @@ public class PurgeMenu : MonoBehaviour
 {
     public Image fill;
     public Text counterText;
-    //public float purgeIncrement; // For increment differences purposes
-    private string baseCounterString = "Purge level: ";
     public Timer timer;
+
+    public Text timerText;
+    public Text timerLabel;
+
+    public Text remainLabel;
+    public Text remainText;
     
     // Start is called before the first frame update
     void Start() {
-        counterText.text = baseCounterString + fill.fillAmount;
+        counterText.text += fill.fillAmount;
     }
 
 // Update is called once per frame
     void Update() {
         counterText.text = PurgeManager.Instance.purgiumAmount + "%";
+
+        if (!GameManager.Instance.isPurgeActive) {
+            timerText.enabled = false;
+            timerLabel.text = "Purge not active !";
+
+            remainLabel.enabled = false;
+            remainText.enabled = false;
+        }
+        else {
+            timerLabel.text = "Time remaining : ";
+                        
+            timerText.enabled = true;
+            timerText.color = Color.red;
+
+            remainLabel.enabled = true;
+            remainText.enabled = true;
+            remainText.text = PurgeManager.Instance.killedCount + " / " + PurgeManager.Instance.numberToKill;
+        }
     }
 }

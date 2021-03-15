@@ -13,9 +13,11 @@ TagManager:
   - Terrain
   - Dungeon
   - Purgium
-  - Enemy_mob
   - Enemy_monster
   - Timer
+  - mob
+  - monster
+  - Enemy_mob
   layers:
   - Default
   - TransparentFX

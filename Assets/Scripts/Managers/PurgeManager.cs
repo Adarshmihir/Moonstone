@@ -32,23 +32,21 @@ public class PurgeManager : MonoBehaviour {
     private int purgeIncrement;
     private const int DefaultPurgeIncrement = 1;
     public double purgiumAmount = 0;
-
-    public List<GameObject> dungeonMonsters = new List<GameObject>();
-    public GameObject[] mobs;
     
     readonly Random randomX = new Random();
     readonly Random randomZ = new Random();
     
     [SerializeField]
-    private GameObject[] spawnpoints;
+    private Spawner[] spawners;
+    public int killedCount = 1;
+    public int numberToKill = 0;
 
-    public int numberToSpawn = 0;
+    public int purgeLevel = 1;
 
-    public int killedCount = 0;
-    public int numberToKill = 1;
+    public GameObject toSpawnMob;
+    public GameObject toSpawnMonster;
 
-    public GameObject monsterToSpawn;
-    public GameObject mobToSpawn;
+    public bool playerWasAgressive = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -60,24 +58,22 @@ public class PurgeManager : MonoBehaviour {
         purgeFillDurationInSeconds = DefaultPurgeFillDurationInSeconds;
         purgeIncrement = DefaultPurgeIncrement;
 
-        //set timer
-        purgeUI.timer.timeRemaining = 1200;
+        numberToKill = purgeLevel * 2;
     }
 
     // Update is called once per frame
     void Update() {
-        GameManager.Instance.isPurgeActive = purgiumAmount >= 100;
         purgiumAmount = Math.Floor(purgeUI.fill.fillAmount * 100);
         purgeUI.fill.fillAmount += (purgeIncrement * Time.deltaTime) / purgeFillDurationInSeconds;
         
-        if (!GameManager.Instance.isPurgeActive && PurgeManager.Instance.killedCount >= PurgeManager.Instance.numberToKill)
-            purgeUI.fill.fillAmount = 0f;
-        
-        //spawnpoints = GameObject.FindGameObjectWithTag("Respawn").GetComponentsInChildren<Spawner>();
-        spawnpoints = GameObject.FindGameObjectsWithTag("Respawn");
         
         
-
+        // if (GameManager.Instance.isPurgeActive && killedCount >= CountMonsters())
+        //     purgeUI.fill.fillAmount = 0f;
+        
+        //spawners = GameObject.FindGameObjectWithTag("Respawn").GetComponentsInChildren<Spawner>();
+        spawners = GameObject.FindObjectsOfType<Spawner>();
+        
         player = GameManager.Instance.player;
         collider = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<SphereCollider>();
         
@@ -109,51 +105,55 @@ public class PurgeManager : MonoBehaviour {
 
         // Trigger the purge mode
         // If purge bar is full
-         if (GameManager.Instance.isPurgeActive) {
-             // Deny access to any structure expect village while purge is active
-             //TODO: Voir corentin pour checker comme lui l'entree dans le portail.
-             
-             // Feedbacks
-             // Sirene au declenchement into musique de combat
-             //TODO: Peut etre appeler une methode de l'AudioManager ?
-             
-             // Make sure player is out of a dungeon
-             if (!player.isInDungeon) {
-                 // Spawn "n" monsters outside of dungeon at each spawpoint, "n" being defined by purge lvl
-                 foreach (GameObject spawnpoint in spawnpoints) {
-                     numberToSpawn = 3;
-                     if(spawnpoint.transform.childCount < numberToSpawn)
-                         SpawnOutOfDungeon(monsterToSpawn, spawnpoint.transform, numberToSpawn);
-                 }
+        if (purgiumAmount >= 100) {
+            GameManager.Instance.isPurgeActive = true;
 
-                 // Vanish all mobs (= open world ennemies)
-                 if (getAllMobs().Length > 0) {
-                     DestroyAllMobs();
-                 }
-             }
-             
-             // Player didnt kill all monsters ..
-             else {
-                 // Because he ran out of time
-             }
-             // Else
-             // TODO: Choisir une option avec le groupe (Voir GDD)
-         }
-         
-         // If player kills all monsters (fixed number)
-         if (killedCount >= numberToKill) {
-             purgeUI.fill.fillAmount = 0;
-                 
-             // Spawn normal enemies
-             foreach (GameObject spawnpoint in spawnpoints) {
-                 numberToSpawn = 1;
-                 if(spawnpoint.transform.childCount < numberToSpawn)
-                     SpawnOutOfDungeon(mobToSpawn, spawnpoint.transform, numberToSpawn);
-             }
-             
-             // End of purge
-             killedCount = 0;
-         }
+            // Force to open purge menu at beginning
+            purgeUI.gameObject.SetActive(true);
+
+            numberToKill = purgeLevel * 2;
+            Debug.Log("Player need to kill " + numberToKill + " monsters to end purge");
+
+            // Deny access to any structure expect village while purge is active
+            //TODO: Voir corentin pour checker comme lui l'entree dans le portail.
+
+            // Feedbacks
+            // Sirene au declenchement into musique de combat
+            //TODO: Peut etre appeler une methode de l'AudioManager ?
+
+            // Make sure player is out of a dungeon
+            if (!player.isInDungeon) {
+                // Spawn monsters at each outside spawner //TODO: manage inside/outside spawners
+                clearAndSetSpawners("Enemy_monster");
+
+                // At purge end ...
+                if (purgeUI.timer.timeRemaining <= 0) {
+                    // If player killed all monsters (fixed number)
+                    if (killedCount >= numberToKill) {
+                        Debug.Log("All monsters killed !");
+                        purgeUI.fill.fillAmount = 0;
+
+                        // Spawn normal enemies
+                        clearAndSetSpawners("Enemy_mob");
+                    }
+                    else { // Player didnt kill all monsters ..
+                        // If player was aggressive (trying to complete purge) --> // isPlayerAggressive > (method : +1 to a counter when player hits a enemy. if counter > 0.75 * numberToKill = true
+                        if (playerWasAgressive)
+                            // TODO: Choisir une option avec le groupe (Voir GDD)
+                            outOfTimePenalty();
+                        else
+                            lackOfKillsPenalty();
+                    }
+                } else if (killedCount >= numberToKill) {
+                    // TODO: reset to normal mode
+                }
+            }
+        }
+        else {
+            GameManager.Instance.isPurgeActive = false;
+            killedCount = 0;
+        }
+            
     }
     private void SpawnOutOfDungeon(GameObject prefabToSpawn, Transform spawnpoint, int _numberToSpawn) {
         /*dungeonMonsters = getAllMonstersInDungeon();
@@ -178,40 +178,48 @@ public class PurgeManager : MonoBehaviour {
             Instantiate(prefabToSpawn, new Vector3(randX, -10, randZ), new Quaternion(), spawnpoint.transform);
         }
     }
-    
-    private GameObject[] getAllMobs() { 
-        return GameObject.FindGameObjectsWithTag("Enemy_mob");
+
+    public void clearAndSetSpawners(string tag) {
+        foreach (Spawner _spawner in spawners) {
+            if (_spawner.arrayObjectSpawned.Count > 0 && _spawner.arrayObjectSpawned[0].CompareTag("Enemy_mob")) {
+                _spawner.ClearSpawner();
+                Debug.Log(tag + " cleared!");
+
+                switch (tag) {
+                    case "Enemy_mob":
+                        if(toSpawnMob != null) 
+                            _spawner.addObjectToSpawn(toSpawnMob);
+                        
+                        GameManager.Instance.isPurgeActive = false;
+                        break;
+                    
+                    case "Enemy_monster":
+                        if(toSpawnMonster != null) 
+                            _spawner.addObjectToSpawn(toSpawnMonster);
+                        
+                        
+                        GameManager.Instance.isPurgeActive = true;
+                        break;
+                    
+                    default:
+                        Debug.Log("The tag you trying to instantiate doesn't exist");
+                        break;
+                }
+            }
+        }
     }
-    
-    /*private List<GameObject> getAllMonstersInDungeon() {
-        List<GameObject> monsters = new List<GameObject>();
-        
-        // Store all enemies in dungeon
-        Collider[] colliders = Physics.OverlapSphere(dungeonPos, collider.radius, LayerMask.GetMask("Enemy_monster"));
-        foreach (Collider col in colliders) {
-            monsters.Add(col.gameObject);
-        }
 
-        return monsters;
-    }*/
-    
-    private List<GameObject> getAllMonstersOutside() {
-        List<GameObject> monsters = new List<GameObject>();
-        
-        // Store all enemies in dungeon
-        GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy_monster");
-        
-        foreach (GameObject go in temp) {
-            monsters.Add(go);
-        }
-
-        return monsters;
+    public void outOfTimePenalty() {
+        Debug.Log("loose cause of time");
     }
 
-    private void DestroyAllMobs() {
-        mobs = getAllMobs();
-        foreach (var mob in mobs) {
-            Destroy(mob.transform.parent.gameObject);
-        }
+    public void lackOfKillsPenalty() {
+        Debug.Log("loose cause you were lazy");
+    }
+
+    public bool checkPlayerAgressiveness() {
+
+
+        return true;
     }
 }

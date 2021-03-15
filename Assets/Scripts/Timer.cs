@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
     public float timeRemaining;
     public bool timerIsRunning = false;
-    public Text timeText;
+    public Text timerText;
+
+    public float defaultTime;
 
     private void Start() {
-        // Starts the timer automatically
-        timerIsRunning = true;
+        defaultTime = 300f;
+        timeRemaining = defaultTime;
     }
 
     void Update() {
@@ -17,12 +19,22 @@ public class Timer : MonoBehaviour {
                 timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
             }
+            // Time's out
             else {
-                Debug.Log("Time has run out!");
+                Debug.Log("Time's out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
         }
+        else {
+            timerIsRunning = false;
+            timeRemaining = defaultTime;
+        }
+        
+        if(timerText.IsActive() && GameManager.Instance.isPurgeActive)
+            timerIsRunning = true;
+        else
+            timerIsRunning = false;
     }
 
     void DisplayTime(float timeToDisplay) {
@@ -31,6 +43,6 @@ public class Timer : MonoBehaviour {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
