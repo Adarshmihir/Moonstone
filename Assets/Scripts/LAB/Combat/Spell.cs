@@ -1,5 +1,4 @@
 ﻿using System;
-using Resources;
 using UnityEngine;
 
 namespace Combat
@@ -10,6 +9,12 @@ namespace Combat
         ContactEffect,
         ZoneEffect
     }
+
+    public enum SpellEffect
+    {
+        Damage,
+        Heal
+    }
     
     // TODO : Enum spell effect (heal, one time damage or dot)
     // TODO : Spell type (fire, light, etc.)
@@ -18,17 +23,22 @@ namespace Combat
     public class Spell : ScriptableObject
     {
         [SerializeField] private SpellType spellType;
+        [SerializeField] private SpellEffect spellEffect;
+        
         [SerializeField] private Projectile projectile;
+        
         [SerializeField] private float spellDamage = 5f;
         [SerializeField] private float dotDamage;
         [SerializeField] private float dotCount;
         [SerializeField] private float dotTick;
         [SerializeField] private float cooldown = 1f;
+        
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private GameObject particleEffect;
         [SerializeField] private Vector3 particleSize;
         [SerializeField] private GameObject particleEffectImpact;
         [SerializeField] private Vector3 particleSizeImpact;
+        
         [SerializeField] private Texture spellIcon;
         
         // For UniqueEffect, ContactEffect and ZoneEffect
@@ -53,14 +63,15 @@ namespace Combat
 
         public void Launch(Transform output/*, Health target*/, Fighter attacker)
         {
-            if (projectile == null)
+            /*if (isProjectileInstant)
             {
                 // TODO : Call launch AOE
+                LaunchArea(attacker);
             }
             else
-            {
+            {*/
                 LaunchProjectile(output/*, target*/, attacker);
-            }
+            //}
         }
 
         private void LaunchProjectile(Transform output/*, Health target*/, Fighter attacker)
@@ -76,6 +87,19 @@ namespace Combat
             projectileInstance.Attacker = attacker;
             projectileInstance.StartCast();
         }
+
+        /*private void LaunchArea(Fighter attacker)
+        {
+            var projectileInstance = Instantiate(projectile, attacker.transform.position, Quaternion.identity);
+            var particle = Instantiate(particleEffect, projectileInstance.transform.position, Quaternion.identity);
+            
+            particle.transform.parent = projectileInstance.transform;
+            particle.transform.localScale = particleSize;
+            
+            projectileInstance.Spell = this;
+            projectileInstance.Attacker = attacker;
+            projectileInstance.StartCast();
+        }*/
 
         public void ResetCooldown()
         {

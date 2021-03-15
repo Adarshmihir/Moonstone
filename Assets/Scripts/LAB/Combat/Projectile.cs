@@ -7,7 +7,6 @@ namespace Combat
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private float speed = 1f;
-        [SerializeField] private float maxDistance = 15f;
 
         private Vector3 _initialPosition;
         private bool _casting = true;
@@ -20,15 +19,35 @@ namespace Combat
         // Update is called once per frame
         private void Update()
         {
-            if (!_casting || !(Vector3.Distance(_initialPosition, transform.position) >= maxDistance)) return;
+            if (!_casting || !(Vector3.Distance(_initialPosition, transform.position) >= Spell.SpellRange)) return;
             
             ProjectileImpact();
         }
 
         public void StartCast()
         {
-            _initialPosition = transform.position;
-            GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("Player").transform.forward * speed);
+            var projectileRigidbody = GetComponent<Rigidbody>();
+            projectileRigidbody.isKinematic = speed == 0f;
+            
+            if (speed == 0f)
+            {
+                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+                
+                if (Vector3.Distance(Attacker.transform.position , hit.point) <= Spell.SpellRange)
+                {
+                    transform.position = hit.point;
+                }
+                else
+                {
+                    var attackerTransform = Attacker.transform;
+                    transform.position = attackerTransform.forward * Spell.SpellRange + attackerTransform.position;
+                }
+            }
+            else
+            {
+                _initialPosition = transform.position;
+                projectileRigidbody.AddForce(GameObject.FindGameObjectWithTag("Player").transform.forward * speed);
+            }
         }
 
         private void ProjectileImpact()
@@ -65,7 +84,7 @@ namespace Combat
         {
             var colliderHealth = target.GetComponent<Health>();
             
-            if (colliderHealth == null || _casting) return;
+            if (colliderHealth == null || Attacker.CompareTag(colliderHealth.tag) || _casting) return;
             
             colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
             colliderHealth.TakeDot(Spell, Attacker);
