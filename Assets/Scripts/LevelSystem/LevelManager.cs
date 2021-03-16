@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private LevelWindow levelWindow;
+    public LevelWindow levelWindow;
 
-    private void Awake()
+    public void InitializeLevelManager()
     {
         XpSystem levelSystem = new XpSystem();
         levelWindow.SetLevelSystem(levelSystem);
+        Debug.Log(levelWindow.levelSystem);
     }
 }

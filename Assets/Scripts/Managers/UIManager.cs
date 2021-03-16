@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject CanvasRessource;
     public GameObject Enchantress;
     public GameObject Forgeron;
+    public GameObject LevelManager;
     //GAMEOBJECTS
     [HideInInspector]
     public GameObject MiniMapCanvasGO;
@@ -30,6 +31,8 @@ public class UIManager : MonoBehaviour
     public GameObject EnchantressGO;
     [HideInInspector]
     public GameObject ForgeronGO;
+    [HideInInspector]
+    public GameObject LevelManagerGO;
 
     public void InitializeUIManager()
     {
@@ -43,6 +46,8 @@ public class UIManager : MonoBehaviour
         //HealthGlobeGO = Instantiate(HealthGlobe);
         //CanvasRessourceGO = Instantiate(CanvasRessource);
         ForgeronGO = Instantiate(Forgeron);
+        LevelManagerGO = Instantiate(LevelManager);
+        LevelManagerGO.GetComponent<LevelManager>().InitializeLevelManager();
     }
 
     public void HideUIAtLaunch()
