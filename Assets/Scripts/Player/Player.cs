@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float life;
     public float mana;
     public List<Stat> stats;
-    
+    public int level;
     
     
     // Start is called before the first frame update
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     }
     public void InitializePlayer()
     {
+        level = 1;
         InitializeStats();
     }
     

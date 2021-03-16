@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,5 +59,8 @@ public class LevelWindow : MonoBehaviour
     private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
     {
         SetLevelNumber(levelSystem.GetLevelNumber());
+        GameManager.Instance.player.level = levelSystem.GetLevelNumber();
+        StatList statlist = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
+        statlist.ToggleLevelUp(true);
     }
 }
