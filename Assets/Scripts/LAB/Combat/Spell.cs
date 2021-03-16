@@ -55,11 +55,13 @@ namespace Combat
         public Texture SpellIcon => spellIcon;
         public float Cooldown => cooldown;
         public float SpellRange => spellRange;
+        public float SpellZoneArea => spellZoneArea;
         public float DotDamage => dotDamage;
         public float DotCount => dotCount;
         public float DotTick => dotTick;
         public GameObject ParticleEffectImpact => particleEffectImpact;
         public Vector3 ParticleSizeImpact => particleSizeImpact;
+        public SpellType SpellType => spellType;
 
         public void Launch(Transform output/*, Health target*/, Fighter attacker)
         {
@@ -77,15 +79,30 @@ namespace Combat
         private void LaunchProjectile(Transform output/*, Health target*/, Fighter attacker)
         {
             var projectileInstance = Instantiate(projectile, output.position, Quaternion.identity);
+            
+            //projectileInstance.Target = target;
+            projectileInstance.Spell = this;
+            projectileInstance.Attacker = attacker;
+            projectileInstance.StartCast();
+
+            SetParticle(projectileInstance);
+            UpdateParticleSize();
+        }
+
+        private void SetParticle(Component projectileInstance)
+        {
             var particle = Instantiate(particleEffect, projectileInstance.transform.position, Quaternion.identity);
             
             particle.transform.parent = projectileInstance.transform;
             particle.transform.localScale = particleSize;
+        }
+
+        private void UpdateParticleSize()
+        {
+            if (spellType != SpellType.ZoneEffect) return;
             
-            projectileInstance.Spell = this;
-            //projectileInstance.Target = target;
-            projectileInstance.Attacker = attacker;
-            projectileInstance.StartCast();
+            particleSize = new Vector3(spellZoneArea, spellZoneArea, spellZoneArea);
+            particleSizeImpact = new Vector3(spellZoneArea, spellZoneArea, spellZoneArea);
         }
 
         /*private void LaunchArea(Fighter attacker)

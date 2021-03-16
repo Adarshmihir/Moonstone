@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Resources;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Combat
         [SerializeField] private float speed = 1f;
 
         private Vector3 _initialPosition;
-        private bool _casting = true;
+        private bool _isCasting = true;
         private float _destroyTimer;
         
         public Spell Spell { get; set; }
@@ -19,9 +20,26 @@ namespace Combat
         // Update is called once per frame
         private void Update()
         {
-            if (!_casting || !(Vector3.Distance(_initialPosition, transform.position) >= Spell.SpellRange)) return;
-            
-            ProjectileImpact();
+            switch (Spell.SpellType)
+            {
+                case SpellType.UniqueEffect:
+                    if (_isCasting && Vector3.Distance(_initialPosition, transform.position) >= Spell.SpellRange)
+                    {
+                        ProjectileImpact();
+                    }
+                    break;
+                case SpellType.ContactEffect:
+                    break;
+                case SpellType.ZoneEffect:
+                    if (_isCasting)
+                    {
+                        _isCasting = false;
+                        StartCoroutine(DamageOverTimeInArea());
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void StartCast()
@@ -52,9 +70,9 @@ namespace Combat
 
         private void ProjectileImpact()
         {
-            if (Spell.ParticleEffectImpact == null || !_casting) return;
+            if (Spell.ParticleEffectImpact == null || !_isCasting) return;
             
-            _casting = false;
+            _isCasting = false;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
             CleanChildren();
@@ -84,7 +102,7 @@ namespace Combat
         {
             var colliderHealth = target.GetComponent<Health>();
             
-            if (colliderHealth == null || Attacker.CompareTag(colliderHealth.tag) || _casting) return;
+            if (colliderHealth == null || Attacker.CompareTag(colliderHealth.tag) || _isCasting) return;
             
             colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
             colliderHealth.TakeDot(Spell, Attacker);
@@ -92,10 +110,30 @@ namespace Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.name == "SafeZone") return;
+            if (other.name == "SafeZone" || Spell.SpellType != SpellType.UniqueEffect) return;
             
             ProjectileImpact();
             DealDamage(other);
+        }
+
+        private IEnumerator DamageOverTimeInArea()
+        {
+            for (var i = 0; i < Spell.DotCount; i++)
+            {
+                yield return new WaitForSeconds(Spell.DotTick); 
+                
+                var colliders = Physics.OverlapSphere(transform.position, Spell.SpellRange);
+                foreach (var newTarget in colliders)
+                {
+                    var targetHealth = newTarget.GetComponent<Health>();
+                    
+                    if (targetHealth == null || Attacker.CompareTag(targetHealth.tag)) continue;
+                    
+                    targetHealth.TakeDamage(Spell.DotDamage, false, Attacker);
+                }
+            }
+            
+            Destroy(gameObject);
         }
 
         private IEnumerator DestroyProjectile()
