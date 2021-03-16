@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goals:
   - id: 0
-    description: "R\xE9cup\xE9rer la plant1"
+    description: "R\xE9cup\xE9rer une plante"
   - id: 1
-    description: Manger la plant1
-  - id: 2
-    description: "R\xE9cup\xE9rer la plant2"
-  - id: 3
-    description: Manger la plant2
+    description: Manger les plantes
   rewards: []

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goals:
   - id: 0
-    description: Obtenir 1000 Golds
+    description: Obtenir 100 Golds
   - id: 1
     description: Enchanter une arme
   rewards: []
