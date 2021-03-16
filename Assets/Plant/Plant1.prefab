@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1208756342238242526}
   - component: {fileID: 1208756342238242521}
   - component: {fileID: 1208756342238242498}
+  - component: {fileID: 1043616492221375686}
   m_Layer: 0
   m_Name: Plant1
   m_TagString: Untagged
@@ -125,6 +126,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   interactionTransform: {fileID: 1208756342238242525}
+--- !u!114 &1043616492221375686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208756342238242520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31591af00769f44b9ad61b2ee10a6a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healingBarFront: {fileID: 0}
+  currentHeal: 0
+  healIncrease: 0
+  healDecrease: 0
+  minHeal: 0
+  maxHeal: 1
+  minLife: 0
+  maxLife: 1
+  lifeBar: {fileID: 0}
+  currentLife: 0
+  missingLife: 0
+  lifeIncrease: 0
+  lifeDecrease: 0
+  isHealing: 0
+  isPickingPlant: 0
+  healQty: 0
+  decreaseButton: {fileID: 0}
 --- !u!1001 &6093061581338149866
 PrefabInstance:
   m_ObjectHideFlags: 0

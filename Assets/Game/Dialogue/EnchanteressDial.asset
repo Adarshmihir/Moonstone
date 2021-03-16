@@ -1,0 +1,332 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6106250373432390371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: e43d9d6e-47cb-4fb2-8999-a2838d8a14ab
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Remplir Goal 1 Enchanteress (1000 golds)
+  children:
+  - f62297ed-60d8-4c95-80fe-8ebf9b9a5f84
+  rect:
+    serializedVersion: 2
+    x: 418
+    y: 251
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: DoneEnchantQuest0
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: EnchantQuest
+        negate: 0
+--- !u!114 &-4448318610049792430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: f5604e5c-88ff-4595-a16f-c94e3c0e5b1f
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Rien merci !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 419
+    y: 158
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-2100556014584580622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 113bbccd-e350-4878-bc28-950f05659eab
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Bravo !
+  children:
+  - EnchanteressDial
+  rect:
+    serializedVersion: 2
+    x: 670
+    y: 340
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-729818274053663527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 5ba48d4e-8fb9-49c7-be59-adc99f6bb332
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Je viens de la part du roi !
+  children:
+  - 1ddaef6e-b615-42e7-8678-0ac536f05889
+  rect:
+    serializedVersion: 2
+    x: 423
+    y: 62
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: EndFindMaya
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindMaya
+        negate: 0
+--- !u!114 &-383939656821629389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 1ddaef6e-b615-42e7-8678-0ac536f05889
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Aaah oui ! Il souhaite que je t'inicie \xE0 l'art de l'enchantement d'arme
+    ? Bien, apporte moi l'or n\xE9c\xE9ssaire et je te montrerai."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 673
+    y: 62
+    width: 200
+    height: 100
+  enterAction: GiveEnchantQuest
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-45809874267148095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 6472633f-93e1-4c45-b333-c2b5f0f0e31c
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Remplir Goal 2 Enchanteress
+  children:
+  - 113bbccd-e350-4878-bc28-950f05659eab
+  rect:
+    serializedVersion: 2
+    x: 422
+    y: 340
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: DoneEnchantQuest1
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: EnchantQuest
+        negate: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84509a64602d94c5b9348c112a6bb979, type: 3}
+  m_Name: EnchanteressDail
+  m_EditorClassIdentifier: 
+  dialogueNodes:
+  - {fileID: 6861855475285298919}
+  - {fileID: -729818274053663527}
+  - {fileID: -4448318610049792430}
+  - {fileID: -6106250373432390371}
+  - {fileID: -383939656821629389}
+  - {fileID: -45809874267148095}
+  - {fileID: 4726006075643306059}
+  - {fileID: 2973689367459563742}
+  - {fileID: -2100556014584580622}
+  - {fileID: 224633325861032050}
+  - {fileID: 1331942555814159832}
+  nodeOffset: {x: 250, y: 0}
+--- !u!114 &224633325861032050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 76fe1dfa-d74e-47e1-b74e-0df7ab4f2092
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Bravo !
+  children:
+  - EnchanteressDial
+  rect:
+    serializedVersion: 2
+    x: 670
+    y: 430
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &1331942555814159832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: aadc85e2-30dd-493e-9ad1-d182594d0436
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Enchanter !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 418
+    y: 528
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: OpenEnchantMenu
+  condition:
+    and: []
+--- !u!114 &2973689367459563742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: f62297ed-60d8-4c95-80fe-8ebf9b9a5f84
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Bravo !
+  children:
+  - EnchanteressDial
+  rect:
+    serializedVersion: 2
+    x: 668
+    y: 251
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &4726006075643306059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 2da38f36-e7c1-4977-a9d6-62ffbab86f22
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: "Terminer qu\xEAte Enchanteress"
+  children:
+  - 76fe1dfa-d74e-47e1-b74e-0df7ab4f2092
+  rect:
+    serializedVersion: 2
+    x: 420
+    y: 430
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: EndEnchantQuest
+  condition:
+    and:
+    - or:
+      - name: HasCompleted
+        parameter: EnchantQuest
+        negate: 0
+--- !u!114 &6861855475285298919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: EnchanteressDial
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Salut \xE0 toi tr\xE8s cher \xE9lu, que puis-je pour toi ?"
+  children:
+  - 5ba48d4e-8fb9-49c7-be59-adc99f6bb332
+  - f5604e5c-88ff-4595-a16f-c94e3c0e5b1f
+  - e43d9d6e-47cb-4fb2-8999-a2838d8a14ab
+  - 6472633f-93e1-4c45-b333-c2b5f0f0e31c
+  - 2da38f36-e7c1-4977-a9d6-62ffbab86f22
+  - aadc85e2-30dd-493e-9ad1-d182594d0436
+  rect:
+    serializedVersion: 2
+    x: 168
+    y: 157
+    width: 200
+    height: 100
+  enterAction: DoneFindMaya0
+  exitAction: 
+  condition:
+    and: []

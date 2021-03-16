@@ -7,7 +7,7 @@ public class HealthGlobeControl : MonoBehaviour
 {
     public Slider healthSlider;
     public float regenSpeed;
-    public bool regenering;
+    public bool regenerating;
 
     void Start()
     {
@@ -17,26 +17,17 @@ public class HealthGlobeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(regenering)
+        if (regenerating)
         {
-            if(healthSlider.value < 1)
+            if (healthSlider.value < 1)
             {
                 healthSlider.value += (regenSpeed * Time.deltaTime);
             }
-            if(healthSlider.value > 1)
+            if (healthSlider.value > 1)
             {
                 healthSlider.value = 1;
-                regenering = false;
+                regenerating = false;
             }
-        }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            healthSlider.value = healthSlider.value - 0.1f;
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            regenering = true;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Quests;
 
 public class EnchantressUI : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class EnchantressUI : MonoBehaviour
 
     public void ValidateModifierChange()
     {
+        Debug.Log("Valide Enchant !");
         //STAT MODIFICATION (REMOVING MOD + PUT NEW MOD)
         StatModifier ModSelected = selectedButton.GetComponent<EnchantressModButton>().mod;
         RemoveModBeingModified(ModSelected);
@@ -86,6 +88,15 @@ public class EnchantressUI : MonoBehaviour
         //STAT MOD LIST CHANGE
         EquipmentToEnchant.StatModifiers = modifierList;
         EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().OnRemoveButton();
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+        var questList = player.GetComponent<QuestManager>();
+
+        var evaluatedQuest = questList.Evaluate("HasQuest", "EnchantQuest");
+        if (evaluatedQuest != null)
+        {
+            questList.CompleteGoal(questList.GetQuestByName("EnchantQuest"), "1");
+        }
     }
 
     public void OnItemInMainSlot(Item item)

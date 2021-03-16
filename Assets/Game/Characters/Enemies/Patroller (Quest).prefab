@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592748485131042981, guid: c3220bcb4f03944d882f0353b13bd2f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 592748485131098945, guid: c3220bcb4f03944d882f0353b13bd2f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 973929218642309500, guid: c3220bcb4f03944d882f0353b13bd2f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2952430459584069768, guid: c3220bcb4f03944d882f0353b13bd2f5,
         type: 3}
       propertyPath: outlineColor.b

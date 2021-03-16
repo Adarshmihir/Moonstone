@@ -553,9 +553,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_Tormented_Soul
       objectReference: {fileID: 0}
+    - target: {fileID: 161392, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 175508, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 475524, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_RootOrder

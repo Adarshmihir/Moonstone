@@ -1,0 +1,351 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6695626601285542339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 7df88918-b1cc-405c-8626-5712e3df9839
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Oh je vois ! Je dois te former alors ? Bien je vais t'apprendre \xE0 forger
+    !"
+  children:
+  - bab41d27-e9d8-4ee7-8265-b036a04b53a7
+  rect:
+    serializedVersion: 2
+    x: 533
+    y: 119
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-5533841802803056250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: ce23ea84-7c5d-4803-9733-3fbfdad043bb
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Je viens de la part du roi !
+  children:
+  - 7df88918-b1cc-405c-8626-5712e3df9839
+  rect:
+    serializedVersion: 2
+    x: 271
+    y: 119
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: EndFindOlaf
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindOlaf
+        negate: 0
+--- !u!114 &-4277394460337209796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 912d14ca-abbe-4166-81bd-8e11de3a9ca5
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Bien jou\xE9 ! Tu peux retourner voir le roi d\xE9sormais !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 536
+    y: 559
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-3908680468784542092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: ffbba07f-a2ce-42c7-9fad-331c98a9f9d8
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Bien jou\xE9 !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 527
+    y: 451
+    width: 200
+    height: 100
+  enterAction: DoneForgeQuest1
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-1552666917672472099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 85d2638e-c741-4b98-b55b-5d92b558d9c9
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Salut jeune Elu ! Que puis-je pour toi ?
+  children:
+  - ce23ea84-7c5d-4803-9733-3fbfdad043bb
+  - febbf90b-d4db-45aa-810a-60b9eae97596
+  - 352f55a3-1bbe-40cd-9473-f835eb1e2f99
+  - dd872429-3920-42ac-9693-4f3c15c8fd17
+  - 33f9ea1c-db5d-4578-8dbf-1350d85a8b32
+  rect:
+    serializedVersion: 2
+    x: 12
+    y: 208
+    width: 200
+    height: 100
+  enterAction: DoneFindOlaf0
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-1257039010613774001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 352f55a3-1bbe-40cd-9473-f835eb1e2f99
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Valider le goal 1 (50 golds)
+  children:
+  - 257b399f-d50a-4f48-9968-f88746c7fc8e
+  rect:
+    serializedVersion: 2
+    x: 269
+    y: 443
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: ForgeQuest
+        negate: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84509a64602d94c5b9348c112a6bb979, type: 3}
+  m_Name: BlacksmithDialogue
+  m_EditorClassIdentifier: 
+  dialogueNodes:
+  - {fileID: -1552666917672472099}
+  - {fileID: -5533841802803056250}
+  - {fileID: 4141217313500259441}
+  - {fileID: 4287703322579013007}
+  - {fileID: -6695626601285542339}
+  - {fileID: 3786332867277382711}
+  - {fileID: -1257039010613774001}
+  - {fileID: 8551723762763808007}
+  - {fileID: -3908680468784542092}
+  - {fileID: 780442628082991595}
+  - {fileID: -4277394460337209796}
+  - {fileID: 1390278180377761653}
+  nodeOffset: {x: 250, y: 0}
+--- !u!114 &780442628082991595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: dd872429-3920-42ac-9693-4f3c15c8fd17
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: "Achever Qu\xEAte Forge"
+  children:
+  - 912d14ca-abbe-4166-81bd-8e11de3a9ca5
+  rect:
+    serializedVersion: 2
+    x: 269
+    y: 592
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: EndForgeQuest
+  condition:
+    and:
+    - or:
+      - name: HasCompleted
+        parameter: ForgeQuest
+        negate: 0
+--- !u!114 &1390278180377761653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 33f9ea1c-db5d-4578-8dbf-1350d85a8b32
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Acheter
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 272
+    y: 331
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: OpenShop
+  condition:
+    and: []
+--- !u!114 &3786332867277382711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: bab41d27-e9d8-4ee7-8265-b036a04b53a7
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Va donc me r\xE9cuperer quelques ressources pour ta premi\xE8re arme !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 795
+    y: 118
+    width: 200
+    height: 100
+  enterAction: GiveForgeQuest
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &4141217313500259441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: febbf90b-d4db-45aa-810a-60b9eae97596
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Rien merci !
+  children:
+  - bb63d6f5-b146-4cf8-acdc-37fbb4eff61a
+  rect:
+    serializedVersion: 2
+    x: 274
+    y: 224
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &4287703322579013007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: bb63d6f5-b146-4cf8-acdc-37fbb4eff61a
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Pas de soucis mon p'tit, \xE0 la revoyure !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 533
+    y: 237
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &8551723762763808007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 257b399f-d50a-4f48-9968-f88746c7fc8e
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Bien jou\xE9 !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 529
+    y: 358
+    width: 200
+    height: 100
+  enterAction: DoneForgeQuest0
+  exitAction: 
+  condition:
+    and: []

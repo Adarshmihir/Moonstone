@@ -28,7 +28,7 @@ namespace Quests
             return questStatus.Any(status => status.Quest == quest);
         }
         
-        private Quest GetQuestByName(string questName)
+        public Quest GetQuestByName(string questName)
         {
             return questStatus.FirstOrDefault(status => status.Quest.Name == questName)?.Quest;
         }
@@ -76,6 +76,10 @@ namespace Quests
                     return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.IsQuestComplete();
                 case "HasDone":
                     return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.Done;
+                /*case "HasItem":
+                    var item = parameter.Split('-');
+
+                    return*/
                 // TODO : Add evaluation ?
             }
             return null;
