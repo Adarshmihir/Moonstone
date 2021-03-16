@@ -33,6 +33,11 @@ namespace Quests
             return questStatus.FirstOrDefault(status => status.Quest.Name == questName)?.Quest;
         }
 
+        public QuestStatus GetQuestStatusByName(string questName)
+        {
+            return questStatus.FirstOrDefault(status => status.Quest.Name == questName);
+        }
+
         public void CompleteGoal(Quest quest, string goal)
         {
             var status = questStatus.FirstOrDefault(element => element.Quest == quest);
@@ -76,11 +81,11 @@ namespace Quests
                     return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.IsQuestComplete();
                 case "HasDone":
                     return questStatus.FirstOrDefault(status => status.Quest == evaluatedQuest)?.Done;
-                /*case "HasItem":
-                    var item = parameter.Split('-');
+                    /*case "HasItem":
+                        var item = parameter.Split('-');
 
-                    return*/
-                // TODO : Add evaluation ?
+                        return*/
+                    // TODO : Add evaluation ?
             }
             return null;
         }

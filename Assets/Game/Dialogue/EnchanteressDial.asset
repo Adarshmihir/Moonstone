@@ -78,8 +78,8 @@ MonoBehaviour:
   - EnchanteressDial
   rect:
     serializedVersion: 2
-    x: 667
-    y: 56
+    x: 700
+    y: 18
     width: 200
     height: 100
   enterAction: GiveEnchantQuest
@@ -125,8 +125,8 @@ MonoBehaviour:
   - EnchanteressDial
   rect:
     serializedVersion: 2
-    x: 710
-    y: 320
+    x: 870
+    y: 266
     width: 200
     height: 100
   enterAction: 

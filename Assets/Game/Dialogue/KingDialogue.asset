@@ -490,6 +490,10 @@ MonoBehaviour:
       - name: HasQuest
         parameter: PlantQuest
         negate: 0
+    - or:
+      - name: HasDone
+        parameter: PlantQuest
+        negate: 1
 --- !u!114 &2477123312722436351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,7 +722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
   text: "On est bien l\xE0 non ?"
-  children: []
+  children:
+  - 7aff143c-5f70-43ea-8b03-72b0d68ffebb
   rect:
     serializedVersion: 2
     x: 928
@@ -876,8 +881,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 504
-    y: 348
+    x: 564
+    y: 456
     width: 200
     height: 100
   enterAction: 
