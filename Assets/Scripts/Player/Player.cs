@@ -5,6 +5,7 @@ using Combat;
 using Control;
 using Stats;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -71,4 +72,27 @@ public class Player : MonoBehaviour
         }
             
     }
+
+    public void AddPointToStat()
+    {
+        string name = EventSystem.current.currentSelectedGameObject.name;
+        name = name.Replace("_Button","");
+        foreach (var stat in stats)
+        {
+            if (stat.StatName.ToString() == name)
+            {
+                StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
+                stat.charStat.IncrementBaseValue(2);
+                statList.lvlup_Points -= 1;
+                statList.PointsToSpendTextUpdate(statList.lvlup_Points);
+                if (statList.lvlup_Points == 0)
+                {
+                    statList.ToggleLevelUp(false);
+                }
+                StatTextUpdate();
+            }
+        }
+            
+    }
+
 }

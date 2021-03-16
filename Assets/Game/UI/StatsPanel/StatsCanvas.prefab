@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 6140446206324698931}
   - component: {fileID: 6140446206324698930}
   m_Layer: 5
-  m_Name: Intelligence Button
+  m_Name: Intelligence_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,12 +473,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickIncrementBaseValue
-        m_Mode: 2
+      - m_Target: {fileID: 1873941144779713278}
+        m_MethodName: AddPointToStat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 2
           m_StringArgument: 
@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 6140446206810677613}
   - component: {fileID: 6140446206810677612}
   m_Layer: 5
-  m_Name: Perception Button
+  m_Name: Perception_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,12 +1273,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickIncrementBaseValue
-        m_Mode: 2
+      - m_Target: {fileID: 1873941144779713278}
+        m_MethodName: AddPointToStat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 2
           m_StringArgument: 
@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 6140446207075877405}
   - component: {fileID: 6140446207075877404}
   m_Layer: 5
-  m_Name: Stamina Button
+  m_Name: Stamina_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1767,12 +1767,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickIncrementBaseValue
-        m_Mode: 2
+      - m_Target: {fileID: 1873941144779713278}
+        m_MethodName: AddPointToStat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 2
           m_StringArgument: 
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 6140446207180309053}
   - component: {fileID: 6140446207180309052}
   m_Layer: 5
-  m_Name: Strength Button
+  m_Name: Strength_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1897,12 +1897,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickIncrementBaseValue
-        m_Mode: 2
+      - m_Target: {fileID: 1873941144779713278}
+        m_MethodName: AddPointToStat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3183,7 +3183,7 @@ GameObject:
   - component: {fileID: 6140446208287692849}
   - component: {fileID: 6140446208287692848}
   m_Layer: 5
-  m_Name: Agility Button
+  m_Name: Agility_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3289,12 +3289,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickIncrementBaseValue
-        m_Mode: 2
+      - m_Target: {fileID: 1873941144779713278}
+        m_MethodName: AddPointToStat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Stats.Stat, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 2
           m_StringArgument: 

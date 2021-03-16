@@ -36,29 +36,7 @@ namespace Stats
             LevelUpStatButtons.SetActive(lvlupactive);
             PointsAvailable.SetActive(lvlupactive);
         }
-        
-        
-        //each click on the button increments the value
-        public void OnClickIncrementBaseValue(CharacterStat characterStat)
-        {
-            characterStat.IncrementBaseValue(POINT_EACH_LEVEL);
-            lvlup_Points -= 1;
-            PointsToSpendTextUpdate(lvlup_Points);
-            if (lvlup_Points == 0)
-            {
-                ToggleLevelUp(false);
-            }
-        }
-        
-        //DEBUG FUNCTION FOR STAT MODIFIER PERCENT TEST
-        public void OnClickEquipRandomStuff()
-        {
-            /*foreach (var characterStat in characterStatsList)
-            {
-                StatModifier MODTEST = new StatModifier(10, StatModType.Percent, StatModSources.Item);
-                characterStat.stat.AddModifier(MODTEST);
-            }*/
-        }
+
 
         public GameObject getNumberGameObject(StatTypes type)
         {
@@ -78,7 +56,13 @@ namespace Stats
                 PointsToSpend.GetComponent<Text>().text = value.ToString();
             }
         }
-        
+
+
+        public void AddPointToStat()
+        {
+            GameManager.Instance.player.AddPointToStat();
+        }
+
     }
 }
 
