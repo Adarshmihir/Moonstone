@@ -111,7 +111,6 @@ namespace Resources
                 yield return new WaitForSeconds(spell.DotTick);
                 
                 TakeDamage(spell.DotDamage, false, fighter);
-                transform.GetChild(0).localScale *= 0.85f;
             }
 
             Dots.Remove(spell.name);

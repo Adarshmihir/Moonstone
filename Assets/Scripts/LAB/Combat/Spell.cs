@@ -56,6 +56,7 @@ namespace Combat
         public float Cooldown => cooldown;
         public float SpellRange => spellRange;
         public float SpellZoneArea => spellZoneArea;
+        public float DamageRadius => damageRadius;
         public float DotDamage => dotDamage;
         public float DotCount => dotCount;
         public float DotTick => dotTick;

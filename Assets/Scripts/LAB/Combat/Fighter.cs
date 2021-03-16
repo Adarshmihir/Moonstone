@@ -104,7 +104,7 @@ namespace Combat
             if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
             {
                 // Check if target is in front of character and visible
-                if (!GetIsInFieldOfView(Target.transform)/* || !GetIsAccessible(_target.transform)*/) return;
+                if (!GetIsInFieldOfView(Target.transform, weapon.WeaponRadius)/* || !GetIsAccessible(_target.transform)*/) return;
 
                 if (GetComponent<Player>())
                     // Deal damage
@@ -128,7 +128,7 @@ namespace Combat
             foreach (var newTarget in colliders)
             {
                 // Check if the target has health, is in front of character and visible
-                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
+                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform, weapon.WeaponRadius)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
 
                 Hit(newTarget.GetComponent<Health>());
             }
@@ -142,17 +142,17 @@ namespace Combat
             Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
         }
 
-        public bool GetIsInRange(Vector3 targetPosition, float range)
+        private bool GetIsInRange(Vector3 targetPosition, float range)
         {
             // Check if the target is in range of weapon
             return Vector3.Distance(transform.position, targetPosition) < range;
         }
 
-        private bool GetIsInFieldOfView(Transform targetTransform)
+        public bool GetIsInFieldOfView(Transform targetTransform, float radius)
         {
             // Check if the target is in front of character
             var charTransform = transform;
-            return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= weapon.WeaponRadius;
+            return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= radius;
         }
 
         /*private bool GetIsAccessible(Transform target)

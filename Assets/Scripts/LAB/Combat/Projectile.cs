@@ -29,11 +29,20 @@ namespace Combat
                     }
                     break;
                 case SpellType.ContactEffect:
+                    if (_isCasting)
+                    {
+                        _isCasting = false;
+                        transform.GetChild(0).rotation = Attacker.transform.rotation;
+                        StartCoroutine(DealRadiusDamage());
+                    }
                     break;
                 case SpellType.ZoneEffect:
                     if (_isCasting)
                     {
                         _isCasting = false;
+                        //Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+                        //transform.LookAt(hit.point);
+                        //transform.rotation = Attacker.transform.rotation;
                         StartCoroutine(DamageOverTimeInArea());
                     }
                     break;
@@ -47,7 +56,7 @@ namespace Combat
             var projectileRigidbody = GetComponent<Rigidbody>();
             projectileRigidbody.isKinematic = speed == 0f;
             
-            if (speed == 0f)
+            if (speed == 0f && Spell.SpellType == SpellType.ZoneEffect)
             {
                 Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
                 
@@ -98,11 +107,27 @@ namespace Combat
             _destroyTimer = particle.GetComponent<ParticleSystem>().main.duration;
         }
 
+        private IEnumerator DealRadiusDamage()
+        {
+            var colliders = Physics.OverlapSphere(Attacker.transform.position, Spell.SpellRange);
+            foreach (var newTarget in colliders)
+            {
+                var targetHealth = newTarget.GetComponent<Health>();
+                    
+                if (targetHealth == null || Attacker.CompareTag(targetHealth.tag) || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
+
+                targetHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+            }
+            
+            yield return new WaitForSeconds(.75f);
+            Destroy(gameObject);
+        }
+
         private void DealDamage(Component target)
         {
             var colliderHealth = target.GetComponent<Health>();
             
-            if (colliderHealth == null || Attacker.CompareTag(colliderHealth.tag) || _isCasting) return;
+            if (colliderHealth == null || Attacker.CompareTag(colliderHealth.tag) || colliderHealth.IsDead || _isCasting) return;
             
             colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
             colliderHealth.TakeDot(Spell, Attacker);
@@ -122,12 +147,12 @@ namespace Combat
             {
                 yield return new WaitForSeconds(Spell.DotTick); 
                 
-                var colliders = Physics.OverlapSphere(transform.position, Spell.SpellRange);
+                var colliders = Physics.OverlapSphere(transform.position, Spell.SpellZoneArea / 2);
                 foreach (var newTarget in colliders)
                 {
                     var targetHealth = newTarget.GetComponent<Health>();
                     
-                    if (targetHealth == null || Attacker.CompareTag(targetHealth.tag)) continue;
+                    if (targetHealth == null || Attacker.CompareTag(targetHealth.tag) || targetHealth.IsDead) continue;
                     
                     targetHealth.TakeDamage(Spell.DotDamage, false, Attacker);
                 }
