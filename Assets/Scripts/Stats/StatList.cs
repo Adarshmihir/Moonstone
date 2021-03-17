@@ -37,7 +37,13 @@ namespace Stats
             PointsAvailable.SetActive(lvlupactive);
         }
 
-
+        public void ToggleReset(int level)
+        {
+            lvlup_Points = level * 1;
+            PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
+            LevelUpStatButtons.SetActive(true);
+            PointsAvailable.SetActive(true);
+        }
         public GameObject getNumberGameObject(StatTypes type)
         {
             GameObject gameObjectToReturn = GameObject.Find(type + "_Number");
@@ -63,6 +69,11 @@ namespace Stats
             GameManager.Instance.player.AddPointToStat();
         }
 
+
+        public void ResetStat()
+        {
+            GameManager.Instance.player.ResetStat();
+        }
     }
 }
 

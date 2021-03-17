@@ -10,6 +10,5 @@ public class LevelManager : MonoBehaviour
     {
         XpSystem levelSystem = new XpSystem();
         levelWindow.SetLevelSystem(levelSystem);
-        Debug.Log(levelWindow.levelSystem);
     }
 }

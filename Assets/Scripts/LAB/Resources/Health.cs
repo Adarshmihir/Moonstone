@@ -91,10 +91,8 @@ namespace Resources
             _capsuleCollider.enabled = false;
             _navMeshAgent.enabled = false;
             Enemy enemy = gameObject.GetComponent<Enemy>();
-            Debug.Log(enemy);
             if (enemy)
             {
-                //Debug.Log(GameManager.Instance.uiManager.LevelManager.GetComponent<LevelManager>().levelWindow.levelSystem);
                 GameManager.Instance.uiManager.LevelManagerGO.GetComponent<LevelManager>().levelWindow.levelSystem.AddExperience(enemy.XpValue);
             }
             StartCoroutine(DestroyEnemy());

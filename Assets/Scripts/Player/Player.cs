@@ -95,4 +95,13 @@ public class Player : MonoBehaviour
             
     }
 
+    public void ResetStat()
+    {
+        foreach (Stat stat in stats)
+        {
+            stat.charStat.ResetBaseValue(5);
+        }
+        GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().ToggleReset(level);
+        this.StatTextUpdate();
+    }
 }
