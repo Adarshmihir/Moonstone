@@ -125,6 +125,7 @@ namespace Combat
                     timer += Time.deltaTime;
                     if (timer >= Spell.CanalisationTimer)
                     {
+                        timer = 0f;
                         HitTargetInRadius();
                     }
                     

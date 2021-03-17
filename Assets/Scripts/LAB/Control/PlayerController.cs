@@ -55,7 +55,7 @@ namespace Control
             return false;
         }
 
-        private bool InteractWithCorpse()
+        private static bool InteractWithCorpse()
         {
             var hits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in hits)
@@ -66,7 +66,7 @@ namespace Control
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    corpseTarget.ShowLootMenu();
+                    corpseTarget.LootBag.IsLooting = true;
                 }
                 return true;
             }

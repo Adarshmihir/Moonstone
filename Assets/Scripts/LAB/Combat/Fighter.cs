@@ -142,7 +142,7 @@ namespace Combat
             Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
         }
 
-        private bool GetIsInRange(Vector3 targetPosition, float range)
+        public bool GetIsInRange(Vector3 targetPosition, float range)
         {
             // Check if the target is in range of weapon
             return Vector3.Distance(transform.position, targetPosition) < range;
