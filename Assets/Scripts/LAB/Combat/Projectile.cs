@@ -16,6 +16,7 @@ namespace Combat
         public Spell Spell { get; set; }
         //public Health Target { get; set; }
         public Fighter Attacker { get; set; }
+        public Transform Output { get; set; }
 
         // Update is called once per frame
         private void Update()
@@ -40,9 +41,6 @@ namespace Combat
                     if (_isCasting)
                     {
                         _isCasting = false;
-                        //Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
-                        //transform.LookAt(hit.point);
-                        //transform.rotation = Attacker.transform.rotation;
                         StartCoroutine(DamageOverTimeInArea());
                     }
                     break;
@@ -70,11 +68,19 @@ namespace Combat
                     transform.position = attackerTransform.forward * Spell.SpellRange + attackerTransform.position;
                 }
             }
-            else
+            else if (speed > 0 && Spell.SpellType == SpellType.UniqueEffect)
             {
                 _initialPosition = transform.position;
                 projectileRigidbody.AddForce(GameObject.FindGameObjectWithTag("Player").transform.forward * speed);
             }
+            else if (speed == 0f && Spell.SpellType == SpellType.ContactEffect && Spell.SpellEffect == SpellEffect.Heal)
+            {
+                transform.position = Attacker.transform.position;
+            }
+
+            if (Spell.SpellType == SpellType.ContactEffect) return;
+            
+            EndCast();
         }
 
         private void ProjectileImpact()
@@ -109,28 +115,80 @@ namespace Combat
 
         private IEnumerator DealRadiusDamage()
         {
+            if (Spell.CanalisationTimer > 0f)
+            {
+                var count = 0;
+                var timer = 0f;
+                var spellFighter = Attacker.GetComponent<FighterSpell>();
+                while (Input.GetMouseButton(1) || count == 0)
+                {
+                    timer += Time.deltaTime;
+                    if (timer >= Spell.CanalisationTimer)
+                    {
+                        HitTargetInRadius();
+                    }
+                    
+                    yield return null;
+                    
+                    spellFighter.UpdatePlayerRotation();
+                    UpdateSpellPosition();
+                    count += 1;
+                }
+            }
+            else
+            {
+                HitTargetInRadius();
+                yield return new WaitForSeconds(.75f);
+            }
+            
+            EndCast();
+            Destroy(gameObject);
+        }
+
+        private void UpdateSpellPosition()
+        {
+            var spellTransform = transform;
+            
+            spellTransform.GetChild(0).rotation = Attacker.transform.rotation;
+            spellTransform.position = Spell.SpellEffect == SpellEffect.Heal ? Attacker.transform.position : Output.position;
+        }
+
+        private void HitTargetInRadius()
+        {
             var colliders = Physics.OverlapSphere(Attacker.transform.position, Spell.SpellRange);
             foreach (var newTarget in colliders)
             {
                 var targetHealth = newTarget.GetComponent<Health>();
                     
-                if (targetHealth == null || Attacker.CompareTag(targetHealth.tag) || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
+                if (targetHealth == null || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
 
-                targetHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
+                {
+                    targetHealth.GiveLife(Spell.SpellDamage);
+                }
+                else if (!Attacker.CompareTag(targetHealth.tag))
+                {
+                    targetHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                }
             }
-            
-            yield return new WaitForSeconds(.75f);
-            Destroy(gameObject);
         }
 
         private void DealDamage(Component target)
         {
             var colliderHealth = target.GetComponent<Health>();
             
-            if (colliderHealth == null || Attacker.CompareTag(colliderHealth.tag) || colliderHealth.IsDead || _isCasting) return;
-            
-            colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
-            colliderHealth.TakeDot(Spell, Attacker);
+            if (colliderHealth == null || colliderHealth.IsDead || _isCasting) return;
+
+            if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(colliderHealth.tag))
+            {
+                colliderHealth.GiveLife(Spell.SpellDamage);
+                colliderHealth.TakeDot(Spell, Attacker);
+            }
+            else if (!Attacker.CompareTag(colliderHealth.tag))
+            {
+                colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                colliderHealth.TakeDot(Spell, Attacker);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -139,6 +197,13 @@ namespace Combat
             
             ProjectileImpact();
             DealDamage(other);
+        }
+
+        private void EndCast()
+        {
+            Attacker.GetComponent<Animator>().ResetTrigger("stopCast");
+            Attacker.GetComponent<Animator>().ResetTrigger("cast");
+            Attacker.GetComponent<Animator>().SetTrigger("endCast");
         }
 
         private IEnumerator DamageOverTimeInArea()
@@ -152,9 +217,16 @@ namespace Combat
                 {
                     var targetHealth = newTarget.GetComponent<Health>();
                     
-                    if (targetHealth == null || Attacker.CompareTag(targetHealth.tag) || targetHealth.IsDead) continue;
-                    
-                    targetHealth.TakeDamage(Spell.DotDamage, false, Attacker);
+                    if (targetHealth == null || targetHealth.IsDead) continue;
+
+                    if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
+                    {
+                        targetHealth.GiveLife(Spell.DotDamage);
+                    }
+                    else if (!Attacker.CompareTag(targetHealth.tag))
+                    {
+                        targetHealth.TakeDamage(Spell.DotDamage, false, Attacker);
+                    }
                 }
             }
             
@@ -167,50 +239,5 @@ namespace Combat
             
             Destroy(gameObject);
         }
-
-        /*private void OnTriggerEnter(Collider other)
-        {
-            if (other.GetComponent<Health>() == null) return;
-            
-            Target.TakeDamage(Spell.SpellDamage, false, Attacker);
-
-            if (Spell.DotCount > 0 && !Target.Dots.Contains(Spell.name))
-            {
-                Target.Dots.Add(Spell.name);
-                StartCoroutine(StartDot());
-            }
-            else
-            {
-                StartCoroutine(StartGameObjectDestroy());
-            }
-        }*/
-
-        /*private IEnumerator StartDot()
-        {
-            for (var i = 0; i < Spell.DotCount; i++)
-            {
-                yield return new WaitForSeconds(Spell.DotTick);
-                
-                Target.TakeDamage(Spell.DotDamage, false, Attacker);
-                transform.GetChild(0).localScale *= 0.85f;
-            }
-
-            Target.Dots.Remove(Spell.name);
-            Destroy(gameObject);
-        }*/
-
-        /*private IEnumerator StartGameObjectDestroy()
-        {
-            var particle = transform.GetChild(0);
-            var originalScale = particle.localScale;
-            
-            while (particle.localScale.magnitude > originalScale.magnitude * 0.25f)
-            {
-                particle.localScale *= 0.9f;
-                yield return new WaitForSeconds(0.2f);
-            }
-            
-            Destroy(gameObject);
-        }*/
     }
 }

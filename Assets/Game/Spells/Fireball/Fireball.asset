@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellType: 0
   spellEffect: 0
-  projectile: {fileID: 6444211836996915594, guid: f3c4f28e42fcb4a4ca3c8823b542ae5a,
+  projectile: {fileID: 504654947311720274, guid: f3c4f28e42fcb4a4ca3c8823b542ae5a,
     type: 3}
   spellDamage: 10
   dotDamage: 2

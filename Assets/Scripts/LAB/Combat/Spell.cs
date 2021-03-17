@@ -33,6 +33,8 @@ namespace Combat
         [SerializeField] private float dotTick;
         [SerializeField] private float cooldown = 1f;
         
+        [SerializeField] private float canalisationTimer = 1f;
+        
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private GameObject particleEffect;
         [SerializeField] private Vector3 particleSize;
@@ -63,27 +65,21 @@ namespace Combat
         public GameObject ParticleEffectImpact => particleEffectImpact;
         public Vector3 ParticleSizeImpact => particleSizeImpact;
         public SpellType SpellType => spellType;
+        public SpellEffect SpellEffect => spellEffect;
+        public float CanalisationTimer => canalisationTimer;
 
-        public void Launch(Transform output/*, Health target*/, Fighter attacker)
+        public void Launch(Transform output, Fighter attacker)
         {
-            /*if (isProjectileInstant)
-            {
-                // TODO : Call launch AOE
-                LaunchArea(attacker);
-            }
-            else
-            {*/
-                LaunchProjectile(output/*, target*/, attacker);
-            //}
+            LaunchProjectile(output, attacker);
         }
 
-        private void LaunchProjectile(Transform output/*, Health target*/, Fighter attacker)
+        private void LaunchProjectile(Transform output, Fighter attacker)
         {
             var projectileInstance = Instantiate(projectile, output.position, Quaternion.identity);
             
-            //projectileInstance.Target = target;
             projectileInstance.Spell = this;
             projectileInstance.Attacker = attacker;
+            projectileInstance.Output = output;
             projectileInstance.StartCast();
 
             SetParticle(projectileInstance);
@@ -105,19 +101,6 @@ namespace Combat
             particleSize = new Vector3(spellZoneArea, spellZoneArea, spellZoneArea);
             particleSizeImpact = new Vector3(spellZoneArea, spellZoneArea, spellZoneArea);
         }
-
-        /*private void LaunchArea(Fighter attacker)
-        {
-            var projectileInstance = Instantiate(projectile, attacker.transform.position, Quaternion.identity);
-            var particle = Instantiate(particleEffect, projectileInstance.transform.position, Quaternion.identity);
-            
-            particle.transform.parent = projectileInstance.transform;
-            particle.transform.localScale = particleSize;
-            
-            projectileInstance.Spell = this;
-            projectileInstance.Attacker = attacker;
-            projectileInstance.StartCast();
-        }*/
 
         public void ResetCooldown()
         {

@@ -34,6 +34,7 @@ namespace Control
             //if (InteractWithCombat(false)) return;
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
+            if (InteractWithCorpse()) return;
             InteractWithMovement();
         }
 
@@ -48,6 +49,24 @@ namespace Control
                 if (Input.GetMouseButtonDown(0))
                 {
                     GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget, dialogueTarget.GetDialogue);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private bool InteractWithCorpse()
+        {
+            var hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
+            {
+                var corpseTarget = hit.transform.GetComponent<CombatTarget>();
+                var corpseHealth = hit.transform.GetComponent<Health>();
+                if (corpseTarget == null || corpseHealth == null || !corpseHealth.IsDead) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    corpseTarget.ShowLootMenu();
                 }
                 return true;
             }

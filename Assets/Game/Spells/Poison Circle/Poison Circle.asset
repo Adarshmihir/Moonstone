@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9f0d8b20788f4a94b216a0b90f96f11, type: 3}
-  m_Name: Heal Circle
+  m_Name: Poison Circle
   m_EditorClassIdentifier: 
   spellType: 2
-  spellEffect: 1
+  spellEffect: 0
   projectile: {fileID: 3124256986298330034, guid: 2c840c9e4ad634b0bbd11e0bc276c037,
     type: 3}
   spellDamage: 0
@@ -22,11 +22,11 @@ MonoBehaviour:
   dotTick: 2
   cooldown: 10
   isAnimated: 1
-  particleEffect: {fileID: 1796635450895110, guid: 1103bc5779fcc26419c248d4fd2f8586,
+  particleEffect: {fileID: 1471001059461388, guid: c1d501f0836891042af0a9b9060d3ff2,
     type: 3}
-  particleSize: {x: 1, y: 1, z: 1}
+  particleSize: {x: 5, y: 5, z: 5}
   particleEffectImpact: {fileID: 0}
-  particleSizeImpact: {x: 0, y: 0, z: 0}
+  particleSizeImpact: {x: 5, y: 5, z: 5}
   spellIcon: {fileID: 2800000, guid: 7dc0db4c9c404b741b063e3352a170bf, type: 3}
   spellRange: 5
   spellZoneArea: 5

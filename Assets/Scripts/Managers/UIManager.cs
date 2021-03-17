@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject CanvasRessource;
     public GameObject Enchantress;
     public GameObject Forgeron;
+    public GameObject LootBag;
     //GAMEOBJECTS
     [HideInInspector]
     public GameObject MiniMapCanvasGO;
@@ -30,6 +31,8 @@ public class UIManager : MonoBehaviour
     public GameObject EnchantressGO;
     [HideInInspector]
     public GameObject ForgeronGO;
+    [HideInInspector]
+    public GameObject LootBagGO;
 
     public void InitializeUIManager()
     {
@@ -43,6 +46,7 @@ public class UIManager : MonoBehaviour
         //HealthGlobeGO = Instantiate(HealthGlobe);
         //CanvasRessourceGO = Instantiate(CanvasRessource);
         ForgeronGO = Instantiate(Forgeron);
+        LootBagGO = Instantiate(LootBag);
     }
 
     public void HideUIAtLaunch()
@@ -54,5 +58,6 @@ public class UIManager : MonoBehaviour
         //CanvasRessourceGO.SetActive(false);
         EnchantressGO.SetActive(false);
         ForgeronGO.SetActive(false);
+        LootBagGO.SetActive(false);
     }
 }

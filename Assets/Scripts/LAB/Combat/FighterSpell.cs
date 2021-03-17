@@ -110,15 +110,20 @@ namespace Combat
 
         private void CastBehaviour()
         {
+            UpdatePlayerRotation();
+            
+            CastAnimation();
+            _spellToCast.PutOnCooldown(_castSource);
+        }
+
+        public void UpdatePlayerRotation()
+        {
             var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
 
             if (!hasHit) return;
             
             // Rotate the character in direction of the target
             transform.LookAt(hit.point);
-            
-            CastAnimation();
-            _spellToCast.PutOnCooldown(_castSource);
         }
 
         private void InitSpellToCast(CastSource castSource)
@@ -145,6 +150,7 @@ namespace Combat
             if (!_spellToCast.IsAnimated) return;
             
             // Start cast
+            GetComponent<Animator>().ResetTrigger("endCast");
             GetComponent<Animator>().ResetTrigger("stopCast");
             GetComponent<Animator>().SetTrigger("cast");
         }
@@ -180,6 +186,7 @@ namespace Combat
         {
             // Stop cast animation
             _fighter.ChangeWeaponVisibility(true);
+            GetComponent<Animator>().ResetTrigger("endCast");
             GetComponent<Animator>().ResetTrigger("cast");
             GetComponent<Animator>().SetTrigger("stopCast");
         }
