@@ -76,6 +76,7 @@ public class FillPlantsBar : MonoBehaviour
             questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "1");
         }
 
+        player.GetComponent<PlayerFX>().PlayEatPlant();
 
         Debug.Log("Using plant !");
         missingLife = maxLife - healthSlider.value; // Compute missing life

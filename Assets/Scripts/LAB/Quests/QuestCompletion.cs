@@ -26,6 +26,8 @@ namespace Quests
             var questList = player.GetComponent<QuestManager>();
             
             questList.CompleteQuest(completionData[index].Quest);
+
+            player.GetComponent<PlayerFX>().PlayQuestCompletion();
         }
 
         [Serializable]

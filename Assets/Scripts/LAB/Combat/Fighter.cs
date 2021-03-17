@@ -100,6 +100,11 @@ namespace Combat
         {
             if (Target == null) return;
 
+            if(Target.tag == "Enemy")
+            {
+                Target.GetComponent<EnemyFX>().
+            }
+
             // Unarmed attack and One Hand armed attack
             if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
             {
