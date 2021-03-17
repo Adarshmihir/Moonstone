@@ -32,7 +32,7 @@ namespace Movement
 
         public void MoveTo(Vector3 destination)
         {
-            GameManager.Instance.player.GetComponent<PlayerFX>().PlayWalkDust();
+            //GameManager.Instance.player.GetComponent<PlayerFX>().PlayWalkDust();
             _navMeshAgent.destination = destination;
             _navMeshAgent.isStopped = false;
         }

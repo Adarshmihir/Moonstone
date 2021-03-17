@@ -98,11 +98,13 @@ namespace Combat
         // Animation event : Attack
         private void Hit()
         {
+            Debug.Log("Hit");
             if (Target == null) return;
 
             if(Target.tag == "Enemy")
             {
-                Target.GetComponent<EnemyFX>().
+                Debug.Log("Enemy Detected");
+                Target.GetComponent<FighterFX>().PlayBleed();
             }
 
             // Unarmed attack and One Hand armed attack
