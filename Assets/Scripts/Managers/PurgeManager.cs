@@ -7,6 +7,7 @@ using System.Security.Principal;
 using Combat;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -48,8 +49,10 @@ public class PurgeManager : MonoBehaviour {
 
     public bool playerWasAgressive = false;
 
+    public Animator screenEffectAnimator;
+
     // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         dungeonPos = GameObject.FindGameObjectWithTag("Dungeon").transform.position;
         purgeUI = GameManager.Instance.uiManager.PurgeMenuGO.GetComponent<PurgeMenu>();
         purgeUI.fill.fillAmount = 0;
@@ -62,12 +65,10 @@ public class PurgeManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    private void Update() {
         purgiumAmount = Math.Floor(purgeUI.fill.fillAmount * 100);
         purgeUI.fill.fillAmount += (purgeIncrement * Time.deltaTime) / purgeFillDurationInSeconds;
-        
-        
-        
+
         // if (GameManager.Instance.isPurgeActive && killedCount >= CountMonsters())
         //     purgeUI.fill.fillAmount = 0f;
         
@@ -107,19 +108,16 @@ public class PurgeManager : MonoBehaviour {
         // If purge bar is full
         if (purgiumAmount >= 100) {
             GameManager.Instance.isPurgeActive = true;
+            screenEffectAnimator.SetBool("isPurgeActive", true);
+            
 
             // Force to open purge menu at beginning
             purgeUI.gameObject.SetActive(true);
 
             numberToKill = purgeLevel * 2;
-            Debug.Log("Player need to kill " + numberToKill + " monsters to end purge");
 
             // Deny access to any structure expect village while purge is active
             //TODO: Voir corentin pour checker comme lui l'entree dans le portail.
-
-            // Feedbacks
-            // Sirene au declenchement into musique de combat
-            //TODO: Peut etre appeler une methode de l'AudioManager ?
 
             // Make sure player is out of a dungeon
             if (!player.isInDungeon) {
@@ -127,63 +125,37 @@ public class PurgeManager : MonoBehaviour {
                 clearAndSetSpawners("Enemy_monster");
 
                 // At purge end ...
-                if (purgeUI.timer.timeRemaining <= 0) {
+                if (purgeUI.GetComponentInChildren<Timer>().timeRemaining <= 0) {
+                    
                     // If player killed all monsters (fixed number)
                     if (killedCount >= numberToKill) {
-                        Debug.Log("All monsters killed !");
-                        purgeUI.fill.fillAmount = 0;
-
-                        // Spawn normal enemies
-                        clearAndSetSpawners("Enemy_mob");
+                        ResetNormalMode();
                     }
                     else { // Player didnt kill all monsters ..
                         // If player was aggressive (trying to complete purge) --> // isPlayerAggressive > (method : +1 to a counter when player hits a enemy. if counter > 0.75 * numberToKill = true
+                        checkPlayerAgressiveness();
                         if (playerWasAgressive)
                             // TODO: Choisir une option avec le groupe (Voir GDD)
                             outOfTimePenalty();
                         else
                             lackOfKillsPenalty();
                     }
-                } else if (killedCount >= numberToKill) {
-                    // TODO: reset to normal mode
-                }
+                    purgeUI.fill.fillAmount = 0;
+                } else if (killedCount >= numberToKill) 
+                    ResetNormalMode();
             }
         }
         else {
             GameManager.Instance.isPurgeActive = false;
             killedCount = 0;
-        }
-            
-    }
-    private void SpawnOutOfDungeon(GameObject prefabToSpawn, Transform spawnpoint, int _numberToSpawn) {
-        /*dungeonMonsters = getAllMonstersInDungeon();
-             
-        foreach (var monster in dungeonMonsters) {
-            //Randomly spawn monsters in an area around player
-            
-
-            Instantiate(monster.transform.parent, new Vector3(randX, -10, randZ), new Quaternion(), spawnpoint);
-            monster.transform.parent.position = new Vector3(randX, -10, randZ);
-            Destroy(monster.transform.parent.gameObject);
-        }*/
-        
-        
-
-        for (int i = 0; i < _numberToSpawn; i++) {
-            float randX = randomX.Next((int) spawnpoint.position.x - 10,
-                                        (int) spawnpoint.position.x + 10);
-
-            float randZ = randomZ.Next((int) spawnpoint.transform.position.z - 10,
-                                        (int) spawnpoint.transform.position.z + 10);
-            Instantiate(prefabToSpawn, new Vector3(randX, -10, randZ), new Quaternion(), spawnpoint.transform);
-        }
+            screenEffectAnimator.SetBool("isPurgeActive", false);
+        } 
     }
 
-    public void clearAndSetSpawners(string tag) {
+    private void clearAndSetSpawners(string tag) {
         foreach (Spawner _spawner in spawners) {
             if (_spawner.arrayObjectSpawned.Count > 0 && _spawner.arrayObjectSpawned[0].CompareTag("Enemy_mob")) {
                 _spawner.ClearSpawner();
-                Debug.Log(tag + " cleared!");
 
                 switch (tag) {
                     case "Enemy_mob":
@@ -209,17 +181,30 @@ public class PurgeManager : MonoBehaviour {
         }
     }
 
-    public void outOfTimePenalty() {
-        Debug.Log("loose cause of time");
+    private void outOfTimePenalty() {
+        Debug.Log("Purge is over ! You tried nice but unfortunately you didnt kill all enemies in time. A time penalty of TO DECIDE seconds. will be applied to next purge");
     }
 
-    public void lackOfKillsPenalty() {
-        Debug.Log("loose cause you were lazy");
+    private void lackOfKillsPenalty() {
+        Debug.Log("Purge is over ! You weren't aggressive enough. A time penalty of TO DECIDE seconds. will be applied to the next purge");
     }
 
-    public bool checkPlayerAgressiveness() {
+    private void checkPlayerAgressiveness() {
+        // logic about player agressiveness
+        playerWasAgressive = true;
+    }
 
+    private void ResetNormalMode() {
+        purgeUI.fill.fillAmount = 0;
+        killedCount = 0;
+        
+        // Spawn normal enemies
+        clearAndSetSpawners("Enemy_mob");
 
-        return true;
+        ComputePurgePenalty();
+    }
+
+    private void ComputePurgePenalty() {
+        
     }
 }

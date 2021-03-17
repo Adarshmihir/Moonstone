@@ -106,7 +106,6 @@ namespace Resources
 
             if (!CompareTag("Player")) {
                 PurgeManager.Instance.killedCount++;
-                Debug.Log("VAR");
             }
                 
         }

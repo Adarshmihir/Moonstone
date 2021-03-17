@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fill: {fileID: 8849672505056028824}
   counterText: {fileID: 8849672504105963166}
-  timer: {fileID: 9079414936461069901}
+  timer: {fileID: 0}
   timerText: {fileID: 6360462964306510623}
   timerLabel: {fileID: 1761154012272436239}
   remainLabel: {fileID: 4350452818320564139}
@@ -972,4 +972,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0 / 100
+  m_Text: '00 : 00'

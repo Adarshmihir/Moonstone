@@ -18,6 +18,7 @@ public class PurgeMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         counterText.text += fill.fillAmount;
+        timer = GetComponentInChildren<Timer>();
     }
 
 // Update is called once per frame
