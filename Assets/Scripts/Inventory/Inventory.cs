@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour {
 
     public int space = 20;
 
-    public int gold = 300;
+    public float gold = 300f;
 
     public int copper = 10;
     public int iron = 10;
