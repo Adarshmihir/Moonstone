@@ -8,10 +8,12 @@ public class HealthGlobeControl : MonoBehaviour
     public Slider healthSlider;
     public float regenSpeed;
     public bool regenering;
-
+    public Coroutine coroutineRegen;
     void Start()
     {
         healthSlider = GetComponent<Slider>();
+        healthSlider.value = 1;
+        regenering = true;
     }
 
     // Update is called once per frame
@@ -29,14 +31,22 @@ public class HealthGlobeControl : MonoBehaviour
                 regenering = false;
             }
         }
+    }
 
-        if(Input.GetMouseButtonDown(0))
+    public void StopRegen()
+    {
+        regenering = false;
+        if (coroutineRegen != null)
         {
-            healthSlider.value = healthSlider.value - 0.1f;
+            StopCoroutine(coroutineRegen);
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            regenering = true;
-        }
+        coroutineRegen = StartCoroutine(StartRegenDelay());
+    }
+
+    private IEnumerator StartRegenDelay()
+    {
+        yield return new WaitForSeconds(5);
+        regenering = true;
+        coroutineRegen = null;
     }
 }

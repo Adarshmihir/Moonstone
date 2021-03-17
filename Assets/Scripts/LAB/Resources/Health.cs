@@ -52,6 +52,15 @@ namespace Resources
                 _lifeBarController.UpdateLifeBar();
             }
 
+            if(this.tag == "Player")
+            {
+                Debug.Log("playerHit");
+                HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
+                healhPlayer.StopRegen();
+                Debug.Log(healhPlayer);
+                healhPlayer.healthSlider.value = healhPlayer.healthSlider.value - (damage / MaxHealthPoints);
+            }
+
             if (_damageTextSpawner != null)
             {
                 // If critical , damage * 2 else normal damage
