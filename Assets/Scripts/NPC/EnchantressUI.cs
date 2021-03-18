@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Quests;
 
 public class EnchantressUI : MonoBehaviour
 {
@@ -14,16 +15,16 @@ public class EnchantressUI : MonoBehaviour
     public Transform ListMod;
     public Button selectedButton;
     private Equipment EquipmentToEnchant;
-    private List<StatModifier> modifierList; 
+    private List<StatModifier> modifierList;
     Color selectedColor = Color.blue;
     Color unSelectedColor = Color.white;
 
 
     private float EnchantressDefaultPrice = 50f;
-    
-    
-    
-    
+
+
+
+
     // Start is called before the first frame update
     public void Initialize_EnchantressUI()
     {
@@ -40,7 +41,7 @@ public class EnchantressUI : MonoBehaviour
 
         FinishEnchantButton.GetComponent<Button>().enabled = selectedButton != null;
     }
-    
+
     //Generate a modifier list when an Item is dropped on enchanteress UI
     public void GenerateModifierList()
     {
@@ -78,11 +79,12 @@ public class EnchantressUI : MonoBehaviour
             selectedButton = modButton;
             modButton.GetComponent<Image>().color = selectedColor;
         }
-        
+
     }
 
     public void ValidateModifierChange()
     {
+        Debug.Log("Valide Enchant !");
         //STAT MODIFICATION (REMOVING MOD + PUT NEW MOD)
         StatModifier ModSelected = selectedButton.GetComponent<EnchantressModButton>().mod;
         RemoveModBeingModified(ModSelected);
@@ -95,6 +97,15 @@ public class EnchantressUI : MonoBehaviour
         EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().OnRemoveButton();
 
         Inventory.instance.gold -= EnchantressDefaultPrice;
+		
+        var player = GameObject.FindGameObjectWithTag("Player");
+        var questList = player.GetComponent<QuestManager>();
+
+        var evaluatedQuest = questList.Evaluate("HasQuest", "EnchantQuest");
+        if (evaluatedQuest != null)
+        {
+            questList.CompleteGoal(questList.GetQuestByName("EnchantQuest"), "1");
+        }
     }
 
     public void OnItemInMainSlot(Item item)
@@ -102,22 +113,22 @@ public class EnchantressUI : MonoBehaviour
         if (!(item is Equipment eqItem)) return;
         EquipmentToEnchant = eqItem;
         GenerateModifierList();
-        
+
     }
     private void RemoveModBeingModified(StatModifier mod)
     {
         List<StatModifier> itemsToAdd = new List<StatModifier>();
-        
+
         //only keep modifiers who won't be removed
         foreach (StatModifier modifier in modifierList) {
             if (modifier != mod) {
                 itemsToAdd.Add(modifier);
             }
         }
-        
+
         //update list
         modifierList = itemsToAdd;
     }
-    
-    
+
+
 }

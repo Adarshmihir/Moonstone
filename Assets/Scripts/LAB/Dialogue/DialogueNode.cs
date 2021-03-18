@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Dialogue
         [SerializeField] private Rect rect = new Rect(0, 0, 200, 100);
         [SerializeField] private string enterAction;
         [SerializeField] private string exitAction;
+        [SerializeField] private Condition condition;
 
         public string Text => text;
         public List<string> Children => children;
@@ -19,6 +21,11 @@ namespace Dialogue
         public bool IsPlayerTurn => isPlayerTurn;
         public string EnterAction => enterAction;
         public string ExitAction => exitAction;
+
+        public bool CheckCondition(IEnumerable<IEvaluator> evaluators)
+        {
+            return condition.CheckCondition(evaluators);
+        }
 
 #if UNITY_EDITOR
         public void SetRect(Vector2 position)

@@ -15,6 +15,13 @@ namespace Dialogue
         private readonly Dictionary<string, DialogueNode> _nodeLookup = new Dictionary<string, DialogueNode>();
 
         public IEnumerable<DialogueNode> DialogueNodes => dialogueNodes;
+        
+        private void Awake()
+        {
+            if (_nodeLookup.Any() || !dialogueNodes.Any()) return;
+            
+            OnValidate();
+        }
 
         private void OnValidate()
         {

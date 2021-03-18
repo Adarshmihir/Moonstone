@@ -25,6 +25,7 @@ public class XpSystem
         if (curXP >= toNextLevelXP)
         {
             curLevel++;
+            GameManager.Instance.player.GetComponent<PlayerFX>().PlayLvLUp();
             curXP -= toNextLevelXP;
             if (OnLevelChanged != null) OnLevelChanged(this, EventArgs.Empty);
         }

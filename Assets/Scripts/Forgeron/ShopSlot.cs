@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Quests;
 
 public class ShopSlot : MonoBehaviour
 {
@@ -29,6 +30,14 @@ public class ShopSlot : MonoBehaviour
             inventory.gold -= price;
             inventory.Add(item);
             Debug.Log("Item acheté : " + item.name);
+            var player = GameObject.FindGameObjectWithTag("Player");
+            var questList = player.GetComponent<QuestManager>();
+
+            var evaluatedQuest = questList.Evaluate("HasQuest", "ForgeQuest");
+            if (evaluatedQuest != null)
+            {
+                questList.CompleteGoal(questList.GetQuestByName("ForgeQuest"), "1");
+            }
         }
         else
         {
