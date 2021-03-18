@@ -17,6 +17,13 @@ public class EnchantressUI : MonoBehaviour
     private List<StatModifier> modifierList; 
     Color selectedColor = Color.blue;
     Color unSelectedColor = Color.white;
+
+
+    private float EnchantressDefaultPrice = 50f;
+    
+    
+    
+    
     // Start is called before the first frame update
     public void Initialize_EnchantressUI()
     {
@@ -86,6 +93,8 @@ public class EnchantressUI : MonoBehaviour
         //STAT MOD LIST CHANGE
         EquipmentToEnchant.StatModifiers = modifierList;
         EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().OnRemoveButton();
+
+        Inventory.instance.gold -= EnchantressDefaultPrice;
     }
 
     public void OnItemInMainSlot(Item item)
