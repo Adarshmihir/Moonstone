@@ -51,7 +51,7 @@ namespace Resources
         private void Update()
         {
             if (_combatTarget == null || !IsDead || _combatTarget.Items.Any()) return;
-            
+
             if (_death != null)
             {
                 StopCoroutine(_death);
@@ -68,6 +68,15 @@ namespace Resources
             if (_lifeBarController != null)
             {
                 _lifeBarController.UpdateLifeBar();
+            }
+
+            if(this.tag == "Player")
+            {
+                Debug.Log("playerHit");
+                HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
+                healhPlayer.StopRegen();
+                Debug.Log(healhPlayer);
+                healhPlayer.healthSlider.value = healhPlayer.healthSlider.value - (damage / MaxHealthPoints);
             }
 
             if (_damageTextSpawner != null)
@@ -89,12 +98,12 @@ namespace Resources
         public void GiveLife(float lifeAmount)
         {
             HealthPoints = Mathf.Min(HealthPoints + lifeAmount, MaxHealthPoints);
-            
+
             if (_lifeBarController != null)
             {
                 _lifeBarController.UpdateLifeBar();
             }
-            
+
             if (_damageTextSpawner != null)
             {
                 _damageTextSpawner.Spawn(lifeAmount, DamageType.Heal);
@@ -112,6 +121,11 @@ namespace Resources
                 _lifeBarController.UpdateLifeBar();
             }
         }
+        
+        public void RegenLifePlayer(float regenRate)
+        {
+            HealthPoints = Mathf.Min(HealthPoints + MaxHealthPoints * regenRate, MaxHealthPoints);
+        }
 
         private void Die()
         {
@@ -123,23 +137,29 @@ namespace Resources
 
             //_capsuleCollider.enabled = false;
             //_navMeshAgent.enabled = false;
+            
+            Enemy enemy = gameObject.GetComponent<Enemy>();
+            if (enemy)
+            {
+                GameManager.Instance.uiManager.LevelManagerGO.GetComponent<LevelManager>().levelWindow.levelSystem.AddExperience(enemy.XpValue);
+            }
 
             if (_death != null)
             {
                 StopCoroutine(_death);
             }
-            
+
             _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
         }
 
         public void TakeDot(Spell spell, Fighter fighter)
         {
             if (!(spell.DotCount > 0) || Dots.Contains(spell.name)) return;
-            
+
             Dots.Add(spell.name);
             StartCoroutine(StartDot(spell, fighter));
         }
-        
+
         private IEnumerator StartDot(Spell spell, Fighter fighter)
         {
             for (var i = 0; i < spell.DotCount; i++)
@@ -162,7 +182,7 @@ namespace Resources
         private IEnumerator DestroyEnemy(float timer)
         {
             yield return new WaitForSeconds(timer);
-            
+
             _capsuleCollider.enabled = false;
             _navMeshAgent.enabled = false;
 

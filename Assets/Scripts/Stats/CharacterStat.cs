@@ -69,7 +69,10 @@ namespace Stats
         {
             BaseValue += value;
         }
-        
+        public void ResetBaseValue(float value)
+        {
+            BaseValue = value;
+        }
         //Add modifier (percent or flat) to stat
         public virtual void AddModifier(StatModifier mod)
         {

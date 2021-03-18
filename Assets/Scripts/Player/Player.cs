@@ -5,6 +5,7 @@ using Combat;
 using Control;
 using Stats;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
     public float life;
     public float mana;
     public List<Stat> stats;
-    
+    public int level;
     
     
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     }
     public void InitializePlayer()
     {
+        level = 1;
         InitializeStats();
     }
     
@@ -69,5 +71,37 @@ public class Player : MonoBehaviour
                 
         }
             
+    }
+
+    public void AddPointToStat()
+    {
+        string name = EventSystem.current.currentSelectedGameObject.name;
+        name = name.Replace("_Button","");
+        foreach (var stat in stats)
+        {
+            if (stat.StatName.ToString() == name)
+            {
+                StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
+                stat.charStat.IncrementBaseValue(2);
+                statList.lvlup_Points -= 1;
+                statList.PointsToSpendTextUpdate(statList.lvlup_Points);
+                if (statList.lvlup_Points == 0)
+                {
+                    statList.ToggleLevelUp(false);
+                }
+                StatTextUpdate();
+            }
+        }
+            
+    }
+
+    public void ResetStat()
+    {
+        foreach (Stat stat in stats)
+        {
+            stat.charStat.ResetBaseValue(5);
+        }
+        GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().ToggleReset(level);
+        this.StatTextUpdate();
     }
 }

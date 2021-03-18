@@ -106,6 +106,8 @@ MonoBehaviour:
   Enchantress: {fileID: 2044514776082846185, guid: 46bdff1053aab784c98be688400ab479,
     type: 3}
   Forgeron: {fileID: 428047649772733985, guid: d0177ed7957631347a2e04cff8689dde, type: 3}
+  LevelManager: {fileID: 1258234262986489873, guid: ffaa3f18f3e634d589077d71a88bd181,
+    type: 3}
   MiniMapCanvasGO: {fileID: 0}
   CanvasSpellsBarGO: {fileID: 0}
   StatsCanvasGO: {fileID: 0}
@@ -114,3 +116,4 @@ MonoBehaviour:
   CanvasRessourceGO: {fileID: 0}
   EnchantressGO: {fileID: 0}
   ForgeronGO: {fileID: 0}
+  LevelManagerGO: {fileID: 0}

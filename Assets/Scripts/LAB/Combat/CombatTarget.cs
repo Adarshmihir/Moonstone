@@ -4,6 +4,7 @@ using System.Linq;
 using Movement;
 using Resources;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Combat
@@ -66,6 +67,9 @@ namespace Combat
             if (_items.Count > 0) return;
             
             LootBag.Cancel();
+
+            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
         }
         
         [Serializable]
