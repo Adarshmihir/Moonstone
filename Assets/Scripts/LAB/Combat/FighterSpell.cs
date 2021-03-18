@@ -120,7 +120,7 @@ namespace Combat
         {
             var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
 
-            if (!hasHit) return;
+            if (!hasHit || Vector3.Distance(hit.point, transform.position) <= 1f) return;
             
             // Rotate the character in direction of the target
             transform.LookAt(hit.point);

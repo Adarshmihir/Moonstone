@@ -43,6 +43,13 @@ namespace Stats
             PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
             LevelUpStatButtons.SetActive(true);
             PointsAvailable.SetActive(true);
+            
+            if (lvlup_Points != 1 * 1)
+            {
+                PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
+                LevelUpStatButtons.SetActive(true);
+                PointsAvailable.SetActive(true);
+            }
         }
         public GameObject getNumberGameObject(StatTypes type)
         {

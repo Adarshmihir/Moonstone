@@ -129,6 +129,7 @@ namespace Resources
 
         private void Die()
         {
+            Debug.Log(name);
             if (IsDead) return;
 
             IsDead = true;
