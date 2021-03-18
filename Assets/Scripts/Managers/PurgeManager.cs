@@ -84,7 +84,7 @@ public class PurgeManager : MonoBehaviour {
         // 1.Check if player is in a dungeon // 2. Check if player has killed a boss
         #region DungeonCheck
             if (player.isInDungeon) {
-                Debug.Log("Inside dungeon");
+                //Debug.Log("Inside dungeon");
                 // Increase purge bar faster
                 purgeFillDurationInSeconds = 150;
 
@@ -95,7 +95,7 @@ public class PurgeManager : MonoBehaviour {
                     player.hasKilledABoss = false;
                 }
             } else {
-                Debug.Log("Outside dungeon");
+               // Debug.Log("Outside dungeon");
                 // Increase purge bar at normal rate
                 purgeIncrement = DefaultPurgeIncrement;
                 purgeFillDurationInSeconds = DefaultPurgeFillDurationInSeconds;

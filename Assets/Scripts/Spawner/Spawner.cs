@@ -61,11 +61,9 @@ public class Spawner : MonoBehaviour
     public void SpawnObject()
     {
         var randObjectSpawn = this.GetRandomObjectToSpawn();
-        var capsuleCollidersArray = randObjectSpawn.GetComponentsInChildren<CapsuleCollider>();
-        var coordSpawn = this.GetRandomVector3Spawn(capsuleCollidersArray[0].radius);
-
+        var coordSpawn = this.GetRandomVector3Spawn();
         var objectSpawned = Instantiate(randObjectSpawn, coordSpawn, transform.rotation, this.transform);
-        if (stopSpawning || arrayObjectSpawned.Count >= maxArraySize)
+        if (stopSpawning || arrayObjectSpawned.Count >= maxArraySize - 1)
         {
             CancelInvoke(nameof(SpawnObject));
             isSpawning = false;
@@ -88,15 +86,19 @@ public class Spawner : MonoBehaviour
         return objectToSpawn[value];
     }
 
-    private Vector3 GetRandomVector3Spawn(float radius)
+    private Vector3 GetRandomVector3Spawn()
     {
         var randPos = new Vector3(0, 0, 0);
         var bIsPosValid = true;
         randPos = Random.insideUnitSphere * spawnerRadius;
         randPos += transform.position;
         NavMeshHit hit;
-        NavMesh.SamplePosition(randPos, out hit, spawnerRadius, 1);
-        randPos = hit.position;
+        if (NavMesh.SamplePosition(randPos, out hit, spawnerRadius, 1))
+        {
+            randPos = hit.position;
+            Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
+        }
+        
         return randPos;
     }
 
@@ -114,7 +116,7 @@ public class Spawner : MonoBehaviour
     // Remove the element toRemove from arrayObjectSpawned 
     public void RemoveObject(GameObject toRemove)
     {
-        arrayObjectSpawned.Remove(toRemove);
+        arrayObjectSpawned.Remove(toRemove.transform.parent.gameObject);
         if (!isSpawning)
         {
             isSpawning = true;

@@ -148,7 +148,14 @@ namespace Resources
             if (enemy)
             {
                 GameManager.Instance.uiManager.LevelManagerGO.GetComponent<LevelManager>().levelWindow.levelSystem.AddExperience(enemy.XpValue);
+                if (spawner != null)
+                {
+                    Debug.Log(spawner);
+                    spawner.RemoveObject(gameObject);
+                }
             }
+
+
 
             if (_death != null)
             {
