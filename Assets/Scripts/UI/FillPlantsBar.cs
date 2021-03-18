@@ -25,6 +25,9 @@ public class FillPlantsBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthSlider = GameObject.FindObjectOfType<HealthGlobeControl>().healthSlider;
+        healingBarFront = GameObject.FindGameObjectWithTag("HealFront").GetComponent<Image>();
+    
         currentLife = healthSlider.value; // Compute current life
         currentHeal = healingBarFront.fillAmount; // Compute current heal
     }

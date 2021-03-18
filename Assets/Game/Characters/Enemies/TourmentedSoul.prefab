@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca5711fe11e147ca91f413f5dab12e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minGold: 0
+  maxGold: 0
+  loots: []
 --- !u!114 &3746206235308956221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 161392, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 175508, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_IsActive

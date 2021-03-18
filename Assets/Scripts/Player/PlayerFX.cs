@@ -1,20 +1,19 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFX : MonoBehaviour
 {
-    [SerializeField] private GameObject lvlUpFX;
-    [SerializeField] private GameObject walkDustFX;
-    [SerializeField] private GameObject questCompletionFX;
-    [SerializeField] private GameObject eatPlantFX;
+    [SerializeField] private ParticleSystem lvlUpFX;
+    [SerializeField] private ParticleSystem walkDustFX;
+    [SerializeField] private ParticleSystem questCompletionFX;
+    [SerializeField] private ParticleSystem eatPlantFX;
 
     private void Start()
     {
-        lvlUpFX.GetComponent<ParticleSystem>().Stop();
-        walkDustFX.GetComponent<ParticleSystem>().Stop();
-        questCompletionFX.GetComponent<ParticleSystem>().Stop();
-        eatPlantFX.GetComponent<ParticleSystem>().Stop();
+        lvlUpFX.Stop();
+        walkDustFX.Stop();
+        questCompletionFX.Stop();
+        eatPlantFX.Stop();
     }
 
     public IEnumerator StopAnim(ParticleSystem effect, float time)
@@ -25,10 +24,10 @@ public class PlayerFX : MonoBehaviour
 
     public void PlayLvLUp()
     {
-        var effect = lvlUpFX.GetComponent<ParticleSystem>();
+        var effect = lvlUpFX;
         if (!effect.isPlaying)
         {
-            effect.GetComponent<Transform>().position = GameManager.Instance.player.transform.position;
+            effect.transform.position = GameManager.Instance.player.transform.position;
             effect.Play();
             StartCoroutine(StopAnim(effect, 3f));
         }
@@ -36,10 +35,10 @@ public class PlayerFX : MonoBehaviour
 
     public void PlayWalkDust()
     {
-        var effect = walkDustFX.GetComponent<ParticleSystem>();
+        var effect = walkDustFX;
         if (!effect.isPlaying)
         {
-            effect.GetComponent<Transform>().position = GameManager.Instance.player.transform.position;
+            effect.transform.position = GameManager.Instance.player.transform.position;
             effect.Play();
             StartCoroutine(StopAnim(effect, 0.5f));
         }
@@ -47,10 +46,10 @@ public class PlayerFX : MonoBehaviour
 
     public void PlayQuestCompletion()
     {
-        var effect = questCompletionFX.GetComponent<ParticleSystem>();
+        var effect = questCompletionFX;
         if(!effect.isPlaying)
         {
-            effect.GetComponent<Transform>().position = GameManager.Instance.player.transform.position;
+            effect.transform.position = GameManager.Instance.player.transform.position;
             effect.Play();
             StartCoroutine(StopAnim(effect, 3f));
         }
@@ -58,10 +57,10 @@ public class PlayerFX : MonoBehaviour
 
     public void PlayEatPlant()
     {
-        var effect = eatPlantFX.GetComponent<ParticleSystem>();
+        var effect = eatPlantFX;
         if (!effect.isPlaying)
         {
-            effect.GetComponent<Transform>().position = GameManager.Instance.player.transform.position;
+            effect.transform.position = GameManager.Instance.player.transform.position;
             effect.Play();
             StartCoroutine(StopAnim(effect, 3f));
         }
