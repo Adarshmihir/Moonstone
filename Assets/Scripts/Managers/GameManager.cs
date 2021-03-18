@@ -50,8 +50,9 @@ public class GameManager : MonoBehaviour
         }
         
         uiManager.InitializeUIManager();
-        uiManager.HideUIAtLaunch();
         player.InitializePlayer();
+        uiManager.HideUIAtLaunch();
+        
         equipementManager.Initialize_EquipmentManager();
     }
 

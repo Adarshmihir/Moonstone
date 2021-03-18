@@ -40,9 +40,6 @@ namespace Stats
         public void ToggleReset(int level)
         {
             lvlup_Points = level * 1;
-            PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
-            LevelUpStatButtons.SetActive(true);
-            PointsAvailable.SetActive(true);
             
             if (lvlup_Points != 1 * 1)
             {
