@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Quests;
+using Resources;
 
 public class FillPlantsBar : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class FillPlantsBar : MonoBehaviour
         {
             if (healingBarFront.fillAmount > currentHeal)
             {
+                GameManager.Instance.player.GetComponent<Health>().RegenLifePlayer(Time.deltaTime);
+                
                 healingBarFront.fillAmount -= healDecrease * Time.deltaTime;
                 healthSlider.value += lifeIncrease * Time.deltaTime;
             }

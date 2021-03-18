@@ -9,7 +9,7 @@ public class SafeZone : Zone
     protected override void UseTriggerZone(Collider col)
     {
         base.UseTriggerZone(col);
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.tag.Contains("Enemy"))
         {
             col.gameObject.GetComponent<AIController>().ReturnToInitialPosition();
         }

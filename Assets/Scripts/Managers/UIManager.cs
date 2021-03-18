@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -15,6 +17,8 @@ public class UIManager : MonoBehaviour
     public GameObject Forgeron;
     public GameObject LootBag;
     public GameObject LevelManager;
+    public GameObject PurgeMenu;
+
     //GAMEOBJECTS
     [HideInInspector]
     public GameObject MiniMapCanvasGO;
@@ -34,7 +38,10 @@ public class UIManager : MonoBehaviour
     public GameObject ForgeronGO;
     [HideInInspector]
     public GameObject LootBagGO;
+	[HideInInspector]
     public GameObject LevelManagerGO;
+    [HideInInspector]
+    public GameObject PurgeMenuGO;
 
     public void InitializeUIManager()
     {
@@ -51,10 +58,10 @@ public class UIManager : MonoBehaviour
         LootBagGO = Instantiate(LootBag);
         LevelManagerGO = Instantiate(LevelManager);
         LevelManagerGO.GetComponent<LevelManager>().InitializeLevelManager();
+        PurgeMenuGO = Instantiate(PurgeMenu);
     }
 
-    public void HideUIAtLaunch()
-    {
+    public void HideUIAtLaunch() {
         StatsCanvasGO.SetActive(false);
         InventoryGO.SetActive(false);
         //MiniMapCanvasGO.SetActive(false);
@@ -63,5 +70,6 @@ public class UIManager : MonoBehaviour
         EnchantressGO.SetActive(false);
         ForgeronGO.SetActive(false);
         LootBagGO.SetActive(false);
+        PurgeMenuGO.SetActive(false);
     }
 }

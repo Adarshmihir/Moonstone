@@ -25,6 +25,7 @@ namespace Resources
         private AIController _aiController;
         private CombatTarget _combatTarget;
         private Coroutine _death;
+        private Spawner spawner;
 
         public float HealthPoints { get; private set; }
         public float MaxHealthPoints => maxHealthPoints;
@@ -121,15 +122,19 @@ namespace Resources
                 _lifeBarController.UpdateLifeBar();
             }
         }
-        
+
         public void RegenLifePlayer(float regenRate)
         {
             HealthPoints = Mathf.Min(HealthPoints + MaxHealthPoints * regenRate, MaxHealthPoints);
         }
 
+        public void setSpawner(Spawner spawner)
+        {
+            this.spawner = spawner;
+        }
+
         private void Die()
         {
-            Debug.Log(name);
             if (IsDead) return;
 
             IsDead = true;
@@ -138,7 +143,7 @@ namespace Resources
 
             //_capsuleCollider.enabled = false;
             //_navMeshAgent.enabled = false;
-            
+
             Enemy enemy = gameObject.GetComponent<Enemy>();
             if (enemy)
             {
@@ -151,6 +156,11 @@ namespace Resources
             }
 
             _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
+
+			if (!CompareTag("Player"))
+			{
+				PurgeManager.Instance.killedCount += 1;
+			}
         }
 
         public void TakeDot(Spell spell, Fighter fighter)
@@ -187,7 +197,11 @@ namespace Resources
             _capsuleCollider.enabled = false;
             _navMeshAgent.enabled = false;
 
-            Destroy(gameObject);
+            if(transform.parent.gameObject != null)
+                Destroy(transform.parent.gameObject);
+            else
+                Destroy(gameObject);
         }
+
     }
 }

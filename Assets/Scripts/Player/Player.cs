@@ -14,14 +14,17 @@ public class Player : MonoBehaviour
     public float mana;
     public List<Stat> stats;
     public int level;
-    
-    
+
+
+    public bool isInDungeon = false;
+    public bool hasKilledABoss = false;
+
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void InitializeStats()
@@ -34,14 +37,14 @@ public class Player : MonoBehaviour
             stats.Add(statToAdd);
         }
         StatTextUpdate();
-        
+
     }
     public void InitializePlayer()
     {
         level = 1;
         InitializeStats();
     }
-    
+
     public void AddModifier(StatModifier statMod)
     {
         foreach (var stat in stats) {
@@ -68,9 +71,9 @@ public class Player : MonoBehaviour
                     stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString() + " (+" + (stat.charStat.Value-stat.charStat.BaseValue).ToString()+")";
                 }
             }
-                
+
         }
-            
+
     }
 
     public void AddPointToStat()
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour
                 StatTextUpdate();
             }
         }
-            
+
     }
 
     public void ResetStat()
