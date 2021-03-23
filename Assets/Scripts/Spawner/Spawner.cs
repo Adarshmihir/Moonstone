@@ -110,7 +110,7 @@ public class Spawner : MonoBehaviour
             Destroy(this.arrayObjectSpawned[i]);
         }
         arrayObjectSpawned.Clear();
-        objectToSpawn.Clear();
+        //objectToSpawn.Clear(); 
     }
 
     // Remove the element toRemove from arrayObjectSpawned 
