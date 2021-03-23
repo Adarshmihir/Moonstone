@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
     private Inventory inventory;
@@ -8,6 +9,8 @@ public class InventoryUI : MonoBehaviour {
     public Transform itemsParent;
 
     private InventorySlot[] slots;
+
+    public Text goldText;
 
     // Start is called before the first frame update
     public void Initialize_InventoryUI() {
@@ -19,7 +22,7 @@ public class InventoryUI : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
- 
+        goldText.text = Inventory.instance.gold.ToString();
     }
 
     void updateUI() {

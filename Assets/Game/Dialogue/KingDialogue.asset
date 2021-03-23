@@ -1,0 +1,946 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7574053899560765950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 3f8aae58-1e46-4cc3-b948-55639331b9c5
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Super \xE7a ! Tu deviens un vrai guerrier ! Tu auras remarqu\xE9 que les
+    combats contre les monstres peuvent \xEAtre p\xE9rilleux ! Les plantes peuvent
+    t'aider dans ces situations ! Va donc en cueillir diff\xE9rentes sortes et d\xE9couvrir
+    leurs effets !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 785
+    y: 208
+    width: 200
+    height: 100
+  enterAction: GivePlantQuest
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: PlantQuest
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: EnchantQuest
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: PlantQuest
+        negate: 1
+--- !u!114 &-7136313156024963173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 8165068b-c0dd-4cc9-bde5-7a8d4b886254
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Tu dois aller r\xE9cup\xE9rer la Moostone du Courage !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 294
+    y: 635
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: Donjon2
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: Donjon2
+        negate: 1
+--- !u!114 &-7128100529976744918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: b01a13dd-a673-4015-a3c7-bf9e288caf25
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Compris !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1499
+    y: 30
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: GiveFindOlaf
+  condition:
+    and: []
+--- !u!114 &-6581755920059035218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: d7a12591-bec6-4801-87b6-1a1325c103de
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Bien ! Ne t'en fais pas tu n'es pas seul dans ta qu\xEAte et tu pourras
+    compter sur de pr\xE9cieux amis pour t'\xE9pauler ! A commencer par moi !"
+  children:
+  - 28bba907-25dd-4da3-95d6-a5d68b9295c6
+  rect:
+    serializedVersion: 2
+    x: 535
+    y: -9
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: 
+        negate: 1
+    - or:
+      - name: QuestCompleted
+        parameter: 
+        negate: 1
+--- !u!114 &-4203917761518119786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 28bba907-25dd-4da3-95d6-a5d68b9295c6
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Ok !
+  children:
+  - f7604c97-b84f-4ef6-a82c-0b4b771b9adc
+  rect:
+    serializedVersion: 2
+    x: 757
+    y: 31
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-4152930218340160137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 0754b921-fdc6-4bfe-a2ff-bba4324fc112
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Ouah ! Impressionnant ! Tu peux d\xE9sormais aller chercher la seconde Moonstone,
+    celle du Courage ! Merci pour tout ce que tu fais pour nous mon ami."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 785
+    y: 379
+    width: 200
+    height: 100
+  enterAction: GiveDonjon2
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: Donjon2
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: Donjon1
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: Donjon2
+        negate: 1
+--- !u!114 &-2560423535971459979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 330cb9f2-247c-4fee-ac73-f6c9d3df25e4
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Non merci !
+  children:
+  - 78f458c3-8d39-4f89-b0cc-71c4d87f891f
+  rect:
+    serializedVersion: 2
+    x: 281
+    y: 231
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-2249363267933494494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 2d7040c8-c860-4cf2-9044-e86bc2d59933
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Tu dois aller voir Olaf notre forgeron !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 292
+    y: 358
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindOlaf
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: FindOlaf
+        negate: 1
+--- !u!114 &-1770272409000219971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: db816e86-9d5b-4009-9e4f-17628c0d5d16
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Que dois-je faire ?
+  children:
+  - 2d7040c8-c860-4cf2-9044-e86bc2d59933
+  - 1851f615-ff9a-4516-8aff-7084e8e32239
+  - a90eca3f-1007-4797-9318-b059c0c11d3a
+  - 8165068b-c0dd-4cc9-bde5-7a8d4b886254
+  rect:
+    serializedVersion: 2
+    x: 72
+    y: 368
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindOlaf
+        negate: 0
+      - name: HasDone
+        parameter: FindOlaf
+        negate: 0
+    - or:
+      - name: HasQuest
+        parameter: FindMaya
+        negate: 0
+      - name: HasQuest
+        parameter: PlantQuest
+        negate: 0
+      - name: HasQuest
+        parameter: Donjon1
+        negate: 0
+      - name: HasQuest
+        parameter: Donjon2
+        negate: 0
+--- !u!114 &-1242816970582169862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: f7604c97-b84f-4ef6-a82c-0b4b771b9adc
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Je me pr\xE9sente, je suis le roi Edmug Seid et c'est un honneur pour moi
+    de te guider pour tes d\xE9but jeune Elu ! Mon premier conseil pour mener \xE0
+    bien ta qu\xEAte est : Equipe toi bien !"
+  children:
+  - 64f26d04-1316-471b-8bcd-4f97024dc637
+  rect:
+    serializedVersion: 2
+    x: 1001
+    y: 46
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &-1178871840925123241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 5733c63d-4d54-4871-b388-a614049edd94
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: "D'accord ! Quelle est ma prochaine qu\xEAte ?"
+  children:
+  - d7a12591-bec6-4801-87b6-1a1325c103de
+  rect:
+    serializedVersion: 2
+    x: 290
+    y: 8
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindOlaf
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: FindOlaf
+        negate: 1
+--- !u!114 &-487443283714124000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 83cefc80-8065-4ba0-a808-f8cd78a64b52
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Hop hop hop mange moi toutes ces plantes !
+  children:
+  - 4bd6e88a-b015-4a8a-885a-963f13b16384
+  rect:
+    serializedVersion: 2
+    x: 436
+    y: 738
+    width: 200
+    height: 100
+  enterAction: DonePlantQuest1
+  exitAction: DonePlantQuest2
+  condition:
+    and: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84509a64602d94c5b9348c112a6bb979, type: 3}
+  m_Name: KingDialogue
+  m_EditorClassIdentifier: 
+  dialogueNodes:
+  - {fileID: 2565938683980493795}
+  - {fileID: -1178871840925123241}
+  - {fileID: -6581755920059035218}
+  - {fileID: -4203917761518119786}
+  - {fileID: -1242816970582169862}
+  - {fileID: -7128100529976744918}
+  - {fileID: 2598732180156894903}
+  - {fileID: 6966788493687343986}
+  - {fileID: -1770272409000219971}
+  - {fileID: -2249363267933494494}
+  - {fileID: 2541279135839920571}
+  - {fileID: -2560423535971459979}
+  - {fileID: 4645449629544986598}
+  - {fileID: 4368598475296574425}
+  - {fileID: 3447833428207832667}
+  - {fileID: -7574053899560765950}
+  - {fileID: -4152930218340160137}
+  - {fileID: 2944269980693122154}
+  - {fileID: 6926723066744499103}
+  - {fileID: -7136313156024963173}
+  - {fileID: 2393570811015635431}
+  - {fileID: 2477123312722436351}
+  - {fileID: -487443283714124000}
+  - {fileID: 3333869206892588376}
+  - {fileID: 8093085179709139929}
+  - {fileID: 7626072138775790382}
+  - {fileID: 1590827241551344975}
+  - {fileID: 4222653497369240816}
+  nodeOffset: {x: 250, y: 0}
+--- !u!114 &1590827241551344975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: e5ada09a-c656-4c25-b3ab-d035ffc59c47
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Bravo !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 420
+    y: 959
+    width: 200
+    height: 100
+  enterAction: EndDonjon2
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &2393570811015635431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 47e94894-0484-4a81-bc8f-efef33a7f5a5
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Terminer PlantQuest
+  children:
+  - 83cefc80-8065-4ba0-a808-f8cd78a64b52
+  rect:
+    serializedVersion: 2
+    x: 184
+    y: 739
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: DonePlantQuest0
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: PlantQuest
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: PlantQuest
+        negate: 1
+--- !u!114 &2477123312722436351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 83c3d66e-ecc4-49eb-a74d-49983cd2cf7e
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Terminer Donjon1
+  children:
+  - 4c469366-401c-4e18-ad3a-839de605f5ff
+  rect:
+    serializedVersion: 2
+    x: 185
+    y: 848
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: DoneDonjon10
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: Donjon1
+        negate: 0
+--- !u!114 &2541279135839920571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 64f26d04-1316-471b-8bcd-4f97024dc637
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Tu trouveras en ville Olaf notre forgeron, il pourra t'aider \xE0 ce sujet
+    !"
+  children:
+  - b01a13dd-a673-4015-a3c7-bf9e288caf25
+  - 028f737a-ba86-43eb-b001-40efef096ab0
+  rect:
+    serializedVersion: 2
+    x: 1240
+    y: 45
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &2565938683980493795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 7aff143c-5f70-43ea-8b03-72b0d68ffebb
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Bonjour \xE0 toi jeune aventurier ! Tu as \xE9t\xE9 choisis comme Elu de
+    notre village, ton devoir est d\xE9somais de tous nous sauver !"
+  children:
+  - 5733c63d-4d54-4871-b388-a614049edd94
+  - db816e86-9d5b-4009-9e4f-17628c0d5d16
+  - 330cb9f2-247c-4fee-ac73-f6c9d3df25e4
+  - ef4edf72-c44c-46e9-94be-b797bc94c808
+  - 47e94894-0484-4a81-bc8f-efef33a7f5a5
+  - 83c3d66e-ecc4-49eb-a74d-49983cd2cf7e
+  - 81189480-ddaa-4adb-a8df-dc99c8db1486
+  rect:
+    serializedVersion: 2
+    x: -17
+    y: 131
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &2598732180156894903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 028f737a-ba86-43eb-b001-40efef096ab0
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: "Tu peux r\xE9p\xE9ter ?"
+  children:
+  - 64f26d04-1316-471b-8bcd-4f97024dc637
+  rect:
+    serializedVersion: 2
+    x: 1507
+    y: 164
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &2944269980693122154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 1851f615-ff9a-4516-8aff-7084e8e32239
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Tu dois aller voir Maya notre enchanteresse !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 294
+    y: 451
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindMaya
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: FindMaya
+        negate: 1
+--- !u!114 &3333869206892588376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 4bd6e88a-b015-4a8a-885a-963f13b16384
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Biiieeeen !
+  children:
+  - 12ec0fef-68dd-4179-990e-943acb9a2d28
+  rect:
+    serializedVersion: 2
+    x: 684
+    y: 740
+    width: 200
+    height: 100
+  enterAction: DonePlantQuest3
+  exitAction: EndPlantQuest
+  condition:
+    and: []
+--- !u!114 &3447833428207832667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 1ef63e31-1831-47d0-a691-b6b4f3b1e086
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Tu es maintenant pr\xEAt ! Ta vraie aventure commence maintenant ! La premi\xE8re
+    Moonstone \xE0 r\xE9cup\xE9rer est celle du Savoir ! Je compte sur toi !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 785
+    y: 294
+    width: 200
+    height: 100
+  enterAction: GiveDonjon1
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: Donjon1
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: PlantQuest
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: Donjon1
+        negate: 1
+--- !u!114 &4222653497369240816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 12ec0fef-68dd-4179-990e-943acb9a2d28
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "On est bien l\xE0 non ?"
+  children:
+  - 7aff143c-5f70-43ea-8b03-72b0d68ffebb
+  rect:
+    serializedVersion: 2
+    x: 928
+    y: 734
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &4368598475296574425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: e00c95ad-f774-4837-925c-549a866890a5
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Bien ! Maintenant va trouver Maya notre enchanteresse, elle t'aidera \xE0
+    devenir plus puissant !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 787
+    y: 123
+    width: 200
+    height: 100
+  enterAction: GiveFindMaya
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuete
+        parameter: FindMaya
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: FindMaya
+        negate: 1
+--- !u!114 &4645449629544986598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: ef4edf72-c44c-46e9-94be-b797bc94c808
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: "J'ai fini ! Quelle est ma prochaine qu\xEAte ?"
+  children:
+  - e00c95ad-f774-4837-925c-549a866890a5
+  - 1ef63e31-1831-47d0-a691-b6b4f3b1e086
+  - 3f8aae58-1e46-4cc3-b948-55639331b9c5
+  - 0754b921-fdc6-4bfe-a2ff-bba4324fc112
+  rect:
+    serializedVersion: 2
+    x: 273
+    y: 119
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: FindMaya
+        negate: 1
+      - name: DoneQuest
+        parameter: EnchantQuest
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: ForgeQuest
+        negate: 0
+    - or:
+      - name: HasQuest
+        parameter: Donjon2
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: PlantQuest
+        negate: 0
+      - name: HasQuest
+        parameter: PlantQuest
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: Donjon1
+        negate: 0
+      - name: HasQuest
+        parameter: Donjon1
+        negate: 1
+    - or:
+      - name: HasDone
+        parameter: Donjon2
+        negate: 1
+--- !u!114 &6926723066744499103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: a90eca3f-1007-4797-9318-b059c0c11d3a
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Tu dois aller r\xE9cup\xE9rer la Moonstone de Savoir !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 294
+    y: 539
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: Donjon1
+        negate: 0
+    - or:
+      - name: HasDone
+        parameter: Donjon1
+        negate: 1
+--- !u!114 &6966788493687343986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 78f458c3-8d39-4f89-b0cc-71c4d87f891f
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: "Je crains que tu n'ai pas le choix mon ami.. Reviens me voir quand tu seras
+    pr\xEAt !"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 564
+    y: 456
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &7626072138775790382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 81189480-ddaa-4adb-a8df-dc99c8db1486
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  text: Terminer Donjon2
+  children:
+  - e5ada09a-c656-4c25-b3ab-d035ffc59c47
+  rect:
+    serializedVersion: 2
+    x: 181
+    y: 959
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: DoneDonjon20
+  condition:
+    and:
+    - or:
+      - name: HasQuest
+        parameter: Donjon2
+        negate: 0
+--- !u!114 &8093085179709139929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: 4c469366-401c-4e18-ad3a-839de605f5ff
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: Bravo !
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 429
+    y: 848
+    width: 200
+    height: 100
+  enterAction: EndDonjon1
+  exitAction: 
+  condition:
+    and: []

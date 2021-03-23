@@ -13,6 +13,13 @@ GameObject:
   - component: {fileID: 5833590639734953499}
   - component: {fileID: 3546296188873537620}
   - component: {fileID: 2738780856115648143}
+  - component: {fileID: 1227593812}
+  - component: {fileID: 438503776}
+  - component: {fileID: 438503783}
+  - component: {fileID: 152288583}
+  - component: {fileID: 152288582}
+  - component: {fileID: 152288588}
+  - component: {fileID: 4477008052194640583}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -79,6 +86,7 @@ MonoBehaviour:
   equipementManager: {fileID: 5833590639734953509}
   uiManager: {fileID: 2738780856115648143}
   player: {fileID: 0}
+  isPurgeActive: 0
 --- !u!114 &2738780856115648143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +114,11 @@ MonoBehaviour:
   Enchantress: {fileID: 2044514776082846185, guid: 46bdff1053aab784c98be688400ab479,
     type: 3}
   Forgeron: {fileID: 428047649772733985, guid: d0177ed7957631347a2e04cff8689dde, type: 3}
+  LootBag: {fileID: 6802931695046911497, guid: fe0ed2820c53b4f5da6c34d918d1e2b2, type: 3}
+  LevelManager: {fileID: 1258234262986489873, guid: ffaa3f18f3e634d589077d71a88bd181,
+    type: 3}
+  PurgeMenu: {fileID: 8849672503035493175, guid: 817ad4be1fe630443b0ebde9a4a6a154,
+    type: 3}
   MiniMapCanvasGO: {fileID: 0}
   CanvasSpellsBarGO: {fileID: 0}
   StatsCanvasGO: {fileID: 0}
@@ -114,3 +127,273 @@ MonoBehaviour:
   CanvasRessourceGO: {fileID: 0}
   EnchantressGO: {fileID: 0}
   ForgeronGO: {fileID: 0}
+  LootBagGO: {fileID: 0}
+  LevelManagerGO: {fileID: 0}
+  PurgeMenuGO: {fileID: 0}
+--- !u!114 &1227593812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ce6e08036a87f4bb27602a5a7b2958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  purgeUI: {fileID: 9216566206608914754, guid: 817ad4be1fe630443b0ebde9a4a6a154, type: 3}
+  purgiumAmount: 0
+  spawners: []
+  killedCount: 0
+  numberToKill: 1
+  purgeLevel: 1
+  toSpawnMob: {fileID: 0}
+  toSpawnMonster: {fileID: 0}
+  playerWasAgressive: 0
+  screenEffectAnimator: {fileID: 0}
+--- !u!82 &438503776
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b43e2234775185343abb166ddf27659c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &438503783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da99a8c148d166045b4505d2a216b1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purgeThemeSource: {fileID: 438503776}
+  purgeAlert: {fileID: 4477008052194640583}
+  alertHasBeenPlayed: 0
+--- !u!81 &152288583
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+--- !u!114 &152288582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775a78e825b521541b66d98ae486c037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelWindow: {fileID: 0}
+--- !u!114 &152288588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9960e47c5ade4a1c913186e94b8a2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellsIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!82 &4477008052194640583
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833590639734953498}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e61ccf7eec41e7a47bda5b261639bb76, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

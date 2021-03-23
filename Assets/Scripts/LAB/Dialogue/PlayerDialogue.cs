@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -40,34 +41,39 @@ namespace Dialogue
 
         public IEnumerable<DialogueNode> GetChoices()
 		{
-            return dialogue.GetSpecificChildren(_node, true);
+            return FilterByCondition(dialogue.GetSpecificChildren(_node, true));
         }
 
         public void SelectChoice(DialogueNode dialogueNode)
 		{
-			// TODO : FIX
-			
-            _node = dialogueNode;
+			_node = dialogueNode;
             StartEnterAction();
             IsChoosing = false;
-            OnUpdate?.Invoke();
+            Next();
         }
 
         public void Next()
 		{
-            if (dialogue.GetSpecificChildren(_node, true).Any())
+            if (FilterByCondition(dialogue.GetSpecificChildren(_node, true)).Any())
             {
-                IsChoosing = true;
+	            IsChoosing = true;
                 StartExitAction();
                 OnUpdate?.Invoke();
                 return;
 			}
 
-            var children = dialogue.GetSpecificChildren(_node, false).ToArray();
-            StartExitAction();
-            _node = children[Random.Range(0, children.Length)];
-            StartEnterAction();
-            OnUpdate?.Invoke();
+            if (HasNextText())
+            {
+	            var children = FilterByCondition(dialogue.GetSpecificChildren(_node, false)).ToArray();
+	            StartExitAction();
+	            _node = children[Random.Range(0, children.Length)];
+	            StartEnterAction();
+	            OnUpdate?.Invoke();
+            }
+            else
+            {
+	            Quit();
+            }
 		}
 
 		public void Quit()
@@ -82,7 +88,7 @@ namespace Dialogue
 
 		public bool HasNextText()
 		{
-            return dialogue.GetAllChildren(_node).Any();
+            return FilterByCondition(dialogue.GetAllChildren(_node)).Any();
 		}
 
 		private void StartEnterAction()
@@ -107,6 +113,16 @@ namespace Dialogue
 			{
 				trigger.Trigger(action);
 			}
+		}
+
+		private IEnumerable<DialogueNode> FilterByCondition(IEnumerable<DialogueNode> nodes)
+		{
+			return nodes.Where(currentNode => currentNode.CheckCondition(GetEvaluators()));
+		}
+
+		private IEnumerable<IEvaluator> GetEvaluators()
+		{
+			return GetComponents<IEvaluator>();
 		}
     }
 }

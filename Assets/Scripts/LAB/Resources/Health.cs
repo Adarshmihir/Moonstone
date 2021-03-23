@@ -14,6 +14,7 @@ namespace Resources
     {
         [SerializeField] private float maxHealthPoints = 100f;
         [SerializeField] private float destroyTime = 5f;
+        [SerializeField] private float destroyTimeWithLoot = 30f;
 
         private LifeBarController _lifeBarController;
         private DamageTextSpawner _damageTextSpawner;
@@ -22,11 +23,16 @@ namespace Resources
         private CapsuleCollider _capsuleCollider;
         private NavMeshAgent _navMeshAgent;
         private AIController _aiController;
+        private CombatTarget _combatTarget;
+        private Coroutine _death;
+        private Spawner spawner;
 
         public float HealthPoints { get; private set; }
         public float MaxHealthPoints => maxHealthPoints;
 
         public bool IsDead { get; private set; }
+
+        private List<string> Dots { get; } = new List<string>();
 
         // Start is called before the first frame update
         private void Start()
@@ -40,6 +46,19 @@ namespace Resources
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _aiController = GetComponent<AIController>();
+            _combatTarget = GetComponent<CombatTarget>();
+        }
+
+        private void Update()
+        {
+            if (_combatTarget == null || !IsDead || _combatTarget.Items.Any()) return;
+
+            if (_death != null)
+            {
+                StopCoroutine(_death);
+            }
+
+            StartCoroutine(DestroyEnemy(destroyTime));
         }
 
         public void TakeDamage(float damage, bool criticalHit, Fighter attacker)
@@ -50,6 +69,15 @@ namespace Resources
             if (_lifeBarController != null)
             {
                 _lifeBarController.UpdateLifeBar();
+            }
+
+            if(this.tag == "Player")
+            {
+                Debug.Log("playerHit");
+                HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
+                healhPlayer.StopRegen();
+                Debug.Log(healhPlayer);
+                healhPlayer.healthSlider.value = healhPlayer.healthSlider.value - (damage / MaxHealthPoints);
             }
 
             if (_damageTextSpawner != null)
@@ -68,6 +96,21 @@ namespace Resources
             }
         }
 
+        public void GiveLife(float lifeAmount)
+        {
+            HealthPoints = Mathf.Min(HealthPoints + lifeAmount, MaxHealthPoints);
+
+            if (_lifeBarController != null)
+            {
+                _lifeBarController.UpdateLifeBar();
+            }
+
+            if (_damageTextSpawner != null)
+            {
+                _damageTextSpawner.Spawn(lifeAmount, DamageType.Heal);
+            }
+        }
+
         public void RegenLife()
         {
             if (HealthPoints >= maxHealthPoints) return;
@@ -80,6 +123,16 @@ namespace Resources
             }
         }
 
+        public void RegenLifePlayer(float regenRate)
+        {
+            HealthPoints = Mathf.Min(HealthPoints + MaxHealthPoints * regenRate, MaxHealthPoints);
+        }
+
+        public void setSpawner(Spawner spawner)
+        {
+            this.spawner = spawner;
+        }
+
         private void Die()
         {
             if (IsDead) return;
@@ -88,17 +141,74 @@ namespace Resources
             _animator.SetTrigger("die");
             _actionScheduler.CancelCurrentAction();
 
+            //_capsuleCollider.enabled = false;
+            //_navMeshAgent.enabled = false;
+
+            Enemy enemy = gameObject.GetComponent<Enemy>();
+            if (enemy)
+            {
+                GameManager.Instance.uiManager.LevelManagerGO.GetComponent<LevelManager>().levelWindow.levelSystem.AddExperience(enemy.XpValue);
+                if (spawner != null)
+                {
+                    Debug.Log(spawner);
+                    spawner.RemoveObject(gameObject);
+                }
+            }
+
+
+
+            if (_death != null)
+            {
+                StopCoroutine(_death);
+            }
+
+            _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
+
+			if (!CompareTag("Player"))
+			{
+				PurgeManager.Instance.killedCount += 1;
+			}
+        }
+
+        public void TakeDot(Spell spell, Fighter fighter)
+        {
+            if (!(spell.DotCount > 0) || Dots.Contains(spell.name)) return;
+
+            Dots.Add(spell.name);
+            StartCoroutine(StartDot(spell, fighter));
+        }
+
+        private IEnumerator StartDot(Spell spell, Fighter fighter)
+        {
+            for (var i = 0; i < spell.DotCount; i++)
+            {
+                yield return new WaitForSeconds(spell.DotTick);
+
+                if (spell.SpellEffect == SpellEffect.Heal)
+                {
+                    GiveLife(spell.DotDamage);
+                }
+                else
+                {
+                    TakeDamage(spell.DotDamage, false, fighter);
+                }
+            }
+
+            Dots.Remove(spell.name);
+        }
+
+        private IEnumerator DestroyEnemy(float timer)
+        {
+            yield return new WaitForSeconds(timer);
+
             _capsuleCollider.enabled = false;
             _navMeshAgent.enabled = false;
 
-            StartCoroutine(DestroyEnemy());
+            if(transform.parent.gameObject != null)
+                Destroy(transform.parent.gameObject);
+            else
+                Destroy(gameObject);
         }
 
-        private IEnumerator DestroyEnemy()
-        {
-            yield return new WaitForSeconds(destroyTime);
-
-            Destroy(gameObject);
-        }
     }
 }

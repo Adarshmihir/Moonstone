@@ -1,4 +1,5 @@
 ﻿using Core;
+using Movement;
 using Resources;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,16 +29,38 @@ namespace Combat
         [SerializeField] private RawImage petSlot;
 
         private Spell _spellToCast;
+        private CastSource _castSource;
         private Fighter _fighter;
+        private Mover _mover;
 
-        private Health Target { get; set; }
+        //private Health Target { get; set; }
 
         private void Start()
         {
             _fighter = GetComponent<Fighter>();
+            _mover = GetComponent<Mover>();
             
             UpdateSpell(temp, CastSource.Weapon);
             UpdateSpell(temp, CastSource.Armor);
+        }
+        
+        // Update is called once per frame
+        private void Update()
+        {
+            //if (/*Target == null || Target.IsDead  || */_spellToCast.IsSpellOnCooldown()) return;
+
+            // Check if target is not too far
+            /*if (!_fighter.GetIsInRange(Target.transform.position, _spellToCast.SpellRange))
+            {
+                // Move towards the target until it is close enough
+                _mover.MoveTo(Target.transform.position);
+            }
+            else
+            {
+                // Cancel movement action and start attack
+                _mover.Cancel();
+                CastBehaviour();
+            }*/
         }
 
         private void UpdateSpell(Spell newSpell, CastSource castSource)
@@ -69,28 +92,38 @@ namespace Combat
             rawImage.texture = newSprite;
         }
 
-        public void Cast(GameObject combatTarget, CastSource castSource)
+        public void Cast(/*GameObject combatTarget, */CastSource castSource)
         {
+            // Start attack action
+            GetComponent<ActionScheduler>().StartAction(this);
+            
             InitSpellToCast(castSource);
             
             if (_spellToCast.IsSpellOnCooldown()) return;
             
-            CastBehaviour(combatTarget, castSource);
+            // Define target
+            //Target = combatTarget.GetComponent<Health>();
+            _castSource = castSource;
+            
+            CastBehaviour();
         }
 
-        private void CastBehaviour(GameObject combatTarget, CastSource castSource)
+        private void CastBehaviour()
         {
-            // Start attack action
-            GetComponent<ActionScheduler>().StartAction(this);
-
-            // Define target
-            Target = combatTarget.GetComponent<Health>();
-            
-            // Rotate the character in direction of the target
-            transform.LookAt(Target.transform);
+            UpdatePlayerRotation();
             
             CastAnimation();
-            _spellToCast.PutOnCooldown(castSource);
+            _spellToCast.PutOnCooldown(_castSource);
+        }
+
+        public void UpdatePlayerRotation()
+        {
+            var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+
+            if (!hasHit || Vector3.Distance(hit.point, transform.position) <= 1f) return;
+            
+            // Rotate the character in direction of the target
+            transform.LookAt(hit.point);
         }
 
         private void InitSpellToCast(CastSource castSource)
@@ -117,6 +150,7 @@ namespace Combat
             if (!_spellToCast.IsAnimated) return;
             
             // Start cast
+            GetComponent<Animator>().ResetTrigger("endCast");
             GetComponent<Animator>().ResetTrigger("stopCast");
             GetComponent<Animator>().SetTrigger("cast");
         }
@@ -124,7 +158,8 @@ namespace Combat
         // Animation event
         public void Shoot()
         {
-            _spellToCast.Launch(rightHandTransform, Target, _fighter);
+            //_spellToCast.Launch(rightHandTransform, Target, _fighter);
+            _spellToCast.Launch(rightHandTransform, _fighter);
         }
 
         // Animation event
@@ -144,12 +179,14 @@ namespace Combat
             // Stop cast action
             StopCast();
             // Remove target
-            Target = null;
+            //Target = null;
         }
         
         private void StopCast()
         {
             // Stop cast animation
+            _fighter.ChangeWeaponVisibility(true);
+            GetComponent<Animator>().ResetTrigger("endCast");
             GetComponent<Animator>().ResetTrigger("cast");
             GetComponent<Animator>().SetTrigger("stopCast");
         }
