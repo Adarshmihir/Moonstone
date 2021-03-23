@@ -1,0 +1,396 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1171907592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237424913261658140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5498e1ffdaa964671bbd073ca0cf7219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToTriggers:
+  - action: GiveFindOlaf
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907594}
+          m_MethodName: GiveQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: GiveFindMaya
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907594}
+          m_MethodName: GiveQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: GivePlantQuest
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907594}
+          m_MethodName: GiveQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: GiveDonjon1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907594}
+          m_MethodName: GiveQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: GiveDonjon2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907594}
+          m_MethodName: GiveQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: DonePlantQuest0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteGoal
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: DonePlantQuest1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteGoal
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: DonePlantQuest2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteGoal
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: DonePlantQuest3
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteGoal
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: EndPlantQuest
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: DoneDonjon10
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteGoal
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: DoneDonjon20
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteGoal
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: EndDonjon1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action: EndDonjon2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171907595}
+          m_MethodName: CompleteQuest
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1171907593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237424913261658140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c752f39599590462eb1f12038c3da95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: 31ae3a3290118bd418a28c34b71df46d, type: 2}
+--- !u!114 &1171907594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237424913261658140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbab0156487a4cfcb95126ddf9e521a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - {fileID: 11400000, guid: 90af99c8ec3833a478e8799ffd52e7d7, type: 2}
+  - {fileID: 11400000, guid: 8f0eb99f4b3334148a828f416c72460b, type: 2}
+  - {fileID: 11400000, guid: 7259795185a02aa4880190db96980ab7, type: 2}
+  - {fileID: 11400000, guid: bae85bf4dc3dacc41997e7cd470bf438, type: 2}
+  - {fileID: 11400000, guid: dc3dbfcce7a8f7b4b8108278a311fb3f, type: 2}
+--- !u!114 &1171907595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237424913261658140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd112e6155932447b64100aa0c12c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completionData:
+  - quest: {fileID: 11400000, guid: 7259795185a02aa4880190db96980ab7, type: 2}
+    goal: 0
+  - quest: {fileID: 11400000, guid: 7259795185a02aa4880190db96980ab7, type: 2}
+    goal: 1
+  - quest: {fileID: 11400000, guid: 7259795185a02aa4880190db96980ab7, type: 2}
+    goal: 2
+  - quest: {fileID: 11400000, guid: 7259795185a02aa4880190db96980ab7, type: 2}
+    goal: 3
+  - quest: {fileID: 11400000, guid: bae85bf4dc3dacc41997e7cd470bf438, type: 2}
+    goal: 0
+  - quest: {fileID: 11400000, guid: dc3dbfcce7a8f7b4b8108278a311fb3f, type: 2}
+    goal: 0
+--- !u!1001 &1544718436235240680
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2120049088348338815, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202291, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_Name
+      value: King (Quest) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202291, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.963138
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.023297638
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.497404
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.72584134
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6878623
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -86.922005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343731665392202316, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499037434774722764, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499037434774722764, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460418088403695627, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096537672865688181, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830072959628713891, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924446667756772654, guid: 58ce643e959964137ab94b8811ce20ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58ce643e959964137ab94b8811ce20ad, type: 3}
+--- !u!1 &1237424913261658140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 307307301300233460, guid: 58ce643e959964137ab94b8811ce20ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1544718436235240680}
+  m_PrefabAsset: {fileID: 0}

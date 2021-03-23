@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,9 @@ public class LevelWindow : MonoBehaviour
 {
     private Text levelText;
     private Image xpBarImage;
-    private XpSystem levelSystem;
+    public XpSystem levelSystem;
     
-    private void SetVariable()
+    public void SetVariable()
     {
         levelText = transform.Find("levelText").GetComponent<Text>();
         xpBarImage = transform.Find("xpBar").Find("bar").GetComponent<Image>();
@@ -26,12 +27,12 @@ public class LevelWindow : MonoBehaviour
             Debug.Log("XP next level = " + levelSystem.GetXPForLevel(levelSystem.GetLevelNumber()+1));
         }
     }
-    private void SetExperienceBarSize(float xpNormalized)
+    public void SetExperienceBarSize(float xpNormalized)
     {
         xpBarImage.fillAmount = xpNormalized;
     }
 
-    private void SetLevelNumber(int levelNumber)
+    public void SetLevelNumber(int levelNumber)
     {
         levelText.text = "LEVEL" + (levelNumber + 1);
     }
@@ -50,13 +51,16 @@ public class LevelWindow : MonoBehaviour
         levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
     }
 
-    private void LevelSystem_OnExperienceChanged(object sender, System.EventArgs e)
+    public void LevelSystem_OnExperienceChanged(object sender, System.EventArgs e)
     {
         SetExperienceBarSize(levelSystem.GetExperienceNormalized());
     }
 
-    private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
+    public void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
     {
         SetLevelNumber(levelSystem.GetLevelNumber());
+        GameManager.Instance.player.level = levelSystem.GetLevelNumber();
+        StatList statlist = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
+        statlist.ToggleLevelUp(true);
     }
 }

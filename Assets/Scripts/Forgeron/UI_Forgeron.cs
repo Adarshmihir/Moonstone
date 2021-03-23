@@ -36,7 +36,7 @@ public class UI_Forgeron : MonoBehaviour
         forgeButton.gameObject.SetActive(false);
         buyButton.gameObject.SetActive(false);
 
-        shopUI.SetActive(false);
+        shopUI.SetActive(true);
         repairUI.SetActive(false);
         forgeUI.SetActive(false);
     }
@@ -84,14 +84,18 @@ public class UI_Forgeron : MonoBehaviour
 
     public void onBuy()
     {
-        if(shopUI.activeSelf == false)
+        Debug.Log("Acheter");
+        Debug.Log(shopUI.activeSelf);
+        if (shopUI.activeSelf == false)
         {
+            GameManager.Instance.uiManager.ForgeronGO.SetActive(true);
             shopUI.SetActive(true);
             WriteText(6);
-            //Debug.Log("Acheter");
+            Debug.Log(shopUI.activeSelf);
         }
         else
         {
+            GameManager.Instance.uiManager.ForgeronGO.SetActive(false);
             shopUI.SetActive(false);
             WriteText(2);
         }
@@ -118,7 +122,6 @@ public class UI_Forgeron : MonoBehaviour
         {
             forgeUI.SetActive(true);
             WriteText(5);
-            //Debug.Log("Forger");
         }
         else
         {

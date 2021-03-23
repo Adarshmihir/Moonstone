@@ -34,6 +34,7 @@ namespace Control
             //if (InteractWithCombat(false)) return;
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
+            if (InteractWithCorpse()) return;
             InteractWithMovement();
         }
 
@@ -44,7 +45,7 @@ namespace Control
             {
                 var dialogueTarget = hit.transform.GetComponent<AIDialogue>();
                 if (dialogueTarget == null || !dialogueTarget.enabled || dialogueTarget.GetDialogue == null) continue;
-
+                
                 if (Input.GetMouseButtonDown(0))
                 {
                     GetComponent<PlayerDialogue>().StartDialogue(dialogueTarget, dialogueTarget.GetDialogue);
@@ -54,22 +55,42 @@ namespace Control
             return false;
         }
 
-        private bool InteractWithCombat()
+        private static bool InteractWithCorpse()
         {
             var hits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in hits)
             {
+                var corpseTarget = hit.transform.GetComponent<CombatTarget>();
+                var corpseHealth = hit.transform.GetComponent<Health>();
+                if (corpseTarget == null || corpseHealth == null || !corpseHealth.IsDead) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    corpseTarget.LootBag.IsLooting = true;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private bool InteractWithCombat()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                // TODO : Get Spell on Weapon
+                _fighterSpell.Cast(/*target.gameObject, */CastSource.Weapon);
+            }
+            
+            var hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
+            {
                 var target = hit.transform.GetComponent<CombatTarget>();
+                
                 if (target == null || !Fighter.CanAttack(target.gameObject)) continue;
                 
                 if (Input.GetMouseButtonDown(0))
                 {
                     _fighter.Attack(target.gameObject);
-                }
-                else if (Input.GetMouseButtonDown(1))
-                {
-                    // TODO : Get Spell on Weapon
-                    _fighterSpell.Cast(target.gameObject, CastSource.Weapon);
                 }
                 return true;
             }

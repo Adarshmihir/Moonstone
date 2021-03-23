@@ -41,7 +41,7 @@ namespace Combat
             if (Target == null || Target.IsDead) return;
 
             // Check if target is not too far
-            if (!GetIsInRange())
+            if (!GetIsInRange(Target.transform.position, weapon.WeaponRange))
             {
                 // Move towards the target until it is close enough
                 _mover.MoveTo(Target.transform.position);
@@ -98,13 +98,20 @@ namespace Combat
         // Animation event : Attack
         private void Hit()
         {
+            Debug.Log("Hit");
             if (Target == null) return;
+
+            if(Target.tag == "Enemy")
+            {
+                Debug.Log("Enemy Detected");
+                Target.GetComponent<FighterFX>().PlayBleed();
+            }
 
             // Unarmed attack and One Hand armed attack
             if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
             {
                 // Check if target is in front of character and visible
-                if (!GetIsInFieldOfView(Target.transform)/* || !GetIsAccessible(_target.transform)*/) return;
+                if (!GetIsInFieldOfView(Target.transform, weapon.WeaponRadius)/* || !GetIsAccessible(_target.transform)*/) return;
 
                 if (GetComponent<Player>())
                     // Deal damage
@@ -128,7 +135,7 @@ namespace Combat
             foreach (var newTarget in colliders)
             {
                 // Check if the target has health, is in front of character and visible
-                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
+                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform, weapon.WeaponRadius)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
 
                 Hit(newTarget.GetComponent<Health>());
             }
@@ -142,17 +149,17 @@ namespace Combat
             Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
         }
 
-        private bool GetIsInRange()
+        public bool GetIsInRange(Vector3 targetPosition, float range)
         {
             // Check if the target is in range of weapon
-            return Vector3.Distance(transform.position, Target.transform.position) < weapon.WeaponRange;
+            return Vector3.Distance(transform.position, targetPosition) < range;
         }
 
-        private bool GetIsInFieldOfView(Transform targetTransform)
+        public bool GetIsInFieldOfView(Transform targetTransform, float radius)
         {
             // Check if the target is in front of character
             var charTransform = transform;
-            return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= weapon.WeaponRadius;
+            return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= radius;
         }
 
         /*private bool GetIsAccessible(Transform target)

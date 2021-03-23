@@ -8,19 +8,26 @@ public class Patroller : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        for (var i = 0; i < transform.childCount; i++)
-        {
-            _waypoints.Add(transform.GetChild(i));
-        }
+        initWaypoint();
     }
 
     public Vector3 GetWaypoint(int currentWaypoint)
     {
+        if (_waypoints.Count == 0) {
+            initWaypoint();
+        }
         return _waypoints[currentWaypoint].position;
     }
 
     public int GetNextWaypoint(int currentWaypoint)
     {
         return (currentWaypoint + 1) % transform.childCount;
+    }
+
+    public void initWaypoint() {
+        for (var i = 0; i < transform.childCount; i++)
+        {
+            _waypoints.Add(transform.GetChild(i));
+        }
     }
 }

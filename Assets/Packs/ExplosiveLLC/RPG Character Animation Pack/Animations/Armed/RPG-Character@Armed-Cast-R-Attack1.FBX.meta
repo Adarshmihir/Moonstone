@@ -786,7 +786,7 @@ ModelImporter:
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'B_Spine1' has translation animation that
-      will be discarded.\nEvent HideWeapon has a time (0.333333) outside the clip's
+      will be discarded.\nEvent ShowWeapon has a time (0.333333) outside the clip's
       valid range (0.000000..0.333333). It will never be fired"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
