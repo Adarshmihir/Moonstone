@@ -85,7 +85,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipementManager: {fileID: 5833590639734953509}
   uiManager: {fileID: 2738780856115648143}
+  PlayerGO: {fileID: 0}
   player: {fileID: 0}
+  weaponSlot: {fileID: 0}
+  armorSlot: {fileID: 0}
+  petSlot: {fileID: 0}
+  PlayerSpawnPosition: {fileID: 0}
+  PlayerPrefab: {fileID: 0}
+  camera: {fileID: 0}
   isPurgeActive: 0
 --- !u!114 &2738780856115648143
 MonoBehaviour:
@@ -119,6 +126,7 @@ MonoBehaviour:
     type: 3}
   PurgeMenu: {fileID: 8849672503035493175, guid: 817ad4be1fe630443b0ebde9a4a6a154,
     type: 3}
+  Death: {fileID: 258237873316563476, guid: c8646755f0573c943a23023c7e9060ef, type: 3}
   MiniMapCanvasGO: {fileID: 0}
   CanvasSpellsBarGO: {fileID: 0}
   StatsCanvasGO: {fileID: 0}
@@ -130,6 +138,7 @@ MonoBehaviour:
   LootBagGO: {fileID: 0}
   LevelManagerGO: {fileID: 0}
   PurgeMenuGO: {fileID: 0}
+  DeathGO: {fileID: 0}
 --- !u!114 &1227593812
 MonoBehaviour:
   m_ObjectHideFlags: 0
