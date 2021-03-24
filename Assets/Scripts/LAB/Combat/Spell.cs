@@ -28,6 +28,7 @@ namespace Combat
         [SerializeField] private Projectile projectile;
         
         [SerializeField] private float spellDamage = 5f;
+        [SerializeField] public float spellCost = 20;
         [SerializeField] private float dotDamage;
         [SerializeField] private float dotCount;
         [SerializeField] private float dotTick;

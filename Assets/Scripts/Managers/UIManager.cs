@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject StatsCanvas;
     public GameObject Inventory;
     public GameObject HealthGlobe;
+    public GameObject EnergyGlobe;
     public GameObject CanvasRessource;
     public GameObject Enchantress;
     public GameObject Forgeron;
@@ -30,6 +31,8 @@ public class UIManager : MonoBehaviour
     public GameObject InventoryGO;
     [HideInInspector]
     public GameObject HealthGlobeGO;
+    [HideInInspector]
+    public GameObject EnergyGlobeGO;
     [HideInInspector]
     public GameObject CanvasRessourceGO;
     [HideInInspector]

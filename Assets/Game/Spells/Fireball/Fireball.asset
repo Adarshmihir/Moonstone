@@ -17,10 +17,12 @@ MonoBehaviour:
   projectile: {fileID: 504654947311720274, guid: f3c4f28e42fcb4a4ca3c8823b542ae5a,
     type: 3}
   spellDamage: 10
+  spellCost: 40
   dotDamage: 2
   dotCount: 4
   dotTick: 1
   cooldown: 2
+  canalisationTimer: 1
   isAnimated: 1
   particleEffect: {fileID: 1392961458021664, guid: 7c2d45330a7b1894ca1aacb0ebd30599,
     type: 3}
