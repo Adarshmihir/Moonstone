@@ -93,7 +93,7 @@ public class Spawner : MonoBehaviour
         randPos = Random.insideUnitSphere * spawnerRadius;
         randPos += transform.position;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randPos, out hit, spawnerRadius, 1))
+        if (NavMesh.SamplePosition(randPos, out hit, spawnerRadius, NavMesh.GetAreaFromName("Walkable"))) //only check walkable areas
         {
             randPos = hit.position;
             Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
