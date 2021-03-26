@@ -66,8 +66,8 @@ public class FillPlantsBar : MonoBehaviour
             }
         }
 
-        if (healthSlider.value <= 0f)
-            Debug.Log("You're dead !");
+        //if (healthSlider.value <= 0f)
+            //Debug.Log("You're dead !");
     }
 
     public void UsePlant()

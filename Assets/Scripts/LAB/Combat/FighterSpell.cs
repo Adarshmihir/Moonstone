@@ -24,9 +24,9 @@ namespace Combat
         
         [SerializeField] private Transform rightHandTransform;
 
-        [SerializeField] private RawImage weaponSlot;
-        [SerializeField] private RawImage armorSlot;
-        [SerializeField] private RawImage petSlot;
+        [SerializeField] public RawImage weaponSlot;
+        [SerializeField] public RawImage armorSlot;
+        [SerializeField] public RawImage petSlot;
 
         private Spell _spellToCast;
         private CastSource _castSource;
@@ -37,11 +37,25 @@ namespace Combat
 
         private void Start()
         {
-            _fighter = GetComponent<Fighter>();
+            /*_fighter = GetComponent<Fighter>();
             _mover = GetComponent<Mover>();
             
             UpdateSpell(temp, CastSource.Weapon);
+            UpdateSpell(temp, CastSource.Armor);*/
+        }
+
+        public void InitializeFighterSpell(RawImage weaponImage, RawImage armorImage, RawImage petImage)
+        {
+            _fighter = GetComponent<Fighter>();
+            _mover = GetComponent<Mover>();
+
+            weaponSlot = weaponImage;
+            armorSlot = armorImage;
+            petSlot = petImage;
+            
+            UpdateSpell(temp, CastSource.Weapon);
             UpdateSpell(temp, CastSource.Armor);
+            
         }
         
         // Update is called once per frame

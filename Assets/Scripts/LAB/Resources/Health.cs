@@ -111,6 +111,22 @@ namespace Resources
             }
         }
 
+        public void ResetLifePlayer()
+        {
+            if (tag == "Player")
+            {
+                HealthPoints = maxHealthPoints;
+                _animator.ResetTrigger("die");
+                _animator.Play("Locomotion");
+                IsDead = false;
+                _capsuleCollider.enabled = true;
+                _navMeshAgent.enabled = true;
+                HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
+                healhPlayer.healthSlider.value = 1;
+
+            }
+        }
+
         public void RegenLife()
         {
             if (HealthPoints >= maxHealthPoints) return;
@@ -162,12 +178,15 @@ namespace Resources
                 StopCoroutine(_death);
             }
 
-            _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
-
-			if (!CompareTag("Player"))
+            if (!CompareTag("Player"))
 			{
+                _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
 				PurgeManager.Instance.killedCount += 1;
 			}
+            else
+            {
+                GameManager.Instance.uiManager.DeathGO.SetActive(true);
+            }
         }
 
         public void TakeDot(Spell spell, Fighter fighter)

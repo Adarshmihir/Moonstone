@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject LootBag;
     public GameObject LevelManager;
     public GameObject PurgeMenu;
+    public GameObject Death;
 
     //GAMEOBJECTS
     [HideInInspector]
@@ -42,6 +43,8 @@ public class UIManager : MonoBehaviour
     public GameObject LevelManagerGO;
     [HideInInspector]
     public GameObject PurgeMenuGO;
+    [HideInInspector]
+    public GameObject DeathGO;
 
     public void InitializeUIManager()
     {
@@ -59,6 +62,7 @@ public class UIManager : MonoBehaviour
         LevelManagerGO = Instantiate(LevelManager);
         LevelManagerGO.GetComponent<LevelManager>().InitializeLevelManager();
         PurgeMenuGO = Instantiate(PurgeMenu);
+        DeathGO = Instantiate(Death);
     }
 
     public void HideUIAtLaunch() {
@@ -71,5 +75,6 @@ public class UIManager : MonoBehaviour
         ForgeronGO.SetActive(false);
         LootBagGO.SetActive(false);
         PurgeMenuGO.SetActive(false);
+        DeathGO.SetActive(false);
     }
 }
