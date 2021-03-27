@@ -88,11 +88,19 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsSlider.value);
     }
 
+    public void SaveSettings()
+    {
+        SaveSoundSettings();
+    }
+    
     private void OnApplicationFocus(bool inFocus)
     {
         if (!inFocus)
         {
-            SaveSoundSettings(); //save values if no focus (reduce app or go on another window)
+            if (gameObject.activeSelf == true)
+            {
+                SaveSoundSettings(); //save values if no focus (reduce app or go on another window)
+            }
         }
     }
 
