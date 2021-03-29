@@ -7,7 +7,7 @@ public class EnergyGlobeControl : MonoBehaviour
 {
     public Slider energySlider;
 
-    private int maxEnergy = 100;
+    public int maxEnergy = 100;
 
     void Start()
     {
@@ -56,7 +56,6 @@ public class EnergyGlobeControl : MonoBehaviour
     {
         maxEnergy += bonusEnergy;
         this.energySlider.value += bonusEnergy / maxEnergy;
-        Debug.Log(maxEnergy);
     }
 
 }

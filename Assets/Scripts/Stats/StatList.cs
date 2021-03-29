@@ -57,7 +57,17 @@ namespace Stats
             }
             return null;
         }
-        
+
+        public GameObject getNumberGameObject(String type)
+        {
+            GameObject gameObjectToReturn = GameObject.Find(type + "_Number");
+            if (gameObjectToReturn)
+            {
+                return gameObjectToReturn;
+            }
+            return null;
+        }
+
         //Update the points to spend number
         public void PointsToSpendTextUpdate(int value)
         {
