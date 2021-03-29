@@ -10,6 +10,12 @@ namespace Core
         private float _zoom = 1f;
 
         // Update is called once per frame
+
+        public void InitializeCamera()
+        {
+            target = GameManager.Instance.PlayerGO.transform;
+        }
+        
         private void Update() {
             _newAngle = Input.GetAxis("Horizontal") > 0 ? 1 : Input.GetAxis("Horizontal") < 0 ? -1 : 0;
 

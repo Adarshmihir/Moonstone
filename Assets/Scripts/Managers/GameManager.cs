@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
+using Core;
+using Resources;
 using Stats;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {   
@@ -12,9 +17,17 @@ public class GameManager : MonoBehaviour
     public EquipmentManager equipementManager;
     [HideInInspector]
     public UIManager uiManager;
-    
-    //PUBLIC VARIABLES (SHOWN IN INSPECTOR)
+    [HideInInspector]
+    public GameObject PlayerGO;
+    [HideInInspector]
     public Player player;
+    [SerializeField] private RawImage weaponSlot;
+    [SerializeField] private RawImage armorSlot;
+    [SerializeField] private RawImage petSlot;
+    //PUBLIC VARIABLES (SHOWN IN INSPECTOR)
+    public Transform PlayerSpawnPosition;
+    public GameObject PlayerPrefab;
+    public FollowCamera camera;
     private static GameManager _instance;
     public bool isPurgeActive = false;
 
@@ -50,7 +63,14 @@ public class GameManager : MonoBehaviour
         }
         
         uiManager.InitializeUIManager();
+        //PLAYER INITIALIZATION
+        var transform1 = PlayerSpawnPosition.transform;
+        var position = transform1.position;
+        PlayerGO = Instantiate(PlayerPrefab, position, transform1.rotation);
+        player = PlayerGO.GetComponent<Player>();
         player.InitializePlayer();
+        PlayerGO.GetComponent<FighterSpell>().InitializeFighterSpell(weaponSlot, armorSlot, petSlot);
+        camera.InitializeCamera();
         uiManager.HideUIAtLaunch();
         
         equipementManager.Initialize_EquipmentManager();
@@ -58,6 +78,14 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         
+    }
+
+    public void RespawnPlayer()
+    {
+        PlayerGO.GetComponent<NavMeshAgent>().Warp(PlayerSpawnPosition.position);
+        Health PlayerHealth = PlayerGO.GetComponent<Health>();
+        PlayerHealth.ResetLifePlayer();
+        uiManager.DeathGO.SetActive(false);
     }
     
     // Add your game mananger members here
