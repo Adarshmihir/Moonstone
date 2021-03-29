@@ -105,6 +105,7 @@ namespace Combat
             {
                 Debug.Log("Enemy Detected");
                 Target.GetComponent<FighterFX>().PlayBleed();
+                GameObject.FindObjectOfType<EnergyGlobeControl>().RestoreEnergy(5);
             }
 
             // Unarmed attack and One Hand armed attack

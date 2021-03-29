@@ -108,18 +108,26 @@ namespace Combat
 
         public void Cast(/*GameObject combatTarget, */CastSource castSource)
         {
+            EnergyGlobeControl energyPlayer = GameObject.FindObjectOfType<EnergyGlobeControl>();
+
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
-            
+
             InitSpellToCast(castSource);
-            
+
             if (_spellToCast.IsSpellOnCooldown()) return;
-            
+
+            if (!energyPlayer.UseEnergy(_spellToCast.spellCost)) //Si energy suffisante
+            {
+                return;
+            }
+
             // Define target
             //Target = combatTarget.GetComponent<Health>();
             _castSource = castSource;
-            
+
             CastBehaviour();
+
         }
 
         private void CastBehaviour()

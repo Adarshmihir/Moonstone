@@ -26,6 +26,7 @@ public class XpSystem
         {
             curLevel++;
             GameManager.Instance.player.GetComponent<PlayerFX>().PlayLvLUp();
+            //Up HP + Mana
             curXP -= toNextLevelXP;
             if (OnLevelChanged != null) OnLevelChanged(this, EventArgs.Empty);
         }
