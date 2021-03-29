@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Combat;
 using Control;
+using Resources;
 using Stats;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
 
     public bool isInDungeon = false;
     public bool hasKilledABoss = false;
-
+    private static float BONUS_HEATH_PER_POINT = 5f;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     }
     public void InitializePlayer()
     {
-        level = 1;
+        level = 0;
         InitializeStats();
     }
 
@@ -86,6 +87,12 @@ public class Player : MonoBehaviour
             {
                 StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
                 stat.charStat.IncrementBaseValue(2);
+
+                if (stat.StatName == StatTypes.Stamina)
+                {
+                    this.GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT);
+                }
+
                 statList.lvlup_Points -= 1;
                 statList.PointsToSpendTextUpdate(statList.lvlup_Points);
                 if (statList.lvlup_Points == 0)
@@ -102,6 +109,10 @@ public class Player : MonoBehaviour
     {
         foreach (Stat stat in stats)
         {
+            if (stat.StatName == StatTypes.Stamina)
+            {
+                this.GetComponent<Health>().addHealthPlayer(-(stat.charStat.BaseValue - 5f)/2 * BONUS_HEATH_PER_POINT);
+            }
             stat.charStat.ResetBaseValue(5);
         }
         GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().ToggleReset(level);

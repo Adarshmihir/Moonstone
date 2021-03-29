@@ -8,7 +8,6 @@ public class HealthGlobeControl : MonoBehaviour
 {
     public Slider healthSlider;
     public float regenSpeed;
-    public bool regenerating;
 
     public bool regenering;
     public Coroutine coroutineRegen;
@@ -22,7 +21,7 @@ public class HealthGlobeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (regenerating)
+        if (regenering)
         {
             if (healthSlider.value < 1)
             {
@@ -32,7 +31,7 @@ public class HealthGlobeControl : MonoBehaviour
             if (healthSlider.value > 1)
             {
                 healthSlider.value = 1;
-                regenerating = false;
+                regenering = false;
             }
         }
     }

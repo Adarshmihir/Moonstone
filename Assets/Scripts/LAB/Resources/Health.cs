@@ -76,8 +76,8 @@ namespace Resources
                 Debug.Log("playerHit");
                 HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
                 healhPlayer.StopRegen();
-                Debug.Log(healhPlayer);
                 healhPlayer.healthSlider.value = healhPlayer.healthSlider.value - (damage / MaxHealthPoints);
+                Debug.Log(HealthPoints);
             }
 
             if (_damageTextSpawner != null)
@@ -126,11 +126,23 @@ namespace Resources
         public void RegenLifePlayer(float regenRate)
         {
             HealthPoints = Mathf.Min(HealthPoints + MaxHealthPoints * regenRate, MaxHealthPoints);
+            Debug.Log(HealthPoints);
         }
 
         public void setSpawner(Spawner spawner)
         {
             this.spawner = spawner;
+        }
+
+        public void addHealthPlayer(float bonusHealth)
+        {
+            this.maxHealthPoints += bonusHealth;
+            this.HealthPoints += bonusHealth;
+
+            HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
+            healhPlayer.healthSlider.value = healhPlayer.healthSlider.value + (bonusHealth / MaxHealthPoints);
+
+            Debug.Log(maxHealthPoints);
         }
 
         private void Die()

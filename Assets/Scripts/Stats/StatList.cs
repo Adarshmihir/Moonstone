@@ -41,7 +41,7 @@ namespace Stats
         {
             lvlup_Points = level * 1;
             
-            if (lvlup_Points != 1 * 1)
+            if (lvlup_Points != 0)
             {
                 PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
                 LevelUpStatButtons.SetActive(true);
