@@ -53,4 +53,11 @@ public class EnergyGlobeControl : MonoBehaviour
             energySlider.value += regen / maxEnergy;
         }
     }
+
+    public void addEnergyPlayer(int bonusEnergy)
+    {
+        maxEnergy += bonusEnergy;
+        this.energySlider.value += bonusEnergy / maxEnergy;
+    }
+
 }

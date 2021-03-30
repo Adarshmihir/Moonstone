@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Resources;
 using UnityEngine;
 
 [Serializable]
@@ -31,7 +32,14 @@ public class Equipment : Item {
     public override void Use() {
         base.Use();
         // Equip the item
-        EquipmentManager.instance.Equip(this);
+        Equipment oldItem = (Equipment) EquipmentManager.instance.Equip(this);
+        if (oldItem != null)
+        {
+            foreach (var mod in oldItem.StatModifiers)
+            {
+                GameManager.Instance.player.RemoveModifier(mod);
+            }
+        }
         foreach (var mod in StatModifiers)
         {
             GameManager.Instance.player.AddModifier(mod);

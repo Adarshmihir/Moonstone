@@ -30,12 +30,11 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     // Equip a new item
-    public void Equip(Item newItem) {
+    public Item Equip(Item newItem) {
         // Find out what slot the item fits in
         int slotIndex = (int) newItem.equipSlot;
-        Unequip(slotIndex);
-        Item oldItem = null;
-    
+        Item oldItem = Unequip(slotIndex);
+            
         // An item has been equipped so the callback is triggered
         if (onEquipmentChanged != null) {
             onEquipmentChanged.Invoke(newItem, oldItem);
@@ -43,6 +42,7 @@ public class EquipmentManager : MonoBehaviour {
             
         // Insert item into the slot
         currentStuff[slotIndex] = newItem;
+        return oldItem;
     }
 
     // Unequip an item with a particular index

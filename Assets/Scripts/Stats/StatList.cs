@@ -41,7 +41,7 @@ namespace Stats
         {
             lvlup_Points = level * 1;
             
-            if (lvlup_Points != 1 * 1)
+            if (lvlup_Points != 0)
             {
                 PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
                 LevelUpStatButtons.SetActive(true);
@@ -57,7 +57,17 @@ namespace Stats
             }
             return null;
         }
-        
+
+        public GameObject getNumberGameObject(String type)
+        {
+            GameObject gameObjectToReturn = GameObject.Find(type + "_Number");
+            if (gameObjectToReturn)
+            {
+                return gameObjectToReturn;
+            }
+            return null;
+        }
+
         //Update the points to spend number
         public void PointsToSpendTextUpdate(int value)
         {
