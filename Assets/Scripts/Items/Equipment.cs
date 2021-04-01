@@ -44,6 +44,7 @@ public class Equipment : Item {
         {
             GameManager.Instance.player.AddModifier(mod);
         }
+        GameManager.Instance.uiManager.InventoryGO.GetComponentInChildren<chooseEquipSlot>().addEquipment(this);
         // Remove it from the inventory
         RemoveFromInventory();
     }

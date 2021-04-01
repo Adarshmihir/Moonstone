@@ -124,7 +124,7 @@ namespace Stats
                         finalValue += statModifiers[i].Value;
                         break;
                     case StatModType.Percent:
-                        finalValue = (BaseValue * mod.Value) + finalValue;
+                        finalValue = (BaseValue * mod.Value/100) + finalValue;
                         break;
                     default:
                         throw new NoStatModTypeException();
