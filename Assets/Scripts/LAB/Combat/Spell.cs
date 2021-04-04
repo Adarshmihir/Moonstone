@@ -38,9 +38,9 @@ namespace Combat
         
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private GameObject particleEffect;
-        [SerializeField] private Vector3 particleSize;
+        //[SerializeField] private Vector3 particleSize;
         [SerializeField] private GameObject particleEffectImpact;
-        [SerializeField] private Vector3 particleSizeImpact;
+        //[SerializeField] private Vector3 particleSizeImpact;
         
         [SerializeField] private Texture spellIcon;
         
@@ -64,7 +64,7 @@ namespace Combat
         public float DotCount => dotCount;
         public float DotTick => dotTick;
         public GameObject ParticleEffectImpact => particleEffectImpact;
-        public Vector3 ParticleSizeImpact => particleSizeImpact;
+        //public Vector3 ParticleSizeImpact => particleSizeImpact;
         public SpellType SpellType => spellType;
         public SpellEffect SpellEffect => spellEffect;
         public float CanalisationTimer => canalisationTimer;
@@ -78,13 +78,16 @@ namespace Combat
         {
             var projectileInstance = Instantiate(projectile, output.position, Quaternion.identity);
             
+            //UpdateParticleSize();
+            //SetParticle(projectileInstance);
+            
             projectileInstance.Spell = this;
             projectileInstance.Attacker = attacker;
             projectileInstance.Output = output;
             projectileInstance.StartCast();
 
             SetParticle(projectileInstance);
-            UpdateParticleSize();
+            //UpdateParticleSize();
         }
 
         private void SetParticle(Component projectileInstance)
@@ -92,16 +95,16 @@ namespace Combat
             var particle = Instantiate(particleEffect, projectileInstance.transform.position, Quaternion.identity);
             
             particle.transform.parent = projectileInstance.transform;
-            particle.transform.localScale = particleSize;
+            //particle.transform.localScale = particleSize;
         }
 
-        private void UpdateParticleSize()
+        /*private void UpdateParticleSize()
         {
             if (spellType != SpellType.ZoneEffect) return;
             
             particleSize = new Vector3(spellZoneArea, spellZoneArea, spellZoneArea);
             particleSizeImpact = new Vector3(spellZoneArea, spellZoneArea, spellZoneArea);
-        }
+        }*/
 
         public void ResetCooldown()
         {

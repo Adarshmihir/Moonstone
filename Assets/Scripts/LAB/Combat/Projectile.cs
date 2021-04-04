@@ -40,7 +40,11 @@ namespace Combat
                     if (_isCasting)
                     {
                         _isCasting = false;
-                        transform.GetChild(0).rotation = Attacker.transform.rotation;
+                        foreach (Transform child in transform)
+                        {
+                            child.rotation = Attacker.transform.rotation;
+                        }
+                        //transform.GetChild(0).rotation = Attacker.transform.rotation;
                         StartCoroutine(DealRadiusDamage());
                     }
                     break;
@@ -115,7 +119,7 @@ namespace Combat
             var particle = Instantiate(Spell.ParticleEffectImpact, transform.position, Quaternion.identity);
             
             particle.transform.parent = transform;
-            particle.transform.localScale = Spell.ParticleSizeImpact;
+            //particle.transform.localScale = Spell.ParticleSizeImpact;
 
             _destroyTimer = particle.GetComponent<ParticleSystem>().main.duration;
         }
