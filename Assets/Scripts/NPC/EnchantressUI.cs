@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Quests;
+using Combat;
 
 public class EnchantressUI : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class EnchantressUI : MonoBehaviour
     public GameObject FinishEnchantButton;
     public Transform ListMod;
     public Button selectedButton;
-    private Equipment EquipmentToEnchant;
+    private Item EquipmentToEnchant;
     private List<StatModifier> modifierList;
     Color selectedColor = Color.blue;
     Color unSelectedColor = Color.white;
@@ -45,7 +46,15 @@ public class EnchantressUI : MonoBehaviour
     //Generate a modifier list when an Item is dropped on enchanteress UI
     public void GenerateModifierList()
     {
-        modifierList = EquipmentToEnchant.StatModifiers;
+        if (EquipmentToEnchant is Equipment)
+        {
+            modifierList = ((Equipment)EquipmentToEnchant).StatModifiers;
+        }
+        else
+        {
+            modifierList = ((Weapon)EquipmentToEnchant).StatModifiers;
+        }
+        
         foreach (var statModifier in modifierList)
         {
             var go = Instantiate(ModTextPrefab, ListMod, true) as GameObject;
@@ -90,10 +99,19 @@ public class EnchantressUI : MonoBehaviour
         RemoveModBeingModified(ModSelected);
         StatModType randomModType = RandomEnum<StatModType>.Get();
         StatTypes randomStatType = RandomEnum<StatTypes>.Get();
-        StatModifier ModModified = StatModifier.CreateInstance(Random.Range(ModSelected.Value - k_EnchantmentValueLimits, ModSelected.Value + k_EnchantmentValueLimits), randomModType, this, randomStatType);
+        StatModifier ModModified = StatModifier.CreateInstance((float)System.Math.Round(Random.Range(ModSelected.Value - k_EnchantmentValueLimits, ModSelected.Value + k_EnchantmentValueLimits),1), randomModType, this, randomStatType);
         modifierList.Add(ModModified);
         //STAT MOD LIST CHANGE
-        EquipmentToEnchant.StatModifiers = modifierList;
+
+        if (EquipmentToEnchant is Equipment)
+        {
+            ((Equipment)EquipmentToEnchant).StatModifiers = modifierList;
+        }
+        else
+        {
+            ((Weapon)EquipmentToEnchant).StatModifiers = modifierList;
+        }
+
         EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().OnRemoveButton();
 
         Inventory.instance.gold -= EnchantressDefaultPrice;
@@ -110,8 +128,8 @@ public class EnchantressUI : MonoBehaviour
 
     public void OnItemInMainSlot(Item item)
     {
-        if (!(item is Equipment eqItem)) return;
-        EquipmentToEnchant = eqItem;
+        if (!(item is Equipment || item is Weapon)) return;
+        EquipmentToEnchant = item;
         GenerateModifierList();
 
     }

@@ -47,7 +47,7 @@ public class StatModifier : ScriptableObject
         return data;
     }
 
-    public static StatModifier CreateInstance(float value, StatModType type, StatTypes statType)
+    public static StatModifier CreateInstance(double v, float value, StatModType type, StatTypes statType)
     {
         var data = ScriptableObject.CreateInstance<StatModifier>();
         data.Init(value, type, null, statType);

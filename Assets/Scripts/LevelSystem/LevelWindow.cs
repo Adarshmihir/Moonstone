@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Resources;
 using Stats;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,5 +63,9 @@ public class LevelWindow : MonoBehaviour
         GameManager.Instance.player.level = levelSystem.GetLevelNumber();
         StatList statlist = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
         statlist.ToggleLevelUp(true);
+
+        GameManager.Instance.player.GetComponent<Health>().addHealthPlayer(GameManager.Instance.player.BONUS_HEATH_PER_POINT);
+        GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int) GameManager.Instance.player.BONUS_HEATH_PER_POINT);
+        GameManager.Instance.player.StatTextUpdate();
     }
 }

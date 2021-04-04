@@ -15,8 +15,15 @@ MonoBehaviour:
   name: Axe
   icon: {fileID: 0}
   isDefaultItem: 0
-  equipementMods: []
+  equipementMods:
+  - value: 50
+    modType: 200
+    statType: 0
+  - value: 50
+    modType: 200
+    statType: 1
   equipSlot: 4
+  weaponName: 
   weaponType: 1
   weaponRange: 2
   attackspeed: 1.1
@@ -33,3 +40,7 @@ MonoBehaviour:
   weaponDamageFlat: 5
   weaponDamagePercent: 0.25
   CurrentStatUsing: 0
+  StatModifiers: []
+  ironToBuild: 0
+  copperToBuild: 0
+  silverToBuild: 0

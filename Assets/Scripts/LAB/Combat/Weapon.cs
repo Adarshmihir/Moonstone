@@ -38,7 +38,7 @@ namespace Combat
         [SerializeField] [Range(0, 5)]private float weaponDamagePercent = 0.5f;
         [SerializeField] private StatTypes CurrentStatUsing = StatTypes.Strength;
 
-        private List<StatModifier> StatModifiers;
+        public List<StatModifier> StatModifiers;
 
         [SerializeField] public int ironToBuild;
         [SerializeField] public int copperToBuild;
@@ -54,6 +54,11 @@ namespace Combat
         public float AnimationOnePlayChance => animationOnePlayChance;
         public float AnimationTwoPlayChance => animationTwoPlayChance;
         public float AnimationTotalPlayChance => animationOnePlayChance + animationTwoPlayChance + animationThreePlayChance;
+
+        private void OnEnable()
+        {
+            this.assignStatModifiers();
+        }
 
         public Tuple<GameObject, GameObject> Spawn(Transform rightHandTransform, Transform leftHandTransform, Animator animator, GameObject rightClone, GameObject leftClone)
         {
@@ -100,6 +105,22 @@ namespace Combat
             var animator = GameManager.Instance.player.GetComponent<Animator>();
             
             (fighter.rightClone, fighter.leftClone) = Spawn(fighter.rightHandTransform, fighter.leftHandTransform, animator, fighter.rightClone, fighter.leftClone);
+            
+            Weapon oldItem = (Weapon)EquipmentManager.instance.Equip(this);
+            if (oldItem != null)
+            {
+                foreach (var mod in oldItem.StatModifiers)
+                {
+                    GameManager.Instance.player.RemoveModifier(mod);
+                }
+            }
+            foreach (var mod in StatModifiers)
+            {
+                GameManager.Instance.player.AddModifier(mod);
+            }
+            GameManager.Instance.uiManager.InventoryGO.GetComponentInChildren<chooseEquipSlot>().addEquipment(this);
+            // Remove it from the inventory
+            RemoveFromInventory();
 
             fighter.weapon = this;
         }
@@ -119,6 +140,16 @@ namespace Combat
             if (attackAnimationToPlay < animationOnePlayChance) return "attack1";
 
             return attackAnimationToPlay < animationOnePlayChance + animationTwoPlayChance ? "attack2" : "attack3";
+        }
+
+        public void assignStatModifiers()
+        {
+            StatModifiers.Clear();
+            for (int i = 0; i < equipementMods.Length; i++)
+            {
+                StatModifier newMod = StatModifier.CreateInstance(equipementMods[i].value, equipementMods[i].modType, this, equipementMods[i].statType);
+                StatModifiers.Add(newMod);
+            }
         }
     }
 }

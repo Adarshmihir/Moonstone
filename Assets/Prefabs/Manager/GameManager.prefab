@@ -116,6 +116,8 @@ MonoBehaviour:
     type: 3}
   HealthGlobe: {fileID: 6692951652927927558, guid: c4a66a69a4f8746fb9288fad7b2835b7,
     type: 3}
+  EnergyGlobe: {fileID: 6915307776830467151, guid: 63132696689dd0640ba52c9bceca212c,
+    type: 3}
   CanvasRessource: {fileID: 3196753339656214411, guid: f3db5f7e3526d4382a4c28e8eb14e7c7,
     type: 3}
   Enchantress: {fileID: 2044514776082846185, guid: 46bdff1053aab784c98be688400ab479,
@@ -132,6 +134,7 @@ MonoBehaviour:
   StatsCanvasGO: {fileID: 0}
   InventoryGO: {fileID: 0}
   HealthGlobeGO: {fileID: 0}
+  EnergyGlobeGO: {fileID: 0}
   CanvasRessourceGO: {fileID: 0}
   EnchantressGO: {fileID: 0}
   ForgeronGO: {fileID: 0}
