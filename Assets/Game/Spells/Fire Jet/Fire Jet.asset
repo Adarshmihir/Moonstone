@@ -17,7 +17,7 @@ MonoBehaviour:
   projectile: {fileID: 1450728545565721762, guid: 40c94942d84a54543b3a8f3c7c505a93,
     type: 3}
   spellDamage: 15
-  spellCost: 80
+  spellCost: 2
   dotDamage: 0
   dotCount: 0
   dotTick: 0

@@ -44,9 +44,6 @@ namespace Dialogue
 	        {
 		        // Cancel movement action and start attack
 		        _mover.Cancel();
-		        
-		        StartEnterAction();
-		        OnUpdate?.Invoke();
 	        }
         }
 
@@ -57,6 +54,9 @@ namespace Dialogue
 	        _aiDialogue = aiDialogue;
             dialogue = newDialogue;
             _node = dialogue.GetRootNode();
+            
+            StartEnterAction();
+            OnUpdate?.Invoke();
         }
 
         public string GetText()
@@ -124,7 +124,7 @@ namespace Dialogue
 		private void StartEnterAction()
 		{
 			if (_node == null) return;
-			
+
 			TriggerAction(_node.EnterAction);
 		}
 
@@ -157,6 +157,7 @@ namespace Dialogue
 
 		public void Cancel()
 		{
+			Debug.Log("cccc");
 			Quit();
 		}
     }

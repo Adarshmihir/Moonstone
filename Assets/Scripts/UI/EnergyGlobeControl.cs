@@ -28,6 +28,11 @@ public class EnergyGlobeControl : MonoBehaviour
         }
     }
 
+    public bool HasEnoughEnergy(float cost)
+    {
+        return energySlider.value * maxEnergy >= cost;
+    }
+
     public bool UseEnergy(float cost)
     {
         if (energySlider.value*maxEnergy < cost)

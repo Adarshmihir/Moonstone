@@ -117,7 +117,7 @@ namespace Combat
 
             if (_spellToCast.IsSpellOnCooldown()) return;
 
-            if (!energyPlayer.UseEnergy(_spellToCast.spellCost)) //Si energy suffisante
+            if (!energyPlayer.HasEnoughEnergy(_spellToCast.spellCost)) //Si energy insuffisante
             {
                 return;
             }
@@ -182,6 +182,7 @@ namespace Combat
         {
             //_spellToCast.Launch(rightHandTransform, Target, _fighter);
             _spellToCast.Launch(rightHandTransform, _fighter);
+            FindObjectOfType<EnergyGlobeControl>().UseEnergy(_spellToCast.spellCost);
         }
 
         // Animation event

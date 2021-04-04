@@ -13,11 +13,17 @@ namespace Combat
         private Vector3 _initialPosition;
         private bool _isCasting = true;
         private float _destroyTimer;
+        private EnergyGlobeControl _energy;
         
         public Spell Spell { get; set; }
         //public Health Target { get; set; }
         public Fighter Attacker { get; set; }
         public Transform Output { get; set; }
+
+        private void Start()
+        {
+            _energy = FindObjectOfType<EnergyGlobeControl>();
+        }
 
         // Update is called once per frame
         private void Update()
@@ -128,6 +134,7 @@ namespace Combat
                     {
                         timer = 0f;
                         HitTargetInRadius();
+                        _energy.UseEnergy(Spell.spellCost);
                     }
                     
                     yield return null;
