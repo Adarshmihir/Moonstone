@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1793895855760694151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
+  m_Name: b4c60551-12d0-49e4-9c70-8013873774df
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 4
+    y: 118
+    width: 200
+    height: 100
+  enterAction: 
+  exitAction: 
+  condition:
+    and: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84509a64602d94c5b9348c112a6bb979, type: 3}
+  m_Name: Dialogue 1
+  m_EditorClassIdentifier: 
+  dialogueNodes:
+  - {fileID: -1793895855760694151}
+  nodeOffset: {x: 250, y: 0}
