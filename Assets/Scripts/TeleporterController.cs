@@ -8,6 +8,8 @@ public class TeleporterController : MonoBehaviour
     private GameObject player;
     public Quest quest;
     public GameObject teleporter;
+
+    public int statusQuest = 1; //1 = hasQuest, 2 = QuestCompleted, 3 = QuestDone
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,13 @@ public class TeleporterController : MonoBehaviour
     void Update()
     {
         var play = GameManager.Instance.player;
-        if(play.GetComponent<QuestManager>().HasQuest(quest))
+        var evaluatedQuest = play.GetComponent<QuestManager>().Evaluate("HasDone", quest.Name);
+
+        if (statusQuest == 1 && play.GetComponent<QuestManager>().HasQuest(quest))
+        {
+            teleporter.SetActive(true);
+        }
+        else if (statusQuest == 2 && evaluatedQuest == true)
         {
             teleporter.SetActive(true);
         }
