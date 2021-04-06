@@ -47,12 +47,14 @@ namespace Resources
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _aiController = GetComponent<AIController>();
             _combatTarget = GetComponent<CombatTarget>();
+            
+            _lifeBarController.InitLifeBar();
         }
 
         private void Update()
         {
             if (_combatTarget == null || !IsDead || _combatTarget.Items.Any()) return;
-
+            
             if (_death != null)
             {
                 StopCoroutine(_death);
@@ -71,13 +73,11 @@ namespace Resources
                 _lifeBarController.UpdateLifeBar();
             }
 
-            if(this.tag == "Player")
+            if(CompareTag("Player"))
             {
-                Debug.Log("playerHit");
-                HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
-                healhPlayer.StopRegen();
-                healhPlayer.healthSlider.value = healhPlayer.healthSlider.value - (damage / maxHealthPoints);
-                Debug.Log(HealthPoints);
+                var healthPlayer = FindObjectOfType<HealthGlobeControl>();
+                healthPlayer.StopRegen();
+                healthPlayer.healthSlider.value -= (damage / maxHealthPoints);
             }
 
             if (_damageTextSpawner != null)
