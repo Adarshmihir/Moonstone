@@ -66,6 +66,7 @@ namespace Control
 
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Debug.Log(corpseTarget.name);
                     corpseTarget.LootBag.IsLooting = true;
                 }
                 return true;

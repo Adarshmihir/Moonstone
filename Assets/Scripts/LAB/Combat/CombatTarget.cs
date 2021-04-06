@@ -52,6 +52,7 @@ namespace Combat
             {
                 _mover.Cancel();
                 LootBag.ShowLootBag(_items, this);
+                LootBag.IsLooting = false;
             }
         }
 
