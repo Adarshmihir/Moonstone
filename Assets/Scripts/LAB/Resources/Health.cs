@@ -47,8 +47,11 @@ namespace Resources
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _aiController = GetComponent<AIController>();
             _combatTarget = GetComponent<CombatTarget>();
-            
-            _lifeBarController.InitLifeBar();
+
+            if (_lifeBarController != null)
+            {
+                _lifeBarController.InitLifeBar();
+            }
         }
 
         private void Update()

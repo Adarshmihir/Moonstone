@@ -92,7 +92,6 @@ namespace Control
             {
                 if (DistanceToWaypoint())
                 {
-                    Debug.Log("coucou");
                     IsGoingHome = false;
                     _timeSinceLastBreak = 0;
                     
