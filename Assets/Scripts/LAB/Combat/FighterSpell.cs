@@ -50,21 +50,21 @@ namespace Combat
             UpdateSpell(temp, CastSource.Armor);*/
         }
 
-        public void InitializeFighterSpell(RawImage weaponImage, RawImage armorImage, RawImage petImage)
+        public void InitializeFighterSpell()
         {
+            Debug.Log(name);
             _fighter = GetComponent<Fighter>();
             _mover = GetComponent<Mover>();
             _aiController = GetComponent<AIController>();
 
-            if (weaponSlot == null || armorSlot == null || petSlot == null) return;
+            if (!CompareTag("Player")) return;
             
-            weaponSlot = weaponImage;
-            armorSlot = armorImage;
-            petSlot = petImage;
+            weaponSlot = GameManager.Instance.WeaponSlot;
+            armorSlot = GameManager.Instance.ArmorSlot;
+            petSlot = GameManager.Instance.PetSlot;
 
             UpdateSpell(temp, CastSource.Weapon);
             UpdateSpell(temp, CastSource.Armor);
-            
         }
         
         // Update is called once per frame

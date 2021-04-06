@@ -23,7 +23,7 @@ namespace Control
             _fighter = GetComponent<Fighter>();
             _aiController = GetComponent<AIController>();
 
-            _fighterSpell.InitializeFighterSpell(null, null, null);
+            _fighterSpell.InitializeFighterSpell();
             StartCoroutine(UpdateTimeBetweenSpell());
         }
 

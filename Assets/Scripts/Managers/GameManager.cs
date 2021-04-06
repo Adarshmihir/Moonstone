@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public bool isPurgeActive = false;
 
+    public RawImage WeaponSlot => weaponSlot;
+    public RawImage ArmorSlot => armorSlot;
+    public RawImage PetSlot => petSlot;
+
     private GameManager() {
         
     }    
@@ -69,7 +73,7 @@ public class GameManager : MonoBehaviour
         PlayerGO = Instantiate(PlayerPrefab, position, transform1.rotation);
         player = PlayerGO.GetComponent<Player>();
         player.InitializePlayer();
-        PlayerGO.GetComponent<FighterSpell>().InitializeFighterSpell(weaponSlot, armorSlot, petSlot);
+        PlayerGO.GetComponent<FighterSpell>().InitializeFighterSpell();
         camera.InitializeCamera();
         uiManager.HideUIAtLaunch();
         

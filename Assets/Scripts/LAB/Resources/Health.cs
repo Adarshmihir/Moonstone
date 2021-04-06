@@ -116,7 +116,7 @@ namespace Resources
 
         public void ResetLifePlayer()
         {
-            if (tag == "Player")
+            if (CompareTag("Player"))
             {
                 HealthPoints = maxHealthPoints;
                 _animator.ResetTrigger("die");
@@ -166,8 +166,16 @@ namespace Resources
             if (IsDead) return;
 
             IsDead = true;
-            _animator.SetTrigger("die");
-            _actionScheduler.CancelCurrentAction();
+
+            if (_animator != null)
+            {
+                _animator.SetTrigger("die");
+            }
+            
+            if (_actionScheduler != null)
+            {
+                _actionScheduler.CancelCurrentAction();
+            }
 
             //_capsuleCollider.enabled = false;
             //_navMeshAgent.enabled = false;

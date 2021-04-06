@@ -139,7 +139,7 @@ namespace Combat
                 var count = 0;
                 var timer = 0f;
                 var spellFighter = Attacker.GetComponent<FighterSpell>();
-                while ((Input.GetMouseButton(1) || count == 0) && Attacker.GetComponent<ActionScheduler>().CurrentAction == Attacker.GetComponent<FighterSpell>())
+                while ((Input.GetMouseButton(1) || count == 0) && (FighterSpell) Attacker.GetComponent<ActionScheduler>().CurrentAction == Attacker.GetComponent<FighterSpell>())
                 {
                     timer += Time.deltaTime;
                     if (timer >= Spell.CanalisationTimer)
@@ -154,6 +154,9 @@ namespace Combat
                     spellFighter.UpdatePlayerRotation();
                     UpdateSpellPosition();
                     count += 1;
+                    
+                    if (Attacker.CompareTag("Player") &&
+                        !FindObjectOfType<EnergyGlobeControl>().HasEnoughEnergy(Spell.spellCost)) break;
                 }
             }
             else
@@ -180,8 +183,8 @@ namespace Combat
             foreach (var newTarget in colliders)
             {
                 var targetHealth = newTarget.GetComponent<Health>();
-                    
-                if (targetHealth == null || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
+                
+                if (!Fighter.CanAttack(newTarget.gameObject) || !targetHealth.isActiveAndEnabled || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
 
                 if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
                 {
@@ -198,7 +201,7 @@ namespace Combat
         {
             var colliderHealth = target.GetComponent<Health>();
             
-            if (colliderHealth == null || colliderHealth.IsDead || _isCasting) return;
+            if (!Fighter.CanAttack(target.gameObject) || !colliderHealth.isActiveAndEnabled || _isCasting) return;
 
             if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(colliderHealth.tag))
             {
@@ -237,8 +240,8 @@ namespace Combat
                 foreach (var newTarget in colliders)
                 {
                     var targetHealth = newTarget.GetComponent<Health>();
-
-                    if (targetHealth == null || targetHealth.IsDead) continue;
+                    
+                    if (!Fighter.CanAttack(newTarget.gameObject) || !targetHealth.isActiveAndEnabled) continue;
 
                     if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
                     {

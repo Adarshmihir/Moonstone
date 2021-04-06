@@ -142,8 +142,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7483844235613994565}
-  - component: {fileID: 7097429382484269811}
-  - component: {fileID: 6622245457767489991}
   m_Layer: 0
   m_Name: "Esprit du d\xE9mon"
   m_TagString: Untagged
@@ -166,38 +164,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7097429382484269811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4819041421459854034}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 4
-  outlineColor: {r: 1, g: 0.45882353, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &6622245457767489991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4819041421459854034}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f6a7b5c3d924defb9acbc90c82315a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nonSelectedColor: {r: 1, g: 0.46, b: 0, a: 1}
-  selectedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5192477302329194129
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +225,41 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &204730512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204250418069357854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fd5d30eb90c43e1861a60321e2240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpell: {fileID: 11400000, guid: 1bae6f7d010b84be4b4858e61c16247a, type: 2}
+  armorSpell: {fileID: 11400000, guid: 80d563388c245411d870fdb8cb83d001, type: 2}
+  petSpell: {fileID: 0}
+  temp: {fileID: 0}
+  rightHandTransform: {fileID: 8201807760277272198}
+  weaponSlot: {fileID: 0}
+  armorSlot: {fileID: 0}
+  petSlot: {fileID: 0}
+--- !u!114 &204730513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204250418069357854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929d1cb14d8a797418f602c1d5f15485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restTimer: 1
+  timeBetweenSpell: 25
+  chanceToCastSpell: 35
 --- !u!114 &2097893537532531654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,41 +443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XpValue: 50
---- !u!114 &204730512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8204250418069357854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fd5d30eb90c43e1861a60321e2240f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSpell: {fileID: 11400000, guid: 1bae6f7d010b84be4b4858e61c16247a, type: 2}
-  armorSpell: {fileID: 11400000, guid: 80d563388c245411d870fdb8cb83d001, type: 2}
-  petSpell: {fileID: 0}
-  temp: {fileID: 0}
-  rightHandTransform: {fileID: 8201807760277272198}
-  weaponSlot: {fileID: 0}
-  armorSlot: {fileID: 0}
-  petSlot: {fileID: 0}
---- !u!114 &204730513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8204250418069357854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 929d1cb14d8a797418f602c1d5f15485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restTimer: 1
-  timeBetweenSpell: 25
-  chanceToCastSpell: 35
 --- !u!1001 &603804246660726479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -532,12 +498,12 @@ PrefabInstance:
     - target: {fileID: 2147476368861021292, guid: 8e1deb69122c4403b909630a6b118e75,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2147476368861021292, guid: 8e1deb69122c4403b909630a6b118e75,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2734719517297691935, guid: 8e1deb69122c4403b909630a6b118e75,
         type: 3}
@@ -689,14 +655,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifeBar
       objectReference: {fileID: 0}
+    - target: {fileID: 6643829509267008262, guid: 8e1deb69122c4403b909630a6b118e75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e1deb69122c4403b909630a6b118e75, type: 3}
---- !u!1 &6843622422912008001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6239819295090852238, guid: 8e1deb69122c4403b909630a6b118e75,
-    type: 3}
-  m_PrefabInstance: {fileID: 603804246660726479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &209156544291077117 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 758352993920697650, guid: 8e1deb69122c4403b909630a6b118e75,
@@ -715,6 +680,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6843622422912008001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6239819295090852238, guid: 8e1deb69122c4403b909630a6b118e75,
+    type: 3}
+  m_PrefabInstance: {fileID: 603804246660726479}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7888073237140357180
 PrefabInstance:
   m_ObjectHideFlags: 0
