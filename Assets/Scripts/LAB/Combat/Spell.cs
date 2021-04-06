@@ -69,21 +69,19 @@ namespace Combat
         public SpellEffect SpellEffect => spellEffect;
         public float CanalisationTimer => canalisationTimer;
 
-        public void Launch(Transform output, Fighter attacker)
+        public void Launch(Transform output, Fighter attacker, Vector3 targetPosition)
         {
-            LaunchProjectile(output, attacker);
+            LaunchProjectile(output, attacker, targetPosition);
         }
 
-        private void LaunchProjectile(Transform output, Fighter attacker)
+        private void LaunchProjectile(Transform output, Fighter attacker, Vector3 targetPosition)
         {
             var projectileInstance = Instantiate(projectile, output.position, Quaternion.identity);
-            
-            //UpdateParticleSize();
-            //SetParticle(projectileInstance);
-            
+
             projectileInstance.Spell = this;
             projectileInstance.Attacker = attacker;
             projectileInstance.Output = output;
+            projectileInstance.TargetPosition = targetPosition;
             projectileInstance.StartCast();
 
             SetParticle(projectileInstance);

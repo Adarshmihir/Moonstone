@@ -19,6 +19,7 @@ namespace Combat
         //public Health Target { get; set; }
         public Fighter Attacker { get; set; }
         public Transform Output { get; set; }
+        public Vector3 TargetPosition { get; set; }
 
         private void Start()
         {
@@ -67,16 +68,23 @@ namespace Combat
             
             if (speed == 0f && Spell.SpellType == SpellType.ZoneEffect)
             {
-                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
-                
-                if (Vector3.Distance(Attacker.transform.position , hit.point) <= Spell.SpellRange)
+                if (CompareTag("Player"))
                 {
-                    transform.position = hit.point;
+                    Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+                
+                    if (Vector3.Distance(Attacker.transform.position , hit.point) <= Spell.SpellRange)
+                    {
+                        transform.position = hit.point;
+                    }
+                    else
+                    {
+                        var attackerTransform = Attacker.transform;
+                        transform.position = attackerTransform.forward * Spell.SpellRange + attackerTransform.position;
+                    }
                 }
                 else
                 {
-                    var attackerTransform = Attacker.transform;
-                    transform.position = attackerTransform.forward * Spell.SpellRange + attackerTransform.position;
+                    transform.position = TargetPosition;
                 }
             }
             else if (speed > 0 && Spell.SpellType == SpellType.UniqueEffect)

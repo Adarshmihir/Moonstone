@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using Control;
+using Core;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -32,6 +33,11 @@ namespace Combat
         private CastSource _castSource;
         private Fighter _fighter;
         private Mover _mover;
+        private AIController _aiController;
+
+        public Spell WeaponSpell => weaponSpell;
+        public Spell ArmorSpell => armorSpell;
+        public Spell PetSpell => petSpell;
 
         //private Health Target { get; set; }
 
@@ -48,11 +54,14 @@ namespace Combat
         {
             _fighter = GetComponent<Fighter>();
             _mover = GetComponent<Mover>();
+            _aiController = GetComponent<AIController>();
 
+            if (weaponSlot == null || armorSlot == null || petSlot == null) return;
+            
             weaponSlot = weaponImage;
             armorSlot = armorImage;
             petSlot = petImage;
-            
+
             UpdateSpell(temp, CastSource.Weapon);
             UpdateSpell(temp, CastSource.Armor);
             
@@ -108,16 +117,17 @@ namespace Combat
 
         public void Cast(/*GameObject combatTarget, */CastSource castSource)
         {
-            EnergyGlobeControl energyPlayer = GameObject.FindObjectOfType<EnergyGlobeControl>();
+            var energyPlayer = FindObjectOfType<EnergyGlobeControl>();
 
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
+            Debug.Log("new action + " + GetComponent<ActionScheduler>().CurrentAction);
 
             InitSpellToCast(castSource);
 
             if (_spellToCast.IsSpellOnCooldown()) return;
 
-            if (!energyPlayer.HasEnoughEnergy(_spellToCast.spellCost)) //Si energy insuffisante
+            if (CompareTag("Player") && !energyPlayer.HasEnoughEnergy(_spellToCast.spellCost))
             {
                 return;
             }
@@ -125,7 +135,7 @@ namespace Combat
             // Define target
             //Target = combatTarget.GetComponent<Health>();
             _castSource = castSource;
-
+            
             CastBehaviour();
 
         }
@@ -135,17 +145,28 @@ namespace Combat
             UpdatePlayerRotation();
             
             CastAnimation();
-            _spellToCast.PutOnCooldown(_castSource);
+
+            if (CompareTag("Player"))
+            {
+                _spellToCast.PutOnCooldown(_castSource);
+            }
         }
 
         public void UpdatePlayerRotation()
         {
-            var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+            if (CompareTag("Player"))
+            {
+                var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
 
-            if (!hasHit || Vector3.Distance(hit.point, transform.position) <= 1f) return;
+                if (!hasHit || Vector3.Distance(hit.point, transform.position) <= 1f) return;
             
-            // Rotate the character in direction of the target
-            transform.LookAt(hit.point);
+                // Rotate the character in direction of the target
+                transform.LookAt(hit.point);
+            }
+            else
+            {
+                transform.LookAt(GameManager.Instance.player.transform.position);
+            }
         }
 
         private void InitSpellToCast(CastSource castSource)
@@ -156,10 +177,10 @@ namespace Combat
                     _spellToCast = weaponSpell;
                     break;
                 case CastSource.Armor:
-                    // TODO : Cast armor spell
+                    _spellToCast = armorSpell;
                     break;
                 case CastSource.Pet:
-                    // TODO : Cast pet spell
+                    _spellToCast = petSpell;
                     break;
                 default:
                     _spellToCast = weaponSpell;
@@ -181,7 +202,7 @@ namespace Combat
         public void Shoot()
         {
             //_spellToCast.Launch(rightHandTransform, Target, _fighter);
-            _spellToCast.Launch(rightHandTransform, _fighter);
+            _spellToCast.Launch(rightHandTransform, _fighter, GameManager.Instance.player.transform.position);
             FindObjectOfType<EnergyGlobeControl>().UseEnergy(_spellToCast.spellCost);
         }
 
@@ -211,7 +232,6 @@ namespace Combat
             _fighter.ChangeWeaponVisibility(true);
             GetComponent<Animator>().ResetTrigger("endCast");
             GetComponent<Animator>().ResetTrigger("cast");
-            GetComponent<Animator>().SetTrigger("stopCast");
         }
     }
 }

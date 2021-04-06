@@ -27,6 +27,7 @@ namespace Control
         private bool _isAttacked;
         private float _timeAttacked;
         private const float WaypointDistTolerance = 1f;
+        private float restTimer;
 
         public bool IsGoingHome { get; private set; }
 
@@ -46,6 +47,12 @@ namespace Control
         {
             if (_health.IsDead || _target == null) return;
 
+            if (restTimer > 0)
+            {
+                restTimer -= Time.deltaTime;
+                return;
+            }
+
             if (DistanceToPlayer() && Fighter.CanAttack(_target) && !IsGoingHome || _isAttacked)
             {
                 AttackBehaviour();
@@ -55,7 +62,7 @@ namespace Control
                 PreparePatrolBehaviour();
                 PatrolBehaviour();
             }
-
+            
             if (patroller != null)
             {
                 _timeSinceLastBreak += Time.deltaTime;
@@ -119,6 +126,11 @@ namespace Control
             }
 
             _isAttacked = true;
+        }
+
+        public void UpdateRestTimer(float value)
+        {
+            restTimer = value;
         }
 
         private void GetMateAround()
