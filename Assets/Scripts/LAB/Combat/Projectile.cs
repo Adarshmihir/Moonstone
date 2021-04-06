@@ -180,9 +180,8 @@ namespace Combat
             foreach (var newTarget in colliders)
             {
                 var targetHealth = newTarget.GetComponent<Health>();
-                var targetCombat = newTarget.GetComponent<CombatTarget>();
                     
-                if (targetHealth == null || targetCombat == null || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
+                if (targetHealth == null || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
 
                 if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
                 {
@@ -198,9 +197,8 @@ namespace Combat
         private void DealDamage(Component target)
         {
             var colliderHealth = target.GetComponent<Health>();
-            var targetCombat = target.GetComponent<CombatTarget>();
             
-            if (colliderHealth == null || targetCombat == null || colliderHealth.IsDead || _isCasting) return;
+            if (colliderHealth == null || colliderHealth.IsDead || _isCasting) return;
 
             if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(colliderHealth.tag))
             {
@@ -239,9 +237,8 @@ namespace Combat
                 foreach (var newTarget in colliders)
                 {
                     var targetHealth = newTarget.GetComponent<Health>();
-                    var targetCombat = newTarget.GetComponent<CombatTarget>();
-                    
-                    if (targetHealth == null || targetCombat == null || targetHealth.IsDead) continue;
+
+                    if (targetHealth == null || targetHealth.IsDead) continue;
 
                     if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
                     {

@@ -159,8 +159,6 @@ namespace Resources
 
             HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
             healhPlayer.healthSlider.value = healhPlayer.healthSlider.value + (bonusHealth / maxHealthPoints);
-
-            Debug.Log(maxHealthPoints);
         }
 
         private void Die()
