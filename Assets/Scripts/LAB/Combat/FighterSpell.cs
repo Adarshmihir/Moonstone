@@ -121,7 +121,6 @@ namespace Combat
 
             // Start attack action
             GetComponent<ActionScheduler>().StartAction(this);
-            Debug.Log("new action + " + GetComponent<ActionScheduler>().CurrentAction);
 
             InitSpellToCast(castSource);
 

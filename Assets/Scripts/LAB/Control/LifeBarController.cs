@@ -13,19 +13,21 @@ namespace Control
 
         private Health _health;
         private Fighter _fighter;
+        private AIController _aiController;
 
         // Start is called before the first frame update
         private void Start()
         {
             _fighter = GetComponent<Fighter>();
             _health = GetComponent<Health>();
+            _aiController = GetComponent<AIController>();
         }
         
         // Update is called once per frame
         private void Update()
         {
-            healthSlider.gameObject.SetActive(_fighter.Target != null);
-            
+            healthSlider.gameObject.SetActive(_aiController != null && _aiController.DistanceToPlayer() && _health.HealthPoints > 0);
+
             if (Camera.main == null) return;
 
             var rotation = Camera.main.transform.rotation;
@@ -35,7 +37,6 @@ namespace Control
         public void UpdateLifeBar()
         {
             healthSlider.value = _health.HealthPoints / _health.MaxHealthPoints;
-            healthBarUI.SetActive(_health.HealthPoints > 0 && _health.HealthPoints < _health.MaxHealthPoints);
         }
 
         public void InitLifeBar()

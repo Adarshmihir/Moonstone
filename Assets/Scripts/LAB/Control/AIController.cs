@@ -175,7 +175,7 @@ namespace Control
             return Vector3.Distance(transform.position, patroller.GetWaypoint(_currentWaypoint)) < WaypointDistTolerance;
         }
 
-        private bool DistanceToPlayer()
+        public bool DistanceToPlayer()
         {
             return Vector3.Distance(_target.transform.position, transform.position) < chaseDistance;
         }
