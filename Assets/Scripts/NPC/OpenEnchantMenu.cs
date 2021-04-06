@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OpenEnchantMenu : MonoBehaviour
 {
@@ -10,5 +8,4 @@ public class OpenEnchantMenu : MonoBehaviour
         GameManager.Instance.uiManager.EnchantressGO.SetActive(true);
         GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().inventoryenchantress.Initialize_InventoryEnchantressUI();
     }
-
 }

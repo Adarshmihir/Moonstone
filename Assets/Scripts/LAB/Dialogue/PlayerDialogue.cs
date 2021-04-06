@@ -157,7 +157,9 @@ namespace Dialogue
 
 		public void Cancel()
 		{
-			Debug.Log("cccc");
+			GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().CloseMenu();
+			GameManager.Instance.uiManager.ForgeronGO.SetActive(false);
+			
 			Quit();
 		}
     }
