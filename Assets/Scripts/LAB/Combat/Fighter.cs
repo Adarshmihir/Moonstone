@@ -54,14 +54,6 @@ namespace Combat
             }
         }
 
-        private void ShowBossLifeBar()
-        {
-            if (CompareTag("Player"))
-            {
-                
-            }
-        }
-
         private void SpawnWeapon()
         {
             if (weapon == null) return;

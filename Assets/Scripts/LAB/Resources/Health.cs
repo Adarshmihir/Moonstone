@@ -142,7 +142,6 @@ namespace Resources
         public void RegenLifePlayer(float regenRate)
         {
             HealthPoints = Mathf.Min(HealthPoints + maxHealthPoints * regenRate, maxHealthPoints);
-            Debug.Log(HealthPoints);
         }
 
         public void setSpawner(Spawner spawner)

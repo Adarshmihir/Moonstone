@@ -56,7 +56,10 @@ namespace Control
                 PatrolBehaviour();
             }
 
-            _timeSinceLastBreak += Time.deltaTime;
+            if (patroller != null)
+            {
+                _timeSinceLastBreak += Time.deltaTime;
+            }
         }
 
         private void PreparePatrolBehaviour()
@@ -78,7 +81,7 @@ namespace Control
 
             _fighter.Attack(_target);
 
-            if (DistanceToInitialPosition()) return;
+            if (DistanceToInitialPosition(maxDistance)) return;
 
             ReturnToInitialPosition();
         }
@@ -89,12 +92,17 @@ namespace Control
             {
                 if (DistanceToWaypoint())
                 {
+                    Debug.Log("coucou");
                     IsGoingHome = false;
                     _timeSinceLastBreak = 0;
                     
                     _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
                     _initialPosition = patroller.GetWaypoint(_currentWaypoint);
                 }
+            }
+            else if (DistanceToInitialPosition(WaypointDistTolerance))
+            {
+                IsGoingHome = false;
             }
             
             if (!(_timeSinceLastBreak > breakTimer) && !IsGoingHome) return;
@@ -161,9 +169,9 @@ namespace Control
             return Vector3.Distance(_target.transform.position, transform.position) < chaseDistance;
         }
 
-        private bool DistanceToInitialPosition()
+        private bool DistanceToInitialPosition(float distance)
         {
-            return Vector3.Distance(_initialPosition, transform.position) < maxDistance;
+            return Vector3.Distance(_initialPosition, transform.position) < distance;
         }
 
         //Forces the AI to initial position
