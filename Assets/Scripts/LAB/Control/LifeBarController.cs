@@ -36,11 +36,15 @@ namespace Control
 
         public void UpdateLifeBar()
         {
+            if (healthSlider == null || _health == null) return;
+            
             healthSlider.value = _health.HealthPoints / _health.MaxHealthPoints;
         }
 
         public void InitLifeBar()
         {
+            if (healthSlider == null || _health == null) return;
+        
             healthSlider.value = _health.HealthPoints / _health.MaxHealthPoints;
             healthSlider.gameObject.SetActive(false);
         }

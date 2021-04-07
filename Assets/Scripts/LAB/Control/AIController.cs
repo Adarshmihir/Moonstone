@@ -27,7 +27,7 @@ namespace Control
         private bool _isAttacked;
         private float _timeAttacked;
         private const float WaypointDistTolerance = 1f;
-        private float restTimer;
+        private float _restTimer;
 
         public bool IsGoingHome { get; private set; }
 
@@ -47,9 +47,9 @@ namespace Control
         {
             if (_health.IsDead || _target == null) return;
 
-            if (restTimer > 0)
+            if (_restTimer > 0)
             {
-                restTimer -= Time.deltaTime;
+                _restTimer -= Time.deltaTime;
                 return;
             }
 
@@ -130,7 +130,7 @@ namespace Control
 
         public void UpdateRestTimer(float value)
         {
-            restTimer = value;
+            _restTimer = value;
         }
 
         private void GetMateAround()
@@ -139,7 +139,7 @@ namespace Control
             foreach (var allies in colliders)
             {
                 var alliesController = allies.GetComponent<AIController>();
-                if (alliesController == null) continue;
+                if (alliesController == null || alliesController.IsGoingHome) continue;
 
                 alliesController.CallForHelp(_target);
             }
