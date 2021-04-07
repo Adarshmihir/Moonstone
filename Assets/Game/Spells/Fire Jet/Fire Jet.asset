@@ -28,6 +28,6 @@ MonoBehaviour:
     type: 3}
   particleEffectImpact: {fileID: 0}
   spellIcon: {fileID: 2800000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
-  spellRange: 2
+  spellRange: 18
   spellZoneArea: 2
-  damageRadius: 45
+  damageRadius: 25

@@ -158,9 +158,12 @@ namespace Combat
                 var hasHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
 
                 if (!hasHit || Vector3.Distance(hit.point, transform.position) <= 1f) return;
+
+                var playerPosition = transform.position;
+                var finalPosition = new Vector3(hit.point.x, playerPosition.y, hit.point.z);
             
                 // Rotate the character in direction of the target
-                transform.LookAt(hit.point);
+                transform.LookAt(finalPosition);
             }
             else
             {
