@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using UnityEngine;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    [SerializeField] private bool mainMenu;
+    
+    public static bool gameIsPaused;
 
     public GameObject pauseMenuUI;
 
@@ -22,9 +20,10 @@ public class PauseMenuManager : MonoBehaviour
         menuActive = false;
     }
 
-    void Update()
+    private void Update()
     {
-        if (!Input.GetButtonDown("MainMenu")) return;
+        if (!Input.GetButtonDown("MainMenu") || !mainMenu) return;
+        
         if (!pauseMenuUI.activeSelf)
         {
             if (BindingsMenuUI.activeSelf || ParamsMenuUI.activeSelf)
@@ -43,12 +42,11 @@ public class PauseMenuManager : MonoBehaviour
 
         if (menuActive) return;
         OpenCloseMainMenu();
-        Debug.Log("Echap pressed");
     }
 
     public void OpenCloseMainMenu()
     {
-        if(gameIsPaused)
+        if (gameIsPaused)
         {
             pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
