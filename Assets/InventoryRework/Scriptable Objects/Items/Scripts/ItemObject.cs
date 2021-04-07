@@ -24,12 +24,13 @@ public enum Attributes {
 
 [System.Serializable]
 public abstract class ItemObject : ScriptableObject {
-    public int Id;
+
     public Sprite uiDisplay;
+    public bool stackable;
     public ItemType type;
 
     [TextArea(15, 20)] public string description;
-    public ItemBuff[] buffs;
+    public Item2 data = new Item2();
 
     public Item2 CreateItem() {
         Item2 newItem = new Item2(this);
@@ -40,7 +41,7 @@ public abstract class ItemObject : ScriptableObject {
 [System.Serializable]
 public class Item2 {
     public string Name;
-    public int Id;
+    public int Id = -1;
     public ItemBuff[] buffs;
 
 
@@ -52,11 +53,11 @@ public class Item2 {
     // Ctor
     public Item2(ItemObject item) {
         Name = item.name;
-        Id = item.Id;
-        buffs = new ItemBuff[item.buffs.Length];
+        Id = item.data.Id;
+        buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++) {
-            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max);
-            buffs[i].attribute = item.buffs[i].attribute;
+            buffs[i] = new ItemBuff(item.data.buffs[i].min, item.data.buffs[i].max);
+            buffs[i].attribute = item.data.buffs[i].attribute;
         }
     }
 }

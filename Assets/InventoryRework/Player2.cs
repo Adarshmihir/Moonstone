@@ -6,7 +6,8 @@ using UnityEngine.PlayerLoop;
 
 public class Player2 : MonoBehaviour {
     public InventoryObject inventory;
-    public MouseItem mouseItem = new MouseItem();
+    public InventoryObject equipment;
+    //public MouseItem mouseItem = new MouseItem();
 
     public void OnTriggerEnter(Collider other) {
         var item = other.GetComponent<GroundItem>();
@@ -19,14 +20,17 @@ public class Player2 : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             inventory.Save();
+            equipment.Save();
         }
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
             inventory.Load();
+            equipment.Load();
         }
     }
 
     private void OnApplicationQuit() {
         inventory.Container.Items = new InventorySlot2[24];
+        equipment.Container.Clear();
     }
 }

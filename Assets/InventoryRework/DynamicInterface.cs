@@ -7,7 +7,7 @@ public class DynamicInterface : UserInterface {
     public GameObject inventoryPrefab;
     public override void CreateSlots() {
         // Make sure the dictionary is REALLY a new dictionary
-        itemsDisplayed = new Dictionary<GameObject, InventorySlot2>();
+        slotsOnInterface = new Dictionary<GameObject, InventorySlot2>();
 
         // For every "system" item, an inventorySlot with all the needed events trigger is created
         for (int i = 0; i < inventory.Container.Items.Length; i++) {
@@ -19,7 +19,7 @@ public class DynamicInterface : UserInterface {
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
 
-            itemsDisplayed.Add(obj, inventory.Container.Items[i]);
+            slotsOnInterface.Add(obj, inventory.Container.Items[i]);
         }
     }
 }
