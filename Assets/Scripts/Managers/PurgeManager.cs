@@ -44,8 +44,8 @@ public class PurgeManager : MonoBehaviour {
 
     public int purgeLevel = 1;
 
-    public GameObject toSpawnMob;
-    public GameObject toSpawnMonster;
+    public List<GameObject> objectToSpawn;
+    private bool isSpawnsSet;
 
     public bool playerWasAgressive = false;
 
@@ -62,6 +62,8 @@ public class PurgeManager : MonoBehaviour {
         purgeIncrement = DefaultPurgeIncrement;
 
         numberToKill = purgeLevel * 2;
+
+        isSpawnsSet = false;
     }
 
     // Update is called once per frame
@@ -109,7 +111,6 @@ public class PurgeManager : MonoBehaviour {
         if (purgiumAmount >= 100) {
             GameManager.Instance.isPurgeActive = true;
             screenEffectAnimator.SetBool("isPurgeActive", true);
-            
 
             // Force to open purge menu at beginning
             purgeUI.gameObject.SetActive(true);
@@ -122,16 +123,26 @@ public class PurgeManager : MonoBehaviour {
             // Make sure player is out of a dungeon
             if (!player.isInDungeon) {
                 // Spawn monsters at each outside spawner //TODO: manage inside/outside spawners
-                clearAndSetSpawners("Enemy_monster");
+                if(!isSpawnsSet)
+                {
+                    foreach (Spawner spawner in spawners)
+                    {
+                        spawner.startPurge(objectToSpawn);
+                    }
+                    isSpawnsSet = true;
+                }
+                
+                // If player killed all monsters (fixed number)
+                if (killedCount >= numberToKill)
+                {
+                    ResetNormalMode();
+                }
 
                 // At purge end ...
                 if (purgeUI.GetComponentInChildren<Timer>().timeRemaining <= 0) {
                     
                     // If player killed all monsters (fixed number)
-                    if (killedCount >= numberToKill) {
-                        ResetNormalMode();
-                    }
-                    else { // Player didnt kill all monsters ..
+                    if (killedCount < numberToKill) { // Player didnt kill all monsters ..
                         // If player was aggressive (trying to complete purge) --> // isPlayerAggressive > (method : +1 to a counter when player hits a enemy. if counter > 0.75 * numberToKill = true
                         checkPlayerAgressiveness();
                         if (playerWasAgressive)
@@ -140,6 +151,7 @@ public class PurgeManager : MonoBehaviour {
                         else
                             lackOfKillsPenalty();
                     }
+                    ResetNormalMode();
                     purgeUI.fill.fillAmount = 0;
                 } else if (killedCount >= numberToKill) 
                     ResetNormalMode();
@@ -152,34 +164,6 @@ public class PurgeManager : MonoBehaviour {
         } 
     }
 
-    private void clearAndSetSpawners(string tag) {
-        foreach (Spawner _spawner in spawners) {
-            if (_spawner.arrayObjectSpawned.Count > 0 && _spawner.arrayObjectSpawned[0].CompareTag("Enemy_mob")) {
-                _spawner.ClearSpawner();
-
-                switch (tag) {
-                    case "Enemy_mob":
-                        if(toSpawnMob != null) 
-                            _spawner.addObjectToSpawn(toSpawnMob);
-                        
-                        GameManager.Instance.isPurgeActive = false;
-                        break;
-                    
-                    case "Enemy_monster":
-                        if(toSpawnMonster != null) 
-                            _spawner.addObjectToSpawn(toSpawnMonster);
-                        
-                        
-                        GameManager.Instance.isPurgeActive = true;
-                        break;
-                    
-                    default:
-                        Debug.Log("The tag you trying to instantiate doesn't exist");
-                        break;
-                }
-            }
-        }
-    }
 
     private void outOfTimePenalty() {
         Debug.Log("Purge is over ! You tried nice but unfortunately you didnt kill all enemies in time. A time penalty of TO DECIDE seconds. will be applied to next purge");
@@ -198,8 +182,17 @@ public class PurgeManager : MonoBehaviour {
         purgeUI.fill.fillAmount = 0;
         killedCount = 0;
         
+        /*
         // Spawn normal enemies
         clearAndSetSpawners("Enemy_mob");
+        */
+
+        foreach (Spawner spawner in spawners)
+        {
+            spawner.stopPurge();
+        }
+        isSpawnsSet = false;
+        GameManager.Instance.isPurgeActive = false;
 
         ComputePurgePenalty();
     }
