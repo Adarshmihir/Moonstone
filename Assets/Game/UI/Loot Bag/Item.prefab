@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 4346615981506784994}
   - component: {fileID: 1246865124832843203}
   - component: {fileID: 8236032059762457352}
+  - component: {fileID: 174726186149614664}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -217,6 +218,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1119752463249661480}
   description: {fileID: 4013749019517555563}
+--- !u!114 &174726186149614664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641653550069267765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a032476ee11eb4cc48032ec8ad548e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 4584689673472084330, guid: 29b93caaf3d89e843a90e15250aa87c6, type: 3}
+  isQuest: 0
+  isLootItem: 1
 --- !u!1 &9198566060282622250
 GameObject:
   m_ObjectHideFlags: 0

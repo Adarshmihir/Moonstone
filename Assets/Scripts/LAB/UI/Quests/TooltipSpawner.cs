@@ -6,6 +6,8 @@ namespace UI.Quests
     public class TooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private GameObject tooltip;
+        [SerializeField] private bool isQuest;
+        [SerializeField] private bool isLootItem;
 
         private GameObject _instanceTooltip;
 
@@ -24,17 +26,36 @@ namespace UI.Quests
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            HideTooltip();
+        }
+
+        public void HideTooltip()
+        {
             Destroy(_instanceTooltip.gameObject);
         }
 
         private void InitTooltipContent()
         {
-            var questItem = GetComponent<QuestItem>();
             var tooltipUI = _instanceTooltip.GetComponent<Toolltip>();
-
-            if (questItem == null || questItem.QuestStatus == null || tooltipUI == null) return;
             
-            tooltipUI.SetTooltipUI(questItem.QuestStatus);
+            if (isQuest)
+            {
+                var questItem = GetComponent<QuestItem>();
+
+                if (questItem == null || questItem.QuestStatus == null || tooltipUI == null) return;
+            
+                tooltipUI.SetQuestTooltipUI(questItem.QuestStatus);
+                return;
+            }
+            // TODO : Only get item in if
+            else if (isLootItem)
+            {
+                var lootItem = GetComponent<LootItem>();
+
+                if (lootItem == null || tooltipUI == null) return;
+            
+                tooltipUI.SetItemTooltipUI(lootItem.Item);
+            }
         }
 
         private void UpdateRectPosition()

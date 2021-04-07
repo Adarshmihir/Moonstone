@@ -24,12 +24,21 @@ public class LootBag : MonoBehaviour, IAction
         if (items.Count == 0) return;
         
         GameManager.Instance.player.GetComponent<ActionScheduler>().StartAction(this);
-        
         GameManager.Instance.uiManager.LootBagGO.SetActive(true);
+        
+        var parent = GameManager.Instance.uiManager.LootBagGO.GetComponent<LootBag>().contentParent;
+        var newItem = Instantiate(prefabItem, parent);
+        var gold = (int) Random.Range(combatTarget.MINGold, combatTarget.MAXGold);
+
+        if (gold > 0)
+        {
+            newItem.GetComponent<LootItem>().SetGold(gold);
+        }
+
         foreach (var item in items)
         {
-            var parent = GameManager.Instance.uiManager.LootBagGO.GetComponent<LootBag>().contentParent;
-            var newItem = Instantiate(prefabItem, parent);
+            parent = GameManager.Instance.uiManager.LootBagGO.GetComponent<LootBag>().contentParent;
+            newItem = Instantiate(prefabItem, parent);
             newItem.GetComponent<LootItem>().SetItem(item, combatTarget);
         }
     }
