@@ -12,12 +12,12 @@ public class PauseMenuManager : MonoBehaviour
 
     public GameObject BindingsMenuUI;
 
-    private bool menuActive;
-    // Update is called once per frame
+    public bool IsMenuActive { get; private set; }
 
+    // Update is called once per frame
     private void Start()
     {
-        menuActive = false;
+        IsMenuActive = false;
     }
 
     private void Update()
@@ -28,19 +28,19 @@ public class PauseMenuManager : MonoBehaviour
         {
             if (BindingsMenuUI.activeSelf || ParamsMenuUI.activeSelf)
             {
-                menuActive = true;
+                IsMenuActive = true;
             }
             else
             {
-                menuActive = false;
+                IsMenuActive = false;
             }
         }
         else
         {
-            menuActive = false;
+            IsMenuActive = false;
         }
 
-        if (menuActive) return;
+        if (IsMenuActive) return;
         OpenCloseMainMenu();
     }
 

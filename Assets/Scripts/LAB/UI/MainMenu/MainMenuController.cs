@@ -7,7 +7,6 @@ namespace UI
 {
     public class MainMenuController : MonoBehaviour
     {
-        [SerializeField] private Button playButton;
         [SerializeField] private Button newGameButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button quitButton;
@@ -17,27 +16,40 @@ namespace UI
 
         [SerializeField] private float playerToFadeTimer = 1f;
         [SerializeField] private float fadeToSkipTimer = 1f;
+
+        [SerializeField] private PauseMenuManager settingsMenu;
+        [SerializeField] private GameObject confirmMenu;
     
         // Start is called before the first frame update
         private void Start()
         {
-            playButton.onClick.AddListener(PlayerStandUp);
             newGameButton.onClick.AddListener(PlayerStandUp);
-            settingsButton.onClick.AddListener(OnSettingsPressed);
-            quitButton.onClick.AddListener(OnQuitPressed);
+            settingsButton.onClick.AddListener(SettingsPressed);
+            quitButton.onClick.AddListener(QuitPressed);
         }
 
         private void PlayerStandUp()
         {
+            if (confirmMenu.activeSelf || settingsMenu.IsMenuActive) return;
+            
             StartCoroutine(StandUp());
         }
 
-        private static void OnSettingsPressed()
+        private void QuitPressed()
         {
-        
+            if (confirmMenu.activeSelf || settingsMenu.IsMenuActive) return;
+
+            confirmMenu.SetActive(true);
         }
 
-        private static void OnQuitPressed()
+        private void SettingsPressed()
+        {
+            if (confirmMenu.activeSelf || settingsMenu.IsMenuActive) return;
+            
+            settingsMenu.OpenCloseMainMenu();
+        }
+
+        public void QuitGame()
         {
             Application.Quit();
         }
