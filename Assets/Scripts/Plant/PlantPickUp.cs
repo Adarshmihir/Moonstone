@@ -1,4 +1,5 @@
-﻿using Combat;
+﻿using System;
+using Combat;
 using Core;
 using Movement;
 using UnityEngine;
@@ -7,19 +8,16 @@ using Quests;
 public class PlantPickUp : MonoBehaviour, IAction
 {
     [SerializeField] private float healthAmount = .25f;
+    [SerializeField] private float timer = 5f;
 
     private Fighter _fighter;
     private Mover _mover;
     private bool _isTakingPlant;
-    
-    public bool IsActive { get; private set; }
 
     private void Start()
     {
         _mover = GameManager.Instance.player.GetComponent<Mover>();
         _fighter = GameManager.Instance.player.GetComponent<Fighter>();
-
-        IsActive = true;
     }
 
     private void Update()
@@ -41,6 +39,12 @@ public class PlantPickUp : MonoBehaviour, IAction
 
     public void PickPlantBehaviour()
     {
+        if (GameManager.Instance.uiManager.CanvasRessourceGO.GetComponent<FillPlantsBar>().currentHeal >= 1f)
+        {
+            GameManager.Instance.FeedbackMessage.SetMessage("Barre de soin déjà pleine");
+            return;
+        }
+        
         GetComponent<ActionScheduler>().StartAction(this);
         _isTakingPlant = true;
     }
@@ -58,46 +62,18 @@ public class PlantPickUp : MonoBehaviour, IAction
                 questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "0");
             }
         }
-
-        /*switch (plant.name)
-        {
-            case ("Plant1"):
-            {
-                    player.GetComponent<PlantCounter>().addPlant1();
-                    if (evaluatedQuest != null)
-                    {
-                        questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "0");
-                    }
-                    break;
-            }
-            case ("Plant2"):
-            {
-                    player.GetComponent<PlantCounter>().addPlant2();
-                    if (evaluatedQuest != null)
-                    {
-                        questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "2");
-                    }
-                    break;
-            }
-            case ("Plant3"):
-            {
-                    player.GetComponent<PlantCounter>().addPlant3();
-                    break;
-            }
-        }*/
-
-        //GameManager.Instance.uiManager.CanvasRessource.GetComponent<FillPlantsBar>().PickPlant(0.25f);
         
         GameManager.Instance.uiManager.CanvasRessourceGO.GetComponent<FillPlantsBar>().PickPlant(healthAmount);
 
-        IsActive = false;
+        gameObject.SetActive(false);
+        Invoke(nameof(UpdatePlantVisibility), timer);
         
         Cancel();
+    }
 
-        //var resourceCanvas = GameObject.Find("CanvasRessource");
-        //resourceCanvas.GetComponent<FillPlantsBar>().PickPlant(0.25f);
-
-        //Destroy(transform.gameObject);
+    private void UpdatePlantVisibility()
+    {
+        gameObject.SetActive(true);
     }
 
     public void Cancel()

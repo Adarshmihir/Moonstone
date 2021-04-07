@@ -44,7 +44,7 @@ namespace Control
             foreach (var hit in hits)
             {
                 var plantTarget = hit.transform.GetComponent<PlantPickUp>();
-                if (plantTarget == null || !plantTarget.IsActive) continue;
+                if (plantTarget == null) continue;
 
                 if (Input.GetMouseButtonDown(0))
                 {

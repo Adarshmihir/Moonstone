@@ -63,6 +63,11 @@ public class FillPlantsBar : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UsePlant();
+        }
+
         //if (healthSlider.value <= 0f)
             //Debug.Log("You're dead !");
     }
