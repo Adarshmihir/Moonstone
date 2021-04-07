@@ -89,16 +89,20 @@ public class Spawner : MonoBehaviour
     private Vector3 GetRandomVector3Spawn()
     {
         var randPos = new Vector3(0, 0, 0);
-        var bIsPosValid = true;
+       
         randPos = Random.insideUnitSphere * spawnerRadius;
         randPos += transform.position;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randPos, out hit, 1.0f, NavMesh.GetAreaFromName("Walkable"))) //only check walkable areas
+        var bIsPosValid = true;
+        while(bIsPosValid)
         {
-            randPos = hit.position;
-            Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
+            if (NavMesh.SamplePosition(randPos, out hit, spawnerRadius, 1)) //only check walkable areas
+            {
+                randPos = hit.position;
+                Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
+                bIsPosValid = false;
+            }
         }
-        
         return randPos;
     }
 
