@@ -31,7 +31,6 @@ namespace Control
             if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
 
             if (InteractWithDialogue()) return;
-            //if (InteractWithCombat(false)) return;
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
             if (InteractWithCorpse()) return;
