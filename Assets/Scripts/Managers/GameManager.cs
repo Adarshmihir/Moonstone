@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RawImage weaponSlot;
     [SerializeField] private RawImage armorSlot;
     [SerializeField] private RawImage petSlot;
+    [SerializeField] private FeedbackMessage feedbackMessage;
     //PUBLIC VARIABLES (SHOWN IN INSPECTOR)
     public Transform PlayerSpawnPosition;
     public GameObject PlayerPrefab;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public RawImage WeaponSlot => weaponSlot;
     public RawImage ArmorSlot => armorSlot;
     public RawImage PetSlot => petSlot;
+    public FeedbackMessage FeedbackMessage => feedbackMessage;
 
     private GameManager() {
         
