@@ -118,7 +118,7 @@ public class Inventory2 {
     
     public void Clear() {
         for (int i = 0; i < Items.Length; i++) {
-            Items[i].UpdateSlot(new Item2(), 0);
+            Items[i].RemoveItem();
         }
     }
 }

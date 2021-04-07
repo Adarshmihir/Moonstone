@@ -8,6 +8,6 @@ public class ResourceObject : ItemObject {
 
     public int restoreHealthValue;
     public void Awake() {
-        type = ItemType.Resource;
+        //type = ItemType.Resource;
     }
 }

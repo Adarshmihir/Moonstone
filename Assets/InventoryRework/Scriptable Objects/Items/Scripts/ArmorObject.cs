@@ -18,6 +18,6 @@ public class ArmorObject : ItemObject {
     }
     
     private void Awake() {
-        type = ItemType.Chest;
+        //type = ItemType.Chest;
     }
 }

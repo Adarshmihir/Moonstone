@@ -11,9 +11,14 @@ public class Player2 : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         var item = other.GetComponent<GroundItem>();
-        if (item) {
-            inventory.AddItem(new Item2(item.item), 1);
-            Destroy(other.gameObject);
+        if (item)
+        {
+            Item2 _item = new Item2(item.item);
+            if (inventory.AddItem(_item, 1))
+            {
+                Destroy(other.gameObject);
+            }
+            
         }
     }
 
@@ -30,7 +35,7 @@ public class Player2 : MonoBehaviour {
     }
 
     private void OnApplicationQuit() {
-        inventory.Container.Items = new InventorySlot2[24];
+        inventory.Container.Clear();
         equipment.Container.Clear();
     }
 }

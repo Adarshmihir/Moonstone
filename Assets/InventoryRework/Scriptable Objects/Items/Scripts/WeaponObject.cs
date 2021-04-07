@@ -9,7 +9,7 @@ public class WeaponObject : ItemObject {
     private float weaponDamageFlat;
     
     private void Awake() {
-        type = ItemType.Weapon;
+        //type = ItemType.Weapon;
         
         weaponDamagePercent = Random.Range(25, 100);
         CurrentStatUsing = (StatTypes)Random.Range(0, 4);
