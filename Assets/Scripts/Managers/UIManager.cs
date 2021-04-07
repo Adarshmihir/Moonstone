@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
         EnchantressGO = Instantiate(Enchantress);
         EnchantressGO.GetComponent<EnchantressUI>().Initialize_EnchantressUI();
         //HealthGlobeGO = Instantiate(HealthGlobe);
-        //CanvasRessourceGO = Instantiate(CanvasRessource);
+        CanvasRessourceGO = Instantiate(CanvasRessource);
         ForgeronGO = Instantiate(Forgeron);
         LootBagGO = Instantiate(LootBag);
         LevelManagerGO = Instantiate(LevelManager);

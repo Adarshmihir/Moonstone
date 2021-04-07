@@ -22,7 +22,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetButtonDown("MainMenu") || !mainMenu) return;
+        if (!Input.GetButtonDown("MainMenu") && !mainMenu) return;
         
         if (!pauseMenuUI.activeSelf)
         {

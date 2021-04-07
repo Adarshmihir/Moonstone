@@ -34,7 +34,25 @@ namespace Control
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
             if (InteractWithCorpse()) return;
+            if (InteractWithPlant()) return;
             InteractWithMovement();
+        }
+
+        private static bool InteractWithPlant()
+        {
+            var hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
+            {
+                var plantTarget = hit.transform.GetComponent<PlantPickUp>();
+                if (plantTarget == null || !plantTarget.IsActive) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    plantTarget.PickPlantBehaviour();
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithDialogue()
@@ -65,7 +83,6 @@ namespace Control
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log(corpseTarget.name);
                     corpseTarget.LootBag.IsLooting = true;
                 }
                 return true;
