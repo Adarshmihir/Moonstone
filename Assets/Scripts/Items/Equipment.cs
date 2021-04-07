@@ -13,12 +13,7 @@ public struct equipementModifier
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class Equipment : Item {
-
-    //public EquipmentSlot equipSlot;
-    public SkinnedMeshRenderer mesh;
-    //public EquipmentMeshRegion[] coveredMeshRegions;
-
-    //public equipementModifier[] equipementMods;
+    public equipementModifier[] equipementMods;
 
     //A PASSER EN PROTECTED QUAND ON AURA FAIT UN NAMESPACE INVENTAIRE-STATS
     public List<StatModifier> StatModifiers;

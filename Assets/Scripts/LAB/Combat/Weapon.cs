@@ -17,7 +17,6 @@ namespace Combat
     [CreateAssetMenu(fileName = "Weapon", menuName = "Moonstone/New Weapon", order = 0)]
     public class Weapon : Item
     {
-        [SerializeField] public string weaponName;
         [SerializeField] private WeaponType weaponType;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float attackspeed = 1f;

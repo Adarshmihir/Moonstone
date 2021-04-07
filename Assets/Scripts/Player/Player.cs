@@ -6,6 +6,7 @@ using Control;
 using Stats;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -18,8 +19,6 @@ public class Player : MonoBehaviour
 
     public bool isInDungeon = false;
     public bool hasKilledABoss = false;
-
-    // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour
             stats.Add(statToAdd);
         }
         StatTextUpdate();
-
     }
     public void InitializePlayer()
     {

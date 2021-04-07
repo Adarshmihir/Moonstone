@@ -20,7 +20,7 @@ public class RepairUIbehavior : MonoBehaviour
     private void Update()
     {
         inventory = Inventory.instance;
-        listItem = inventory.GetList();
+        listItem = inventory.GetItems();
         if (listItem.Count > 0)
         {
             itemSelected.sprite = listItem[index].icon;
@@ -40,7 +40,7 @@ public class RepairUIbehavior : MonoBehaviour
     private void Awake()
     {
         inventory = Inventory.instance;
-        listItem = inventory.GetList();
+        listItem = inventory.GetItems();
         if (listItem.Count > 0)
         {
             itemSelected.sprite = listItem[index].icon;

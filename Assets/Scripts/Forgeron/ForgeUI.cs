@@ -37,7 +37,7 @@ public class ForgeUI : MonoBehaviour
         
         foreach(Combat.Weapon item in weaponsAvailable)
         {
-            if(item.weaponName == name)
+            if(item.name == name)
             {
                 weapon = item;
             }

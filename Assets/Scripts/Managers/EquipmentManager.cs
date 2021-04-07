@@ -21,7 +21,7 @@ public class EquipmentManager : MonoBehaviour {
 
     public void Initialize_EquipmentManager() {
         // Initialize currentEquipment based on number of equipment slots
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+        int numSlots = System.Enum.GetNames(typeof(Item.EquipmentSlot)).Length;
         currentStuff = new Item[numSlots];
 
         currentStuff[currentStuff.Length - 1] = GameManager.Instance.player.GetComponent<Fighter>().weapon;

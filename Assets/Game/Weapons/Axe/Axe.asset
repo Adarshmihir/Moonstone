@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Axe
   icon: {fileID: 0}
-  isDefaultItem: 0
-  equipementMods: []
+  desc: 
   equipSlot: 4
   weaponType: 1
   weaponRange: 2
-  attackspeed: 1.1
+  attackspeed: -2.4
   weaponMinDamage: 5
   weaponMaxDamage: 10
   weaponRadius: 45
@@ -33,3 +32,6 @@ MonoBehaviour:
   weaponDamageFlat: 5
   weaponDamagePercent: 0.25
   CurrentStatUsing: 0
+  ironToBuild: 0
+  copperToBuild: 0
+  silverToBuild: 0

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
@@ -13,25 +14,32 @@ public class Inventory : MonoBehaviour {
     public int iron = 10;
     public int silver = 10;
 
+    public List<Weapon> weapons = new List<Weapon>();
+    public List<Equipment> equipments = new List<Equipment>();
     public List<Item> items = new List<Item>();
 
-    public List<Item> GetList()
-    {
+    public List<Weapon> GetWeapons() {
+        return weapons;
+    }
+
+    public List<Equipment> GetEquipments() {
+        return equipments;
+    }
+
+    public List<Item> GetItems() {
         return items;
     }
 
     public bool Add(Item item) {
-        if (!item.isDefaultItem) {
-            if (items.Count >= space) {
-                Debug.Log("Not enough room to store " + item.name);
-                return false;
-            }
-
-            items.Add(item);
-
-            if (onItemChangedCallback != null)
-                onItemChangedCallback.Invoke();
+        if (items.Count >= space) {
+            Debug.Log("Not enough room to store " + item.name);
+            return false;
         }
+
+        items.Add(item);
+
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
 
         return true;
     }

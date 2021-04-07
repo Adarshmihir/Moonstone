@@ -14,24 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Platelegs
   icon: {fileID: 21300000, guid: 2600231ae31ea3c4ead1bbdc9d7a1c0e, type: 3}
-  isDefaultItem: 0
+  desc: 
+  equipSlot: 0
   equipementMods:
-  - value: 15
-    modType: 200
-    statType: 0
-  - value: 42
+  - value: 50
     modType: 100
-    statType: 3
-  equipSlot: 2
-  equipSlot: 2
-  mesh: {fileID: 0}
-  equipementMods:
-  - value: 15
-    modType: 200
     statType: 0
-  - value: 42
-    modType: 100
-    statType: 3
   StatModifiers:
-  - {fileID: 0}
   - {fileID: 0}

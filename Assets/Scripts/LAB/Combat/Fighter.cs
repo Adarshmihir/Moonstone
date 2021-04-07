@@ -21,6 +21,8 @@ namespace Combat
         private Mover _mover;
         private Animator _animator;
         private float _timeSinceLastAttack = Mathf.Infinity;
+        
+        public Weapon RNGWeapon;
 
         public Health Target { get; private set; }
 
@@ -30,6 +32,7 @@ namespace Combat
             _mover = GetComponent<Mover>();
             _animator = GetComponent<Animator>();
 
+            RNGWeapon = ScriptableObject.CreateInstance<Weapon>();
             SpawnWeapon();
         }
 
