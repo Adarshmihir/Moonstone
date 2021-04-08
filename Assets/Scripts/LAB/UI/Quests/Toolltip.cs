@@ -13,7 +13,7 @@ namespace UI.Quests
         [SerializeField] private GameObject goalIncompletePrefab;
         [SerializeField] private TextMeshProUGUI rewards;
 
-        public void SetTooltipUI(QuestStatus questStatus)
+        public void SetQuestTooltipUI(QuestStatus questStatus)
         {
             foreach (Transform goal in goalsParent)
             {
@@ -40,6 +40,28 @@ namespace UI.Quests
             if (questStatus.Quest.Rewards.Any()) return;
 
             rewards.text = "Aucune récompense.";
+        }
+
+        public void SetItemTooltipUI(Item item)
+        {
+            foreach (Transform goal in goalsParent)
+            {
+                Destroy(goal.gameObject);
+            }
+            
+            title.text = item.name;
+            foreach (var modifier in item.equipementMods)
+            {
+                var modInstance = Instantiate(goalPrefab, goalsParent);
+                var modText = modInstance.GetComponentInChildren<TextMeshProUGUI>();
+                
+                if (modText == null) continue;
+
+                var modType = modifier.modType == StatModType.Percent ? "%" : "";
+                modText.text = "+" + modifier.value + modType + " en " + modifier.statType.ToString().ToLower();
+            }
+            
+            // TODO : Ajouter le sort
         }
     }
 }

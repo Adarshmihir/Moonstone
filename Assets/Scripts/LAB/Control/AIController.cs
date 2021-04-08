@@ -27,6 +27,7 @@ namespace Control
         private bool _isAttacked;
         private float _timeAttacked;
         private const float WaypointDistTolerance = 1f;
+        private float _restTimer;
 
         public bool IsGoingHome { get; private set; }
 
@@ -46,6 +47,12 @@ namespace Control
         {
             if (_health.IsDead || _target == null) return;
 
+            if (_restTimer > 0)
+            {
+                _restTimer -= Time.deltaTime;
+                return;
+            }
+
             if (DistanceToPlayer() && Fighter.CanAttack(_target) && !IsGoingHome || _isAttacked)
             {
                 AttackBehaviour();
@@ -55,8 +62,11 @@ namespace Control
                 PreparePatrolBehaviour();
                 PatrolBehaviour();
             }
-
-            _timeSinceLastBreak += Time.deltaTime;
+            
+            if (patroller != null)
+            {
+                _timeSinceLastBreak += Time.deltaTime;
+            }
         }
 
         private void PreparePatrolBehaviour()
@@ -78,7 +88,7 @@ namespace Control
 
             _fighter.Attack(_target);
 
-            if (DistanceToInitialPosition()) return;
+            if (DistanceToInitialPosition(maxDistance)) return;
 
             ReturnToInitialPosition();
         }
@@ -95,6 +105,10 @@ namespace Control
                     _currentWaypoint = patroller.GetNextWaypoint(_currentWaypoint);
                     _initialPosition = patroller.GetWaypoint(_currentWaypoint);
                 }
+            }
+            else if (DistanceToInitialPosition(WaypointDistTolerance))
+            {
+                IsGoingHome = false;
             }
             
             if (!(_timeSinceLastBreak > breakTimer) && !IsGoingHome) return;
@@ -114,13 +128,18 @@ namespace Control
             _isAttacked = true;
         }
 
+        public void UpdateRestTimer(float value)
+        {
+            _restTimer = value;
+        }
+
         private void GetMateAround()
         {
             var colliders = Physics.OverlapSphere(transform.position, helpRadius);
             foreach (var allies in colliders)
             {
                 var alliesController = allies.GetComponent<AIController>();
-                if (alliesController == null) continue;
+                if (alliesController == null || alliesController.IsGoingHome) continue;
 
                 alliesController.CallForHelp(_target);
             }
@@ -156,14 +175,14 @@ namespace Control
             return Vector3.Distance(transform.position, patroller.GetWaypoint(_currentWaypoint)) < WaypointDistTolerance;
         }
 
-        private bool DistanceToPlayer()
+        public bool DistanceToPlayer()
         {
             return Vector3.Distance(_target.transform.position, transform.position) < chaseDistance;
         }
 
-        private bool DistanceToInitialPosition()
+        private bool DistanceToInitialPosition(float distance)
         {
-            return Vector3.Distance(_initialPosition, transform.position) < maxDistance;
+            return Vector3.Distance(_initialPosition, transform.position) < distance;
         }
 
         //Forces the AI to initial position

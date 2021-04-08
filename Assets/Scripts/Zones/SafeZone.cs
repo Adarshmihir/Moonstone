@@ -1,18 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Control;
+﻿using Control;
 using UnityEngine;
 
 public class SafeZone : Zone
 {
-    
     protected override void UseTriggerZone(Collider col)
     {
         base.UseTriggerZone(col);
-        if (col.gameObject.tag.Contains("Enemy"))
-        {
-            col.gameObject.GetComponent<AIController>().ReturnToInitialPosition();
-        }
+        
+        if (!col.CompareTag("Enemy")) return;
+        
+        col.gameObject.GetComponent<AIController>().ReturnToInitialPosition();
     }
-
 }

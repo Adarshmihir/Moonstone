@@ -5,9 +5,6 @@ using Resources;
 
 public class FillPlantsBar : MonoBehaviour
 {
-
-
-
     public Image healingBarFront; // frontend value of heal
     public float currentHeal; // computed value of heal
     public float healIncrease;
@@ -66,6 +63,11 @@ public class FillPlantsBar : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UsePlant();
+        }
+
         //if (healthSlider.value <= 0f)
             //Debug.Log("You're dead !");
     }
@@ -84,7 +86,6 @@ public class FillPlantsBar : MonoBehaviour
 
         player.GetComponent<PlayerFX>().PlayEatPlant();
 
-        Debug.Log("Using plant !");
         missingLife = maxLife - healthSlider.value; // Compute missing life
         healDecrease = Mathf.Min(currentHeal, missingLife);
         lifeIncrease = Mathf.Min(currentHeal, missingLife);
@@ -96,10 +97,9 @@ public class FillPlantsBar : MonoBehaviour
         }
         else
         {
-            if (currentHeal <= 0f)
-                Debug.Log("Not enough heal to regen your life !"); // No healing available
-            else
-                Debug.Log("You don't need to heal !");
+            GameManager.Instance.FeedbackMessage.SetMessage(currentHeal <= 0f
+                ? "Pas assez de ressource"
+                : "Pas besoin de soin");
 
             isHealing = false;
             return;

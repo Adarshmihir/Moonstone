@@ -17,7 +17,7 @@ MonoBehaviour:
   projectile: {fileID: 1450728545565721762, guid: 40c94942d84a54543b3a8f3c7c505a93,
     type: 3}
   spellDamage: 15
-  spellCost: 80
+  spellCost: 10
   dotDamage: 0
   dotCount: 0
   dotTick: 0
@@ -26,10 +26,8 @@ MonoBehaviour:
   isAnimated: 1
   particleEffect: {fileID: 1062685050423962, guid: 7f38f60a173ec7e4cacc9b7af686d87b,
     type: 3}
-  particleSize: {x: 1, y: 1, z: 1}
   particleEffectImpact: {fileID: 0}
-  particleSizeImpact: {x: 0, y: 0, z: 0}
   spellIcon: {fileID: 2800000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
-  spellRange: 2
+  spellRange: 18
   spellZoneArea: 2
-  damageRadius: 45
+  damageRadius: 25

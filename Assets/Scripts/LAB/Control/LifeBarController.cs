@@ -1,4 +1,5 @@
-﻿using Resources;
+﻿using Combat;
+using Resources;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,17 +12,22 @@ namespace Control
         [SerializeField] private GameObject healthBarUI;
 
         private Health _health;
+        private Fighter _fighter;
+        private AIController _aiController;
 
         // Start is called before the first frame update
         private void Start()
         {
+            _fighter = GetComponent<Fighter>();
             _health = GetComponent<Health>();
-            healthSlider.value = CalculateHealthSlider();
+            _aiController = GetComponent<AIController>();
         }
         
         // Update is called once per frame
         private void Update()
         {
+            healthSlider.gameObject.SetActive(_aiController != null && _aiController.DistanceToPlayer() && _health.HealthPoints > 0);
+
             if (Camera.main == null) return;
 
             var rotation = Camera.main.transform.rotation;
@@ -30,13 +36,17 @@ namespace Control
 
         public void UpdateLifeBar()
         {
-            healthSlider.value = CalculateHealthSlider();
-            healthBarUI.SetActive(_health.HealthPoints > 0 && _health.HealthPoints < _health.MaxHealthPoints);
+            if (healthSlider == null || _health == null) return;
+            
+            healthSlider.value = _health.HealthPoints / _health.MaxHealthPoints;
         }
-    
-        private float CalculateHealthSlider()
+
+        public void InitLifeBar()
         {
-            return _health.HealthPoints / _health.MaxHealthPoints;
+            if (healthSlider == null || _health == null) return;
+        
+            healthSlider.value = _health.HealthPoints / _health.MaxHealthPoints;
+            healthSlider.gameObject.SetActive(false);
         }
     }
 }

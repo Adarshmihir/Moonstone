@@ -23,6 +23,8 @@ namespace Combat
 
         public IEnumerable<Item> Items => _items;
         public LootBag LootBag { get; private set; }
+        public float MINGold => minGold;
+        public float MAXGold => maxGold;
 
         // Start is called before the first frame update
         private void Start()
@@ -52,6 +54,7 @@ namespace Combat
             {
                 _mover.Cancel();
                 LootBag.ShowLootBag(_items, this);
+                LootBag.IsLooting = false;
             }
         }
 

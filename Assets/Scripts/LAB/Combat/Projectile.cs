@@ -13,11 +13,18 @@ namespace Combat
         private Vector3 _initialPosition;
         private bool _isCasting = true;
         private float _destroyTimer;
+        private EnergyGlobeControl _energy;
         
         public Spell Spell { get; set; }
         //public Health Target { get; set; }
         public Fighter Attacker { get; set; }
         public Transform Output { get; set; }
+        public Vector3 TargetPosition { get; set; }
+
+        private void Start()
+        {
+            _energy = FindObjectOfType<EnergyGlobeControl>();
+        }
 
         // Update is called once per frame
         private void Update()
@@ -34,7 +41,11 @@ namespace Combat
                     if (_isCasting)
                     {
                         _isCasting = false;
-                        transform.GetChild(0).rotation = Attacker.transform.rotation;
+                        foreach (Transform child in transform)
+                        {
+                            child.rotation = Attacker.transform.rotation;
+                        }
+                        //transform.GetChild(0).rotation = Attacker.transform.rotation;
                         StartCoroutine(DealRadiusDamage());
                     }
                     break;
@@ -57,16 +68,23 @@ namespace Combat
             
             if (speed == 0f && Spell.SpellType == SpellType.ZoneEffect)
             {
-                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
-                
-                if (Vector3.Distance(Attacker.transform.position , hit.point) <= Spell.SpellRange)
+                if (CompareTag("Player"))
                 {
-                    transform.position = hit.point;
+                    Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
+                
+                    if (Vector3.Distance(Attacker.transform.position , hit.point) <= Spell.SpellRange)
+                    {
+                        transform.position = hit.point;
+                    }
+                    else
+                    {
+                        var attackerTransform = Attacker.transform;
+                        transform.position = attackerTransform.forward * Spell.SpellRange + attackerTransform.position;
+                    }
                 }
                 else
                 {
-                    var attackerTransform = Attacker.transform;
-                    transform.position = attackerTransform.forward * Spell.SpellRange + attackerTransform.position;
+                    transform.position = TargetPosition;
                 }
             }
             else if (speed > 0 && Spell.SpellType == SpellType.UniqueEffect)
@@ -109,7 +127,7 @@ namespace Combat
             var particle = Instantiate(Spell.ParticleEffectImpact, transform.position, Quaternion.identity);
             
             particle.transform.parent = transform;
-            particle.transform.localScale = Spell.ParticleSizeImpact;
+            //particle.transform.localScale = Spell.ParticleSizeImpact;
 
             _destroyTimer = particle.GetComponent<ParticleSystem>().main.duration;
         }
@@ -128,6 +146,7 @@ namespace Combat
                     {
                         timer = 0f;
                         HitTargetInRadius();
+                        _energy.UseEnergy(Spell.spellCost);
                     }
                     
                     yield return null;
@@ -135,6 +154,9 @@ namespace Combat
                     spellFighter.UpdatePlayerRotation();
                     UpdateSpellPosition();
                     count += 1;
+                    
+                    if (Attacker.CompareTag("Player") &&
+                        !FindObjectOfType<EnergyGlobeControl>().HasEnoughEnergy(Spell.spellCost)) break;
                 }
             }
             else
@@ -161,9 +183,8 @@ namespace Combat
             foreach (var newTarget in colliders)
             {
                 var targetHealth = newTarget.GetComponent<Health>();
-                var targetCombat = newTarget.GetComponent<CombatTarget>();
-                    
-                if (targetHealth == null || targetCombat == null || targetHealth.IsDead || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
+                
+                if (!Fighter.CanAttack(newTarget.gameObject) || !targetHealth.isActiveAndEnabled || !Attacker.GetIsInFieldOfView(targetHealth.transform, Spell.DamageRadius)) continue;
 
                 if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
                 {
@@ -179,9 +200,8 @@ namespace Combat
         private void DealDamage(Component target)
         {
             var colliderHealth = target.GetComponent<Health>();
-            var targetCombat = target.GetComponent<CombatTarget>();
             
-            if (colliderHealth == null || targetCombat == null || colliderHealth.IsDead || _isCasting) return;
+            if (!Fighter.CanAttack(target.gameObject) || !colliderHealth.isActiveAndEnabled || _isCasting) return;
 
             if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(colliderHealth.tag))
             {
@@ -220,9 +240,8 @@ namespace Combat
                 foreach (var newTarget in colliders)
                 {
                     var targetHealth = newTarget.GetComponent<Health>();
-                    var targetCombat = newTarget.GetComponent<CombatTarget>();
                     
-                    if (targetHealth == null || targetCombat == null || targetHealth.IsDead) continue;
+                    if (!Fighter.CanAttack(newTarget.gameObject) || !targetHealth.isActiveAndEnabled) continue;
 
                     if (Spell.SpellEffect == SpellEffect.Heal && Attacker.CompareTag(targetHealth.tag))
                     {

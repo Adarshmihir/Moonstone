@@ -98,14 +98,12 @@ namespace Combat
         // Animation event : Attack
         private void Hit()
         {
-            Debug.Log("Hit");
             if (Target == null) return;
 
-            if(Target.tag == "Enemy")
+            if(Target.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy Detected");
                 Target.GetComponent<FighterFX>().PlayBleed();
-                GameObject.FindObjectOfType<EnergyGlobeControl>().RestoreEnergy(5);
+                FindObjectOfType<EnergyGlobeControl>().RestoreEnergy(5);
             }
 
             // Unarmed attack and One Hand armed attack

@@ -148,5 +148,11 @@ public class EnchantressUI : MonoBehaviour
         modifierList = itemsToAdd;
     }
 
-
+    public void CloseMenu()
+    {
+        if (!GameManager.Instance.uiManager.EnchantressGO.activeSelf) return;
+        
+        GameManager.Instance.uiManager.EnchantressGO.SetActive(false);
+        GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().OnRemoveButton();
+    }
 }

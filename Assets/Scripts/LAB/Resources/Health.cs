@@ -47,12 +47,17 @@ namespace Resources
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _aiController = GetComponent<AIController>();
             _combatTarget = GetComponent<CombatTarget>();
+
+            if (_lifeBarController != null)
+            {
+                _lifeBarController.InitLifeBar();
+            }
         }
 
         private void Update()
         {
             if (_combatTarget == null || !IsDead || _combatTarget.Items.Any()) return;
-
+            
             if (_death != null)
             {
                 StopCoroutine(_death);
@@ -71,13 +76,11 @@ namespace Resources
                 _lifeBarController.UpdateLifeBar();
             }
 
-            if(this.tag == "Player")
+            if(CompareTag("Player"))
             {
-                Debug.Log("playerHit");
-                HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
-                healhPlayer.StopRegen();
-                healhPlayer.healthSlider.value = healhPlayer.healthSlider.value - (damage / maxHealthPoints);
-                Debug.Log(HealthPoints);
+                var healthPlayer = FindObjectOfType<HealthGlobeControl>();
+                healthPlayer.StopRegen();
+                healthPlayer.healthSlider.value -= (damage / maxHealthPoints);
             }
 
             if (_damageTextSpawner != null)
@@ -113,7 +116,7 @@ namespace Resources
 
         public void ResetLifePlayer()
         {
-            if (tag == "Player")
+            if (CompareTag("Player"))
             {
                 HealthPoints = maxHealthPoints;
                 _animator.ResetTrigger("die");
@@ -142,7 +145,6 @@ namespace Resources
         public void RegenLifePlayer(float regenRate)
         {
             HealthPoints = Mathf.Min(HealthPoints + maxHealthPoints * regenRate, maxHealthPoints);
-            Debug.Log(HealthPoints);
         }
 
         public void setSpawner(Spawner spawner)
@@ -157,8 +159,6 @@ namespace Resources
 
             HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
             healhPlayer.healthSlider.value = healhPlayer.healthSlider.value + (bonusHealth / maxHealthPoints);
-
-            Debug.Log(maxHealthPoints);
         }
 
         private void Die()
@@ -166,8 +166,16 @@ namespace Resources
             if (IsDead) return;
 
             IsDead = true;
-            _animator.SetTrigger("die");
-            _actionScheduler.CancelCurrentAction();
+
+            if (_animator != null)
+            {
+                _animator.SetTrigger("die");
+            }
+            
+            if (_actionScheduler != null)
+            {
+                _actionScheduler.CancelCurrentAction();
+            }
 
             //_capsuleCollider.enabled = false;
             //_navMeshAgent.enabled = false;

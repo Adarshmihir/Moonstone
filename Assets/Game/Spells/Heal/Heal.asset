@@ -16,19 +16,17 @@ MonoBehaviour:
   spellEffect: 1
   projectile: {fileID: 5353812837327159930, guid: 6ce1a01c084034f64974a133f282e735,
     type: 3}
-  spellDamage: 10
-  spellCost: 40
+  spellDamage: 100
+  spellCost: 10
   dotDamage: 0
   dotCount: 0
   dotTick: 0
   cooldown: 1
-  canalisationTimer: 1
+  canalisationTimer: 0
   isAnimated: 1
   particleEffect: {fileID: 1055585006069982, guid: c7f93a0255162fd47bbe40874f339bf4,
     type: 3}
-  particleSize: {x: 1, y: 1, z: 1}
   particleEffectImpact: {fileID: 0}
-  particleSizeImpact: {x: 0, y: 0, z: 0}
   spellIcon: {fileID: 2800000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
   spellRange: 2
   spellZoneArea: 2

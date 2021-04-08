@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Globalization;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Control
@@ -17,8 +18,8 @@ namespace Control
         private void Start()
         {
             // TODO : Move to another position
-            levelUI.SetActive(true);
-            levelText.text = _level.ToString();
+            levelUI.SetActive(false);
+            levelText.text = _level.ToString(CultureInfo.InvariantCulture);
 
             initialScale = levelUI.gameObject.transform.localScale;
         }

@@ -1,33 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Combat;
 using Core;
+using Movement;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Dialogue
 {
-    public class PlayerDialogue : MonoBehaviour
+    public class PlayerDialogue : MonoBehaviour, IAction
     {
         [SerializeField] private Dialogue dialogue;
 
         private DialogueNode _node;
         private AIDialogue _aiDialogue;
+        private Fighter _fighter;
+        private Mover _mover;
 
         public Dialogue GetDialogue => dialogue;
         public bool IsChoosing { get; private set; }
 
         public event Action OnUpdate;
 
+        private void Start()
+        {
+	        _fighter = GetComponent<Fighter>();
+	        _mover = GetComponent<Mover>();
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+	        if (_aiDialogue == null) return;
+
+	        // Check if target is not too far
+	        if (!_fighter.GetIsInRange(_aiDialogue.transform.position, 2f))
+	        {
+		        // Move towards the target until it is close enough
+		        _mover.MoveTo(_aiDialogue.transform.position);
+	        }
+	        else
+	        {
+		        // Cancel movement action and start attack
+		        _mover.Cancel();
+	        }
+        }
+
         public void StartDialogue(AIDialogue aiDialogue, Dialogue newDialogue)
         {
+	        GetComponent<ActionScheduler>().StartAction(this);
+	        
 	        _aiDialogue = aiDialogue;
             dialogue = newDialogue;
             _node = dialogue.GetRootNode();
             
             StartEnterAction();
             OnUpdate?.Invoke();
-		}
+        }
 
         public string GetText()
 		{
@@ -94,7 +124,7 @@ namespace Dialogue
 		private void StartEnterAction()
 		{
 			if (_node == null) return;
-			
+
 			TriggerAction(_node.EnterAction);
 		}
 
@@ -123,6 +153,14 @@ namespace Dialogue
 		private IEnumerable<IEvaluator> GetEvaluators()
 		{
 			return GetComponents<IEvaluator>();
+		}
+
+		public void Cancel()
+		{
+			GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>().CloseMenu();
+			GameManager.Instance.uiManager.ForgeronGO.SetActive(false);
+			
+			Quit();
 		}
     }
 }

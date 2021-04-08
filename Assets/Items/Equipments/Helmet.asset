@@ -17,3 +17,5 @@ MonoBehaviour:
   isDefaultItem: 0
   equipementMods: []
   equipSlot: 0
+  mesh: {fileID: 0}
+  StatModifiers: []

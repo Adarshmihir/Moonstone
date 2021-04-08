@@ -28,6 +28,14 @@ public class EnergyGlobeControl : MonoBehaviour
         }
     }
 
+    public bool HasEnoughEnergy(float cost)
+    {
+        if (energySlider.value * maxEnergy >= cost) return true;
+        
+        GameManager.Instance.FeedbackMessage.SetMessage("Pas assez de mana");
+        return false;
+    }
+
     public bool UseEnergy(float cost)
     {
         if (energySlider.value*maxEnergy < cost)

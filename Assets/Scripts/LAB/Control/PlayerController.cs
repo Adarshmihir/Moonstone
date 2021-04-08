@@ -31,11 +31,28 @@ namespace Control
             if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
 
             if (InteractWithDialogue()) return;
-            //if (InteractWithCombat(false)) return;
             if (InteractWithCombat()) return;
             if (InteractWithObjects()) return;
             if (InteractWithCorpse()) return;
+            if (InteractWithPlant()) return;
             InteractWithMovement();
+        }
+
+        private static bool InteractWithPlant()
+        {
+            var hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
+            {
+                var plantTarget = hit.transform.GetComponent<PlantPickUp>();
+                if (plantTarget == null) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    plantTarget.PickPlantBehaviour();
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithDialogue()
