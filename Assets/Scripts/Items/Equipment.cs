@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using Resources;
 using UnityEngine;
 
@@ -45,6 +46,16 @@ public class Equipment : Item {
             GameManager.Instance.player.AddModifier(mod);
         }
         GameManager.Instance.uiManager.InventoryGO.GetComponentInChildren<chooseEquipSlot>().addEquipment(this);
+        
+        if (equipSlot == EquipmentSlot.Head)
+        {
+            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(Spell, CastSource.Armor);
+        }
+        else if (equipSlot == EquipmentSlot.Body || equipSlot == EquipmentSlot.Legs)
+        {
+            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(Spell, CastSource.Pet);
+        }
+        
         // Remove it from the inventory
         RemoveFromInventory();
     }

@@ -119,6 +119,9 @@ namespace Combat
                 GameManager.Instance.player.AddModifier(mod);
             }
             GameManager.Instance.uiManager.InventoryGO.GetComponentInChildren<chooseEquipSlot>().addEquipment(this);
+            
+            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(Spell, CastSource.Weapon);
+            
             // Remove it from the inventory
             RemoveFromInventory();
 
@@ -145,7 +148,7 @@ namespace Combat
         public void assignStatModifiers()
         {
             StatModifiers.Clear();
-            for (int i = 0; i < equipementMods.Length; i++)
+            for (int i = 0; equipementMods != null && i < equipementMods.Length; i++)
             {
                 StatModifier newMod = StatModifier.CreateInstance(equipementMods[i].value, equipementMods[i].modType, this, equipementMods[i].statType);
                 StatModifiers.Add(newMod);

@@ -45,7 +45,6 @@ namespace UI.Quests
                 if (questItem == null || questItem.QuestStatus == null || tooltipUI == null) return;
             
                 tooltipUI.SetQuestTooltipUI(questItem.QuestStatus);
-                return;
             }
             // TODO : Only get item in if
             else if (isLootItem)

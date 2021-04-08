@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RawImage armorSlot;
     [SerializeField] private RawImage petSlot;
     [SerializeField] private FeedbackMessage feedbackMessage;
+    [SerializeField] private Animator loaderAnimator;
+    [SerializeField] private GameObject boss;
     //PUBLIC VARIABLES (SHOWN IN INSPECTOR)
     public Transform PlayerSpawnPosition;
     public GameObject PlayerPrefab;
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     public RawImage ArmorSlot => armorSlot;
     public RawImage PetSlot => petSlot;
     public FeedbackMessage FeedbackMessage => feedbackMessage;
+    public Animator LoaderAnimator => loaderAnimator;
+    public GameObject Boss => boss;
 
     private GameManager() {
         
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
         var transform1 = PlayerSpawnPosition.transform;
         var position = transform1.position;
         PlayerGO = Instantiate(PlayerPrefab, position, transform1.rotation);
+        PlayerGO.name = "Thorrie";
         player = PlayerGO.GetComponent<Player>();
         player.InitializePlayer();
         PlayerGO.GetComponent<FighterSpell>().InitializeFighterSpell();

@@ -1,15 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Principal;
-using Combat;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
 using Random = System.Random;
 
 public class PurgeManager : MonoBehaviour {

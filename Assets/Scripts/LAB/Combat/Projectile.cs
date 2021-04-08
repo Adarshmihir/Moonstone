@@ -139,7 +139,7 @@ namespace Combat
                 var count = 0;
                 var timer = 0f;
                 var spellFighter = Attacker.GetComponent<FighterSpell>();
-                while ((Input.GetMouseButton(1) || count == 0) && Attacker.GetComponent<ActionScheduler>().CurrentAction == Attacker.GetComponent<FighterSpell>())
+                while ((Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.E) || count == 0) && Attacker.GetComponent<ActionScheduler>().CurrentAction == Attacker.GetComponent<FighterSpell>())
                 {
                     timer += Time.deltaTime;
                     if (timer >= Spell.CanalisationTimer)

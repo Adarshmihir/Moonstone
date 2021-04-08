@@ -3,6 +3,7 @@ using Dialogue;
 using Movement;
 using Resources;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 namespace Control
@@ -92,10 +93,17 @@ namespace Control
 
         private bool InteractWithCombat()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                // TODO : Get Spell on Weapon
-                _fighterSpell.Cast(/*target.gameObject, */CastSource.Weapon);
+                _fighterSpell.Cast(CastSource.Weapon);
+            }
+            else if (Input.GetKeyDown(KeyCode.W))
+            {
+                _fighterSpell.Cast(CastSource.Armor);
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                _fighterSpell.Cast(CastSource.Pet);
             }
             
             var hits = Physics.RaycastAll(GetMouseRay());
@@ -132,7 +140,7 @@ namespace Control
         {
             var hasHit = Physics.Raycast(GetMouseRay(), out var hit);
             if (!hasHit || !DistanceToNewPosition(hit.point)) return false;
-
+            
             if (Input.GetMouseButton(0))
             {
                 _mover.StartMoveAction(hit.point);

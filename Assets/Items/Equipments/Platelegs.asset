@@ -12,26 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5559088f79de2f6468ab691d90a76b09, type: 3}
   m_Name: Platelegs
   m_EditorClassIdentifier: 
-  name: Platelegs
+  spell: {fileID: 11400000, guid: 2fbec5f20aae04a6d9abcafab6bb7536, type: 2}
+  name: Jambes du tourment
   icon: {fileID: 21300000, guid: 2600231ae31ea3c4ead1bbdc9d7a1c0e, type: 3}
   isDefaultItem: 0
   equipementMods:
   - value: 15
-    modType: 200
+    modType: 100
     statType: 0
   - value: 42
     modType: 100
     statType: 3
-  equipSlot: 2
   equipSlot: 2
   mesh: {fileID: 0}
-  equipementMods:
-  - value: 15
-    modType: 200
-    statType: 0
-  - value: 42
-    modType: 100
-    statType: 3
   StatModifiers:
   - {fileID: 0}
   - {fileID: 0}

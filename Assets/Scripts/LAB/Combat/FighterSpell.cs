@@ -52,7 +52,6 @@ namespace Combat
 
         public void InitializeFighterSpell()
         {
-            Debug.Log(name);
             _fighter = GetComponent<Fighter>();
             _mover = GetComponent<Mover>();
             _aiController = GetComponent<AIController>();
@@ -62,9 +61,6 @@ namespace Combat
             weaponSlot = GameManager.Instance.WeaponSlot;
             armorSlot = GameManager.Instance.ArmorSlot;
             petSlot = GameManager.Instance.PetSlot;
-
-            UpdateSpell(temp, CastSource.Weapon);
-            UpdateSpell(temp, CastSource.Armor);
         }
         
         // Update is called once per frame
@@ -86,14 +82,13 @@ namespace Combat
             }*/
         }
 
-        private void UpdateSpell(Spell newSpell, CastSource castSource)
+        public void UpdateSpell(Spell newSpell, CastSource castSource)
         {
             var slot = weaponSlot;
             switch (castSource)
             {
                 case CastSource.Weapon:
                     weaponSpell = newSpell;
-                    UpdateSpellSlotUI(weaponSlot, newSpell.SpellIcon);
                     break;
                 case CastSource.Armor:
                     armorSpell = newSpell;
@@ -107,12 +102,13 @@ namespace Combat
                     weaponSpell = newSpell;
                     break;
             }
-            UpdateSpellSlotUI(slot, newSpell.SpellIcon);
+            UpdateSpellSlotUI(slot, newSpell != null ? newSpell.SpellIcon : null);
         }
 
         private static void UpdateSpellSlotUI(RawImage rawImage, Texture newSprite)
         {
             rawImage.texture = newSprite;
+            rawImage.gameObject.SetActive(newSprite != null);
         }
 
         public void Cast(/*GameObject combatTarget, */CastSource castSource)

@@ -53,6 +53,19 @@ public class EquipmentManager : MonoBehaviour {
             // Add the item to the inventory
             Item oldItem = currentStuff[slotIndex];
             inventory.Add(oldItem);
+            
+            if (oldItem.equipSlot == EquipmentSlot.Head)
+            {
+                GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Armor);
+            }
+            else if (oldItem.equipSlot == EquipmentSlot.Body || oldItem.equipSlot == EquipmentSlot.Legs)
+            {
+                GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Pet);
+            }
+            else if (oldItem.equipSlot == EquipmentSlot.Weapon)
+            {
+                GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Weapon);
+            }
 
             // Remove the item from the equipment array
             currentStuff[slotIndex] = null;

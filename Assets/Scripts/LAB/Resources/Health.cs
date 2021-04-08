@@ -190,9 +190,7 @@ namespace Resources
                     spawner.RemoveObject(gameObject);
                 }
             }
-
-
-
+            
             if (_death != null)
             {
                 StopCoroutine(_death);
@@ -202,11 +200,31 @@ namespace Resources
 			{
                 _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
 				PurgeManager.Instance.killedCount += 1;
-			}
+
+                if (GetComponent<AISpellController>() == null) return;
+                
+                GameManager.Instance.Boss.SetActive(true);
+            }
             else
             {
-                GameManager.Instance.uiManager.DeathGO.SetActive(true);
+                StartCoroutine(RespawnPlayer());
             }
+        }
+
+        private IEnumerator RespawnPlayer()
+        {
+            yield return new WaitForSeconds(1f);
+            
+            var loaderAnimator = GameManager.Instance.LoaderAnimator;
+            loaderAnimator.SetTrigger("startFade");
+
+            yield return new WaitForSeconds(1f);
+            
+            GameManager.Instance.RespawnPlayer();
+            
+            yield return new WaitForSeconds(1f);
+            
+            loaderAnimator.SetTrigger("endFade");
         }
 
         public void TakeDot(Spell spell, Fighter fighter)

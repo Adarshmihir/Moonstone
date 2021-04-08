@@ -9,6 +9,7 @@ public class LootBag : MonoBehaviour, IAction
     [SerializeField] private GameObject prefabItem;
     [SerializeField] private Button close;
     [SerializeField] private Transform contentParent;
+    [SerializeField] private Sprite coin;
     
     public bool IsLooting { get; set; }
 
@@ -32,7 +33,7 @@ public class LootBag : MonoBehaviour, IAction
 
         if (gold > 0)
         {
-            newItem.GetComponent<LootItem>().SetGold(gold);
+            newItem.GetComponent<LootItem>().SetGold(gold, coin);
         }
 
         foreach (var item in items)

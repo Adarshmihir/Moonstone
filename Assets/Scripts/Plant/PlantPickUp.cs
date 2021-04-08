@@ -16,6 +16,8 @@ public class PlantPickUp : MonoBehaviour, IAction
 
     private void Start()
     {
+        if (GameManager.Instance == null) return;
+    
         _mover = GameManager.Instance.player.GetComponent<Mover>();
         _fighter = GameManager.Instance.player.GetComponent<Fighter>();
     }

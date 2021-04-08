@@ -24,10 +24,9 @@ public class LootItem : MonoBehaviour
         icon.onClick.AddListener(AddItem);
     }
 
-    public void SetGold(int amount)
+    public void SetGold(int amount, Sprite coin)
     {
-        // TODO : Update gold image
-        icon.image.sprite = UnityEngine.Resources.Load<Sprite>("Sprites/CloseButton");
+        icon.image.sprite = coin;
         description.text = amount.ToString();
 
         GetComponent<TooltipSpawner>().enabled = false;

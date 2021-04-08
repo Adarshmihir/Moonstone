@@ -3610,8 +3610,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
-  destroyTime: 5
-  destroyTimeWithLoot: 30
+  destroyTime: 60
+  destroyTimeWithLoot: 120
 --- !u!136 &8660210373240726156
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3688,10 +3688,8 @@ MonoBehaviour:
   minGold: 10
   maxGold: 1000
   loots:
-  - item: {fileID: 11400000, guid: 7474cb80ba6899147b734508913e915c, type: 2}
-    chance: 100
-  - item: {fileID: 11400000, guid: a2ca8be919987ca4692f1f8073718884, type: 2}
-    chance: 100
+  - item: {fileID: 11400000, guid: 411d9bc5583834d4f9e8b97c017d7742, type: 2}
+    chance: 5
 --- !u!114 &8660210373240726152
 MonoBehaviour:
   m_ObjectHideFlags: 0

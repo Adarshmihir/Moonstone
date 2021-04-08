@@ -61,7 +61,9 @@ namespace UI.Quests
                 modText.text = "+" + modifier.value + modType + " en " + modifier.statType.ToString().ToLower();
             }
             
-            // TODO : Ajouter le sort
+            if (item.Spell == null) return;
+            
+            rewards.text = item.Spell.name;
         }
     }
 }

@@ -498,6 +498,7 @@ MonoBehaviour:
     type: 3}
   close: {fileID: 6802931695127666365}
   contentParent: {fileID: 6802931695200087555}
+  coin: {fileID: 21300000, guid: 4e7d54a45c106d84ba9b5dd74b115e8a, type: 3}
 --- !u!1 &6802931695127666367
 GameObject:
   m_ObjectHideFlags: 0
