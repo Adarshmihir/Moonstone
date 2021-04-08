@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1227593812}
   - component: {fileID: 438503776}
   - component: {fileID: 438503783}
-  - component: {fileID: 152288583}
   - component: {fileID: 152288582}
   - component: {fileID: 152288588}
   - component: {fileID: 4477008052194640583}
@@ -279,14 +278,6 @@ MonoBehaviour:
   purgeThemeSource: {fileID: 438503776}
   purgeAlert: {fileID: 4477008052194640583}
   alertHasBeenPlayed: 0
---- !u!81 &152288583
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833590639734953498}
-  m_Enabled: 1
 --- !u!114 &152288582
 MonoBehaviour:
   m_ObjectHideFlags: 0

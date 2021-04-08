@@ -176,8 +176,8 @@ MonoBehaviour:
   - 76fe1dfa-d74e-47e1-b74e-0df7ab4f2092
   rect:
     serializedVersion: 2
-    x: 417
-    y: 256
+    x: 468
+    y: 311
     width: 200
     height: 100
   enterAction: 
@@ -188,6 +188,10 @@ MonoBehaviour:
       - name: HasCompleted
         parameter: EnchantQuest
         negate: 0
+    - or:
+      - name: HasDone
+        parameter: EnchantQuest
+        negate: 1
 --- !u!114 &6861855475285298919
 MonoBehaviour:
   m_ObjectHideFlags: 0
