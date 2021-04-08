@@ -14,7 +14,7 @@ public enum ItemType {
     Default
 }
 
-public enum Attributes {
+public enum  Attributes {
     Strength,
     Stamina,
     Intelligence,

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ItemPickup : Interactable {
     public Item item;
-    
-    //temp
-    public Weapon RNGWeapon = GameManager.Instance.player.GetComponent<Fighter>().RNGWeapon;
-    public Weapon weapon = GameManager.Instance.player.GetComponent<Fighter>().weapon;
-    
 
     public override void Interact() {
         base.Interact();
