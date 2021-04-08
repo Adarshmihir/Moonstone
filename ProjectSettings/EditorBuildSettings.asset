@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
+    path: Assets/Scenes/Other_Scenes/AdventureDemo_dunguon.unity
+    guid: 32b490acf86ebb74ca8ce911c4779a5c
+  - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
