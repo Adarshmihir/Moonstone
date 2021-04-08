@@ -45,7 +45,7 @@ MonoBehaviour:
   - 7df88918-b1cc-405c-8626-5712e3df9839
   rect:
     serializedVersion: 2
-    x: 269
+    x: 271
     y: 119
     width: 200
     height: 100
@@ -78,7 +78,7 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 494
+    x: 531
     y: 440
     width: 200
     height: 100
@@ -156,8 +156,8 @@ MonoBehaviour:
   - 912d14ca-abbe-4166-81bd-8e11de3a9ca5
   rect:
     serializedVersion: 2
-    x: 240
-    y: 436
+    x: 278
+    y: 434
     width: 200
     height: 100
   enterAction: 
@@ -215,8 +215,8 @@ MonoBehaviour:
   - 85d2638e-c741-4b98-b55b-5d92b558d9c9
   rect:
     serializedVersion: 2
-    x: 793
-    y: 117
+    x: 795
+    y: 118
     width: 200
     height: 100
   enterAction: GiveForgeQuest

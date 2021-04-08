@@ -90,7 +90,7 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1500
+    x: 1499
     y: 30
     width: 200
     height: 100
@@ -325,7 +325,7 @@ MonoBehaviour:
   - 64f26d04-1316-471b-8bcd-4f97024dc637
   rect:
     serializedVersion: 2
-    x: 1000
+    x: 1001
     y: 46
     width: 200
     height: 100
@@ -434,7 +434,6 @@ MonoBehaviour:
   - {fileID: 7626072138775790382}
   - {fileID: 1590827241551344975}
   - {fileID: 4222653497369240816}
-  - {fileID: 8747028572818073833}
   nodeOffset: {x: 250, y: 0}
 --- !u!114 &1590827241551344975
 MonoBehaviour:
@@ -513,8 +512,8 @@ MonoBehaviour:
   - 4c469366-401c-4e18-ad3a-839de605f5ff
   rect:
     serializedVersion: 2
-    x: 186
-    y: 858
+    x: 185
+    y: 848
     width: 200
     height: 100
   enterAction: 
@@ -576,7 +575,6 @@ MonoBehaviour:
   - 47e94894-0484-4a81-bc8f-efef33a7f5a5
   - 83c3d66e-ecc4-49eb-a74d-49983cd2cf7e
   - 81189480-ddaa-4adb-a8df-dc99c8db1486
-  - d6135f5d-ec4d-4322-a43f-f3334a9d56aa
   rect:
     serializedVersion: 2
     x: -17
@@ -944,30 +942,5 @@ MonoBehaviour:
     height: 100
   enterAction: EndDonjon1
   exitAction: 
-  condition:
-    and: []
---- !u!114 &8747028572818073833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baffe06aeb3dd41d09c5b9dc57f3aa95, type: 3}
-  m_Name: d6135f5d-ec4d-4322-a43f-f3334a9d56aa
-  m_EditorClassIdentifier: 
-  isPlayerTurn: 1
-  text: TestDj1
-  children: []
-  rect:
-    serializedVersion: 2
-    x: 145
-    y: 1112
-    width: 200
-    height: 100
-  enterAction: 
-  exitAction: GiveDonjon1
   condition:
     and: []

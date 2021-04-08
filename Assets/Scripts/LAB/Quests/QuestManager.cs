@@ -23,7 +23,7 @@ namespace Quests
             OnUpdate?.Invoke();
         }
 
-        public bool HasQuest(Object quest)
+        private bool HasQuest(Object quest)
         {
             return questStatus.Any(status => status.Quest == quest);
         }
