@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn:
-  - {fileID: 886812400823689685, guid: 30ec455cf372ebe419235271c2b02c3a, type: 3}
+  - {fileID: 8660210373017145655, guid: cad688ff299d02340a88cee8a7ae8f55, type: 3}
   bDelay: 1
+  isInDunguon: 0
+  saveObjectToSpawn: []
   spawnTime: 1
   spawnDelay: 3
   spawnerRadius: 4
   maxArraySize: 4
+  stopSpawning: 0
   arrayObjectSpawned: []

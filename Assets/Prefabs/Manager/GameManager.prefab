@@ -90,8 +90,10 @@ MonoBehaviour:
   weaponSlot: {fileID: 0}
   armorSlot: {fileID: 0}
   petSlot: {fileID: 0}
+  feedbackMessage: {fileID: 0}
   PlayerSpawnPosition: {fileID: 0}
-  PlayerPrefab: {fileID: 0}
+  PlayerPrefab: {fileID: 7789706900591599424, guid: 0ef11b185bef4497298cec06b241657a,
+    type: 3}
   camera: {fileID: 0}
   isPurgeActive: 0
 --- !u!114 &2738780856115648143
@@ -161,8 +163,8 @@ MonoBehaviour:
   killedCount: 0
   numberToKill: 1
   purgeLevel: 1
-  toSpawnMob: {fileID: 0}
-  toSpawnMonster: {fileID: 0}
+  objectToSpawn:
+  - {fileID: 8660210373017145655, guid: cad688ff299d02340a88cee8a7ae8f55, type: 3}
   playerWasAgressive: 0
   screenEffectAnimator: {fileID: 0}
 --- !u!82 &438503776
@@ -174,7 +176,8 @@ AudioSource:
   m_GameObject: {fileID: 5833590639734953498}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 95e9ceb66400f064da02f98587ffa967,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b43e2234775185343abb166ddf27659c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -322,7 +325,8 @@ AudioSource:
   m_GameObject: {fileID: 5833590639734953498}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1756735242188675830, guid: 95e9ceb66400f064da02f98587ffa967,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: e61ccf7eec41e7a47bda5b261639bb76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

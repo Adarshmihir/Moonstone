@@ -95,12 +95,14 @@ public class Spawner : MonoBehaviour
     {
         var randPos = new Vector3(0, 0, 0);
        
-        randPos = Random.insideUnitSphere * spawnerRadius;
-        randPos += transform.position;
         NavMeshHit hit;
         var bIsPosValid = true;
         while(bIsPosValid)
         {
+            randPos = Random.insideUnitSphere * spawnerRadius;
+            randPos += transform.position;
+
+
             if (NavMesh.SamplePosition(randPos, out hit, spawnerRadius, 1)) //only check walkable areas
             {
                 randPos = hit.position;

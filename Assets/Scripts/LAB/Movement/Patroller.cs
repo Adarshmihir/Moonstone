@@ -11,25 +11,32 @@ public class Patroller : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        initWaypoint();
+        initStart();
     }
+
+    private void initStart()
+    {
+        if (_waypoints.Count == 0)
+        {
+            initWaypoint();
+        }
+    } 
 
     public Vector3 GetWaypoint(int currentWaypoint)
     {
-        if (_waypoints.Count == 0) {
-            initWaypoint();
-        }
+
+        initStart();
+
         return _waypoints[currentWaypoint].position;
     }
 
     public int GetNextWaypoint(int currentWaypoint)
     {
-        return (currentWaypoint + 1) % transform.childCount;
+        return (currentWaypoint + 1) % _waypoints.Count;
     }
 
     public void initWaypoint() {
         int numberPoint = Random.Range(2, 5);
-
         GameObject g = new GameObject();
         g.transform.localPosition = this.transform.parent.position;
         g.transform.parent = this.transform;
@@ -44,23 +51,28 @@ public class Patroller : MonoBehaviour
             wayPointsList.Add(g);
             _waypoints.Add(g.transform);
         }
+
+        Debug.Log(transform.parent.name + " numberPoint = " + numberPoint + " size waypoints " + _waypoints.Count + " size wayList "  + this.wayPointsList.Count);
     }
 
     private Vector3 GetRandomVector3Point()
     {
         var randPos = new Vector3(0, 0, 0);
 
-        randPos = Random.insideUnitSphere * patrolRadius;
-        randPos += transform.position;
         NavMeshHit hit;
         var bIsPosValid = true;
+
         while (bIsPosValid)
         {
-            if (NavMesh.SamplePosition(randPos, out hit, patrolRadius, 1)) //only check walkable areas
+            randPos = Random.insideUnitSphere * patrolRadius;
+            randPos += transform.position;
+
+            bool test = NavMesh.SamplePosition(randPos, out hit, patrolRadius, 1);
+            //Debug.Log(test);
+            if (test) //only check walkable areas
             {
                 randPos = hit.position;
                 Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
-               
             }
             bIsPosValid = false;
         }
