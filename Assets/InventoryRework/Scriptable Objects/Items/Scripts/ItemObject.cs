@@ -63,11 +63,12 @@ public class Item2 {
 }
 
 [System.Serializable]
-public class ItemBuff {
+public class ItemBuff : IModifier{
     public Attributes attribute;
     public int value;
     public int min;
     public int max;
+    private IModifier modifierImplementation;
 
     public ItemBuff(int _min, int _max) {
         min = _min;
@@ -77,5 +78,10 @@ public class ItemBuff {
 
     public void GenerateValue() {
         value = Random.Range(min, max);
+    }
+
+    public void AddValue(ref int baseValue)
+    {
+        baseValue += value;
     }
 }
