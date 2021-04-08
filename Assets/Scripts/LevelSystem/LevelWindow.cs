@@ -19,14 +19,10 @@ public class LevelWindow : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
+        /*if (Input.GetKeyDown("space"))
         {
-            Debug.Log("XP = " + levelSystem.GetXPAmount());
             levelSystem.AddExperience(10);
-            Debug.Log("XP + 10 ");
-            Debug.Log("XP = " + levelSystem.GetXPAmount());
-            Debug.Log("XP next level = " + levelSystem.GetXPForLevel(levelSystem.GetLevelNumber()+1));
-        }
+        }*/
     }
     public void SetExperienceBarSize(float xpNormalized)
     {

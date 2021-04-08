@@ -67,31 +67,16 @@ public class FillPlantsBar : MonoBehaviour
         {
             UsePlant();
         }
-
-        //if (healthSlider.value <= 0f)
-            //Debug.Log("You're dead !");
     }
 
     public void UsePlant()
     {
-
-        var player = GameManager.Instance.player;
-        var questList = player.GetComponent<QuestManager>();
-
-        var evaluatedQuest = questList.Evaluate("HasQuest", "PlantQuest");
-        if (evaluatedQuest != null)
-        {
-            questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "1");
-        }
-
-        player.GetComponent<PlayerFX>().PlayEatPlant();
-
         missingLife = maxLife - healthSlider.value; // Compute missing life
         healDecrease = Mathf.Min(currentHeal, missingLife);
         lifeIncrease = Mathf.Min(currentHeal, missingLife);
 
         if (missingLife > 0f && currentHeal > 0f)
-        { // If we need to regen
+        {
             currentHeal -= healDecrease;
             currentLife += lifeIncrease;
         }
@@ -105,6 +90,16 @@ public class FillPlantsBar : MonoBehaviour
             return;
         }
         isHealing = true;
+        
+        var player = GameManager.Instance.player;
+        var questList = player.GetComponent<QuestManager>();
+
+        var evaluatedQuest = questList.Evaluate("HasQuest", "PlantQuest");
+        if (evaluatedQuest != null)
+        {
+            questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "1");
+        }
+        player.GetComponent<PlayerFX>().PlayEatPlant();
     }
 
     public void TakeDamage(float amount)

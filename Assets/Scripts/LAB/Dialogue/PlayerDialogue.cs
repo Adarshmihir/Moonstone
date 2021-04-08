@@ -17,6 +17,7 @@ namespace Dialogue
         private AIDialogue _aiDialogue;
         private Fighter _fighter;
         private Mover _mover;
+        private bool _isOpeningDialogue;
 
         public Dialogue GetDialogue => dialogue;
         public bool IsChoosing { get; private set; }
@@ -40,10 +41,14 @@ namespace Dialogue
 		        // Move towards the target until it is close enough
 		        _mover.MoveTo(_aiDialogue.transform.position);
 	        }
-	        else
+	        else if (_isOpeningDialogue)
 	        {
 		        // Cancel movement action and start attack
 		        _mover.Cancel();
+		        _isOpeningDialogue = false;
+		        
+		        StartEnterAction();
+		        OnUpdate?.Invoke();
 	        }
         }
 
@@ -52,11 +57,9 @@ namespace Dialogue
 	        GetComponent<ActionScheduler>().StartAction(this);
 	        
 	        _aiDialogue = aiDialogue;
-            dialogue = newDialogue;
-            _node = dialogue.GetRootNode();
-            
-            StartEnterAction();
-            OnUpdate?.Invoke();
+	        dialogue = newDialogue;
+	        _node = dialogue.GetRootNode();
+	        _isOpeningDialogue = true;
         }
 
         public string GetText()
