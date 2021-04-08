@@ -4858,6 +4858,7 @@ GameObject:
   - component: {fileID: 8591946088338967349}
   - component: {fileID: 4913598022738489060}
   - component: {fileID: 5579161388114467999}
+  - component: {fileID: -2976040054822546840}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -5019,6 +5020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   destroyTime: 5
+  destroyTimeWithLoot: 30
 --- !u!136 &8591946088338967372
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5094,6 +5096,10 @@ MonoBehaviour:
   life: 100
   mana: 100
   stats: []
+  level: 0
+  BONUS_HEATH_PER_POINT: 5
+  isInDungeon: 0
+  hasKilledABoss: 0
 --- !u!114 &5579161388114467999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5106,5 +5112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cf89e51203642e48ae1c8a52b969bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsCanvas: {fileID: 0}
   focus: {fileID: 0}
+--- !u!81 &-2976040054822546840
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591946088338967369}
+  m_Enabled: 0
