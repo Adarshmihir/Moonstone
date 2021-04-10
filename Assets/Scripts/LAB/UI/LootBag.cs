@@ -21,9 +21,7 @@ public class LootBag : MonoBehaviour, IAction
     }
 
     public void ShowLootBag(List<Item> items, CombatTarget combatTarget)
-    {
-        if (items.Count == 0) return;
-        
+    {        
         GameManager.Instance.player.GetComponent<ActionScheduler>().StartAction(this);
         GameManager.Instance.uiManager.LootBagGO.SetActive(true);
         
@@ -40,7 +38,7 @@ public class LootBag : MonoBehaviour, IAction
         {
             parent = GameManager.Instance.uiManager.LootBagGO.GetComponent<LootBag>().contentParent;
             newItem = Instantiate(prefabItem, parent);
-            newItem.GetComponent<LootItem>().SetItem(item, combatTarget);
+            newItem.GetComponent<LootItem>().SetItem(Object.Instantiate(item), combatTarget);
         }
     }
 

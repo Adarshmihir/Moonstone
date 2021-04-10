@@ -28,7 +28,7 @@ public class ShopSlot : MonoBehaviour
         if(inventory.gold >= price)
         {
             inventory.gold -= price;
-            inventory.Add(item);
+            inventory.Add(Object.Instantiate(item));
             Debug.Log("Item acheté : " + item.name);
             var player = GameObject.FindGameObjectWithTag("Player");
             var questList = player.GetComponent<QuestManager>();
