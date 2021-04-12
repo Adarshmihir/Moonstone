@@ -7,13 +7,13 @@ using UnityEngine.PlayerLoop;
 public class hasInventory : MonoBehaviour {
     public InventoryObject inventory;
     public InventoryObject equipment;
-    public Attribute[] attributes;
+    public AttributesList[] attributes;
 
     private void Start()
     {
         for (int i = 0; i < attributes.Length; i++)
         {
-            // attributes[i].SetParent(this);
+            attributes[i].SetParent(this);
         }
         for (int i = 0; i < equipment.GetSlots.Length; i++)
         {
@@ -100,7 +100,7 @@ public class hasInventory : MonoBehaviour {
             equipment.Load();
         }
     }
-    public void AttributeModified(Attribute attribute)
+    public void AttributeModified(AttributesList attribute)
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
     }
@@ -110,21 +110,21 @@ public class hasInventory : MonoBehaviour {
     }
 }
 
-// [System.Serializable]
-// public class Attribute
-// {
-//     [System.NonSerialized]
-//     public Player2 parent;
-//     public Attributes type;
-//     public ModifiableInt value;
-//     
-//     public void SetParent(Player2 _parent)
-//     {
-//         parent = _parent;
-//         value = new ModifiableInt(AttributeModified);
-//     }
-//     public void AttributeModified()
-//     {
-//         parent.AttributeModified(this);
-//     }
-// }
+[System.Serializable]
+public class AttributesList
+{
+    [System.NonSerialized]
+    public hasInventory parent;
+    public StatTypes type;
+    public ModifiableInt value;
+    
+    public void SetParent(hasInventory _parent)
+    {
+        parent = _parent;
+        value = new ModifiableInt(AttributeModified);
+    }
+    public void AttributeModified()
+    {
+        parent.AttributeModified(this);
+    }
+}

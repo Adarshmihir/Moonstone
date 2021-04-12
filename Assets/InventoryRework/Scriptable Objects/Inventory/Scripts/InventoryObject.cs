@@ -24,6 +24,8 @@ public class InventoryObject : ScriptableObject {
     public InterfaceType type;
     public Inventory2 Container;
     
+    
+    
     public InventorySlot2[] GetSlots { get { return Container.Slots; } }
     public bool AddItem(Item2 _item, int _amount) {
         if (EmptySlotCount <= 0)
@@ -191,12 +193,25 @@ public class InventorySlot2 {
         UpdateSlot(new Item2(), 0);
     }
     public bool CanPlaceInSlot(ItemObject _itemObject) {
+        
         if (AllowedItems.Length <= 0 || _itemObject == null || _itemObject.data.Id < 0)
+        {
+            Debug.Log("CanPlace"); 
             return true;
 
-        for (int i = 0; i < AllowedItems.Length; i++) {
+        }
+
+        for (int i = 0; i < AllowedItems.Length; i++)
+        {
+            if (AllowedItems[i] == ItemType.Disabled)
+            {
+                return false;
+            }
             if (_itemObject.type == AllowedItems[i])
+            {
+                Debug.Log("CanPlace");
                 return true;
+            }
         }
 
         return false;

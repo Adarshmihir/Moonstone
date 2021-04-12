@@ -11,6 +11,7 @@ namespace Combat
     {
         [SerializeField] [Range(0f, 1f)] private float criticalChance = 0.5f;
 
+        //[SerializeField] public Weapon weapon;
         [SerializeField] public Weapon weapon;
         [SerializeField] public Transform rightHandTransform;
         [SerializeField] public Transform leftHandTransform;
@@ -106,23 +107,34 @@ namespace Combat
                 Target.GetComponent<FighterFX>().PlayBleed();
             }
 
-            // Unarmed attack and One Hand armed attack
-            if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
+            if (GetComponent<Player>())
             {
-                // Check if target is in front of character and visible
                 if (!GetIsInFieldOfView(Target.transform, weapon.WeaponRadius)/* || !GetIsAccessible(_target.transform)*/) return;
-
-                if (GetComponent<Player>())
-                    // Deal damage
-                    Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
-                else
-                    Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance, this);
+                foreach (var slot in GetComponent<Player>().equipment.GetSlots)
+                {
+                    if (slot.ItemObject != null && (slot.ItemObject.type == ItemType.Weapon || slot.ItemObject.type == ItemType.WeaponDouble))
+                    {
+                         Target.TakeDamage(GetComponent<Player>().CalculateDamage(), Random.Range(0, 100) / 100f < criticalChance, this);
+                    }
+                }
+               
             }
-            // Two hand Armed attack
             else
             {
-                // Deal damage to all enemies around
-                AttackAllEnemiesAround();
+                // Unarmed attack and One Hand armed attack
+                if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded)
+                {
+                    // Check if target is in front of character and visible
+                    if (!GetIsInFieldOfView(Target.transform,
+                        weapon.WeaponRadius) /* || !GetIsAccessible(_target.transform)*/) return;
+                    Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance, this);
+                }
+                // Two hand Armed attack
+                else
+                {
+                    // Deal damage to all enemies around
+                    AttackAllEnemiesAround();
+                }
             }
         }
 
@@ -161,14 +173,14 @@ namespace Combat
             return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= radius;
         }
 
-        /*private bool GetIsAccessible(Transform target)
+        private bool GetIsAccessible(Transform target)
         {
             // Check if target is visible from the character
             var position = transform.position;
             Physics.Raycast(position, target.position - position, out var hit);
 
             return true; //hit.collider == null || hit.collider.GetComponent<Health>() != null;
-        }*/
+        }
 
         public static bool CanAttack(GameObject combatTarget)
         {

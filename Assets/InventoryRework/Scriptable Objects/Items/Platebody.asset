@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f69bd772c4dcaa4eaccc98f018e984d, type: 3}
   m_Name: Platebody
   m_EditorClassIdentifier: 
-  Id: 0
   uiDisplay: {fileID: 21300000, guid: 3ed81cc50010dbc49a22ae55ff8592f4, type: 3}
+  characterDisplay: {fileID: 0}
+  characterDisplayRight: {fileID: 0}
+  characterDisplayLeft: {fileID: 0}
+  stackable: 0
   type: 0
   description: 
-  buffs: []
+  data:
+    Name: 
+    Id: 4
+    buffs:
+    - attribute: 1
+      value: 0
+      min: 35
+      max: 57

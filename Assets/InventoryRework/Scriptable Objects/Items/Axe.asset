@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
+  characterDisplay: {fileID: 0}
+  characterDisplayRight: {fileID: 0}
+  characterDisplayLeft: {fileID: 0}
   stackable: 0
-  type: 1
+  type: 0
   description: 
   data:
     Name: 
@@ -24,3 +27,11 @@ MonoBehaviour:
       value: 0
       min: 10
       max: 50
+  weaponDamagePercent: 38
+  currentStatUsing: 0
+  weaponDamageFlat: 10
+  weaponType: 1
+  weaponRange: 2
+  attackspeed: 1
+  weaponRadius: 45
+  weapon: {fileID: 0}

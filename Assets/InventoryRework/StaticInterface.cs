@@ -35,7 +35,7 @@ public class StaticInterface : UserInterface {
     public void ResetStat() {
         var buff = FindObjectOfType<Enchantress>().inventory.GetSlots[0].item.buffs[0];
 
-        buff.attribute = (Attributes) Enum.ToObject(typeof(Attributes), Random.Range(0, 4));
+        buff.attribute = (StatTypes) Enum.ToObject(typeof(StatTypes), Random.Range(0, 4));
         buff.value = Random.Range(buff.min, buff.max);
 
         Debug.Log(buff.attribute);
