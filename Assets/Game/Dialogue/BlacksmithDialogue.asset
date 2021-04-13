@@ -107,8 +107,8 @@ MonoBehaviour:
   - 33f9ea1c-db5d-4578-8dbf-1350d85a8b32
   rect:
     serializedVersion: 2
-    x: 12
-    y: 208
+    x: 43
+    y: 197
     width: 200
     height: 100
   enterAction: DoneFindOlaf0
@@ -151,13 +151,13 @@ MonoBehaviour:
   m_Name: dd872429-3920-42ac-9693-4f3c15c8fd17
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: "Achever Qu\xEAte Forge"
+  text: "J'ai r\xE9ussi \xE0 forger mon \xE9quipement !"
   children:
   - 912d14ca-abbe-4166-81bd-8e11de3a9ca5
   rect:
     serializedVersion: 2
-    x: 278
-    y: 434
+    x: 247
+    y: 431
     width: 200
     height: 100
   enterAction: 

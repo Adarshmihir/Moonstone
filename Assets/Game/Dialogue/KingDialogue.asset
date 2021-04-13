@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
   text: "Je me pr\xE9sente, je suis le roi Edmug Seid et c'est un honneur pour moi
-    de te guider pour tes d\xE9but jeune Elu ! Mon premier conseil pour mener \xE0
+    de te guider pour tes d\xE9buts jeune Elu ! Mon premier conseil pour mener \xE0
     bien ta qu\xEAte est : Equipe toi bien !"
   children:
   - 64f26d04-1316-471b-8bcd-4f97024dc637
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 47e94894-0484-4a81-bc8f-efef33a7f5a5
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: Terminer PlantQuest
+  text: "J'ai go\xFBter au plantes !"
   children:
   - 83cefc80-8065-4ba0-a808-f8cd78a64b52
   rect:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 83c3d66e-ecc4-49eb-a74d-49983cd2cf7e
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: Terminer Donjon1
+  text: "Voici la premi\xE8re Moonstone !"
   children:
   - 4c469366-401c-4e18-ad3a-839de605f5ff
   rect:
@@ -524,6 +524,10 @@ MonoBehaviour:
       - name: HasQuest
         parameter: Donjon1
         negate: 0
+    - or:
+      - name: HasDone
+        parameter: Donjon1
+        negate: 1
 --- !u!114 &2541279135839920571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,8 +885,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 564
-    y: 456
+    x: 716
+    y: 489
     width: 200
     height: 100
   enterAction: 
@@ -902,7 +906,7 @@ MonoBehaviour:
   m_Name: 81189480-ddaa-4adb-a8df-dc99c8db1486
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: Terminer Donjon2
+  text: Voici la seconde Moonstone
   children:
   - e5ada09a-c656-4c25-b3ab-d035ffc59c47
   rect:
@@ -919,6 +923,10 @@ MonoBehaviour:
       - name: HasQuest
         parameter: Donjon2
         negate: 0
+    - or:
+      - name: HasDone
+        parameter: Donjon2
+        negate: 1
 --- !u!114 &8093085179709139929
 MonoBehaviour:
   m_ObjectHideFlags: 0
