@@ -201,13 +201,9 @@ public class InventorySlot2 {
 
         }
 
-        for (int i = 0; i < AllowedItems.Length; i++)
+        for (int i = 0; i < _itemObject.type.Length; i++)
         {
-            if (AllowedItems[i] == ItemType.Disabled)
-            {
-                return false;
-            }
-            if (_itemObject.type == AllowedItems[i])
+            if (_itemObject.type[i] == AllowedItems[0])
             {
                 Debug.Log("CanPlace");
                 return true;

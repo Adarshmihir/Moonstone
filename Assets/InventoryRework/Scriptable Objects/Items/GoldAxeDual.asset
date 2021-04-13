@@ -10,28 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: GoldAxe
+  m_Name: GoldAxeDual
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
   characterDisplay: {fileID: 0}
   characterDisplayRight: {fileID: 110228, guid: 32268a96a54cc4e49bb2a773c9e63d23,
     type: 3}
   characterDisplayLeft: {fileID: 110228, guid: c0cee6099a821984d9cebaa1e6a099b2, type: 3}
-  animatorOverrideBothHand: {fileID: 22100000, guid: 48f882c9857d60e47828d54a13c394db,
-    type: 2}
-  animatorOverrideLeftHand: {fileID: 22100000, guid: d56ad7c2dde02144a9735348e1f07ddc,
-    type: 2}
-  animatorOverrideRightHand: {fileID: 22100000, guid: 630ef91807fb5904b933c63f3c769e4c,
-    type: 2}
+  animatorOverride: {fileID: 22100000, guid: 48f882c9857d60e47828d54a13c394db, type: 2}
   stackable: 0
-  type: 1
+  type: 0300000005000000
   minFlat: 10
   maxFlat: 20
   description: 
   data:
     Name: 
-    Id: 7
+    Id: 2
     valueFlat: 0
+    damageBuffStat: 0
+    damageBuffValue: 0.35
     buffs:
     - attribute: 0
       value: 0

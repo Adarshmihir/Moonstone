@@ -5,14 +5,14 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 public enum ItemType {
-    Chest,
-    Weapon,
-    Right,
-    Left,
-    WeaponDouble,
     Helmet,
-    Shield,
+    Chest,
     Legs,
+    Weapon,
+    UniqueWeapon,
+    DualWeapon,
+    DoubleHandWeapon,
+    Shield,
     Resource,
     Disabled,
     Default
@@ -29,21 +29,20 @@ public class ItemObject : ScriptableObject {
     //use by one hand weapon 
     public GameObject characterDisplayRight;
     public GameObject characterDisplayLeft;
-    [SerializeField] private AnimatorOverrideController animatorOverrideBothHand;
-    [SerializeField] private AnimatorOverrideController animatorOverrideLeftHand;
-    [SerializeField] private AnimatorOverrideController animatorOverrideRightHand;
-    
+    [SerializeField] private AnimatorOverrideController animatorOverride;
+    [SerializeField] private float weaponRange = 2f;
     public bool stackable;
-    public ItemType type;
+    public ItemType[] type;
     public int minFlat;
     public int maxFlat;
+    [SerializeField] [Range(0f, 180f)] private float weaponRadius = 45f;
     [TextArea(15, 20)] public string description;
     public Item2 data = new Item2();
 
     
-    public AnimatorOverrideController AnimatorOverrideBothHand => animatorOverrideBothHand;
-    public AnimatorOverrideController AnimatorOverrideRightHand => animatorOverrideRightHand;
-    public AnimatorOverrideController AnimatorOverrideLeftHand => animatorOverrideLeftHand;
+    public AnimatorOverrideController AnimatorOverride=> animatorOverride;
+    public float WeaponRange => weaponRange;
+    public float WeaponRadius => weaponRadius;
     public Item2 CreateItem() {
         Item2 newItem = new Item2(this);
         return newItem;
@@ -56,6 +55,8 @@ public class Item2 {
     public string Name;
     public int Id = -1;
     public int valueFlat;
+    public StatTypes damageBuffStat;
+    public float damageBuffValue;
     public ItemBuff[] buffs;
 
 
@@ -70,7 +71,7 @@ public class Item2 {
         Id = item.data.Id;
         buffs = new ItemBuff[item.data.buffs.Length];
         valueFlat = Random.Range(item.minFlat, item.maxFlat);
-        Debug.Log(valueFlat);
+        damageBuffValue = item.data.damageBuffValue;
         for (int i = 0; i < buffs.Length; i++) {
             buffs[i] = new ItemBuff(item.data.buffs[i].min, item.data.buffs[i].max);
             buffs[i].attribute = item.data.buffs[i].attribute;

@@ -16,19 +16,18 @@ MonoBehaviour:
   characterDisplay: {fileID: 168620, guid: b14df74153f401b47ae9629ec7b86dfb, type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
-  animatorOverrideBothHand: {fileID: 22100000, guid: 30805edfa89477d42a525999840052e0,
-    type: 2}
-  animatorOverrideLeftHand: {fileID: 0}
-  animatorOverrideRightHand: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 30805edfa89477d42a525999840052e0, type: 2}
   stackable: 0
-  type: 4
+  type: 0300000006000000
   minFlat: 15
   maxFlat: 35
   description: 
   data:
     Name: 
-    Id: 8
+    Id: 0
     valueFlat: 0
+    damageBuffStat: 4
+    damageBuffValue: 0.6
     buffs:
     - attribute: 4
       value: 0

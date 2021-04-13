@@ -176,20 +176,26 @@ public class Player : MonoBehaviour {
                         case ItemType.Helmet:
                             //Destroy(helmet.gameObject);
                             break;
-                        case ItemType.Right:
-                            Debug.Log("Right destroy");
-                            switch (_slot.ItemObject.type)
+                        case ItemType.Weapon:
+                            switch (_slot.ItemObject.type[1])
                             {
-                                case ItemType.Weapon:
-                                    Destroy(weaponRightTransform.gameObject);
-                                    weaponRightTransform = null;
-                                    SetAnimatorPlayer(_slot);
-                                    break;
-                                case ItemType.WeaponDouble:
+                                case ItemType.UniqueWeapon:
                                     Destroy(weaponRightTransform.gameObject);
                                     weaponRightTransform = null;
                                     weaponLeftTransform = null;
-                                    _slot.parent.inventory.GetSlots[3].AllowedItems[0] = ItemType.Left;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DualWeapon:
+                                    Destroy(weaponRightTransform.gameObject);
+                                    Destroy(weaponLeftTransform.gameObject);
+                                    weaponRightTransform = null;
+                                    weaponLeftTransform = null;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DoubleHandWeapon:
+                                    Destroy(weaponRightTransform.gameObject);
+                                    weaponRightTransform = null;
+                                    weaponLeftTransform = null;
                                     SetAnimatorPlayer(_slot);
                                     break;
                                 default:
@@ -197,20 +203,6 @@ public class Player : MonoBehaviour {
                                     break;
                             }
 
-                            break;
-                        case ItemType.Left:
-                            Debug.Log("Left destroy");
-                            switch (_slot.ItemObject.type)
-                            {
-                                case ItemType.Weapon:
-                                    Destroy(weaponLeftTransform.gameObject);
-                                    weaponLeftTransform = null;
-                                    SetAnimatorPlayer(_slot);
-                                    break;
-                                default:
-                                    Debug.Log("erreur");
-                                    break;
-                            }
                             break;
                         case ItemType.Legs:
                             //Destroy(boots.gameObject);
@@ -254,43 +246,27 @@ public class Player : MonoBehaviour {
                         case ItemType.Helmet:
                             //helmetTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay,_slot.ItemObject.boneNames);
                             break;
-                        case ItemType.Right:
-                            Debug.Log("Right equip");
-                            switch (_slot.ItemObject.type)
+                        case ItemType.Weapon:
+                            switch (_slot.ItemObject.type[1])
                             {
-                                case ItemType.Weapon:
-                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplayRight, weaponTransformRight).transform;
+                                case ItemType.UniqueWeapon:
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, weaponTransformRight).transform;
                                     SetAnimatorPlayer(_slot);
                                     break;
-                                case ItemType.WeaponDouble:
+                                case ItemType.DualWeapon:
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplayRight, weaponTransformRight).transform;
+                                    weaponLeftTransform = Instantiate(_slot.ItemObject.characterDisplayLeft, weaponTransformLeft).transform;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DoubleHandWeapon:
                                     weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, weaponTransformRight).transform;
-                                    _slot.parent.inventory.GetSlots[3].AllowedItems[0] = ItemType.Disabled;
-                                    inventory.AddItem(_slot.parent.inventory.GetSlots[3].item,1);
-                                    //equipment.RemoveItem(_slot.parent.inventory.GetSlots[3].item);
-                                    if (_slot.ItemObject.AnimatorOverrideBothHand != null)
-                                    {
-                                        Debug.Log("Double Hand");
-                                        _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverrideBothHand;
-                                    }
+                                    SetAnimatorPlayer(_slot);
                                     break;
                                 default:
                                     Debug.Log("erreur");
                                     break;
                             }
 
-                            break;
-                        case ItemType.Left:
-                            Debug.Log("Left equip");
-                            switch (_slot.ItemObject.type)
-                            {
-                                case ItemType.Weapon:
-                                    weaponLeftTransform = Instantiate(_slot.ItemObject.characterDisplayLeft, weaponTransformLeft).transform;
-                                    SetAnimatorPlayer(_slot);
-                                    break;
-                                default:
-                                    Debug.Log("erreur");
-                                    break;
-                            }
                             break;
                         case ItemType.Legs:
                             //bootsTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
@@ -314,25 +290,12 @@ public class Player : MonoBehaviour {
 
     public void SetAnimatorPlayer(InventorySlot2 _slot)
     {
-        if (weaponRightTransform != null && weaponLeftTransform != null && _slot.ItemObject.AnimatorOverrideBothHand != null)
+        if (weaponRightTransform != null || weaponLeftTransform != null || _slot.ItemObject.AnimatorOverride != null)
         {
-            Debug.Log("Both Hand");
-            _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverrideBothHand;
+            _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverride;
         }
-        else if (weaponRightTransform != null && weaponLeftTransform == null &&
-                 _slot.ItemObject.AnimatorOverrideRightHand != null)
-        {
-            Debug.Log("Right Hand");
-            _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverrideRightHand;
-        }
-        else if (weaponRightTransform == null && weaponLeftTransform != null &&
-                 _slot.ItemObject.AnimatorOverrideRightHand != null)
-        {
-            Debug.Log("Left Hand");
-            _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverrideLeftHand;
-        }
+       
         else {
-            Debug.Log("Overide Animator default");
             _animator.runtimeAnimatorController = animatorOverrideDefault;
         }
     }
@@ -340,21 +303,27 @@ public class Player : MonoBehaviour {
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
     }
-
-    public float CalculateDamage()
+// Ajouter degat lorsqu'on a rien d'équiper 
+    public float CalculateDamage(Item2 CurrentItem = null)
     {
         float alldamage = 0f;
-        foreach (var slot in equipment.Container.Slots)
+        
+        if (CurrentItem != null)
         {
-            
-            for (int i = 0; i < slot.AllowedItems.Length; i++)
+            var slot = equipment.FindItemOnInventory(CurrentItem);
+            alldamage = slot.item.valueFlat;
+            foreach (var stat in attributes)
             {
-                if ((slot.AllowedItems[i] == ItemType.Weapon || slot.AllowedItems[i] == ItemType.WeaponDouble) && slot.item != null)
+                if (stat.type == slot.item.damageBuffStat)
                 {
-                    alldamage = slot.item.valueFlat;
+                    alldamage += (stat.value.BaseValue + stat.value.ModifiedValue) *
+                                 slot.item.damageBuffValue;
                 }
             }
-            
+        }
+        else
+        {
+            alldamage = 5;
         }
         return alldamage;
     }

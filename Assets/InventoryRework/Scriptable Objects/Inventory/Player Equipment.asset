@@ -17,32 +17,31 @@ MonoBehaviour:
   type: 1
   Container:
     Slots:
+    - AllowedItems: 01000000
+      item:
+        Name: 
+        Id: -1
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 03000000
+      item:
+        Name: 
+        Id: -1
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffValue: 0
+        buffs: []
+      amount: 0
     - AllowedItems: 00000000
       item:
         Name: 
         Id: -1
         valueFlat: 0
-        buffs: []
-      amount: 0
-    - AllowedItems: 020000000100000004000000
-      item:
-        Name: 
-        Id: -1
-        valueFlat: 0
-        buffs: []
-      amount: 0
-    - AllowedItems: 05000000
-      item:
-        Name: 
-        Id: -1
-        valueFlat: 0
-        buffs: []
-      amount: 0
-    - AllowedItems: 030000000100000004000000
-      item:
-        Name: 
-        Id: -1
-        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffValue: 0
         buffs: []
       amount: 0
     - AllowedItems: 07000000
@@ -50,5 +49,16 @@ MonoBehaviour:
         Name: 
         Id: -1
         valueFlat: 0
+        damageBuffStat: 0
+        damageBuffValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 02000000
+      item:
+        Name: 
+        Id: -1
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffValue: 0
         buffs: []
       amount: 0
