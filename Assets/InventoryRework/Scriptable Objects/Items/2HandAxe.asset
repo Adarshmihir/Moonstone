@@ -17,10 +17,12 @@ MonoBehaviour:
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
   animatorOverride: {fileID: 22100000, guid: 30805edfa89477d42a525999840052e0, type: 2}
+  weaponRange: 2
   stackable: 0
   type: 0300000006000000
   minFlat: 15
   maxFlat: 35
+  weaponRadius: 45
   description: 
   data:
     Name: 

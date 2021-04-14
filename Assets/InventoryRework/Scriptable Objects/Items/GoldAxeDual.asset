@@ -18,19 +18,21 @@ MonoBehaviour:
     type: 3}
   characterDisplayLeft: {fileID: 110228, guid: c0cee6099a821984d9cebaa1e6a099b2, type: 3}
   animatorOverride: {fileID: 22100000, guid: 48f882c9857d60e47828d54a13c394db, type: 2}
+  weaponRange: 2
   stackable: 0
   type: 0300000005000000
   minFlat: 10
   maxFlat: 20
+  weaponRadius: 45
   description: 
   data:
     Name: 
     Id: 2
     valueFlat: 0
-    damageBuffStat: 0
+    damageBuffStat: 2
     damageBuffValue: 0.35
     buffs:
-    - attribute: 0
+    - attribute: 2
       value: 0
       min: 15
       max: 35
