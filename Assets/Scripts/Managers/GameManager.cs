@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Combat;
+﻿using Combat;
 using Core;
 using Resources;
-using Stats;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -31,7 +26,6 @@ public class GameManager : MonoBehaviour
     public Transform PlayerSpawnPosition;
     public GameObject PlayerPrefab;
     public FollowCamera camera;
-    private static GameManager _instance;
     public bool isPurgeActive = false;
 
     public RawImage WeaponSlot => weaponSlot;
@@ -41,12 +35,9 @@ public class GameManager : MonoBehaviour
     public Animator LoaderAnimator => loaderAnimator;
     public GameObject Boss => boss;
 
-    private GameManager() {
-        
-    }    
-    public static GameManager Instance {
-        get { return _instance; }
-    }
+    private GameManager() { }
+    
+    public static GameManager Instance { get; private set; }
 
     private void Update()
     {
@@ -65,11 +56,11 @@ public class GameManager : MonoBehaviour
         equipementManager = gameObject.GetComponent<EquipmentManager>();
         uiManager = gameObject.GetComponent<UIManager>();
 
-        if (_instance != null && _instance != this)
+        if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         } else {
-            _instance = this;
+            Instance = this;
         }
         
         uiManager.InitializeUIManager();
@@ -87,10 +78,6 @@ public class GameManager : MonoBehaviour
         equipementManager.Initialize_EquipmentManager();
     }
 
-    private void Start() {
-        
-    }
-
     public void RespawnPlayer()
     {
         PlayerGO.GetComponent<NavMeshAgent>().Warp(PlayerSpawnPosition.position);
@@ -101,7 +88,6 @@ public class GameManager : MonoBehaviour
     
     // Add your game mananger members here
     public void Pause(bool paused) {
-        
         
     }
 }

@@ -15,6 +15,12 @@ public class Inventory : MonoBehaviour {
 
     public List<Item> items = new List<Item>();
 
+    public void InitSingleton()
+    {
+        if (instance != null) return;
+        instance = this;
+    }
+
     public List<Item> GetList()
     {
         return items;
@@ -43,14 +49,9 @@ public class Inventory : MonoBehaviour {
             onItemChangedCallback.Invoke();
     }
 
-    #region Singleton
-
     public static Inventory instance;
 
     private void Awake() {
-        if (instance != null) Debug.LogWarning("More than one instance of Inventory found !");
-        instance = this;
+        InitSingleton();
     }
-
-    #endregion
 }
