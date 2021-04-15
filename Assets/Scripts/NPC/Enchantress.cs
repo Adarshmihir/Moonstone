@@ -8,12 +8,9 @@ using Random = UnityEngine.Random;
 public class Enchantress : Interactable {
     public InventoryObject inventory;
 
-    public Button resetButton;
-    public Button increaseButton;
-
-    // public Text statRecap;
-
+    [HideInInspector]
     public Transform statContainer;
+    [HideInInspector]
     public Font font;
 
     protected override void checkFocus() {
@@ -66,6 +63,7 @@ public class Enchantress : Interactable {
                 foreach (var stat in statContainer.GetComponentsInChildren<Text>()) {
                     Destroy(stat.gameObject);
                 }
+
                 break;
             default:
                 break;
@@ -89,14 +87,20 @@ public class Enchantress : Interactable {
                 Debug.Log("interacting with enchantress : after");
 
                 // statRecap.enabled = true;
-                foreach (var buff in _slot.item.buffs) {
-                    Instantiate(createStatText(buff), Vector3.zero, Quaternion.identity, statContainer);
-                    // statRecap.text += "\n" + buff.attribute + " : " + buff.value;
-                }
+
+
+                displayStats(_slot);
 
                 break;
             default:
                 break;
+        }
+    }
+
+    public void displayStats(InventorySlot2 _slot) {
+        foreach (var buff in _slot.item.buffs) {
+            Instantiate(createStatText(buff), Vector3.zero, Quaternion.identity, statContainer);
+            // statRecap.text += "\n" + buff.attribute + " : " + buff.value;
         }
     }
 
@@ -118,19 +122,24 @@ public class Enchantress : Interactable {
     public void IncreaseStat() { }
 
     public void ResetStat() {
-        var buff = FindObjectOfType<Enchantress>().inventory.GetSlots[0].item.buffs[0];
-        var buffs = FindObjectOfType<Enchantress>().inventory.GetSlots[0].item.buffs;
+        var enchantressSlot = FindObjectOfType<Enchantress>().inventory.GetSlots[0];
+        var buffs = enchantressSlot.item.buffs;
 
-        buff.attribute = (StatTypes) Enum.ToObject(typeof(StatTypes), Random.Range(0, 4));
-        buff.value = Random.Range(buff.min, buff.max);
-
-        Debug.Log(buff.attribute);
+        // Randomize value and attribute of the new stat
+        foreach (var buff in buffs) {
+            buff.attribute = (StatTypes) Enum.ToObject(typeof(StatTypes), Random.Range(0, 4));
+            buff.value = Random.Range(buff.min, buff.max);
+        }
 
         //currently printing in console, TODO: display changes in enchantress mod list 
         // statRecap.text = "\n" + buff.attribute + " : " + buff.value;
 
+        // Clear all stats
         foreach (var txt in statContainer.GetComponentsInChildren<Text>()) {
             Destroy(txt.gameObject);
         }
+
+        // Display all updated stats
+        displayStats(enchantressSlot);
     }
 }
