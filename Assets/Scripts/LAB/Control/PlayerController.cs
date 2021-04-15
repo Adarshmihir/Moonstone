@@ -1,7 +1,7 @@
 ﻿using Combat;
 using Dialogue;
 using Movement;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;

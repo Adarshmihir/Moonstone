@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Quests;
-using Resources;
+using ResourcesHealth;
 
 public class FillPlantsBar : MonoBehaviour
 {

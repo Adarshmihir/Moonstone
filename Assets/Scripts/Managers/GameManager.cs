@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Combat;
 using Core;
-using Resources;
+using ResourcesHealth;
 using Stats;
 using UnityEngine;
 using UnityEngine.AI;

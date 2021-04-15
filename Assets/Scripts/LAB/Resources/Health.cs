@@ -8,7 +8,7 @@ using UI.DamageText;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Resources
+namespace ResourcesHealth
 {
     public class Health : MonoBehaviour
     {

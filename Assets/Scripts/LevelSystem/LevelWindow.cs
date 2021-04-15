@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Resources;
+using ResourcesHealth;
 using Stats;
 using UnityEngine;
 using UnityEngine.UI;
