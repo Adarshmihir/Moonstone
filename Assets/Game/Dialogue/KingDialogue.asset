@@ -240,8 +240,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 292
-    y: 358
+    x: 304
+    y: 361
     width: 200
     height: 100
   enterAction: 
@@ -319,8 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
   text: "Je me pr\xE9sente, je suis le roi Edmug Seid et c'est un honneur pour moi
-    de te guider pour tes d\xE9buts jeune Elu ! Mon premier conseil pour mener \xE0
-    bien ta qu\xEAte est : Equipe toi bien !"
+    de te guider pour tes d\xE9buts jeune \xC9lu ! Mon premier conseil pour mener
+    \xE0 bien ta qu\xEAte est : \xE9quipe-toi bien !"
   children:
   - 64f26d04-1316-471b-8bcd-4f97024dc637
   rect:
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 47e94894-0484-4a81-bc8f-efef33a7f5a5
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: "J'ai go\xFBter au plantes !"
+  text: "J'ai go\xFBt\xE9 aux plantes !"
   children:
   - 83cefc80-8065-4ba0-a808-f8cd78a64b52
   rect:
@@ -512,8 +512,8 @@ MonoBehaviour:
   - 4c469366-401c-4e18-ad3a-839de605f5ff
   rect:
     serializedVersion: 2
-    x: 185
-    y: 848
+    x: 200
+    y: 837
     width: 200
     height: 100
   enterAction: 
@@ -569,8 +569,8 @@ MonoBehaviour:
   m_Name: 7aff143c-5f70-43ea-8b03-72b0d68ffebb
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Bonjour \xE0 toi jeune aventurier ! Tu as \xE9t\xE9 choisis comme Elu de
-    notre village, ton devoir est d\xE9somais de tous nous sauver !"
+  text: "Bonjour \xE0 toi jeune aventurier ! Tu as \xE9t\xE9 choisi comme \xC9lu
+    de notre village, ton devoir est d\xE9sormais de tous nous sauver !"
   children:
   - 5733c63d-4d54-4871-b388-a614049edd94
   - db816e86-9d5b-4009-9e4f-17628c0d5d16

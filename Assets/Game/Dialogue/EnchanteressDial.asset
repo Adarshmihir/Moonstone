@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Name: 1ddaef6e-b615-42e7-8678-0ac536f05889
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Aaah oui ! Il souhaite que je t'inicie \xE0 l'art de l'enchantement d'arme
-    ? Bien, apporte moi l'or n\xE9c\xE9ssaire et je te montrerai."
+  text: "Aaah oui ! Il souhaite que je t'initie \xE0 l'art de l'enchantement d'arme
+    ? Bien, apporte-moi l'or n\xE9cessaire et je te montrerai."
   children:
   - EnchanteressDial
   rect:
