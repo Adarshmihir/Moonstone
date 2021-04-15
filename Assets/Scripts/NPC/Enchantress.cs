@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Enchantress : Interactable {
     public InventoryObject inventory;
 
     public Button resetButton;
     public Button increaseButton;
-    
+
+    // public Text statRecap;
+
+    public Transform statContainer;
+    public Font font;
+
     protected override void checkFocus() {
         base.checkFocus();
         if (hasInteracted) {
@@ -40,12 +46,10 @@ public class Enchantress : Interactable {
         inventory.GetSlots[0].OnAfterUpdate += OnAfterSlotUpdate;
     }
 
-    public void OnBeforeSlotUpdate(InventorySlot2 _slot)
-    {
+    public void OnBeforeSlotUpdate(InventorySlot2 _slot) {
         if (_slot.ItemObject == null)
             return;
-        switch (_slot.parent.inventory.type)
-        {
+        switch (_slot.parent.inventory.type) {
             case InterfaceType.Inventory:
                 Debug.Log("interacting with inventory : before");
                 break;
@@ -54,20 +58,24 @@ public class Enchantress : Interactable {
                 break;
             case InterfaceType.Chest:
                 break;
-            
+
             case InterfaceType.Enchantress:
                 Debug.Log("interacting with enchantress : before");
+                // statRecap.enabled = false;
+                // statRecap.text = "";
+                foreach (var stat in statContainer.GetComponentsInChildren<Text>()) {
+                    Destroy(stat.gameObject);
+                }
                 break;
             default:
                 break;
         }
     }
-    public void OnAfterSlotUpdate(InventorySlot2 _slot)
-    {
+
+    public void OnAfterSlotUpdate(InventorySlot2 _slot) {
         if (_slot.ItemObject == null)
             return;
-        switch (_slot.parent.inventory.type)
-        {
+        switch (_slot.parent.inventory.type) {
             case InterfaceType.Inventory:
                 Debug.Log("interacting with inventory : after");
                 break;
@@ -76,27 +84,53 @@ public class Enchantress : Interactable {
                 break;
             case InterfaceType.Chest:
                 break;
-            
+
             case InterfaceType.Enchantress:
                 Debug.Log("interacting with enchantress : after");
+
+                // statRecap.enabled = true;
                 foreach (var buff in _slot.item.buffs) {
-                    Debug.Log(buff.value);
+                    Instantiate(createStatText(buff), Vector3.zero, Quaternion.identity, statContainer);
+                    // statRecap.text += "\n" + buff.attribute + " : " + buff.value;
                 }
-                
+
                 break;
             default:
                 break;
         }
     }
-    
+
+    public GameObject createStatText(ItemBuff _buff) {
+        var g = new GameObject();
+        g.name = "Text";
+        var rt = g.AddComponent<RectTransform>();
+        Text txt = g.AddComponent<Text>();
+        txt.text = _buff.attribute + " : " + _buff.value;
+        txt.font = font;
+
+        return g;
+    }
+
     private void OnApplicationQuit() {
         inventory.Container.Clear();
     }
-    
-    public void IncreaseStat() {
-    }
+
+    public void IncreaseStat() { }
 
     public void ResetStat() {
-        
+        var buff = FindObjectOfType<Enchantress>().inventory.GetSlots[0].item.buffs[0];
+        var buffs = FindObjectOfType<Enchantress>().inventory.GetSlots[0].item.buffs;
+
+        buff.attribute = (StatTypes) Enum.ToObject(typeof(StatTypes), Random.Range(0, 4));
+        buff.value = Random.Range(buff.min, buff.max);
+
+        Debug.Log(buff.attribute);
+
+        //currently printing in console, TODO: display changes in enchantress mod list 
+        // statRecap.text = "\n" + buff.attribute + " : " + buff.value;
+
+        foreach (var txt in statContainer.GetComponentsInChildren<Text>()) {
+            Destroy(txt.gameObject);
+        }
     }
 }

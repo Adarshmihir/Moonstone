@@ -52,7 +52,7 @@ public class Patroller : MonoBehaviour
             _waypoints.Add(g.transform);
         }
 
-        Debug.Log(transform.parent.name + " numberPoint = " + numberPoint + " size waypoints " + _waypoints.Count + " size wayList "  + this.wayPointsList.Count);
+        //Debug.Log(transform.parent.name + " numberPoint = " + numberPoint + " size waypoints " + _waypoints.Count + " size wayList "  + this.wayPointsList.Count);
     }
 
     private Vector3 GetRandomVector3Point()

@@ -24,8 +24,10 @@ public class Inventory : MonoBehaviour {
         instance = this;
     }
 
-    public List<Item> GetList()
-    {
+    public List<Item> GetList() {
+        return items;
+    }
+
     public List<Weapon> GetWeapons() {
         return weapons;
     }

@@ -54,15 +54,15 @@ public class EquipmentManager : MonoBehaviour {
             Item oldItem = currentStuff[slotIndex];
             inventory.Add(oldItem);
             
-            if (oldItem.equipSlot == EquipmentSlot.Head)
+            if (oldItem.equipSlot == Item.EquipmentSlot.Head)
             {
                 GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Armor);
             }
-            else if (oldItem.equipSlot == EquipmentSlot.Body || oldItem.equipSlot == EquipmentSlot.Legs)
+            else if (oldItem.equipSlot == Item.EquipmentSlot.Body || oldItem.equipSlot == Item.EquipmentSlot.Legs)
             {
                 GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Pet);
             }
-            else if (oldItem.equipSlot == EquipmentSlot.Weapon)
+            else if (oldItem.equipSlot == Item.EquipmentSlot.Weapon)
             {
                 GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Weapon);
             }

@@ -10,7 +10,7 @@ public class Item : ScriptableObject
     public Sprite icon;
     public string desc = "";
     
-    //public equipementModifier[] equipementMods;
+    public equipementModifier[] equipementMods;
 
     public EquipmentSlot equipSlot;
 

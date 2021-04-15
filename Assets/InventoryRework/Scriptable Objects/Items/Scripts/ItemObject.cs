@@ -37,6 +37,7 @@ public class ItemObject : ScriptableObject {
     public int maxFlat;
     [SerializeField] [Range(0f, 180f)] private float weaponRadius = 45f;
     [TextArea(15, 20)] public string description;
+    [TextArea(4, 20)] public string recapStats; 
     public Item2 data = new Item2();
 
     

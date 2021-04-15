@@ -196,7 +196,6 @@ public class InventorySlot2 {
         
         if (AllowedItems.Length <= 0 || _itemObject == null || _itemObject.data.Id < 0)
         {
-            Debug.Log("CanPlace"); 
             return true;
 
         }
@@ -205,7 +204,6 @@ public class InventorySlot2 {
         {
             if (_itemObject.type[i] == AllowedItems[0])
             {
-                Debug.Log("CanPlace");
                 return true;
             }
         }

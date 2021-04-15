@@ -13,18 +13,18 @@ public class chooseEquipSlot : MonoBehaviour
     {
         switch (equipment.equipSlot)
         {
-            case EquipmentSlot.Head:
+            case Item.EquipmentSlot.Head:
                 HelmetSlot.GetComponent<EquipSlot>().AddItem(equipment);
                 break;
-            case EquipmentSlot.Body:
+            case Item.EquipmentSlot.Body:
                 BodySlot.GetComponent<EquipSlot>().AddItem(equipment);
                 break;
-            case EquipmentSlot.Legs:
+            case Item.EquipmentSlot.Legs:
                 break;
-            case EquipmentSlot.Foot:
+            case Item.EquipmentSlot.Foot:
                 FootSlot.GetComponent<EquipSlot>().AddItem(equipment);
                 break;
-            case EquipmentSlot.Weapon:
+            case Item.EquipmentSlot.Weapon:
                 WeaponSlot.GetComponent<EquipSlot>().AddItem(equipment);
                 break;
         }

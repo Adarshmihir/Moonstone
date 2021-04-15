@@ -21,8 +21,6 @@ public class StaticInterface : UserInterface {
             inventory.GetSlots[i].slotDisplay = obj;
             slotsOnInterface.Add(obj, inventory.GetSlots[i]);
         }
-        
-        
     }
     
     public void IncreaseStat() {
@@ -45,6 +43,6 @@ public class StaticInterface : UserInterface {
 
     public override void UseItem() {
 
-        Debug.Log("VAR");
+        Debug.Log("Enchantress item clicked !");
     }
 }
