@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject CanvasSpellsBar;
     public GameObject StatsCanvas;
     public GameObject Inventory;
+    public GameObject Equipment;
     public GameObject HealthGlobe;
     public GameObject EnergyGlobe;
     public GameObject CanvasRessource;
@@ -30,6 +31,8 @@ public class UIManager : MonoBehaviour
     public GameObject StatsCanvasGO;
     [HideInInspector]
     public GameObject InventoryGO;
+    [HideInInspector]
+    public GameObject EquipmentGO;
     [HideInInspector]
     public GameObject HealthGlobeGO;
     [HideInInspector]
@@ -57,6 +60,7 @@ public class UIManager : MonoBehaviour
         InventoryGO = Instantiate(Inventory);
         GetComponent<Inventory>().InitSingleton();
         InventoryGO.GetComponent<InventoryUI>().Initialize_InventoryUI();
+        EquipmentGO = Instantiate(Equipment);
         EnchantressGO = Instantiate(Enchantress);
         EnchantressGO.GetComponent<EnchantressUI>().Initialize_EnchantressUI();
         //HealthGlobeGO = Instantiate(HealthGlobe);
@@ -72,6 +76,7 @@ public class UIManager : MonoBehaviour
     public void HideUIAtLaunch() {
         StatsCanvasGO.SetActive(false);
         InventoryGO.SetActive(false);
+        EquipmentGO.SetActive(false);
         //MiniMapCanvasGO.SetActive(false);
         //HealthGlobeGO.SetActive(false);
         //CanvasRessourceGO.SetActive(false);

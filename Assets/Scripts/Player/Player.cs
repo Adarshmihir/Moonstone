@@ -7,6 +7,7 @@ using Resources;
 using Stats;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -19,18 +20,59 @@ public class Player : MonoBehaviour
     public int level;
     public float BONUS_HEATH_PER_POINT = 5f;
 
-    public static float bonushealth = 5f;
     public bool isInDungeon = false;
     public bool hasKilledABoss = false;
 
-    // Update is called once per frame
-    void Update()
-    {
+    public InventoryObject inventory;
+    public InventoryObject equipment;
+    public Attribute[] attributes;
+    [SerializeField] private AnimatorOverrideController animatorOverrideDefault;
+    
+    private Transform bootsTransform;
+    private Transform chestTransform;
+    private Transform helmetTransform;
+    private Transform offhandTransform;
+    private Transform weaponRightTransform;
+    private Transform weaponLeftTransform;
+    
+    
+    public Transform weaponTransformRight;
+    public Transform weaponTransformLeft;
 
+
+    private BoneCombiner boneCombiner;
+    private Animator _animator;
+    
+    private void Start() {
+        
+        boneCombiner = new BoneCombiner(gameObject);
+        
+        for (int i = 0; i < attributes.Length; i++) {
+            attributes[i].SetParent(this);
+        }
+
+        for (int i = 0; i < equipment.GetSlots.Length; i++) {
+            equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
+            equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
+        }
+        _animator = GetComponent<Animator>();
     }
 
-    public void InitializeStats()
-    {
+    public static float bonushealth = 5f;
+    // Update is called once per frame
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            inventory.Save();
+            equipment.Save();
+        }
+
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
+            inventory.Load();
+            equipment.Load();
+        }
+    }
+
+    public void InitializeStats() {
         stats = new List<Stat>();
         StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
         foreach (StatTypes stat in Enum.GetValues(typeof(StatTypes)))
@@ -44,6 +86,7 @@ public class Player : MonoBehaviour
 
         StatTextUpdate();
 
+        StatTextUpdate();
     }
     public void InitializePlayer()
     {
@@ -51,8 +94,7 @@ public class Player : MonoBehaviour
         InitializeStats();
     }
 
-    public void AddModifier(StatModifier statMod)
-    {
+    public void AddModifier(StatModifier statMod) {
         foreach (var stat in stats) {
             if (stat.StatName == statMod.statType)
             {
@@ -89,38 +131,32 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
         StatTextUpdate();
     }
 
-    public void StatTextUpdate()
-    {
-        foreach (var stat in stats)
-        {
-            if (stat.statGameObject)
-            {
-                if (stat.charStat.BaseValue == stat.charStat.Value)
-                {
+    public void StatTextUpdate() {
+        foreach (var stat in stats) {
+            if (stat.statGameObject) {
+                if (stat.charStat.BaseValue == stat.charStat.Value) {
                     stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString();
                 }
-                else
-                {
-                    stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString() + " (+" + (stat.charStat.Value-stat.charStat.BaseValue).ToString()+")";
+                else {
+                    stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString() + " (+" +
+                                                                    (stat.charStat.Value - stat.charStat.BaseValue)
+                                                                    .ToString() + ")";
                 }
             }
-
         }
         UILife.GetComponent<Text>().text = this.GetComponent<Health>().MaxHealthPoints.ToString();
         UIMana.GetComponent<Text>().text = GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().maxEnergy.ToString();
     }
 
-    public void AddPointToStat()
-    {
+    public void AddPointToStat() {
         string name = EventSystem.current.currentSelectedGameObject.name;
-        name = name.Replace("_Button","");
-        foreach (var stat in stats)
-        {
-            if (stat.StatName.ToString() == name)
-            {
+        name = name.Replace("_Button", "");
+        foreach (var stat in stats) {
+            if (stat.StatName.ToString() == name) {
                 StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
                 stat.charStat.IncrementBaseValue(2);
 
@@ -131,14 +167,13 @@ public class Player : MonoBehaviour
 
                 statList.lvlup_Points -= 1;
                 statList.PointsToSpendTextUpdate(statList.lvlup_Points);
-                if (statList.lvlup_Points == 0)
-                {
+                if (statList.lvlup_Points == 0) {
                     statList.ToggleLevelUp(false);
                 }
+
                 StatTextUpdate();
             }
         }
-
     }
 
     public void ResetStat()
@@ -151,7 +186,221 @@ public class Player : MonoBehaviour
             }
             stat.charStat.ResetBaseValue(5);
         }
+
         GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().ToggleReset(level);
         this.StatTextUpdate();
+    }
+
+    public void OnTriggerEnter(Collider other) {
+        var item = other.GetComponent<GroundItem>();
+        if (item) {
+            Item2 _item = new Item2(item.item);
+            if (inventory.AddItem(_item, 1)) {
+                Destroy(other.gameObject);
+            }
+        }
+    }
+
+    private void OnApplicationQuit() {
+        inventory.Container.Clear();
+        equipment.Container.Clear();
+    }
+    
+    public void OnRemoveItem(InventorySlot2 _slot)
+    {
+        if (_slot.ItemObject == null)
+            return;
+        switch (_slot.parent.inventory.type)
+        {
+            case InterfaceType.Inventory:
+                break;
+            case InterfaceType.Equipment:
+                print(string.Concat("Removed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
+
+                for (int i = 0; i < _slot.item.buffs.Length; i++)
+                {
+                    for (int j = 0; j < attributes.Length; j++)
+                    {
+                        if (attributes[j].type == _slot.item.buffs[i].attribute)
+                            attributes[j].value.RemoveModifier(_slot.item.buffs[i]);
+                    }
+                }
+                if (_slot.ItemObject.characterDisplay != null || _slot.ItemObject.characterDisplayRight != null || _slot.ItemObject.characterDisplayLeft != null )
+                {
+                    switch (_slot.AllowedItems[0])
+                    {
+                        case ItemType.Helmet:
+                            //Destroy(helmet.gameObject);
+                            break;
+                        case ItemType.Weapon:
+                            switch (_slot.ItemObject.type[1])
+                            {
+                                case ItemType.UniqueWeapon:
+                                    Destroy(weaponRightTransform.gameObject);
+                                    weaponRightTransform = null;
+                                    weaponLeftTransform = null;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DualWeapon:
+                                    Destroy(weaponRightTransform.gameObject);
+                                    Destroy(weaponLeftTransform.gameObject);
+                                    weaponRightTransform = null;
+                                    weaponLeftTransform = null;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DoubleHandWeapon:
+                                    Destroy(weaponRightTransform.gameObject);
+                                    weaponRightTransform = null;
+                                    weaponLeftTransform = null;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                default:
+                                    Debug.Log("erreur");
+                                    break;
+                            }
+
+                            break;
+                        case ItemType.Legs:
+                            //Destroy(boots.gameObject);
+                            break;
+                        case ItemType.Chest:
+                            //Destroy(chest.gameObject);
+                            break;
+                    }
+                }
+                break;
+            case InterfaceType.Chest:
+                break;
+            default:
+                break;
+        }
+    }
+    public void OnAddItem(InventorySlot2 _slot)
+    {
+        if (_slot.ItemObject == null)
+            return;
+        switch (_slot.parent.inventory.type)
+        {
+            case InterfaceType.Inventory:
+                break;
+            case InterfaceType.Equipment:
+                print(string.Concat("Placed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
+
+                for (int i = 0; i < _slot.item.buffs.Length; i++)
+                {
+                    for (int j = 0; j < attributes.Length; j++)
+                    {
+                        if (attributes[j].type == _slot.item.buffs[i].attribute)
+                            attributes[j].value.AddModifier(_slot.item.buffs[i]);
+                    }
+                }
+                if (_slot.ItemObject.characterDisplay != null || _slot.ItemObject.characterDisplayRight != null || _slot.ItemObject.characterDisplayLeft != null )
+                {
+                    
+                    switch (_slot.AllowedItems[0])
+                    {
+                        case ItemType.Helmet:
+                            //helmetTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay,_slot.ItemObject.boneNames);
+                            break;
+                        case ItemType.Weapon:
+                            switch (_slot.ItemObject.type[1])
+                            {
+                                case ItemType.UniqueWeapon:
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, weaponTransformRight).transform;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DualWeapon:
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplayRight, weaponTransformRight).transform;
+                                    weaponLeftTransform = Instantiate(_slot.ItemObject.characterDisplayLeft, weaponTransformLeft).transform;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                case ItemType.DoubleHandWeapon:
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, weaponTransformRight).transform;
+                                    SetAnimatorPlayer(_slot);
+                                    break;
+                                default:
+                                    Debug.Log("erreur");
+                                    break;
+                            }
+
+                            break;
+                        case ItemType.Legs:
+                            //bootsTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
+                            break;
+                        case ItemType.Chest:
+                            //chestTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
+                            break;
+                    }
+                }
+                break;
+            case InterfaceType.Chest:
+                break;
+            
+            case InterfaceType.Enchantress:
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    public void SetAnimatorPlayer(InventorySlot2 _slot)
+    {
+        if (weaponRightTransform != null || weaponLeftTransform != null || _slot.ItemObject.AnimatorOverride != null)
+        {
+            _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverride;
+        }
+       
+        else {
+            _animator.runtimeAnimatorController = animatorOverrideDefault;
+        }
+    }
+    public void AttributeModified(Attribute attribute)
+    {
+        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
+    }
+// Ajouter degat lorsqu'on a rien d'équiper 
+    public float CalculateDamage(Item2 CurrentItem = null)
+    {
+        float alldamage = 0f;
+        
+        if (CurrentItem != null)
+        {
+            var slot = equipment.FindItemOnInventory(CurrentItem);
+            alldamage = slot.item.valueFlat;
+            foreach (var stat in attributes)
+            {
+                if (stat.type == slot.item.damageBuffStat)
+                {
+                    alldamage += (stat.value.BaseValue + stat.value.ModifiedValue) *
+                                 slot.item.damageBuffValue;
+                }
+            }
+        }
+        else
+        {
+            alldamage = 5;
+        }
+        return alldamage;
+    }
+    
+}
+
+[System.Serializable]
+public class Attribute
+{
+    [System.NonSerialized]
+    public Player parent;
+    public StatTypes type;
+    public ModifiableInt value;
+    
+    public void SetParent(Player _parent)
+    {
+        parent = _parent;
+        value = new ModifiableInt(AttributeModified);
+    }
+    public void AttributeModified()
+    {
+        parent.AttributeModified(this);
     }
 }

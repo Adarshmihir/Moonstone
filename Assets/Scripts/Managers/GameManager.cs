@@ -42,8 +42,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetButtonDown("Inventory"))
+        {
             uiManager.InventoryGO.SetActive(!uiManager.InventoryGO.activeSelf);
-        
+            uiManager.EquipmentGO.SetActive(!uiManager.EquipmentGO.activeSelf);
+        }
+
         if (Input.GetKeyDown(KeyCode.A))
             uiManager.StatsCanvasGO.SetActive(!uiManager.StatsCanvasGO.activeSelf);
 

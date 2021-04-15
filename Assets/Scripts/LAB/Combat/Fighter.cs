@@ -11,6 +11,7 @@ namespace Combat
     {
         [SerializeField] [Range(0f, 1f)] private float criticalChance = 0.5f;
 
+        //[SerializeField] public Weapon weapon;
         [SerializeField] public Weapon weapon;
         [SerializeField] public Transform rightHandTransform;
         [SerializeField] public Transform leftHandTransform;
@@ -29,7 +30,6 @@ namespace Combat
         {
             _mover = GetComponent<Mover>();
             _animator = GetComponent<Animator>();
-
             SpawnWeapon();
         }
 
@@ -106,46 +106,58 @@ namespace Combat
                 FindObjectOfType<EnergyGlobeControl>().RestoreEnergy(5);
             }
 
-            // Unarmed attack and One Hand armed attack
-            if (weapon.WeaponType == WeaponType.Unarmed || weapon.WeaponType == WeaponType.OneHanded )
+            if (GetComponent<Player>())
             {
-                // Check if target is in front of character and visible
                 if (!GetIsInFieldOfView(Target.transform, weapon.WeaponRadius)/* || !GetIsAccessible(_target.transform)*/) return;
 
-                if (GetComponent<Player>())
-                    // Deal damage
-                    Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
-                else
-                    Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance, this);
+                foreach (var slot in GetComponent<Player>().equipment.GetSlots)
+                {
+                    if (slot.ItemObject != null && (slot.ItemObject.type[1] == ItemType.UniqueWeapon || slot.ItemObject.type[1] == ItemType.DualWeapon) )
+                    {
+                         Target.TakeDamage(GetComponent<Player>().CalculateDamage(slot.ItemObject.data), Random.Range(0, 100) / 100f < criticalChance, this);
+                    }
+                    else if(slot.ItemObject != null && slot.ItemObject.type[1] == ItemType.DoubleHandWeapon){
+                        AttackAllEnemiesAround(slot.ItemObject);
+                    }
+                    else if (slot.AllowedItems[0] == ItemType.Weapon && slot.ItemObject == null)
+                    {
+                        Target.TakeDamage(GetComponent<Player>().CalculateDamage(), Random.Range(0, 100) / 100f < criticalChance, this);
+                    }
+                }
+               
             }
-            // Two hand Armed attack
             else
             {
-                // Deal damage to all enemies around
-                AttackAllEnemiesAround();
+                // Unarmed attack and One Hand armed attack and two Hand armed attack
+                // Check if target is in front of character and visible
+                if (!GetIsInFieldOfView(Target.transform,
+                    weapon.WeaponRadius) /* || !GetIsAccessible(_target.transform)*/) return;
+                Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance, this);
             }
         }
 
-        private void AttackAllEnemiesAround()
+        private void AttackAllEnemiesAround(ItemObject itemObject)
         {
             // Get all enemies in front of character depending on weapon radius and weapon range
             var spherePosition = (transform.position + Target.transform.position) / 2;
-            var colliders = Physics.OverlapSphere(spherePosition, weapon.WeaponRange);
+            var colliders = Physics.OverlapSphere(spherePosition, itemObject.WeaponRange);
             foreach (var newTarget in colliders)
             {
+                
                 // Check if the target has health, is in front of character and visible
-                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform, weapon.WeaponRadius)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
-
-                Hit(newTarget.GetComponent<Health>());
+                if (!CanAttack(newTarget.gameObject) || !GetIsInFieldOfView(newTarget.transform, itemObject.WeaponRadius)/* || !GetIsAccessible(target.transform)*/ || CompareTag(newTarget.tag)) continue;
+                Debug.Log("Mon tag a moi c'est : " + newTarget.tag );
+                HitEnnemy(newTarget.GetComponent<Health>(),itemObject.data);
             }
         }
 
-        private void Hit(Health targetHealth)
+        private void HitEnnemy(Health targetHealth,Item2 data)
         {
             if (targetHealth == null) return;
-
+            Debug.Log("Je subit des dégat");
+            Debug.Log(GetComponent<Player>().CalculateDamage(data));
             // Deal damage
-            Target.TakeDamage(weapon.CalculateDamageWeapon(), Random.Range(0, 100) / 100f < criticalChance, this);
+            targetHealth.TakeDamage(GetComponent<Player>().CalculateDamage(data), Random.Range(0, 100) / 100f < criticalChance, this);
         }
 
         public bool GetIsInRange(Vector3 targetPosition, float range)
@@ -161,14 +173,14 @@ namespace Combat
             return Vector3.Angle(targetTransform.position - charTransform.position, charTransform.forward) <= radius;
         }
 
-        /*private bool GetIsAccessible(Transform target)
+        private bool GetIsAccessible(Transform target)
         {
             // Check if target is visible from the character
             var position = transform.position;
             Physics.Raycast(position, target.position - position, out var hit);
 
             return true; //hit.collider == null || hit.collider.GetComponent<Health>() != null;
-        }*/
+        }
 
         public static bool CanAttack(GameObject combatTarget)
         {

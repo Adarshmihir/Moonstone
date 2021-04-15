@@ -66,7 +66,7 @@ namespace Resources
             StartCoroutine(DestroyEnemy(destroyTime));
         }
 
-        public void TakeDamage(float damage, bool criticalHit, Fighter attacker)
+        public void TakeDamage(float damage, bool criticalHit, Fighter attacker )
         {
             damage = criticalHit ? damage * 2 : damage;
             HealthPoints = Mathf.Max(HealthPoints - damage, 0);

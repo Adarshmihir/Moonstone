@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
+  m_Name: GoldAxeDual
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
+  characterDisplay: {fileID: 0}
+  characterDisplayRight: {fileID: 110228, guid: 32268a96a54cc4e49bb2a773c9e63d23,
+    type: 3}
+  characterDisplayLeft: {fileID: 110228, guid: c0cee6099a821984d9cebaa1e6a099b2, type: 3}
+  animatorOverride: {fileID: 22100000, guid: 48f882c9857d60e47828d54a13c394db, type: 2}
+  weaponRange: 2
+  stackable: 0
+  type: 0300000005000000
+  minFlat: 10
+  maxFlat: 20
+  weaponRadius: 45
+  description: 
+  data:
+    Name: 
+    Id: 2
+    valueFlat: 0
+    damageBuffStat: 2
+    damageBuffValue: 0.35
+    buffs:
+    - attribute: 2
+      value: 0
+      min: 15
+      max: 35
