@@ -1482,9 +1482,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532316512881905938}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &4532316512964280587
 GameObject:
@@ -2113,6 +2113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button (Exit)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926495220393215303, guid: 24d00d71aee6bed45b2e606cb8ed8793,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1926495220772822059, guid: 24d00d71aee6bed45b2e606cb8ed8793,
         type: 3}
