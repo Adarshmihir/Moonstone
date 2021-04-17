@@ -93,6 +93,11 @@ public class EnchantressUI : MonoBehaviour
 
     public void ValidateModifierChange()
     {
+        if(Inventory.instance.gold <= EnchantressDefaultPrice)
+        {
+            return;
+        }
+
         Debug.Log("Valide Enchant !");
         //STAT MODIFICATION (REMOVING MOD + PUT NEW MOD)
         StatModifier ModSelected = selectedButton.GetComponent<EnchantressModButton>().mod;
