@@ -77,7 +77,9 @@ public class UIManager : MonoBehaviour
         EnchantressGO.SetActive(false);
         ForgeronGO.SetActive(false);
         LootBagGO.SetActive(false);
-        PurgeMenuGO.SetActive(false);
+        PurgeMenuGO.SetActive(true);
         DeathGO.SetActive(false);
     }
+    
+    
 }

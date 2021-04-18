@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             uiManager.StatsCanvasGO.SetActive(!uiManager.StatsCanvasGO.activeSelf);
 
         if (Input.GetButtonDown("PurgeMenu")) {
-            uiManager.PurgeMenuGO.SetActive(!uiManager.PurgeMenuGO.activeSelf);
+            uiManager.PurgeMenuGO.GetComponent<PurgeMenu>().Fade();
         }    
     }
 

@@ -60,8 +60,8 @@ public class PurgeManager : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         purgiumAmount = Math.Floor(purgeUI.fill.fillAmount * 100);
-        purgeUI.fill.fillAmount += (purgeIncrement * Time.deltaTime) / purgeFillDurationInSeconds;
-
+        //purgeUI.fill.fillAmount += (purgeIncrement * Time.deltaTime) / purgeFillDurationInSeconds;
+        purgeUI.IncrementFill((purgeIncrement * Time.deltaTime) / purgeFillDurationInSeconds);
         // if (GameManager.Instance.isPurgeActive && killedCount >= CountMonsters())
         //     purgeUI.fill.fillAmount = 0f;
         
@@ -84,7 +84,8 @@ public class PurgeManager : MonoBehaviour {
                 // If player kills a boss
                 if (player.hasKilledABoss) {
                     // Increase purge bar by 5 purgium
-                    purgeUI.fill.fillAmount += 0.05f;
+                    //purgeUI.fill.fillAmount += 0.05f;
+                    purgeUI.IncrementFill(0.05f);
                     player.hasKilledABoss = false;
                 }
             } else {
@@ -102,10 +103,10 @@ public class PurgeManager : MonoBehaviour {
         if (purgiumAmount >= 100) {
             GameManager.Instance.isPurgeActive = true;
             screenEffectAnimator.SetBool("isPurgeActive", true);
-
+        
             // Force to open purge menu at beginning
-            purgeUI.gameObject.SetActive(true);
-
+            //purgeUI.gameObject.SetActive(true);
+            purgeUI.PlayAndFadeOpening();
             numberToKill = purgeLevel * 2;
 
             // Deny access to any structure expect village while purge is active
@@ -126,12 +127,16 @@ public class PurgeManager : MonoBehaviour {
                 // If player killed all monsters (fixed number)
                 if (killedCount >= numberToKill)
                 {
+                    purgeUI.m_AnimateEnding = true;
+                    purgeUI.PlayAndFadeEnding();
                     ResetNormalMode();
                 }
 
                 // At purge end ...
-                if (purgeUI.GetComponentInChildren<Timer>().timeRemaining <= 0) {
-                    
+                if (purgeUI.GetComponentInChildren<Timer>().timeRemaining <= 0)
+                {
+                    purgeUI.m_AnimateEnding = true;
+                    purgeUI.PlayAndFadeEnding();
                     // If player killed all monsters (fixed number)
                     if (killedCount < numberToKill) { // Player didnt kill all monsters ..
                         // If player was aggressive (trying to complete purge) --> // isPlayerAggressive > (method : +1 to a counter when player hits a enemy. if counter > 0.75 * numberToKill = true
@@ -144,6 +149,7 @@ public class PurgeManager : MonoBehaviour {
                     }
                     ResetNormalMode();
                     purgeUI.fill.fillAmount = 0;
+
                 } else if (killedCount >= numberToKill) 
                     ResetNormalMode();
             }
@@ -151,6 +157,7 @@ public class PurgeManager : MonoBehaviour {
         else {
             GameManager.Instance.isPurgeActive = false;
             killedCount = 0;
+            purgeUI.m_AnimateOpening = true;
             screenEffectAnimator.SetBool("isPurgeActive", false);
         } 
     }
