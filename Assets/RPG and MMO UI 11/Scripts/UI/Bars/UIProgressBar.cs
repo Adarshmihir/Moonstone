@@ -30,7 +30,7 @@ namespace DuloGames.UI
 		[SerializeField] private FillSizing m_FillSizing = FillSizing.Parent;
 		[SerializeField] private float m_MinWidth = 0f;
 		[SerializeField] private float m_MaxWidth = 100f;
-		[SerializeField][Range(0f, 1f)] private float m_FillAmount = 1f;
+		[SerializeField][Range(0f, 1f)] private float m_FillAmount = 1.0f;
 		[SerializeField] private int m_Steps = 0;
 		public ChangeEvent onChange = new ChangeEvent();
 		

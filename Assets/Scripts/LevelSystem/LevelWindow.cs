@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DuloGames.UI;
+using DuloGames.UI.Tweens;
 using ResourcesHealth;
 using Stats;
 using UnityEngine;
@@ -9,11 +12,34 @@ public class LevelWindow : MonoBehaviour
 {
     private Text levelText;
     private Image xpBarImage;
-    public XpSystem levelSystem;
+    public XpSystem levelSystem;public enum TextVariant
+    {
+        Percent,
+        Value,
+        ValueMax
+    }
+		
+    public UIProgressBar bar;
+    public float Duration = 5f;
+    public TweenEasing Easing = TweenEasing.InOutQuint;
+    public Text m_Text;
+    public TextVariant m_TextVariant = TextVariant.Percent;
+    public int m_TextValue = 100;
+    public string m_TextValueFormat = "0";
+
+    // Tween controls
+    [NonSerialized] private readonly TweenRunner<FloatTween> m_FloatTweenRunner;
+    public LevelWindow()
+    {
+        if (this.m_FloatTweenRunner == null)
+            this.m_FloatTweenRunner = new TweenRunner<FloatTween>();
+			
+        this.m_FloatTweenRunner.Init(this);
+    }
     
     public void SetVariable()
     {
-        levelText = transform.Find("levelText").GetComponent<Text>();
+        levelText = transform.Find("Cadre").Find("levelText").GetComponent<Text>();
         xpBarImage = transform.Find("xpBar").Find("bar").GetComponent<Image>();
     }
 
@@ -26,12 +52,47 @@ public class LevelWindow : MonoBehaviour
     }
     public void SetExperienceBarSize(float xpNormalized)
     {
-        xpBarImage.fillAmount = xpNormalized;
+        this.StartTween(xpNormalized, (this.bar.fillAmount * this.Duration));
+        //xpBarImage.fillAmount = xpNormalized;
     }
-
+    protected void StartTween(float targetFloat, float duration)
+    {
+        if (this.bar == null)
+            return;
+			
+        var floatTween = new FloatTween { duration = duration, startFloat = this.bar.fillAmount, targetFloat = targetFloat };
+        floatTween.AddOnChangedCallback(SetFillAmount);
+        floatTween.ignoreTimeScale = true;
+        floatTween.easing = this.Easing;
+        this.m_FloatTweenRunner.StartTween(floatTween);
+    }
+    
+    protected void SetFillAmount(float amount)
+    {
+        if (this.bar == null)
+            return;
+			
+        this.bar.fillAmount = amount;
+			
+        if (this.m_Text != null)
+        {
+            if (this.m_TextVariant == TextVariant.Percent)
+            {
+                this.m_Text.text = Mathf.RoundToInt(amount * 100f).ToString() + "%";
+            }
+            else if (this.m_TextVariant == TextVariant.Value)
+            {
+                this.m_Text.text = ((float)this.m_TextValue * amount).ToString(this.m_TextValueFormat);
+            }
+            else if (this.m_TextVariant == TextVariant.ValueMax)
+            {
+                this.m_Text.text =  ((float)this.m_TextValue * amount).ToString(this.m_TextValueFormat) + "/" + this.m_TextValue;
+            }
+        }
+    }
     public void SetLevelNumber(int levelNumber)
     {
-        levelText.text = "LEVEL" + (levelNumber + 1);
+        levelText.text = (levelNumber + 1).ToString();
     }
 
     public void SetLevelSystem(XpSystem levelSystem)
