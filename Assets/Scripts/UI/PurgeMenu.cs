@@ -76,13 +76,13 @@ public class PurgeMenu : MonoBehaviour
 
         if (!GameManager.Instance.isPurgeActive) {
             timerText.enabled = false;
-            timerLabel.text = "Purge not active !";
+            timerLabel.text = "Purge non active";
 
             remainLabel.enabled = false;
             remainText.enabled = false;
         }
         else {
-            timerLabel.text = "Time remaining : ";
+            timerLabel.text = "Temps restant : ";
                         
             timerText.enabled = true;
             timerText.color = Color.red;
