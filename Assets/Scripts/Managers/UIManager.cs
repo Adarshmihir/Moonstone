@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
     public GameObject PurgeMenuGO;
     [HideInInspector]
     public GameObject DeathGO;
+    public GameObject QuestGO;
 
     public void InitializeUIManager()
     {

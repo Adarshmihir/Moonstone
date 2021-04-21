@@ -34,6 +34,24 @@ Transform:
   m_Father: {fileID: 7789706900591599449}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &690701910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479068553407240655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!81 &-772923694552606391
 AudioListener:
   m_ObjectHideFlags: 0
@@ -148,24 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focus: {fileID: 0}
---- !u!114 &690701910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8479068553407240655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 0, g: 1, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &2196118782887233293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,11 +816,6 @@ PrefabInstance:
         type: 3}
       propertyPath: outlineColor.r
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -106717747139046296, guid: fcb4db32f6881473baec42ac157df5ac,
-        type: 3}
-      propertyPath: maxHealthPoints
-      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1401106119531886124, guid: fcb4db32f6881473baec42ac157df5ac,
         type: 3}
