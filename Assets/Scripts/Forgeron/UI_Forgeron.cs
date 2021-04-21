@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Quests;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +25,23 @@ public class UI_Forgeron : MonoBehaviour
     public GameObject shopUI;
     public GameObject repairUI;
     public GameObject forgeUI;
+
+    private void Start() {
+        LoadBlacksmithInventory();
+    }
+
+    private void LoadBlacksmithInventory() {
+        var helmet = UnityEngine.Resources.Load("Items/Helmet") as ItemObject;
+        var sword = UnityEngine.Resources.Load("Items/Sword") as ItemObject;
+
+        List<ItemObject> objects = new List<ItemObject>();
+        objects.Add(helmet);
+        objects.Add(sword);
+
+        foreach (var itemObject in objects) {
+            gameObject.GetComponent<StaticInterface>().inventory.AddItem(new Item2(itemObject), 1);
+        }
+    }
 
     private void Awake()
     {

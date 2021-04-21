@@ -26,3 +26,5 @@ MonoBehaviour:
         damageBuffValue: 0
         buffs: []
       amount: 0
+  initGold: 300
+  gold: 300

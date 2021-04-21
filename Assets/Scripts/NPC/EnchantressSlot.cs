@@ -18,12 +18,12 @@ public class EnchantressSlot : InventorySlot
         base.OnRemoveButton();
     }
 
-    public override void UseItem()
-    {
-        if (item != null) {
-            GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>()
-                .EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().AddItem(item);
-            item.RemoveFromInventory();
-        }
-    }
+    // public override void UseItem()
+    // {
+    //     if (item != null) {
+    //         GameManager.Instance.uiManager.EnchantressGO.GetComponent<EnchantressUI>()
+    //             .EnchantressMainSlotButton.GetComponent<EnchantressMainSlot>().AddItem(item);
+    //         item.RemoveFromInventory();
+    //     }
+    // }
 }

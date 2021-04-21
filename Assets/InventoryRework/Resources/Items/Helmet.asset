@@ -9,24 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d043854db5b0f942bccbc049abe520e, type: 3}
-  m_Name: Meat
+  m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
+  m_Name: Helmet
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: df05cc943b75c6a4bac98bda18aeca90, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 5ad5b797ba2055541a606348010c9cdd, type: 3}
   characterDisplay: {fileID: 0}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
   animatorOverride: {fileID: 0}
-  stackable: 1
-  type: 
+  weaponRange: 2
+  stackable: 0
+  type: 00000000
   minFlat: 0
   maxFlat: 0
+  weaponRadius: 45
   description: 
+  recapStats: 
   data:
-    Name: 
+    Name: Casque des tenebres
     Id: 3
     valueFlat: 0
     damageBuffStat: 0
     damageBuffValue: 0
-    buffs: []
-  restoreHealthValue: 0
+    buffs:
+    - attribute: 0
+      value: 0
+      min: 50
+      max: 150

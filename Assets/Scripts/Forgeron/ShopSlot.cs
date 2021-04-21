@@ -9,10 +9,12 @@ public class ShopSlot : MonoBehaviour
     public Image icon;
     public Text priceText;
     public int price = 30;
-
+    
     private Item item;
-
+    
     private Inventory inventory;
+
+    public InventoryObject inventoryObject;
 
     public void AddItem(Item item)
     {

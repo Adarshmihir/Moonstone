@@ -635,6 +635,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: cfa885c4b4d9f784ba65f9dbdf7bb42f, type: 2}
   inventoryPrefab: {fileID: 8975097479479716048, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
     type: 3}
+  goldText: {fileID: 474823093068697116}
 --- !u!1 &3879218601207413071
 GameObject:
   m_ObjectHideFlags: 0

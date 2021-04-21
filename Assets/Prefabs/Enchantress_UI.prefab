@@ -86,11 +86,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385035372319064568}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd4c80184a7c6274e8b3a08980826881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: cfa885c4b4d9f784ba65f9dbdf7bb42f, type: 2}
   itemsParent: {fileID: 385035373602050053}
 --- !u!114 &5454708321703719150
 MonoBehaviour:
@@ -630,18 +631,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044514776082846185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e17732ea2367045a7d1d27b0fb394c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryenchantress: {fileID: 6458994765839506944}
+  FinishEnchantButton: {fileID: 4956984612131096322}
+  ListMod: {fileID: 3898781413021201047}
+  inventory: {fileID: 11400000, guid: 65125b411f8624440ad2e8b1ec2f3a7e, type: 2}
   EnchantressMainSlotButton: {fileID: 7731844958207298311}
   ModTextPrefab: {fileID: 2796022003725061449, guid: cd72a5a171126af4395265ea13083d08,
     type: 3}
-  FinishEnchantButton: {fileID: 4956984612131096322}
-  ListMod: {fileID: 0}
   selectedButton: {fileID: 0}
+  statContainer: {fileID: 3898781413021201047}
+  font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+  enchantressSlot:
+    AllowedItems: 
+    item:
+      Name: 
+      Id: -1
+      valueFlat: 0
+      damageBuffStat: 0
+      damageBuffValue: 0
+      buffs: []
+    amount: 0
 --- !u!114 &1624907116298298978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,10 +671,6 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 2044514776082846165}
   inventory: {fileID: 11400000, guid: 65125b411f8624440ad2e8b1ec2f3a7e, type: 2}
-  resetButton: {fileID: 0}
-  increaseButton: {fileID: 0}
-  statContainer: {fileID: 3898781413021201047}
-  font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
 --- !u!1 &2410178600118063014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1473,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1624907116298298978}
+      - m_Target: {fileID: 50642863931907051}
         m_MethodName: ResetStat
         m_Mode: 1
         m_Arguments:
@@ -1726,7 +1736,8 @@ PrefabInstance:
       propertyPath: slots.Array.size
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 967708375458921494, guid: c238db85c1446b2469cbe7a3b6992a4d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c238db85c1446b2469cbe7a3b6992a4d, type: 3}
 --- !u!224 &7731844958207298310 stripped
 RectTransform:

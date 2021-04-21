@@ -13,7 +13,8 @@ public enum InterfaceType
     Inventory,
     Equipment,
     Chest,
-    Enchantress
+    Enchantress,
+    Forgeron
 }
 
 
@@ -23,7 +24,8 @@ public class InventoryObject : ScriptableObject {
     public ItemDatabaseObject database;
     public InterfaceType type;
     public Inventory2 Container;
-    
+    public float initGold = 300f;
+    public float gold = 300f;
     
     
     public InventorySlot2[] GetSlots { get { return Container.Slots; } }
@@ -122,6 +124,10 @@ public class InventoryObject : ScriptableObject {
                 GetSlots[i].UpdateSlot( null, 0);
             }
         }
+    }
+    
+    private void OnApplicationQuit() {
+        gold = initGold;
     }
 }
 

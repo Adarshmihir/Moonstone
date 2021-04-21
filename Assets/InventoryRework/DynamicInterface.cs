@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DynamicInterface : UserInterface {
     public GameObject inventoryPrefab;
+
     public override void CreateSlots() {
         // Make sure the dictionary is REALLY a new dictionary
         slotsOnInterface = new Dictionary<GameObject, InventorySlot2>();

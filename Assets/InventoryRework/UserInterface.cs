@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Quests;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
 public abstract class UserInterface : MonoBehaviour {
     public InventoryObject inventory;
     protected Dictionary<GameObject, InventorySlot2> slotsOnInterface = new Dictionary<GameObject, InventorySlot2>();
+    public Text goldText = null;
 
     // Start is called before the first frame update
     void Start() {
@@ -23,16 +26,14 @@ public abstract class UserInterface : MonoBehaviour {
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
 
-    private void OnSlotUpdate(InventorySlot2 _slot)
-    {
-        if (_slot.item.Id >= 0)
-        {
+    private void OnSlotUpdate(InventorySlot2 _slot) {
+        if (_slot.item.Id >= 0) {
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.ItemObject.uiDisplay;
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-            _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = _slot.amount == 1 ? "" : _slot.amount.ToString("n0");
+            _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text =
+                _slot.amount == 1 ? "" : _slot.amount.ToString("n0");
         }
-        else
-        {
+        else {
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
             _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
@@ -42,6 +43,8 @@ public abstract class UserInterface : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         slotsOnInterface.UpdateSlotDisplay();
+        if (goldText != null)
+            goldText.text = inventory.gold.ToString();
     }
 
     public abstract void CreateSlots();
@@ -78,6 +81,7 @@ public abstract class UserInterface : MonoBehaviour {
 
     // Mouse drag begin
     public void OnDragStart(GameObject obj) {
+        if (inventory.type == InterfaceType.Forgeron) return;
         MouseData.tempItemBeingDragged = CreateTempItem(obj);
     }
 
@@ -116,6 +120,36 @@ public abstract class UserInterface : MonoBehaviour {
     public void OnDrag(GameObject obj) {
         if (MouseData.tempItemBeingDragged != null) {
             MouseData.tempItemBeingDragged.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
+    }
+
+    public void OnClick(GameObject obj) {
+        if (inventory.type == InterfaceType.Forgeron) {
+            Image icon;
+            Text priceText;
+            int price = 30;
+
+            var player = GameManager.Instance.player;
+
+            var clickedSlot = slotsOnInterface[obj];
+
+            if (player.inventory.gold >= price) {
+                player.inventory.gold -= price;
+                Debug.Log(gameObject.name);
+                player.inventory.AddItem(new Item2(clickedSlot.ItemObject), 1);
+                // inventory.Add(Object.Instantiate(item));
+                Debug.Log("Item acheté : " + clickedSlot.ItemObject.data.Name);
+
+                var questList = player.GetComponent<QuestManager>();
+
+                var evaluatedQuest = questList.Evaluate("HasQuest", "ForgeQuest");
+                if (evaluatedQuest != null) {
+                    questList.CompleteGoal(questList.GetQuestByName("ForgeQuest"), "1");
+                }
+            }
+            else {
+                Debug.Log("Pas assez d'argent");
+            }
         }
     }
 }

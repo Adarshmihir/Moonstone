@@ -78,7 +78,6 @@ public class Item2 {
             buffs[i].attribute = item.data.buffs[i].attribute;
         }
     }
-    
 }
 [System.Serializable]
 public class ItemBuff : IModifier{

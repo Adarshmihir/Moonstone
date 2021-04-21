@@ -246,8 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec2b9361f80e11429d63c7637a685f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 5372682357278598250}
-  removeButton: {fileID: 8040362151691622782}
 --- !u!114 &5101880418760840076
 MonoBehaviour:
   m_ObjectHideFlags: 0

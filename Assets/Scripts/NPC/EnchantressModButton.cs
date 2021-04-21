@@ -7,7 +7,7 @@ public class EnchantressModButton : MonoBehaviour
 {
     public Text TextModButton;
 
-    public StatModifier mod;
+    public ItemBuff buff;
     // Start is called before the first frame update
     void Start()
     {

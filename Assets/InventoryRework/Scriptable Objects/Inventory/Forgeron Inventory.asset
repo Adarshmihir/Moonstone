@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a316e7f399eef5546a88e9607f221641, type: 3}
-  m_Name: Player Equipment
+  m_Name: Forgeron Inventory
   m_EditorClassIdentifier: 
   savePath: 
   database: {fileID: 11400000, guid: b3a1b61383a8bc149918fdebbfd1d168, type: 2}
-  type: 1
+  type: 4
   Container:
     Slots:
-    - AllowedItems: 00000000
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
@@ -26,25 +26,7 @@ MonoBehaviour:
         damageBuffValue: 0
         buffs: []
       amount: 0
-    - AllowedItems: 01000000
-      item:
-        Name: 
-        Id: -1
-        valueFlat: 0
-        damageBuffStat: 0
-        damageBuffValue: 0
-        buffs: []
-      amount: 0
-    - AllowedItems: 02000000
-      item:
-        Name: 
-        Id: -1
-        valueFlat: 0
-        damageBuffStat: 0
-        damageBuffValue: 0
-        buffs: []
-      amount: 0
-    - AllowedItems: 03000000
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
@@ -54,4 +36,4 @@ MonoBehaviour:
         buffs: []
       amount: 0
   initGold: 300
-  gold: 300
+  gold: 0
