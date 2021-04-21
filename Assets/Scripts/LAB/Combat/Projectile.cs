@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Core;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 
 namespace Combat

@@ -1,7 +1,7 @@
 ﻿using System;
 using Core;
 using Movement;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

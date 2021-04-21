@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Movement;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;

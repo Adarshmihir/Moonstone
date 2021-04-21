@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using DuloGames.UI;
+using DuloGames.UI.Tweens;
+using UnityEngine;
 using UnityEngine.UI;
 using Quests;
-using Resources;
+using ResourcesHealth;
 
 public class FillPlantsBar : MonoBehaviour
 {
@@ -18,16 +21,32 @@ public class FillPlantsBar : MonoBehaviour
     public bool isHealing;
     public bool isPickingPlant;
 
+    // Tween controls
+    [NonSerialized] private readonly TweenRunner<FloatTween> m_FloatTweenRunner;
     public Slider healthSlider;
-
+    public UIProgressBar bar;
+    public float Duration = 5f;
+    public TweenEasing Easing = TweenEasing.InOutQuint;
+    public Text m_Text;
+    public Test_UIProgressBar.TextVariant m_TextVariant = Test_UIProgressBar.TextVariant.Percent;
+    public int m_TextValue = 100;
+    public string m_TextValueFormat = "0";
     // Start is called before the first frame update
+    public FillPlantsBar()
+    {
+        if (this.m_FloatTweenRunner == null)
+            this.m_FloatTweenRunner = new TweenRunner<FloatTween>();
+			
+        this.m_FloatTweenRunner.Init(this);
+    }
+    
     void Start()
     {
         healthSlider = GameObject.FindObjectOfType<HealthGlobeControl>().healthSlider;
-        healingBarFront = GameObject.FindGameObjectWithTag("HealFront").GetComponent<Image>();
+        //healingBarFront = GameObject.FindGameObjectWithTag("HealFront").GetComponent<Image>();
     
         currentLife = healthSlider.value; // Compute current life
-        currentHeal = healingBarFront.fillAmount; // Compute current heal
+        currentHeal = bar.fillAmount; // Compute current heal
     }
 
     // Update is called once per frame
@@ -35,16 +54,16 @@ public class FillPlantsBar : MonoBehaviour
     {
         if (isHealing)
         {
-            if (healingBarFront.fillAmount > currentHeal)
+            if (bar.fillAmount > currentHeal)
             {
                 GameManager.Instance.player.GetComponent<Health>().RegenLifePlayer(Time.deltaTime);
                 
-                healingBarFront.fillAmount -= healDecrease * Time.deltaTime;
+                bar.fillAmount -= healDecrease * Time.deltaTime;
                 healthSlider.value += lifeIncrease * Time.deltaTime;
             }
             else
             {
-                healingBarFront.fillAmount = currentHeal;
+                bar.fillAmount = currentHeal;
                 healthSlider.value = currentLife;
                 isHealing = false;
             }
@@ -52,13 +71,13 @@ public class FillPlantsBar : MonoBehaviour
 
         if (isPickingPlant)
         {
-            if (healingBarFront.fillAmount < currentHeal)
+            if (bar.fillAmount < currentHeal)
             {
-                healingBarFront.fillAmount += healIncrease * Time.deltaTime;
+                bar.fillAmount += healIncrease * Time.deltaTime;
             }
             else
             {
-                healingBarFront.fillAmount = currentHeal;
+                bar.fillAmount = currentHeal;
                 isPickingPlant = false;
             }
         }

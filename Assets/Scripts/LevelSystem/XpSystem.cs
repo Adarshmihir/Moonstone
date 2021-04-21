@@ -7,9 +7,9 @@ public class XpSystem
 {
     public event EventHandler OnExperienceChanged;
     public event EventHandler OnLevelChanged;
-    private int toNextLevelXP;
+    private float toNextLevelXP;
     private int curLevel;
-    private int curXP;
+    private float curXP;
 
     public XpSystem()
     {
@@ -33,10 +33,9 @@ public class XpSystem
         if (OnExperienceChanged != null) OnExperienceChanged(this, EventArgs.Empty);
     }
 
-    public int GetXPForLevel(int level)
-    {
-        int xpRequired = (int)(4 * Math.Pow((double)level, 3)) / 5;
-
+    public float GetXPForLevel(int level)
+    { 
+        float xpRequired = (float)(4 * Math.Pow((double)level, 3)) / 5;
         return xpRequired;
     }
 
@@ -45,7 +44,7 @@ public class XpSystem
         return curLevel;
     }
 
-    public int GetXPAmount()
+    public float GetXPAmount()
     {
         return curXP;
     }

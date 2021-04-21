@@ -51,6 +51,7 @@ public class UIManager : MonoBehaviour
     public GameObject PurgeMenuGO;
     [HideInInspector]
     public GameObject DeathGO;
+    public GameObject QuestGO;
 
     public void InitializeUIManager()
     {
@@ -83,7 +84,9 @@ public class UIManager : MonoBehaviour
         EnchantressGO.SetActive(false);
         ForgeronGO.SetActive(false);
         LootBagGO.SetActive(false);
-        PurgeMenuGO.SetActive(false);
+        PurgeMenuGO.SetActive(true);
         DeathGO.SetActive(false);
     }
+    
+    
 }

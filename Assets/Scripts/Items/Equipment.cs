@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Combat;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 
 [Serializable]

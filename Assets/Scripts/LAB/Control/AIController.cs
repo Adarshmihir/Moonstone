@@ -2,7 +2,7 @@
 using System.Linq;
 using Combat;
 using Movement;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 
 namespace Control

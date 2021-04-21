@@ -14,6 +14,7 @@ namespace UI
 		[SerializeField] private Transform choiceList;
 		[SerializeField] private GameObject choicePrefab;
 		[SerializeField] private GameObject response;
+		[SerializeField] private GameObject deco;
 
 		private PlayerDialogue _playerDialogue;
 
@@ -41,6 +42,7 @@ namespace UI
 		private void UpdateUI()
 		{
 			gameObject.SetActive(_playerDialogue.GetDialogue != null);
+			deco.SetActive(gameObject.activeSelf);
 
 			if (_playerDialogue.GetDialogue == null) return;
 

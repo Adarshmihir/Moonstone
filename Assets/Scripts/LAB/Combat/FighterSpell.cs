@@ -1,7 +1,7 @@
 ﻿using Control;
 using Core;
 using Movement;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,6 +1,8 @@
 ﻿using Combat;
 using Core;
-using Resources;
+using ResourcesHealth;
+using Stats;
+using UI.Quests;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -44,15 +46,17 @@ public class GameManager : MonoBehaviour
         if (Input.GetButtonDown("Inventory"))
         {
             uiManager.InventoryGO.SetActive(!uiManager.InventoryGO.activeSelf);
-            uiManager.EquipmentGO.SetActive(!uiManager.EquipmentGO.activeSelf);
         }
-
-        if (Input.GetKeyDown(KeyCode.A))
+        
+        if (Input.GetKeyDown(KeyCode.C))
             uiManager.StatsCanvasGO.SetActive(!uiManager.StatsCanvasGO.activeSelf);
 
         if (Input.GetButtonDown("PurgeMenu")) {
-            uiManager.PurgeMenuGO.SetActive(!uiManager.PurgeMenuGO.activeSelf);
-        }    
+            uiManager.PurgeMenuGO.GetComponent<PurgeMenu>().Fade();
+        }
+        if (Input.GetKeyDown(KeyCode.L)) {
+            uiManager.QuestGO.gameObject.GetComponentInChildren<Button>().onClick.Invoke();
+        }   
     }
 
     private void Awake() {

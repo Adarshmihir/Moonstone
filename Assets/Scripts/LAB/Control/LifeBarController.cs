@@ -1,5 +1,5 @@
 ﻿using Combat;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 using UnityEngine.UI;
 
