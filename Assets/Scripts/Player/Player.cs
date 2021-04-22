@@ -304,6 +304,7 @@ public class Player : MonoBehaviour
                             //helmetTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay,_slot.ItemObject.boneNames);
                             break;
                         case ItemType.Weapon:
+                            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(_slot.ItemObject.Spell, CastSource.Weapon);
                             switch (_slot.ItemObject.type[1])
                             {
                                 case ItemType.UniqueWeapon:

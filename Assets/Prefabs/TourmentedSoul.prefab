@@ -1330,7 +1330,15 @@ MonoBehaviour:
   maxGold: 1000
   loots:
   - item: {fileID: 11400000, guid: 7474cb80ba6899147b734508913e915c, type: 2}
-    chance: 50
+    lootItem: {fileID: 11400000, guid: b87e4203c4c37d44eaea3f72e45867fb, type: 2}
+    chance: 20
+  - item: {fileID: 11400000, guid: 7474cb80ba6899147b734508913e915c, type: 2}
+    lootItem: {fileID: 11400000, guid: e1b05fb0150b66a469ea2e9d0bd2bb0d, type: 2}
+    chance: 20
+  - item: {fileID: 11400000, guid: 7474cb80ba6899147b734508913e915c, type: 2}
+    lootItem: {fileID: 11400000, guid: d7a9a618bd425c147b772b9ffc4202f3, type: 2}
+    chance: 20
+  ListLoot: []
 --- !u!114 &5119681614654788131
 MonoBehaviour:
   m_ObjectHideFlags: 0

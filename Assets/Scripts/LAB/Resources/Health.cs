@@ -14,7 +14,7 @@ namespace ResourcesHealth
     {
         [SerializeField] private float maxHealthPoints = 100f;
         [SerializeField] private float destroyTime = 5f;
-        [SerializeField] private float destroyTimeWithLoot = 30f;
+        [SerializeField] private float destroyTimeWithLoot = 100f;
 
         private LifeBarController _lifeBarController;
         private DamageTextSpawner _damageTextSpawner;
@@ -198,7 +198,8 @@ namespace ResourcesHealth
 
             if (!CompareTag("Player"))
 			{
-                _death = StartCoroutine(DestroyEnemy(_combatTarget == null ? destroyTime : destroyTimeWithLoot));
+                Debug.Log(GetComponent<CombatTarget>().ListLoot.Count);
+                _death = StartCoroutine(DestroyEnemy(_combatTarget.ListLoot.Count > 0 ? destroyTimeWithLoot : destroyTime));
 				PurgeManager.Instance.killedCount += 1;
 
                 if (GetComponent<AISpellController>() == null) return;
