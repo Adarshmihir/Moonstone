@@ -56,13 +56,12 @@ public class LootBag : MonoBehaviour, IAction
     public void InitLootbag(CombatTarget combatTarget)
     {
         ActualTargetLoot = combatTarget;
-        //var gold = (int) Random.Range(ActualTargetLoot.MINGold, ActualTargetLoot.MAXGold);
-        //GameManager.Instance.player.inventory.gold += gold;
         ActualLootList = ActualTargetLoot.ListLoot;
         Debug.Log(ActualTargetLoot + "je suis le combat target");
         if (ActualLootList.Count > 0)
         {
             GameManager.Instance.uiManager.LootBagGO.SetActive(true);
+            GameManager.Instance.uiManager.InventoryGO.SetActive(true);
             GetComponent<StaticInterface>().inventory.Clear();
             foreach (var loot in ActualLootList)
             {
@@ -109,5 +108,6 @@ public class LootBag : MonoBehaviour, IAction
         
         GetComponent<StaticInterface>().inventory.Clear();
         GameManager.Instance.uiManager.LootBagGO.SetActive(false);
+        GameManager.Instance.uiManager.InventoryGO.SetActive(false);
     }
 }

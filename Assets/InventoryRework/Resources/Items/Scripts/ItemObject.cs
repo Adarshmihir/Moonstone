@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Combat;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -39,7 +40,8 @@ public class ItemObject : ScriptableObject {
     [TextArea(15, 20)] public string description;
     [TextArea(4, 20)] public string recapStats; 
     public Item2 data = new Item2();
-
+    [SerializeField] private Spell spell;
+    public Spell Spell => spell;
     
     public AnimatorOverrideController AnimatorOverride=> animatorOverride;
     public float WeaponRange => weaponRange;
