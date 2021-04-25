@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -168,9 +168,12 @@ public class EnchantressUI : MonoBehaviour {
         }
     }
 
-    public void ResetStat() {
-        if(Inventory.instance.gold <= EnchantressDefaultPrice)
+    public void ResetStat()
+    {
         if (selectedButton) {
+            if(GameManager.Instance.player.inventory.gold <= EnchantressDefaultPrice){
+                return;
+            }
             ItemBuff[] buffs = enchantressSlot.item.buffs;
             List<ItemBuff> newBuffs = new List<ItemBuff>();
 
