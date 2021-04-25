@@ -108,7 +108,7 @@ public class EnchantressUI : MonoBehaviour {
 
     public void CloseMenu() {
         if (!GameManager.Instance.uiManager.EnchantressGO.activeSelf) return;
-
+    
         Debug.Log(enchantressSlot.ItemObject);
 
         GameManager.Instance.uiManager.EnchantressGO.SetActive(false);
@@ -169,6 +169,7 @@ public class EnchantressUI : MonoBehaviour {
     }
 
     public void ResetStat() {
+        if(Inventory.instance.gold <= EnchantressDefaultPrice)
         if (selectedButton) {
             ItemBuff[] buffs = enchantressSlot.item.buffs;
             List<ItemBuff> newBuffs = new List<ItemBuff>();
