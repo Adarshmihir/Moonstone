@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: 14438333-0600-4af6-a992-819143de5807
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Je t'ai d\xE9j\xE0 donn\xE9 ce que tu voulais.. Laisse moi je t'en supplie."
+  text: "Je t'ai d\xE9j\xE0 donn\xE9 ce que tu voulais. Laisse-moi je t'en supplie."
   children: []
   rect:
     serializedVersion: 2
@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Name: 585d7a78-94f0-4053-a70b-0ba0c5be7394
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Arf.. Tu m'as eu.. Je t'en prie \xE9pargne moi, j'ai \xE9t\xE9 manipul\xE9
-    par ce satan\xE9 mage.. Tiens prends cette Moonstone et laisse moi.."
+  text: "Arf. Tu m'as eu. Je t'en prie \xE9pargne moi, j'ai \xE9t\xE9 manipul\xE9
+    par ce satan\xE9 mage.. Tiens prends cette Moonstone et laisse-moi.."
   children: []
   rect:
     serializedVersion: 2
