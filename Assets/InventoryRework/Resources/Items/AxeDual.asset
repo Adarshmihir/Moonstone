@@ -45,3 +45,4 @@ MonoBehaviour:
       value: 0
       min: 15
       max: 35
+  spell: {fileID: 11400000, guid: 2fbec5f20aae04a6d9abcafab6bb7536, type: 2}
