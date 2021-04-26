@@ -53,11 +53,9 @@ namespace Stats
             GameObject gameObjectToReturn = GameObject.Find(type + "_Number");
             if (gameObjectToReturn)
             {
-                Debug.Log("uuiiiii");
                 return gameObjectToReturn;
             }
 
-            Debug.Log("noooooooooo");
             return null;
         }
 

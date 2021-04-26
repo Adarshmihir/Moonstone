@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
             equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
         _animator = GetComponent<Animator>();
+        StatTextUpdate();
     }
 
     public static float bonushealth = 5f;
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
             equipment.Load();
         }
 
-        StatTextUpdate();
+        
     }
 
     public void InitializeStats() {

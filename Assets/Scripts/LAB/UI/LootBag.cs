@@ -66,6 +66,7 @@ public class LootBag : MonoBehaviour, IAction
             foreach (var loot in ActualLootList)
             {
                 Debug.Log("init new loot");
+                Debug.Log(loot);
                 GetComponent<StaticInterface>().inventory.AddItem(new Item2(loot), 1);
             }
         }

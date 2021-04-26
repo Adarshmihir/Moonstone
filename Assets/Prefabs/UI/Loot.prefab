@@ -188,7 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff213e67c1672f04d8ca8518d9160019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: c370cea16896fdc41ba860dea0b0ff21, type: 2}
+  inventory: {fileID: 11400000, guid: 6012f6ffde05c4c4e9c94b287f1a97ef, type: 2}
+  goldText: {fileID: 0}
   slots:
   - {fileID: 5910089641604508519}
   - {fileID: 2520123302862480711}
