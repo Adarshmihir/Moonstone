@@ -70,23 +70,17 @@ public class Player : MonoBehaviour
             inventory.Load();
             equipment.Load();
         }
+
+        StatTextUpdate();
     }
 
     public void InitializeStats() {
-        stats = new List<Stat>();
         StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
-        foreach (StatTypes stat in Enum.GetValues(typeof(StatTypes)))
-        {
-            Stat statToAdd = new Stat(new CharacterStat(5),
-                statList.getNumberGameObject(stat), stat);
-            stats.Add(statToAdd);
-        }
         UILife = statList.getNumberGameObject("Health");
         UIMana = statList.getNumberGameObject("Ressources");
 
         StatTextUpdate();
 
-        StatTextUpdate();
     }
     public void InitializePlayer()
     {
@@ -95,7 +89,7 @@ public class Player : MonoBehaviour
     }
 
     public void AddModifier(StatModifier statMod) {
-        foreach (var stat in stats) {
+        /*foreach (var stat in stats) {
             if (stat.StatName == statMod.statType)
             {
                 if (stat.StatName == StatTypes.Stamina)
@@ -110,12 +104,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        StatTextUpdate();
+        StatTextUpdate();*/
     }
 
     public void RemoveModifier(StatModifier statMod)
     {
-        foreach (var stat in stats)
+        /*foreach (var stat in stats)
         {
             if (stat.StatName == statMod.statType)
             {
@@ -132,19 +126,21 @@ public class Player : MonoBehaviour
             }
         }
 
-        StatTextUpdate();
+        StatTextUpdate();*/
     }
 
     public void StatTextUpdate() {
-        foreach (var stat in stats) {
-            if (stat.statGameObject) {
-                if (stat.charStat.BaseValue == stat.charStat.Value) {
-                    stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString();
-                }
-                else {
-                    stat.statGameObject.GetComponent<Text>().text = stat.charStat.BaseValue.ToString() + " (+" +
-                                                                    (stat.charStat.Value - stat.charStat.BaseValue)
-                                                                    .ToString() + ")";
+        StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
+        
+        foreach (var stat in attributes)
+        {
+            statList.getNumberGameObject(stat.type);
+            if (statList.getNumberGameObject(stat.type))
+            {
+                statList.getNumberGameObject(stat.type).GetComponent<Text>().text = stat.value.BaseValue.ToString();
+                if (stat.value.ModifiedValue > 0)
+                {
+                    statList.getNumberGameObject(stat.type).GetComponent<Text>().text += " (+"+stat.value.ModifiedValue+")";
                 }
             }
         }
@@ -348,7 +344,7 @@ public class Player : MonoBehaviour
 
     public void SetAnimatorPlayer(InventorySlot2 _slot)
     {
-        if (weaponRightTransform != null || weaponLeftTransform != null || _slot.ItemObject.AnimatorOverride != null)
+        if ((weaponRightTransform != null || weaponLeftTransform != null) && _slot.ItemObject.AnimatorOverride != null)
         {
             _animator.runtimeAnimatorController = _slot.ItemObject.AnimatorOverride;
         }
