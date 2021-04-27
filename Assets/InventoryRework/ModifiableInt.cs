@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ModifiedEvent();
-
 [System.Serializable]
 public class ModifiableInt
 {
-    [SerializeField] private int baseValue;
+    [SerializeField]
+    private int baseValue;
 
     public int BaseValue
     {
         get { return baseValue; }
         set
         {
-            baseValue = value;
-             UpdateModifiedValue();
+            baseValue = value; 
+            UpdateModifiedValue();
         }
     }
 
-    [SerializeField] private int modifiedValue;
+    [SerializeField]
+    private int modifiedValue;
 
     public int ModifiedValue
     {
-        get { return modifiedValue; }
+        get { return modifiedValue; } 
         private set { modifiedValue = value; }
     }
 
@@ -32,7 +33,8 @@ public class ModifiableInt
     public event ModifiedEvent ValueModified;
     public ModifiableInt(ModifiedEvent method = null)
     {
-        modifiedValue = BaseValue;
+        
+        ModifiedValue = baseValue;
         if (method != null)
             ValueModified += method;
     }
@@ -68,4 +70,5 @@ public class ModifiableInt
         modifiers.Remove(_modifier);
         UpdateModifiedValue();
     }
+
 }

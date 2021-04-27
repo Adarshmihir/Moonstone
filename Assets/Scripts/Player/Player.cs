@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float life;
     public float mana;
     GameObject UIMana;
-    public List<Stat> stats;
+    //public List<Stat> stats;
     public int level;
     public float BONUS_HEATH_PER_POINT = 5f;
 
@@ -47,31 +47,19 @@ public class Player : MonoBehaviour
         
         boneCombiner = new BoneCombiner(gameObject);
         
-        for (int i = 0; i < attributes.Length; i++) {
-            attributes[i].SetParent(this);
-        }
-
         for (int i = 0; i < equipment.GetSlots.Length; i++) {
             equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
             equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
         _animator = GetComponent<Animator>();
-        StatTextUpdate();
+        
     }
 
     public static float bonushealth = 5f;
     // Update is called once per frame
     void Update() {
-        /*if (Input.GetKeyDown(KeyCode.Space)) {
-            inventory.Save();
-            equipment.Save();
-        }
-
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
-            inventory.Load();
-            equipment.Load();
-        }*/
-
+        // a dégager si possible  hors de l'update
+        StatTextUpdate();
         
     }
 
@@ -79,7 +67,9 @@ public class Player : MonoBehaviour
         StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
         UILife = statList.getNumberGameObject("Health");
         UIMana = statList.getNumberGameObject("Ressources");
-
+        for (int i = 0; i < attributes.Length; i++) {
+            attributes[i].SetParent(this);
+        }
         StatTextUpdate();
 
     }
@@ -131,17 +121,18 @@ public class Player : MonoBehaviour
     }
 
     public void StatTextUpdate() {
-        StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
         
+        StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
+
         foreach (var stat in attributes)
         {
-            statList.getNumberGameObject(stat.type);
+            //Debug.Log(stat.type);
             if (statList.getNumberGameObject(stat.type))
             {
                 statList.getNumberGameObject(stat.type).GetComponent<Text>().text = stat.value.BaseValue.ToString();
-                if (stat.value.ModifiedValue > 0)
+                if ((stat.value.ModifiedValue - stat.value.BaseValue)  > 0)
                 {
-                    statList.getNumberGameObject(stat.type).GetComponent<Text>().text += " (+"+stat.value.ModifiedValue+")";
+                    statList.getNumberGameObject(stat.type).GetComponent<Text>().text += " (+"+ (stat.value.ModifiedValue - stat.value.BaseValue) +")";
                 }
             }
         }
@@ -150,14 +141,14 @@ public class Player : MonoBehaviour
     }
 
     public void AddPointToStat() {
-        string name = EventSystem.current.currentSelectedGameObject.name;
-        name = name.Replace("_Button", "");
-        foreach (var stat in stats) {
-            if (stat.StatName.ToString() == name) {
+       string name = EventSystem.current.currentSelectedGameObject.name;
+       name = name.Replace("_Button", "");
+        foreach (var stat in attributes) {
+            if (stat.type.ToString() == name) {
                 StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
-                stat.charStat.IncrementBaseValue(2);
+                stat.value.BaseValue+=1;
 
-                if (stat.StatName == StatTypes.Stamina)
+                if (stat.type == StatTypes.Stamina)
                 {
                     this.GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT);
                 }
@@ -175,7 +166,7 @@ public class Player : MonoBehaviour
 
     public void ResetStat()
     {
-        foreach (Stat stat in stats)
+        /*foreach (Stat stat in stats)
         {
             if (stat.StatName == StatTypes.Stamina)
             {
@@ -185,7 +176,7 @@ public class Player : MonoBehaviour
         }
 
         GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().ToggleReset(level);
-        this.StatTextUpdate();
+        this.StatTextUpdate();*/
     }
 
     public void OnTriggerEnter(Collider other) {
@@ -223,6 +214,8 @@ public class Player : MonoBehaviour
                             attributes[j].value.RemoveModifier(_slot.item.buffs[i]);
                     }
                 }
+
+                StatTextUpdate();
                 if (_slot.ItemObject.characterDisplay != null || _slot.ItemObject.characterDisplayRight != null || _slot.ItemObject.characterDisplayLeft != null )
                 {
                     switch (_slot.AllowedItems[0])
@@ -290,8 +283,11 @@ public class Player : MonoBehaviour
                     {
                         if (attributes[j].type == _slot.item.buffs[i].attribute)
                             attributes[j].value.AddModifier(_slot.item.buffs[i]);
+                            Debug.Log(attributes[j].value.ModifiedValue);
                     }
                 }
+
+                StatTextUpdate();
                 if (_slot.ItemObject.characterDisplay != null || _slot.ItemObject.characterDisplayRight != null || _slot.ItemObject.characterDisplayLeft != null )
                 {
                     

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 public class hasInventory : MonoBehaviour {
-    public InventoryObject inventory;
+    /*public InventoryObject inventory;
     public InventoryObject equipment;
     public AttributesList[] attributes;
 
@@ -126,5 +126,5 @@ public class AttributesList
     public void AttributeModified()
     {
         parent.AttributeModified(this);
-    }
+    }*/
 }

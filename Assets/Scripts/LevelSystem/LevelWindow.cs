@@ -123,6 +123,6 @@ public class LevelWindow : MonoBehaviour
 
         GameManager.Instance.player.GetComponent<Health>().addHealthPlayer(GameManager.Instance.player.BONUS_HEATH_PER_POINT);
         GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int) GameManager.Instance.player.BONUS_HEATH_PER_POINT);
-        GameManager.Instance.player.StatTextUpdate();
+        //GameManager.Instance.player.StatTextUpdate();
     }
 }

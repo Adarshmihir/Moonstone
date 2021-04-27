@@ -44,7 +44,7 @@ public abstract class UserInterface : MonoBehaviour {
     void Update() {
         slotsOnInterface.UpdateSlotDisplay();
         if (goldText != null)
-            goldText.text = inventory.gold.ToString();
+            goldText.text = GameManager.Instance.player.inventory.gold.ToString();
     }
 
     public abstract void CreateSlots();

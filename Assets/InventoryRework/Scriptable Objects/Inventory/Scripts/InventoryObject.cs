@@ -34,7 +34,7 @@ public class InventoryObject : ScriptableObject {
             return false;
         
         InventorySlot2 slot = FindItemOnInventory(_item);
-        Debug.Log(slot);
+        
         if(!database.ItemObjects[_item.Id].stackable || slot == null)
         {
             SetEmptySlot(_item, _amount);
@@ -81,29 +81,7 @@ public class InventoryObject : ScriptableObject {
         return null;
     }
 
-    [ContextMenu("Save")]
-    public void Save() {
-        IFormatter formatter = new BinaryFormatter();
-        Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create,
-            FileAccess.Write);
-        formatter.Serialize(stream, Container);
-        stream.Close();
-        Debug.Log("Inventory successfully saved");
-    }
-
-    [ContextMenu("Load")]
-    public void Load() {
-        if (File.Exists(string.Concat(Application.persistentDataPath, savePath))) {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
-            Inventory2 newContainer = (Inventory2) formatter.Deserialize(stream);
-            for (int i = 0; i < GetSlots.Length; i++) {
-                GetSlots[i].UpdateSlot( newContainer.Slots[i].item, newContainer.Slots[i].amount);
-            }
-            stream.Close();
-        }
-        Debug.Log("Inventory successfully loaded");
-    }
+    
 
     [ContextMenu("Clear")]
     public void Clear() {

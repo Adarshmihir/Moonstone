@@ -128,11 +128,7 @@ namespace Combat
         }
 
         // Function calculate Dmg with flat dmg of weapon  + percent of stat of player
-        public float CalculateDamageWeapon()
-        {
-            float statValue = GameManager.Instance.player.stats.Find(x => x.StatName == CurrentStatUsing).charStat.BaseValue;
-            return Mathf.Round(weaponDamageFlat + (statValue * weaponDamagePercent));
-        }
+        
 
         public string SelectAnAnimation()
         {
