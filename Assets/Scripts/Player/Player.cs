@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     public static float bonushealth = 5f;
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        /*if (Input.GetKeyDown(KeyCode.Space)) {
             inventory.Save();
             equipment.Save();
         }
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
             inventory.Load();
             equipment.Load();
-        }
+        }*/
 
         
     }

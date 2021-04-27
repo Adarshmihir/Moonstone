@@ -32,13 +32,7 @@ public class FillPlantsBar : MonoBehaviour
     public int m_TextValue = 100;
     public string m_TextValueFormat = "0";
     // Start is called before the first frame update
-    public FillPlantsBar()
-    {
-        if (this.m_FloatTweenRunner == null)
-            this.m_FloatTweenRunner = new TweenRunner<FloatTween>();
-			
-        this.m_FloatTweenRunner.Init(this);
-    }
+    
     
     void Start()
     {
@@ -119,6 +113,7 @@ public class FillPlantsBar : MonoBehaviour
             questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "1");
         }
         player.GetComponent<PlayerFX>().PlayEatPlant();
+        
     }
 
     public void TakeDamage(float amount)
