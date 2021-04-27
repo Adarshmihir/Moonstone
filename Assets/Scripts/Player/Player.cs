@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
         // a dégager si possible  hors de l'update
-        StatTextUpdate();
+        //StatTextUpdate();
         
     }
 
@@ -124,9 +124,17 @@ public class Player : MonoBehaviour
         
         StatList statList = GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>();
 
-        foreach (var stat in attributes)
+        foreach (var child in statList.GetComponentsInChildren<StatNumberUpdate>())
         {
-            //Debug.Log(stat.type);
+            foreach (var stat in attributes)
+            {
+                if (child.type == stat.type)
+                {
+                    child.updateStatefield(stat.value.BaseValue, stat.value.ModifiedValue);
+                }
+            }
+            
+            /*//Debug.Log(stat.type);
             if (statList.getNumberGameObject(stat.type))
             {
                 statList.getNumberGameObject(stat.type).GetComponent<Text>().text = stat.value.BaseValue.ToString();
@@ -134,7 +142,7 @@ public class Player : MonoBehaviour
                 {
                     statList.getNumberGameObject(stat.type).GetComponent<Text>().text += " (+"+ (stat.value.ModifiedValue - stat.value.BaseValue) +")";
                 }
-            }
+            }*/
         }
         UILife.GetComponent<Text>().text = this.GetComponent<Health>().MaxHealthPoints.ToString();
         UIMana.GetComponent<Text>().text = GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().maxEnergy.ToString();
@@ -166,17 +174,17 @@ public class Player : MonoBehaviour
 
     public void ResetStat()
     {
-        /*foreach (Stat stat in stats)
+        foreach (var stat in attributes)
         {
-            if (stat.StatName == StatTypes.Stamina)
+            if (stat.type == StatTypes.Stamina)
             {
-                this.GetComponent<Health>().addHealthPlayer(-(stat.charStat.BaseValue - 5f)/2 * BONUS_HEATH_PER_POINT);
+                this.GetComponent<Health>().addHealthPlayer(-(stat.value.BaseValue) * BONUS_HEATH_PER_POINT);
             }
-            stat.charStat.ResetBaseValue(5);
+            stat.value.BaseValue = 0;
         }
 
         GameManager.Instance.uiManager.StatsCanvasGO.GetComponent<StatList>().ToggleReset(level);
-        this.StatTextUpdate();*/
+        StatTextUpdate();
     }
 
     public void OnTriggerEnter(Collider other) {
