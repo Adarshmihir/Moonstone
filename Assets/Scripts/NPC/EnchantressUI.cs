@@ -25,8 +25,8 @@ public class EnchantressUI : MonoBehaviour {
     private Item EquipmentToEnchant;
     private InventorySlot2 toEnchant;
     private List<ItemBuff> modifierList = new List<ItemBuff>();
-    Color selectedColor = Color.blue;
-    Color unSelectedColor = Color.white;
+    public Color selectedColor = Color.blue;
+    public Color unSelectedColor = Color.white;
 
     private float EnchantressDefaultPrice = 50f;
 
@@ -55,7 +55,7 @@ public class EnchantressUI : MonoBehaviour {
     //Generate a modifier list when an Item is dropped on enchanteress UI
     public void GenerateModifierList(InventorySlot2 _slot) {
         foreach (var buff in _slot.item.buffs) {
-            var go = Instantiate(ModTextPrefab, statContainer, true);
+            var go = Instantiate(ModTextPrefab, statContainer);
             EnchantressModButton modButton = go.GetComponent<EnchantressModButton>();
             modButton.TextModButton.text = buff.attribute + " : " + buff.value;
             modButton.buff = buff;
@@ -64,7 +64,7 @@ public class EnchantressUI : MonoBehaviour {
 
     public void createStatsDisplay(ItemBuff[] buffs) {
         foreach (var buff in buffs) {
-            var go = Instantiate(ModTextPrefab, statContainer, true);
+            var go = Instantiate(ModTextPrefab, statContainer);
             EnchantressModButton modButton = go.GetComponent<EnchantressModButton>();
             modButton.TextModButton.text = buff.attribute + " : " + buff.value;
             modButton.buff = buff;

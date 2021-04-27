@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -58,5 +59,12 @@ public class PauseMenuManager : MonoBehaviour
             Time.timeScale = 0f;
             gameIsPaused = true;
         }
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
+        //Destroy(GameManager.Instance.gameObject);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
