@@ -4,7 +4,7 @@ using Combat;
 using UnityEngine;
 
 public class EquipSlot : InventorySlot
-{
+{/*
     public override void AddItem(Item newItem)
     {
     if (newItem is Equipment || newItem is Weapon)
@@ -50,6 +50,6 @@ public class EquipSlot : InventorySlot
 
     public override void UseItem()
     {
-    }
+    }*/
 
 }

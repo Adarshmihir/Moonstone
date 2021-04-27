@@ -15,7 +15,7 @@ public struct equipementModifier
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class Equipment : Item {
-    public equipementModifier[] equipementMods;
+    /*public equipementModifier[] equipementMods;
 
     //A PASSER EN PROTECTED QUAND ON AURA FAIT UN NAMESPACE INVENTAIRE-STATS
     public List<StatModifier> StatModifiers;
@@ -63,7 +63,7 @@ public class Equipment : Item {
             StatModifier newMod = StatModifier.CreateInstance(equipementMods[i].value, equipementMods[i].modType, this ,equipementMods[i].statType);
             StatModifiers.Add(newMod);
         }
-    }
+    }*/
 }
 
 

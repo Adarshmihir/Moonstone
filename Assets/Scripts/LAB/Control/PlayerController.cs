@@ -29,6 +29,7 @@ namespace Control
         // Update is called once per frame
         private void Update()
         {
+            Debug.Log(EventSystem.current.IsPointerOverGameObject());
             if (_health.IsDead || EventSystem.current.IsPointerOverGameObject()) return;
 
             if (InteractWithDialogue()) return;
