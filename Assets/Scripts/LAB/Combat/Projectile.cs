@@ -192,7 +192,14 @@ namespace Combat
                 }
                 else if (!Attacker.CompareTag(targetHealth.tag))
                 {
-                    targetHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                    if (Attacker.CompareTag("Player"))
+                    {
+                        targetHealth.TakeDamage(Spell.SpellDamage + GameManager.Instance.player.attributes[(int)StatTypes.Intelligence].value.ModifiedValue * GameManager.Instance.player.BONUS_SPELL_PER_POINT, false, Attacker);
+                    }
+                    else
+                    {
+                        targetHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                    }
                 }
             }
         }
@@ -210,7 +217,14 @@ namespace Combat
             }
             else if (!Attacker.CompareTag(colliderHealth.tag))
             {
-                colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                if (Attacker.CompareTag("Player"))
+                {
+                    colliderHealth.TakeDamage(Spell.SpellDamage + GameManager.Instance.player.attributes[(int)StatTypes.Intelligence].value.ModifiedValue * GameManager.Instance.player.BONUS_SPELL_PER_POINT, false, Attacker);
+                }
+                else
+                {
+                    colliderHealth.TakeDamage(Spell.SpellDamage, false, Attacker);
+                }
                 colliderHealth.TakeDot(Spell, Attacker);
             }
         }
@@ -249,7 +263,14 @@ namespace Combat
                     }
                     else if (!Attacker.CompareTag(targetHealth.tag))
                     {
-                        targetHealth.TakeDamage(Spell.DotDamage, false, Attacker);
+                        if (Attacker.CompareTag("Player"))
+                        {
+                            targetHealth.TakeDamage(Spell.DotDamage + GameManager.Instance.player.attributes[(int)StatTypes.Intelligence].value.ModifiedValue * GameManager.Instance.player.BONUS_SPELL_PER_POINT, false, Attacker);
+                        }
+                        else
+                        {
+                            targetHealth.TakeDamage(Spell.DotDamage, false, Attacker);
+                        }
                     }
                 }
             }

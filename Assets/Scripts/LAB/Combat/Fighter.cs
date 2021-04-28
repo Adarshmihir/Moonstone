@@ -25,6 +25,7 @@ namespace Combat
 
         public Health Target { get; private set; }
 
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -112,16 +113,16 @@ namespace Combat
 
                 foreach (var slot in GetComponent<Player>().equipment.GetSlots)
                 {
-                    if (slot.ItemObject != null && (slot.ItemObject.type[1] == ItemType.UniqueWeapon || slot.ItemObject.type[1] == ItemType.DualWeapon) )
+                    if (slot.ItemObject != null && slot.ItemObject.type[0] == ItemType.Weapon && (slot.ItemObject.type[1] == ItemType.UniqueWeapon || slot.ItemObject.type[1] == ItemType.DualWeapon) )
                     {
-                         Target.TakeDamage(GetComponent<Player>().CalculateDamage(slot.ItemObject.data), Random.Range(0, 100) / 100f < criticalChance, this);
+                         Target.TakeDamage(GetComponent<Player>().CalculateDamage(slot.ItemObject.data), Random.Range(0, 100) / 100f < criticalChance + GameManager.Instance.player.attributes[(int)StatTypes.Perception].value.ModifiedValue * GameManager.Instance.player.BONUS_CRIT_PER_POINT, this);
                     }
-                    else if(slot.ItemObject != null && slot.ItemObject.type[1] == ItemType.DoubleHandWeapon){
+                    else if(slot.ItemObject != null && slot.ItemObject.type[0] == ItemType.Weapon && slot.ItemObject.type[1] == ItemType.DoubleHandWeapon){
                         AttackAllEnemiesAround(slot.ItemObject);
                     }
                     else if (slot.AllowedItems[0] == ItemType.Weapon && slot.ItemObject == null)
                     {
-                        Target.TakeDamage(GetComponent<Player>().CalculateDamage(), Random.Range(0, 100) / 100f < criticalChance, this);
+                        Target.TakeDamage(GetComponent<Player>().CalculateDamage(), Random.Range(0, 100) / 100f < criticalChance + +GameManager.Instance.player.attributes[(int)StatTypes.Perception].value.ModifiedValue * GameManager.Instance.player.BONUS_CRIT_PER_POINT, this);
                     }
                 }
                
@@ -132,7 +133,7 @@ namespace Combat
                 // Check if target is in front of character and visible
                 if (!GetIsInFieldOfView(Target.transform,
                     weapon.WeaponRadius) /* || !GetIsAccessible(_target.transform)*/) return;
-                Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance, this);
+                Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance , this);
             }
         }
 

@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     //public List<Stat> stats;
     public int level;
     public float BONUS_HEATH_PER_POINT = 5f;
-
+    public float BONUS_CRIT_PER_POINT = 0.01f;
+    public float BONUS_SPELL_PER_POINT = 1f;
     public bool isInDungeon = false;
     public bool hasKilledABoss = false;
 
@@ -229,9 +230,11 @@ public class Player : MonoBehaviour
                     switch (_slot.AllowedItems[0])
                     {
                         case ItemType.Helmet:
+                            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Pet);
                             //Destroy(helmet.gameObject);
                             break;
                         case ItemType.Weapon:
+                            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Weapon);
                             switch (_slot.ItemObject.type[1])
                             {
                                 case ItemType.UniqueWeapon:
@@ -263,6 +266,7 @@ public class Player : MonoBehaviour
                             //Destroy(boots.gameObject);
                             break;
                         case ItemType.Chest:
+                            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(null, CastSource.Armor);
                             //Destroy(chest.gameObject);
                             break;
                     }
@@ -291,7 +295,6 @@ public class Player : MonoBehaviour
                     {
                         if (attributes[j].type == _slot.item.buffs[i].attribute)
                             attributes[j].value.AddModifier(_slot.item.buffs[i]);
-                            Debug.Log(attributes[j].value.ModifiedValue);
                     }
                 }
 
@@ -303,6 +306,8 @@ public class Player : MonoBehaviour
                     {
                         case ItemType.Helmet:
                             //helmetTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay,_slot.ItemObject.boneNames);
+                            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(_slot.ItemObject.Spell, CastSource.Pet);
+                            Debug.Log("PATATE");
                             break;
                         case ItemType.Weapon:
                             GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(_slot.ItemObject.Spell, CastSource.Weapon);
@@ -331,6 +336,7 @@ public class Player : MonoBehaviour
                             //bootsTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
                             break;
                         case ItemType.Chest:
+                            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(_slot.ItemObject.Spell, CastSource.Armor);
                             //chestTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
                             break;
                     }

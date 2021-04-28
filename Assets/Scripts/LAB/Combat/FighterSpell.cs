@@ -120,6 +120,12 @@ namespace Combat
 
             InitSpellToCast(castSource);
 
+            if (_spellToCast == null)
+            {
+                GameManager.Instance.FeedbackMessage.SetMessage("Vous n'avez pas de sort lié à cette touche");
+                return;
+            }
+
             if (_spellToCast.IsSpellOnCooldown()) return;
 
             if (CompareTag("Player") && !energyPlayer.HasEnoughEnergy(_spellToCast.spellCost))
