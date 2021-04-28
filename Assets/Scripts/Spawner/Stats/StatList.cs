@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -15,14 +16,12 @@ namespace Stats
         public GameObject PointsAvailable;
         public GameObject PointsToSpend;
         
-        public bool bLvlupactive;
+        public bool bLvlupactive = false;
         public int lvlup_Points;
 
         private void Start()
         {
-            bLvlupactive = false;
-            LevelUpStatButtons.SetActive(false);
-            PointsAvailable.SetActive(false);
+           
         }
         
         //Activate or deactivate lvl up buttons
@@ -32,9 +31,8 @@ namespace Stats
             {
                 lvlup_Points += 1;
                 PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
+                bLvlupactive = true;
             }
-            LevelUpStatButtons.SetActive(lvlupactive);
-            PointsAvailable.SetActive(lvlupactive);
         }
 
         public void ToggleReset(int level)
@@ -44,6 +42,7 @@ namespace Stats
             if (lvlup_Points != 0)
             {
                 PointsToSpend.GetComponent<Text>().text = lvlup_Points.ToString();
+                bLvlupactive = true;
                 LevelUpStatButtons.SetActive(true);
                 PointsAvailable.SetActive(true);
             }
@@ -81,7 +80,9 @@ namespace Stats
 
         public void AddPointToStat()
         {
-            GameManager.Instance.player.AddPointToStat();
+            
+            GameManager.Instance.player.AddPointToStat(PointsToSpend);
+            
         }
 
 

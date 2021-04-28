@@ -198,7 +198,6 @@ namespace ResourcesHealth
 
             if (!CompareTag("Player"))
 			{
-                Debug.Log(GetComponent<CombatTarget>().ListLoot.Count);
                 var gold = (int) Random.Range(GetComponent<CombatTarget>().MINGold, GetComponent<CombatTarget>().MAXGold);
                 GameManager.Instance.player.inventory.gold += gold;
                 _death = StartCoroutine(DestroyEnemy(_combatTarget.ListLoot.Count > 0 ? destroyTimeWithLoot : destroyTime));

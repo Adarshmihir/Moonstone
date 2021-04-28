@@ -47,9 +47,19 @@ public class GameManager : MonoBehaviour
         {
             uiManager.InventoryGO.SetActive(!uiManager.InventoryGO.activeSelf);
         }
+
         
         if (Input.GetKeyDown(KeyCode.C))
+        {
             uiManager.StatsCanvasGO.SetActive(!uiManager.StatsCanvasGO.activeSelf);
+            uiManager.StatsCanvasGO.GetComponent<StatList>().PointsAvailable.SetActive(true);
+            if (uiManager.StatsCanvasGO.GetComponent<StatList>().bLvlupactive)
+            {
+                Debug.Log(uiManager.StatsCanvasGO.GetComponent<StatList>().bLvlupactive);
+                uiManager.StatsCanvasGO.GetComponent<StatList>().LevelUpStatButtons.SetActive(true);
+            }
+            
+        }
 
         if (Input.GetButtonDown("PurgeMenu")) {
             uiManager.PurgeMenuGO.GetComponent<PurgeMenu>().Fade();

@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
     private Transform weaponLeftTransform;
     
     
-    public Transform weaponTransformRight;
-    public Transform weaponTransformLeft;
+    public Transform HandTransformRight;
+    public Transform HandTransformLeft;
 
 
     private BoneCombiner boneCombiner;
@@ -80,46 +80,7 @@ public class Player : MonoBehaviour
         InitializeStats();
     }
 
-    public void AddModifier(StatModifier statMod) {
-        /*foreach (var stat in stats) {
-            if (stat.StatName == statMod.statType)
-            {
-                if (stat.StatName == StatTypes.Stamina)
-                {
-                    this.GetComponent<Health>().addHealthPlayer(-(stat.charStat.Value - stat.charStat.BaseValue) * BONUS_HEATH_PER_POINT);
-                }
-                stat.charStat.AddModifier(statMod);
-
-                if (stat.StatName == StatTypes.Stamina)
-                {
-                    this.GetComponent<Health>().addHealthPlayer((stat.charStat.Value - stat.charStat.BaseValue) * BONUS_HEATH_PER_POINT);
-                }
-            }
-        }
-        StatTextUpdate();*/
-    }
-
-    public void RemoveModifier(StatModifier statMod)
-    {
-        /*foreach (var stat in stats)
-        {
-            if (stat.StatName == statMod.statType)
-            {
-                if (stat.StatName == StatTypes.Stamina)
-                {
-                    this.GetComponent<Health>().addHealthPlayer(-(stat.charStat.Value - stat.charStat.BaseValue) * BONUS_HEATH_PER_POINT);
-                }
-                stat.charStat.RemoveModifier(statMod);
-
-                if (stat.StatName == StatTypes.Stamina)
-                {
-                    this.GetComponent<Health>().addHealthPlayer((stat.charStat.Value - stat.charStat.BaseValue) * BONUS_HEATH_PER_POINT);
-                }
-            }
-        }
-
-        StatTextUpdate();*/
-    }
+    
 
     public void StatTextUpdate() {
         
@@ -133,23 +94,15 @@ public class Player : MonoBehaviour
                 {
                     child.updateStatefield(stat.value.BaseValue, stat.value.ModifiedValue);
                 }
+                
             }
             
-            /*//Debug.Log(stat.type);
-            if (statList.getNumberGameObject(stat.type))
-            {
-                statList.getNumberGameObject(stat.type).GetComponent<Text>().text = stat.value.BaseValue.ToString();
-                if ((stat.value.ModifiedValue - stat.value.BaseValue)  > 0)
-                {
-                    statList.getNumberGameObject(stat.type).GetComponent<Text>().text += " (+"+ (stat.value.ModifiedValue - stat.value.BaseValue) +")";
-                }
-            }*/
         }
         UILife.GetComponent<Text>().text = this.GetComponent<Health>().MaxHealthPoints.ToString();
         UIMana.GetComponent<Text>().text = GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().maxEnergy.ToString();
     }
 
-    public void AddPointToStat() {
+    public void AddPointToStat(GameObject point_Number) {
        string name = EventSystem.current.currentSelectedGameObject.name;
        name = name.Replace("_Button", "");
         foreach (var stat in attributes) {
@@ -159,15 +112,17 @@ public class Player : MonoBehaviour
 
                 if (stat.type == StatTypes.Stamina)
                 {
-                    this.GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT);
+                    GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT);
+                    GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int)BONUS_HEATH_PER_POINT);
                 }
 
                 statList.lvlup_Points -= 1;
-                statList.PointsToSpendTextUpdate(statList.lvlup_Points);
-                if (statList.lvlup_Points == 0) {
-                    statList.ToggleLevelUp(false);
+                point_Number.GetComponent<Text>().text = statList.lvlup_Points.ToString();
+                if (statList.lvlup_Points <= 0)
+                {
+                    statList.LevelUpStatButtons.SetActive(false);
+                    statList.bLvlupactive = false;
                 }
-
                 StatTextUpdate();
             }
         }
@@ -180,6 +135,7 @@ public class Player : MonoBehaviour
             if (stat.type == StatTypes.Stamina)
             {
                 this.GetComponent<Health>().addHealthPlayer(-(stat.value.BaseValue) * BONUS_HEATH_PER_POINT);
+                GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int)(-(stat.value.BaseValue) * BONUS_HEATH_PER_POINT));
             }
             stat.value.BaseValue = 0;
         }
@@ -221,6 +177,11 @@ public class Player : MonoBehaviour
                     {
                         if (attributes[j].type == _slot.item.buffs[i].attribute)
                             attributes[j].value.RemoveModifier(_slot.item.buffs[i]);
+                        if (attributes[j].type == StatTypes.Stamina)
+                        {
+                            GetComponent<Health>().addHealthPlayer(-(BONUS_HEATH_PER_POINT*(attributes[j].value.ModifiedValue-attributes[j].value.BaseValue)));
+                            GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int)-(BONUS_HEATH_PER_POINT*(attributes[j].value.ModifiedValue-attributes[j].value.BaseValue)));
+                        }
                     }
                 }
 
@@ -294,7 +255,19 @@ public class Player : MonoBehaviour
                     for (int j = 0; j < attributes.Length; j++)
                     {
                         if (attributes[j].type == _slot.item.buffs[i].attribute)
+                        {
                             attributes[j].value.AddModifier(_slot.item.buffs[i]);
+                            if (attributes[j].type == StatTypes.Stamina)
+                            {
+                                Debug.Log("oof v'la la stamina");
+                                GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT *
+                                                                       (attributes[j].value.ModifiedValue -
+                                                                        attributes[j].value.BaseValue));
+                                GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>()
+                                    .addEnergyPlayer((int) BONUS_HEATH_PER_POINT * (attributes[j].value.ModifiedValue -
+                                        attributes[j].value.BaseValue));
+                            }
+                        }
                     }
                 }
 
@@ -307,23 +280,23 @@ public class Player : MonoBehaviour
                         case ItemType.Helmet:
                             //helmetTransform = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay,_slot.ItemObject.boneNames);
                             GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(_slot.ItemObject.Spell, CastSource.Pet);
-                            Debug.Log("PATATE");
+                            
                             break;
                         case ItemType.Weapon:
                             GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(_slot.ItemObject.Spell, CastSource.Weapon);
                             switch (_slot.ItemObject.type[1])
                             {
                                 case ItemType.UniqueWeapon:
-                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, weaponTransformRight).transform;
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, HandTransformRight).transform;
                                     SetAnimatorPlayer(_slot);
                                     break;
                                 case ItemType.DualWeapon:
-                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplayRight, weaponTransformRight).transform;
-                                    weaponLeftTransform = Instantiate(_slot.ItemObject.characterDisplayLeft, weaponTransformLeft).transform;
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplayRight, HandTransformRight).transform;
+                                    weaponLeftTransform = Instantiate(_slot.ItemObject.characterDisplayLeft, HandTransformLeft).transform;
                                     SetAnimatorPlayer(_slot);
                                     break;
                                 case ItemType.DoubleHandWeapon:
-                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, weaponTransformRight).transform;
+                                    weaponRightTransform = Instantiate(_slot.ItemObject.characterDisplay, HandTransformRight).transform;
                                     SetAnimatorPlayer(_slot);
                                     break;
                                 default:
@@ -382,7 +355,7 @@ public class Player : MonoBehaviour
                 if (stat.type == slot.item.damageBuffStat)
                 {
                     alldamage += (stat.value.BaseValue + stat.value.ModifiedValue) *
-                                 slot.item.damageBuffValue;
+                                 slot.item.damageBuffPercentValue;
                 }
             }
         }

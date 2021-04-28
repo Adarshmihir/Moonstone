@@ -59,7 +59,7 @@ public class Item2 {
     public int Id = -1;
     public int valueFlat;
     public StatTypes damageBuffStat;
-    public float damageBuffValue;
+    public float damageBuffPercentValue;
     public ItemBuff[] buffs;
 
 
@@ -74,7 +74,7 @@ public class Item2 {
         Id = item.data.Id;
         buffs = new ItemBuff[item.data.buffs.Length];
         valueFlat = Random.Range(item.minFlat, item.maxFlat);
-        damageBuffValue = item.data.damageBuffValue;
+        damageBuffPercentValue = item.data.damageBuffPercentValue;
         for (int i = 0; i < buffs.Length; i++) {
             buffs[i] = new ItemBuff(item.data.buffs[i].min, item.data.buffs[i].max);
             buffs[i].attribute = item.data.buffs[i].attribute;

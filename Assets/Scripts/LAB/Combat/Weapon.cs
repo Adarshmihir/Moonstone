@@ -94,38 +94,11 @@ namespace Combat
 
         public override void Use() {
             base.Use();
-            SwapWeapons();
+           
         }
 
         // /!\ SI
-        private void SwapWeapons()
-        {
-            var fighter = GameManager.Instance.player.GetComponent<Fighter>();
-            var animator = GameManager.Instance.player.GetComponent<Animator>();
-            
-            (fighter.rightClone, fighter.leftClone) = Spawn(fighter.rightHandTransform, fighter.leftHandTransform, animator, fighter.rightClone, fighter.leftClone);
-            
-            Weapon oldItem = (Weapon)EquipmentManager.instance.Equip(this);
-            if (oldItem != null)
-            {
-                foreach (var mod in oldItem.StatModifiers)
-                {
-                    GameManager.Instance.player.RemoveModifier(mod);
-                }
-            }
-            foreach (var mod in StatModifiers)
-            {
-                GameManager.Instance.player.AddModifier(mod);
-            }
-            GameManager.Instance.uiManager.InventoryGO.GetComponentInChildren<chooseEquipSlot>().addEquipment(this);
-            
-            GameManager.Instance.player.GetComponent<FighterSpell>().UpdateSpell(Spell, CastSource.Weapon);
-            
-            // Remove it from the inventory
-            RemoveFromInventory();
-
-            fighter.weapon = this;
-        }
+        
 
         // Function calculate Dmg with flat dmg of weapon  + percent of stat of player
         

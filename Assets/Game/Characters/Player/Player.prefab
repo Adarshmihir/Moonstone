@@ -34,6 +34,24 @@ Transform:
   m_Father: {fileID: 7789706900591599449}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &690701910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479068553407240655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!81 &-772923694552606391
 AudioListener:
   m_ObjectHideFlags: 0
@@ -56,9 +74,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   mana: 0
-  stats: []
   level: 0
   BONUS_HEATH_PER_POINT: 5
+  BONUS_CRIT_PER_POINT: 0.01
+  BONUS_SPELL_PER_POINT: 1
   isInDungeon: 0
   hasKilledABoss: 0
   inventory: {fileID: 11400000, guid: cfa885c4b4d9f784ba65f9dbdf7bb42f, type: 2}
@@ -66,7 +85,7 @@ MonoBehaviour:
   attributes:
   - type: 0
     value:
-      baseValue: 15
+      baseValue: 0
       modifiedValue: 0
   - type: 1
     value:
@@ -78,7 +97,7 @@ MonoBehaviour:
       modifiedValue: 0
   - type: 3
     value:
-      baseValue: 50
+      baseValue: 0
       modifiedValue: 0
   - type: 4
     value:
@@ -86,8 +105,8 @@ MonoBehaviour:
       modifiedValue: 0
   animatorOverrideDefault: {fileID: 22100000, guid: 6b3734acbf86e4d50b9eb07283029956,
     type: 2}
-  weaponTransformRight: {fileID: 8479068553407060213}
-  weaponTransformLeft: {fileID: 8479068553407056289}
+  HandTransformRight: {fileID: 8479068553407060213}
+  HandTransformLeft: {fileID: 8479068553407056289}
 --- !u!114 &626093292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,24 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focus: {fileID: 0}
---- !u!114 &690701910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8479068553407240655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 0, g: 1, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &2196118782887233293
 PrefabInstance:
   m_ObjectHideFlags: 0
