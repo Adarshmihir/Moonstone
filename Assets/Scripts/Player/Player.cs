@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public float BONUS_HEATH_PER_POINT = 5f;
     public float BONUS_CRIT_PER_POINT = 0.01f;
     public float BONUS_SPELL_PER_POINT = 1f;
+    public float BONUS_REDUC_DMG_POINT = 0.1f;
     public bool isInDungeon = false;
     public bool hasKilledABoss = false;
 

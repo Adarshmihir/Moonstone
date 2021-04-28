@@ -19,20 +19,20 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
+        Name: "\xE9p\xE9e"
+        Id: 1
         valueFlat: 0
         damageBuffStat: 0
-        damageBuffValue: 0
+        damageBuffPercentValue: 0
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
+        Name: casque en fer
+        Id: 3
         valueFlat: 0
         damageBuffStat: 0
-        damageBuffValue: 0
+        damageBuffPercentValue: 0
         buffs: []
       amount: 0
   initGold: 300

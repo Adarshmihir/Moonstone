@@ -133,7 +133,7 @@ namespace Combat
                 // Check if target is in front of character and visible
                 if (!GetIsInFieldOfView(Target.transform,
                     weapon.WeaponRadius) /* || !GetIsAccessible(_target.transform)*/) return;
-                Target.TakeDamage(weapon.weaponDamageFlat, Random.Range(0, 100) / 100f < criticalChance , this);
+                Target.TakeDamage((weapon.weaponDamageFlat - GameManager.Instance.player.attributes[(int)StatTypes.Agility].value.ModifiedValue * GameManager.Instance.player.BONUS_REDUC_DMG_POINT), Random.Range(0, 100) / 100f < criticalChance , this);
             }
         }
 
