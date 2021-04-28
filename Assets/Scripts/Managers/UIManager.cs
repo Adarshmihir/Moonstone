@@ -87,6 +87,16 @@ public class UIManager : MonoBehaviour
         PurgeMenuGO.SetActive(true);
         DeathGO.SetActive(false);
     }
+
+    public void HideInventory()
+    {
+        InventoryGO.SetActive(!InventoryGO.activeSelf);
+    }
+    
+    public void HideStats()
+    {
+        StatsCanvasGO.SetActive(!StatsCanvasGO.activeSelf);
+    }
     
     
 }
