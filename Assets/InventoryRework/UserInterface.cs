@@ -137,8 +137,9 @@ public abstract class UserInterface : MonoBehaviour {
                 player.inventory.gold -= price;
                 Debug.Log(gameObject.name);
                 player.inventory.AddItem(new Item2(clickedSlot.ItemObject), 1);
-                // inventory.Add(Object.Instantiate(item));
-                Debug.Log("Item acheté : " + clickedSlot.ItemObject.data.Name);
+                
+                string message = "Item acheté : " + clickedSlot.ItemObject.data.Name;
+                GameManager.Instance.FeedbackMessage.SetMessage(message, false);
 
                 var questList = player.GetComponent<QuestManager>();
 
@@ -148,7 +149,8 @@ public abstract class UserInterface : MonoBehaviour {
                 }
             }
             else {
-                Debug.Log("Pas assez d'argent");
+                string message = "Pas assez d'argent";
+                GameManager.Instance.FeedbackMessage.SetMessage(message, false);
             }
         }
     }

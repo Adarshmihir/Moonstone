@@ -107,7 +107,7 @@ public class EnchantressUI : MonoBehaviour {
 
     public void CloseMenu() {
         if (!GameManager.Instance.uiManager.EnchantressGO.activeSelf) return;
-    
+
         Debug.Log(enchantressSlot.ItemObject);
 
         GameManager.Instance.uiManager.EnchantressGO.SetActive(false);
@@ -167,12 +167,12 @@ public class EnchantressUI : MonoBehaviour {
         }
     }
 
-    public void ResetStat()
-    {
+    public void ResetStat() {
         if (selectedButton) {
-            if(GameManager.Instance.player.inventory.gold <= EnchantressDefaultPrice){
+            if (GameManager.Instance.player.inventory.gold <= EnchantressDefaultPrice) {
                 return;
             }
+
             ItemBuff[] buffs = enchantressSlot.item.buffs;
             List<ItemBuff> newBuffs = new List<ItemBuff>();
 
@@ -192,8 +192,13 @@ public class EnchantressUI : MonoBehaviour {
 
             if (selectedBuff.attribute == modifiedBuff.attribute) {
                 selectedBuff.value = modifiedBuff.value;
-                Debug.Log("You enchanted : " + enchantressSlot.item.Name + ".\n" + initAttr + " was " +
-                          initVal + " and is now " + modifiedBuff.value);
+
+                string message = "Vous avez enchanté : " + enchantressSlot.item.Name +
+                                 ".\n" +
+                                 initAttr + " valait " +
+                                 initVal + " et vaut maintenant " + modifiedBuff.value;
+
+                GameManager.Instance.FeedbackMessage.SetMessage(message, false);
             }
             else {
                 var existing = Array.Find(buffs, buff => buff.attribute == modifiedBuff.attribute);
@@ -201,10 +206,13 @@ public class EnchantressUI : MonoBehaviour {
                 if (existing == null) {
                     selectedBuff.attribute = modifiedBuff.attribute;
                     selectedBuff.value = modifiedBuff.value;
-                    Debug.Log("You enchanted : " + enchantressSlot.item.Name + ".\n" + initAttr + " was " +
-                              initVal + " but a magic thing happened !! " + initAttr +
-                              " has changed to " + modifiedBuff.attribute + " with a new value of " +
-                              modifiedBuff.value);
+
+                    string message = "Vous avez enchanté : " + enchantressSlot.item.Name +
+                                     " \n mais quelque chose est arrivé !! \n" + initAttr + " valait " + initVal +
+                                     " mais est devenu " + modifiedBuff.attribute + " avec " + modifiedBuff.value +
+                                     " points.";
+
+                    GameManager.Instance.FeedbackMessage.SetMessage(message, false);
                 }
                 // if there is a mod that has the new mod's attribute in the list
                 else {
@@ -221,11 +229,18 @@ public class EnchantressUI : MonoBehaviour {
                     var amountAdded = modifiedBuff.value;
                     var finalVal = existingInitVal + amountAdded;
 
-                    Debug.Log("You enchanted : " + enchantressSlot.item.Name + ".\n" + initAttr + " was " +
-                              initVal + " but a magic thing happened !! " + initAttr +
-                              " disappeared but " + modifiedBuff.attribute + " has been upgraded to " +
-                               + finalVal +
-                              " from " + existingInitVal + " (+" + /*modifiedBuff.value*/amountAdded + ")");
+                    string message = "Vous avez enchanté : " +
+                                     enchantressSlot.item.Name +
+                                     ". " + initAttr + " valait " +
+                                     initVal + " \n mais quelque chose est arrivé !! \n" +
+                                     initAttr +
+                                     " a disparu mais " + modifiedBuff.attribute +
+                                     " a été augmenté a  " +
+                                     +finalVal +
+                                     " points. " +
+                                     "(+" + amountAdded + ")";
+
+                    GameManager.Instance.FeedbackMessage.SetMessage(message, false);
                 }
             }
 
@@ -238,7 +253,7 @@ public class EnchantressUI : MonoBehaviour {
             foreach (var btn in statContainer.GetComponentsInChildren<EnchantressModButton>()) {
                 Destroy(btn.gameObject);
             }
-            
+
             // ISA 15 17 21
 
             // Display updated item stats
