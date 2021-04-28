@@ -10,34 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: 2HandSword
+  m_Name: armure en acier
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 5519ef57114a18e4eb0b88a432c5ecd7, type: 3}
-  characterDisplay: {fileID: 119060, guid: c17b117a7e676e148b2ee325c1e6041d, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 01f197c061b27384d9920edeec8e0596, type: 3}
+  characterDisplay: {fileID: 7650304240485748797, guid: 5183a8a2bed7f4144a9ed495afc0d8b9,
+    type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
-  animatorOverride: {fileID: 22100000, guid: 952d6946ba30d574bba4db013603355c, type: 2}
+  animatorOverride: {fileID: 0}
   weaponRange: 2
   stackable: 0
-  type: 0300000006000000
-  minFlat: 15
-  maxFlat: 25
+  type: 01000000
+  minFlat: 0
+  maxFlat: 0
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: "\xE9p\xE9e g\xE9ante"
-    Id: 2
+    Name: Armure en acier
+    Id: 6
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffPercentValue: 0.4
+    damageBuffPercentValue: 0
     buffs:
-    - attribute: 0
+    - attribute: 1
       value: 0
       min: 10
-      max: 15
+      max: 25
     - attribute: 4
       value: 0
       min: 15
-      max: 25
-  spell: {fileID: 11400000, guid: 1bae6f7d010b84be4b4858e61c16247a, type: 2}
+      max: 30
+  spell: {fileID: 11400000, guid: 574847a17210f4bbe851777b4a7e019f, type: 2}

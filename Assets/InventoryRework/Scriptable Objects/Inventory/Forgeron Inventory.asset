@@ -19,7 +19,16 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: "\xE9p\xE9e"
+        Name: "Hache \xE0 deux mains"
+        Id: 0
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Marteau de guerre
         Id: 1
         valueFlat: 0
         damageBuffStat: 0
@@ -28,8 +37,152 @@ MonoBehaviour:
       amount: 0
     - AllowedItems: 
       item:
-        Name: casque en fer
+        Name: "Ep\xE9e \xE0 deux mains"
+        Id: 2
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Hache double
         Id: 3
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Double faux
+        Id: 4
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: "Ep\xE9e"
+        Id: 5
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Armure en Acier
+        Id: 6
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Armure en cuir
+        Id: 7
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Armure en fer
+        Id: 8
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Armure en diamant
+        Id: 9
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Casque en acier
+        Id: 10
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Casque en diamant
+        Id: 11
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Casque en fer
+        Id: 12
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: "Casque de samoura\xEF"
+        Id: 13
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: Casque de spartiate
+        Id: 14
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: "Jambi\xE8re en acier"
+        Id: 15
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: "Jambi\xE8re en fer"
+        Id: 16
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: "Jambi\xE8re phantom"
+        Id: 17
+        valueFlat: 0
+        damageBuffStat: 0
+        damageBuffPercentValue: 0
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: "Jambi\xE8re sombre"
+        Id: 18
         valueFlat: 0
         damageBuffStat: 0
         damageBuffPercentValue: 0

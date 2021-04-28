@@ -10,34 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: 2HandSword
+  m_Name: "Jambi\xE8re Sombre"
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 5519ef57114a18e4eb0b88a432c5ecd7, type: 3}
-  characterDisplay: {fileID: 119060, guid: c17b117a7e676e148b2ee325c1e6041d, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 90fdc9b4351b8e545b903c7777ff695a, type: 3}
+  characterDisplay: {fileID: 5680179102868597033, guid: ba8ee8a73fc4b91418cda0d29beba1c2,
+    type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
-  animatorOverride: {fileID: 22100000, guid: 952d6946ba30d574bba4db013603355c, type: 2}
+  animatorOverride: {fileID: 0}
   weaponRange: 2
   stackable: 0
-  type: 0300000006000000
-  minFlat: 15
-  maxFlat: 25
+  type: 02000000
+  minFlat: 0
+  maxFlat: 0
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: "\xE9p\xE9e g\xE9ante"
-    Id: 2
+    Name: 
+    Id: 18
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffPercentValue: 0.4
+    damageBuffPercentValue: 0
     buffs:
+    - attribute: 1
+      value: 0
+      min: 20
+      max: 35
     - attribute: 0
       value: 0
       min: 10
-      max: 15
-    - attribute: 4
-      value: 0
-      min: 15
-      max: 25
-  spell: {fileID: 11400000, guid: 1bae6f7d010b84be4b4858e61c16247a, type: 2}
+      max: 20
+  spell: {fileID: 11400000, guid: 981a724b85885468284c0739a8f1b604, type: 2}

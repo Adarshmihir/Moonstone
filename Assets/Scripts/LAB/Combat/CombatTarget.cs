@@ -80,9 +80,6 @@ namespace Combat
                     ListLoot.Add(temploot.LootItem);
                 }
             }
-            
-            // non utilisé
-            _items = (from loot in loots where Random.Range(0, 100) <= loot.Chance select loot.Item).ToList();
         }
 
         public void DeleteItem(Item itemToDelete)
@@ -100,18 +97,15 @@ namespace Combat
         [Serializable]
         public class Loot
         {
-            [SerializeField] private Item item;
             [SerializeField] private ItemObject lootItem;
             [SerializeField] [Range(0, 100)] private float chance;
 
             public ItemObject LootItem => lootItem;
 
             public float Chance => chance;
-            public Item Item => item;
 
             public Loot(Item _item, ItemObject _itemObject, float _chance)
             {
-                item = _item;
                 lootItem = _itemObject;
                 chance = _chance;
 

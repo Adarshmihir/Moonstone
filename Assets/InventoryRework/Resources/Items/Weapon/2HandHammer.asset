@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: 2HandHammer
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 2eebca764c4a6854586ca1f10f953a1c, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 1ca3336390b644446bfd73aaafb52855, type: 3}
   characterDisplay: {fileID: 191102, guid: cb91bba9d269e4d4690ae7cf0825b40b, type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
   recapStats: 
   data:
     Name: "Marteau G\xE9ant"
-    Id: 5
+    Id: 1
     valueFlat: 0
     damageBuffStat: 0
     damageBuffPercentValue: 0.2

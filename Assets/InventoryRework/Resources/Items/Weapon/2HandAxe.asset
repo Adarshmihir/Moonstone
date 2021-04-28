@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: 2HandAxe
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: f018eef656035e640880d7d56b4997b8, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 783c336d32f713a428f9cc9de51c178c, type: 3}
   characterDisplay: {fileID: 168620, guid: b14df74153f401b47ae9629ec7b86dfb, type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
@@ -38,6 +38,6 @@ MonoBehaviour:
       max: 25
     - attribute: 0
       value: 0
-      min: 50
-      max: 75
+      min: 18
+      max: 28
   spell: {fileID: 11400000, guid: 88c8e17d26c0841fe842290c507caf1f, type: 2}
