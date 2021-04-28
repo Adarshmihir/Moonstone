@@ -30,18 +30,18 @@ MonoBehaviour:
     Name: Hache en or
     Id: 2
     valueFlat: 0
-    damageBuffStat: 2
-    damageBuffValue: 0.35
+    damageBuffStat: 0
+    damageBuffPercentValue: 0.2
     buffs:
+    - attribute: 0
+      value: 0
+      min: 10
+      max: 20
+    - attribute: 3
+      value: 0
+      min: 15
+      max: 20
     - attribute: 2
-      value: 0
-      min: 15
-      max: 35
-    - attribute: 1
-      value: 0
-      min: 15
-      max: 35
-    - attribute: 4
       value: 0
       min: 15
       max: 35

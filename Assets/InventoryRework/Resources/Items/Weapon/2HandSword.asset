@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: New Item
+  m_Name: 2HandSword
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
   characterDisplay: {fileID: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
   recapStats: 
   data:
     Name: 
-    Id: -1
+    Id: 4
     valueFlat: 0
     damageBuffStat: 0
     damageBuffPercentValue: 0

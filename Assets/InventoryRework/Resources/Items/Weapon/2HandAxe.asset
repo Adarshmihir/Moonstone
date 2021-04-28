@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: 2HandAxe
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
+  uiDisplay: {fileID: 21300000, guid: f018eef656035e640880d7d56b4997b8, type: 3}
   characterDisplay: {fileID: 168620, guid: b14df74153f401b47ae9629ec7b86dfb, type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
@@ -20,7 +20,7 @@ MonoBehaviour:
   weaponRange: 2
   stackable: 0
   type: 0300000006000000
-  minFlat: 15
+  minFlat: 20
   maxFlat: 35
   weaponRadius: 45
   description: 
@@ -29,10 +29,15 @@ MonoBehaviour:
     Name: Hache a deux mains
     Id: 0
     valueFlat: 0
-    damageBuffStat: 4
-    damageBuffValue: 0.6
+    damageBuffStat: 0
+    damageBuffPercentValue: 0.35
     buffs:
-    - attribute: 4
+    - attribute: 1
+      value: 0
+      min: 15
+      max: 25
+    - attribute: 0
       value: 0
       min: 50
       max: 75
+  spell: {fileID: 11400000, guid: 88c8e17d26c0841fe842290c507caf1f, type: 2}

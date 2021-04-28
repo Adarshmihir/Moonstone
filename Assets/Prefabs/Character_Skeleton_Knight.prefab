@@ -3689,7 +3689,9 @@ MonoBehaviour:
   maxGold: 1000
   loots:
   - item: {fileID: 11400000, guid: 411d9bc5583834d4f9e8b97c017d7742, type: 2}
-    chance: 5
+    lootItem: {fileID: 11400000, guid: 249742ebc7ebf7147ac32780417752db, type: 2}
+    chance: 50
+  ListLoot: []
 --- !u!114 &8660210373240726152
 MonoBehaviour:
   m_ObjectHideFlags: 0

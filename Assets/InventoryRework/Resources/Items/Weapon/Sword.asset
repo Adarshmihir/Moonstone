@@ -31,9 +31,10 @@ MonoBehaviour:
     Id: 1
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffValue: 0.25
+    damageBuffPercentValue: 0.3
     buffs:
     - attribute: 0
       value: 0
       min: 15
       max: 25
+  spell: {fileID: 11400000, guid: 981a724b85885468284c0739a8f1b604, type: 2}

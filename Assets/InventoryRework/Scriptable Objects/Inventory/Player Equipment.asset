@@ -23,7 +23,7 @@ MonoBehaviour:
         Id: -1
         valueFlat: 0
         damageBuffStat: 0
-        damageBuffValue: 0
+        damageBuffPercentValue: 0
         buffs: []
       amount: 0
     - AllowedItems: 01000000
@@ -32,7 +32,7 @@ MonoBehaviour:
         Id: -1
         valueFlat: 0
         damageBuffStat: 0
-        damageBuffValue: 0
+        damageBuffPercentValue: 0
         buffs: []
       amount: 0
     - AllowedItems: 02000000
@@ -41,7 +41,7 @@ MonoBehaviour:
         Id: -1
         valueFlat: 0
         damageBuffStat: 0
-        damageBuffValue: 0
+        damageBuffPercentValue: 0
         buffs: []
       amount: 0
     - AllowedItems: 03000000
@@ -50,7 +50,7 @@ MonoBehaviour:
         Id: -1
         valueFlat: 0
         damageBuffStat: 0
-        damageBuffValue: 0
+        damageBuffPercentValue: 0
         buffs: []
       amount: 0
   initGold: 300
