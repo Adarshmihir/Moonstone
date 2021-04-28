@@ -1232,7 +1232,7 @@ MonoBehaviour:
       Id: -1
       valueFlat: 0
       damageBuffStat: 0
-      damageBuffValue: 0
+      damageBuffPercentValue: 0
       buffs: []
     amount: 0
 --- !u!114 &1624907116298298978

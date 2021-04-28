@@ -12,24 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: sickle
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 0}
+  uiDisplay: {fileID: 21300000, guid: ba6a6b8cc803c8747a23dc50681e6b00, type: 3}
   characterDisplay: {fileID: 0}
-  characterDisplayRight: {fileID: 0}
-  characterDisplayLeft: {fileID: 0}
-  animatorOverride: {fileID: 0}
+  characterDisplayRight: {fileID: 1560864303442272, guid: 3880933f6aae10a419d7a886df3cccf4,
+    type: 3}
+  characterDisplayLeft: {fileID: 1560864303442272, guid: cfe6c78468052c546822b6ad46001124,
+    type: 3}
+  animatorOverride: {fileID: 22100000, guid: 48f882c9857d60e47828d54a13c394db, type: 2}
   weaponRange: 2
   stackable: 0
-  type: 
-  minFlat: 0
-  maxFlat: 0
+  type: 0300000005000000
+  minFlat: 5
+  maxFlat: 20
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: 
+    Name: Faux du combattant
     Id: 6
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffPercentValue: 0
-    buffs: []
-  spell: {fileID: 0}
+    damageBuffPercentValue: 0.25
+    buffs:
+    - attribute: 0
+      value: 0
+      min: 25
+      max: 30
+    - attribute: 2
+      value: 0
+      min: 15
+      max: 25
+  spell: {fileID: 11400000, guid: 88c8e17d26c0841fe842290c507caf1f, type: 2}

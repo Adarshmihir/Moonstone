@@ -177,11 +177,11 @@ public class Player : MonoBehaviour
                     {
                         if (attributes[j].type == _slot.item.buffs[i].attribute)
                             attributes[j].value.RemoveModifier(_slot.item.buffs[i]);
-                        if (attributes[j].type == StatTypes.Stamina)
-                        {
-                            GetComponent<Health>().addHealthPlayer(-(BONUS_HEATH_PER_POINT*(attributes[j].value.ModifiedValue-attributes[j].value.BaseValue)));
-                            GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int)-(BONUS_HEATH_PER_POINT*(attributes[j].value.ModifiedValue-attributes[j].value.BaseValue)));
-                        }
+                    }
+                    if (_slot.item.buffs[i].attribute == StatTypes.Stamina)
+                    {
+                        GetComponent<Health>().addHealthPlayer(-(BONUS_HEATH_PER_POINT*_slot.item.buffs[i].value));
+                        GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int)-(BONUS_HEATH_PER_POINT*_slot.item.buffs[i].value));
                     }
                 }
 
@@ -257,17 +257,14 @@ public class Player : MonoBehaviour
                         if (attributes[j].type == _slot.item.buffs[i].attribute)
                         {
                             attributes[j].value.AddModifier(_slot.item.buffs[i]);
-                            if (attributes[j].type == StatTypes.Stamina)
-                            {
-                                Debug.Log("oof v'la la stamina");
-                                GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT *
-                                                                       (attributes[j].value.ModifiedValue -
-                                                                        attributes[j].value.BaseValue));
-                                GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>()
-                                    .addEnergyPlayer((int) BONUS_HEATH_PER_POINT * (attributes[j].value.ModifiedValue -
-                                        attributes[j].value.BaseValue));
-                            }
+                           
                         }
+                    }
+                    if (_slot.item.buffs[i].attribute == StatTypes.Stamina)
+                    {
+                        Debug.Log("oof v'la la stamina");
+                        GetComponent<Health>().addHealthPlayer(BONUS_HEATH_PER_POINT *_slot.item.buffs[i].value);
+                        GameObject.Find("EnergyGlobe").GetComponentInChildren<EnergyGlobeControl>().addEnergyPlayer((int) BONUS_HEATH_PER_POINT * _slot.item.buffs[i].value);
                     }
                 }
 

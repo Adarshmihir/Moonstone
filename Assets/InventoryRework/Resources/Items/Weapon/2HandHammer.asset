@@ -12,24 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: 2HandHammer
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 0}
-  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 21300000, guid: 2eebca764c4a6854586ca1f10f953a1c, type: 3}
+  characterDisplay: {fileID: 191102, guid: cb91bba9d269e4d4690ae7cf0825b40b, type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
-  animatorOverride: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 30805edfa89477d42a525999840052e0, type: 2}
   weaponRange: 2
   stackable: 0
-  type: 
-  minFlat: 0
-  maxFlat: 0
+  type: 0300000006000000
+  minFlat: 10
+  maxFlat: 40
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: 
+    Name: "Marteau G\xE9ant"
     Id: 5
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffPercentValue: 0
-    buffs: []
-  spell: {fileID: 0}
+    damageBuffPercentValue: 0.2
+    buffs:
+    - attribute: 0
+      value: 0
+      min: 15
+      max: 25
+    - attribute: 1
+      value: 0
+      min: 5
+      max: 18
+  spell: {fileID: 11400000, guid: 80d563388c245411d870fdb8cb83d001, type: 2}
