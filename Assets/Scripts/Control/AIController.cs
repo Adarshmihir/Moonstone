@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Combat;
+using Core;
 using Movement;
 using ResourcesHealth;
 using UnityEngine;
@@ -18,7 +19,9 @@ namespace Control
         private Fighter _fighter;
         private Health _health;
         private GameObject _target;
+        private Health _targetHealth;
         private Mover _mover;
+        private ActionScheduler _actionScheduler;
 
         private readonly Dictionary<Fighter, float> _aggroRate = new Dictionary<Fighter, float>();
         private Vector3 _initialPosition;
@@ -35,9 +38,11 @@ namespace Control
         private void Start()
         {
             _target = GameObject.FindWithTag("Player");
+            _targetHealth = _target.GetComponent<Health>();
             _fighter = GetComponent<Fighter>();
             _health = GetComponent<Health>();
             _mover = GetComponent<Mover>();
+            _actionScheduler = GetComponent<ActionScheduler>();
 
             _initialPosition = transform.position;
         }
@@ -51,6 +56,12 @@ namespace Control
             {
                 _restTimer -= Time.deltaTime;
                 return;
+            }
+
+            if (_targetHealth.IsDead)
+            {
+                _isAttacked = false;
+                _actionScheduler.CancelCurrentAction();
             }
 
             if (DistanceToPlayer() && Fighter.CanAttack(_target) && !IsGoingHome || _isAttacked)
@@ -123,6 +134,14 @@ namespace Control
             if (_target == null || ReferenceEquals(_target.gameObject, newTarget.gameObject))
             {
                 _target = newTarget.gameObject;
+                _targetHealth = _target.GetComponent<Health>();
+            }
+
+            if (_targetHealth.IsDead)
+            {
+                _isAttacked = false;
+                _actionScheduler.CancelCurrentAction();
+                return;
             }
 
             _isAttacked = true;
@@ -147,8 +166,17 @@ namespace Control
 
         private void CallForHelp(GameObject target)
         {
-            _isAttacked = true;
             _target = target;
+            _targetHealth = target.GetComponent<Health>();
+
+            if (_targetHealth.IsDead)
+            {
+                _isAttacked = false;
+                _actionScheduler.CancelCurrentAction();
+                return;
+            }
+            
+            _isAttacked = true;
         }
 
         private Fighter GetTargetFromDic(Fighter attacker, float damage)
