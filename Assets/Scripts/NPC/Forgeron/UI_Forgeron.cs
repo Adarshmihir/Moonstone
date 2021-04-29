@@ -25,9 +25,7 @@ public class UI_Forgeron : MonoBehaviour
     public GameObject shopUI;
     public GameObject repairUI;
     public GameObject forgeUI;
-
-
-
+    
     private void Awake()
     {
         messageText = transform.Find("Dialogue").Find("DialogueText").GetComponent<Text>();
@@ -69,9 +67,6 @@ public class UI_Forgeron : MonoBehaviour
             case 6:
                 textWriter.AddWriter(messageText, textBuy, 0.05f, true);
                 break;
-
-            default:
-                break;
         }
     }
     public void onNext()
@@ -89,14 +84,11 @@ public class UI_Forgeron : MonoBehaviour
 
     public void onBuy()
     {
-        Debug.Log("Acheter");
-        Debug.Log(shopUI.activeSelf);
         if (shopUI.activeSelf == false)
         {
             GameManager.Instance.uiManager.ForgeronGO.SetActive(true);
             shopUI.SetActive(true);
             WriteText(6);
-            Debug.Log(shopUI.activeSelf);
         }
         else
         {

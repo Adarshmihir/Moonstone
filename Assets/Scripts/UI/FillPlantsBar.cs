@@ -107,10 +107,10 @@ public class FillPlantsBar : MonoBehaviour
         var player = GameManager.Instance.player;
         var questList = player.GetComponent<QuestManager>();
 
-        var evaluatedQuest = questList.Evaluate("HasQuest", "PlantQuest");
+        var evaluatedQuest = questList.Evaluate("HasQuest", "Source de vie");
         if (evaluatedQuest != null)
         {
-            questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "1");
+            questList.CompleteGoal(questList.GetQuestByName("Source de vie"), "1");
         }
         player.GetComponent<PlayerFX>().PlayEatPlant();
         

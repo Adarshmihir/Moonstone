@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a93e2e7bb804bee8161572fbe6fd8c, type: 3}
-  m_Name: PlantQuest
+  m_Name: Merlin l'enchanteur
   m_EditorClassIdentifier: 
   goals:
   - id: 0
-    description: "R\xE9cup\xE9rer une plante"
+    description: Obtenir 100 Golds
   - id: 1
-    description: Manger les plantes
+    description: Enchanter une arme
   rewards: []

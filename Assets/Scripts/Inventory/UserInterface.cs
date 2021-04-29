@@ -13,6 +13,8 @@ public abstract class UserInterface : MonoBehaviour {
     public InventoryObject inventory;
     protected Dictionary<GameObject, InventorySlot2> slotsOnInterface = new Dictionary<GameObject, InventorySlot2>();
     public Text goldText = null;
+    
+    public Dictionary<GameObject, InventorySlot2> SlotsOnInterface => slotsOnInterface;
 
     // Start is called before the first frame update
     void Start() {
@@ -145,9 +147,9 @@ public abstract class UserInterface : MonoBehaviour {
 
                 var questList = player.GetComponent<QuestManager>();
 
-                var evaluatedQuest = questList.Evaluate("HasQuest", "ForgeQuest");
+                var evaluatedQuest = questList.Evaluate("HasQuest", "Premier équipement");
                 if (evaluatedQuest != null) {
-                    questList.CompleteGoal(questList.GetQuestByName("ForgeQuest"), "1");
+                    questList.CompleteGoal(questList.GetQuestByName("Premier équipement"), "1");
                 }
             }
             else {

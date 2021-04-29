@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 8975097479479716048, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
       propertyPath: m_Name
-      value: BodySlot
+      value: BodySlot1
       objectReference: {fileID: 0}
     - target: {fileID: 8975097479479716051, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
@@ -253,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 8975097479479716048, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
       propertyPath: m_Name
-      value: WeaponSlot
+      value: WeaponSlot3
       objectReference: {fileID: 0}
     - target: {fileID: 8975097479479716051, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
@@ -384,7 +384,7 @@ PrefabInstance:
     - target: {fileID: 8975097479479716048, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
       propertyPath: m_Name
-      value: FootSlot
+      value: FootSlot2
       objectReference: {fileID: 0}
     - target: {fileID: 8975097479479716051, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
@@ -515,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 8975097479479716048, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}
       propertyPath: m_Name
-      value: HeadSlot
+      value: HeadSlot0
       objectReference: {fileID: 0}
     - target: {fileID: 8975097479479716051, guid: 33a0a2afe4dc01643a3a9d4e492e5f37,
         type: 3}

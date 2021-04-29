@@ -14,6 +14,7 @@ public class DynamicInterface : UserInterface {
         // For every "system" item, an inventorySlot with all the needed events trigger is created
         for (int i = 0; i < inventory.GetSlots.Length; i++) {
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, GetComponentInChildren<GridLayoutGroup>().transform);
+            obj.name = i.ToString();
 
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });

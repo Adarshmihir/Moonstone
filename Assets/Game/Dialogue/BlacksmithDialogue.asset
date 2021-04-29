@@ -45,7 +45,7 @@ MonoBehaviour:
   - 7df88918-b1cc-405c-8626-5712e3df9839
   rect:
     serializedVersion: 2
-    x: 271
+    x: 270
     y: 119
     width: 200
     height: 100
@@ -55,11 +55,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameter: FindOlaf
+        parameter: Trouver le forgeron
         negate: 0
     - or:
       - name: HasDone
-        parameter: FindOlaf
+        parameter: Trouver le forgeron
         negate: 1
 --- !u!114 &-4277394460337209796
 MonoBehaviour:
@@ -156,8 +156,8 @@ MonoBehaviour:
   - 912d14ca-abbe-4166-81bd-8e11de3a9ca5
   rect:
     serializedVersion: 2
-    x: 183
-    y: 422
+    x: 203
+    y: 450
     width: 200
     height: 100
   enterAction: 
@@ -166,11 +166,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameter: ForgeQuest
+        parameter: "Premier \xE9quipement"
         negate: 0
     - or:
       - name: HasDone
-        parameter: ForgeQuest
+        parameter: "Premier \xE9quipement"
         negate: 1
 --- !u!114 &1390278180377761653
 MonoBehaviour:
@@ -216,8 +216,8 @@ MonoBehaviour:
   - 85d2638e-c741-4b98-b55b-5d92b558d9c9
   rect:
     serializedVersion: 2
-    x: 795
-    y: 118
+    x: 833
+    y: 178
     width: 200
     height: 100
   enterAction: GiveForgeQuest

@@ -104,9 +104,9 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameter: Donjon1
+        parameter: Pierre de savoir
         negate: 1
     - or:
       - name: HasQuest
-        parameter: Donjon1
+        parameter: Pierre de savoir
         negate: 0

@@ -17,8 +17,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 419
-    y: 158
+    x: 714
+    y: 140
     width: 200
     height: 100
   enterAction: 
@@ -53,11 +53,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameter: FindMaya
+        parameter: Trouver l'enchanteresse
         negate: 0
     - or:
       - name: HasDone
-        parameter: FindMaya
+        parameter: Trouver l'enchanteresse
         negate: 1
 --- !u!114 &-383939656821629389
 MonoBehaviour:
@@ -78,8 +78,8 @@ MonoBehaviour:
   - EnchanteressDial
   rect:
     serializedVersion: 2
-    x: 700
-    y: 18
+    x: 756
+    y: 27
     width: 200
     height: 100
   enterAction: GiveEnchantQuest
@@ -186,11 +186,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameter: EnchantQuest
+        parameter: Merlin l'enchanteur
         negate: 0
     - or:
       - name: HasDone
-        parameter: EnchantQuest
+        parameter: Merlin l'enchanteur
         negate: 1
 --- !u!114 &6861855475285298919
 MonoBehaviour:

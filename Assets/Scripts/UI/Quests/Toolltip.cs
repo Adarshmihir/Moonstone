@@ -42,13 +42,15 @@ namespace UI.Quests
             rewards.text = "Aucune récompense.";
         }
 
-        public void SetItemTooltipUI(ItemObject item)
+        public void SetItemTooltipUI(ItemObject item, InventoryObject inventoryObject, int index)
         {
             foreach (Transform goal in goalsParent)
             {
                 Destroy(goal.gameObject);
             }
-            Item2 itemData = item.data;
+            var itemData = inventoryObject.GetSlots[index].item.buffs.Length > 0 ? 
+                inventoryObject.GetSlots[index].item
+                : item.data;
             title.text = itemData.Name;
             foreach (var modifier in itemData.buffs)
             {
@@ -57,7 +59,14 @@ namespace UI.Quests
                 
                 if (modText == null) continue;
 
-                modText.text = "+" + modifier.value + " en " + modifier.ToString().ToLower();
+                if (modifier.value > 0)
+                {
+                    modText.text = "+" + modifier.value + " en " + modifier.attribute.ToString().ToLower();
+                }
+                else
+                {
+                    modText.text = "+ [" + modifier.min + "-" + modifier.max + "] en " + modifier.attribute.ToString().ToLower();
+                }
             }
             
             if (item.Spell == null) return;

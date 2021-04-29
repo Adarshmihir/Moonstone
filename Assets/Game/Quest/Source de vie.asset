@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a93e2e7bb804bee8161572fbe6fd8c, type: 3}
-  m_Name: EhEh
+  m_Name: Source de vie
   m_EditorClassIdentifier: 
   goals:
   - id: 0
-    description: Test 1
+    description: "R\xE9cup\xE9rer une plante"
   - id: 1
-    description: Test 2
-  rewards:
-  - number: 1
-    item: {fileID: 11400000, guid: 7474cb80ba6899147b734508913e915c, type: 2}
-  - number: 1
-    item: {fileID: 11400000, guid: 411d9bc5583834d4f9e8b97c017d7742, type: 2}
+    description: Manger les plantes
+  rewards: []

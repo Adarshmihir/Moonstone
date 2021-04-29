@@ -57,11 +57,11 @@ public class PlantPickUp : MonoBehaviour, IAction
 
         if (questList != null)
         {
-            var evaluatedQuest = questList.Evaluate("HasQuest", "PlantQuest");
+            var evaluatedQuest = questList.Evaluate("HasQuest", "Source de vie");
 
             if (evaluatedQuest != null)
             {
-                questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "0");
+                questList.CompleteGoal(questList.GetQuestByName("Source de vie"), "0");
             }
         }
         

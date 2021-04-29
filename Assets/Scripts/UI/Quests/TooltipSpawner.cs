@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace UI.Quests
@@ -46,16 +48,36 @@ namespace UI.Quests
             
                 tooltipUI.SetQuestTooltipUI(questItem.QuestStatus);
             }
-            // TODO : Only get item in if
             else if (isLootItem)
             {
-                /*
-                var lootItem = GetComponent<LootItem>();
+                var lootItem = MouseData.slotHoveredOver;
 
-                if (lootItem == null || tooltipUI == null) return;
+                if (lootItem == null)
+                {
+                    HideTooltip();
+                    return;
+                }
+                
+                var staticInterface = GetComponentInParent<StaticInterface>();
+                var dynamicInterface = GetComponentInParent<DynamicInterface>();
+
+                var itemObject = staticInterface != null ? staticInterface.SlotsOnInterface[lootItem].ItemObject
+                        : dynamicInterface.SlotsOnInterface[lootItem].ItemObject;
+
+                var index = string.Join("", lootItem.name.Where(char.IsDigit).ToArray());
+                if (index.Length == 0)
+                {
+                    index = "0";
+                }
+                var nIndex = int.Parse(index);
+
+                if (tooltipUI == null || itemObject == null)
+                {
+                    HideTooltip();
+                    return;
+                }
             
-                tooltipUI.SetItemTooltipUI(lootItem.Item);
-                */
+                tooltipUI.SetItemTooltipUI(itemObject, staticInterface != null ? staticInterface.inventory : dynamicInterface.inventory, nIndex);
             }
         }
 

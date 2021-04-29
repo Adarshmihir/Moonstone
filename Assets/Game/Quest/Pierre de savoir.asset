@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a93e2e7bb804bee8161572fbe6fd8c, type: 3}
-  m_Name: Test1
+  m_Name: Pierre de savoir
   m_EditorClassIdentifier: 
   goals:
   - id: 0
-    description: test1
-  - id: 1
-    description: test2
-  rewards:
-  - number: 1
-    item: {fileID: 11400000, guid: 419c3526bcb3123478cc61cbc6b0e19f, type: 2}
+    description: "R\xE9cup\xE9rer la Moonstone de savoir"
+  rewards: []

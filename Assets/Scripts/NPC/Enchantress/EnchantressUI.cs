@@ -257,9 +257,9 @@ public class EnchantressUI : MonoBehaviour {
             // var player = GameManager.Instance.player;
             var questList = player.GetComponent<QuestManager>();
 
-            var evaluatedQuest = questList.Evaluate("HasQuest", "EnchantQuest");
+            var evaluatedQuest = questList.Evaluate("HasQuest", "Merlin l'enchanteur");
             if (evaluatedQuest != null) {
-                questList.CompleteGoal(questList.GetQuestByName("EnchantQuest"), "1");
+                questList.CompleteGoal(questList.GetQuestByName("Merlin l'enchanteur"), "1");
             }
         }
     }

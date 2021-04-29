@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a93e2e7bb804bee8161572fbe6fd8c, type: 3}
-  m_Name: Test2
+  m_Name: "Premier \xE9quipement"
   m_EditorClassIdentifier: 
   goals:
-  - id: 
-    description: 
-  - id: 
-    description: 
-  rewards:
-  - number: 0
-    item: {fileID: 0}
+  - id: 0
+    description: Obtient 50 golds
+  - id: 1
+    description: "Ach\xE8te un \xE9quipement"
+  rewards: []

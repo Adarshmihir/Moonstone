@@ -188,7 +188,6 @@ namespace ResourcesHealth
                 GameManager.Instance.uiManager.LevelManagerGO.GetComponent<LevelManager>().levelWindow.levelSystem.AddExperience(enemy.XpValue);
                 if (spawner != null)
                 {
-                    Debug.Log(spawner);
                     spawner.RemoveObject(gameObject);
                 }
             }
