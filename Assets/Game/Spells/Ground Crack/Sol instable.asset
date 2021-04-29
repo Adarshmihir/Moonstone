@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f0d8b20788f4a94b216a0b90f96f11, type: 3}
   m_Name: Sol instable
   m_EditorClassIdentifier: 
-  spellType: 2
+  spellType: 1
   spellEffect: 0
   projectile: {fileID: 5921152582872887231, guid: c9a33a675a0ed4c63bd7d0dc8e8cb282,
     type: 3}
@@ -28,6 +28,6 @@ MonoBehaviour:
     type: 3}
   particleEffectImpact: {fileID: 0}
   spellIcon: {fileID: 2800000, guid: 3dea3ee147ec20c49a862160176c2150, type: 3}
-  spellRange: 2
-  spellZoneArea: 2
-  damageRadius: 45
+  spellRange: 5
+  spellZoneArea: 5
+  damageRadius: 180
