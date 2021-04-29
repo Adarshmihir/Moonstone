@@ -275,6 +275,7 @@ MonoBehaviour:
   minGold: 500
   maxGold: 5000
   loots: []
+  ListLoot: []
 --- !u!195 &2888111430571739219
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353572d9d8a4d46b79797ec16eeb2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 350
+  maxHealthPoints: 500
   destroyTime: 20
   destroyTimeWithLoot: 60
 --- !u!114 &6843853255097168844

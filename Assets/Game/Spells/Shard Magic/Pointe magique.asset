@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   spellDamage: 0
   spellCost: 20
-  dotDamage: 15
+  dotDamage: 20
   dotCount: 3
   dotTick: 1
   cooldown: 5
