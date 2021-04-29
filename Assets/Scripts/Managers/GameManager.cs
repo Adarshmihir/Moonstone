@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
 {   
     //MANAGERS HIDE IN INSPECTOR
     [HideInInspector]
-    public EquipmentManager equipementManager;
-    [HideInInspector]
     public UIManager uiManager;
     [HideInInspector]
     public GameObject PlayerGO;
@@ -70,7 +68,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void Awake() {
-        equipementManager = gameObject.GetComponent<EquipmentManager>();
         uiManager = gameObject.GetComponent<UIManager>();
 
         if (Instance != null && Instance != this)
@@ -92,7 +89,6 @@ public class GameManager : MonoBehaviour
         camera.InitializeCamera();
         uiManager.HideUIAtLaunch();
         
-        equipementManager.Initialize_EquipmentManager();
     }
 
     public void RespawnPlayer()

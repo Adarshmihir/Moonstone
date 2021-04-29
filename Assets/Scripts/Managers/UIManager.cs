@@ -59,11 +59,8 @@ public class UIManager : MonoBehaviour
         //CanvasSpellsBarGO = Instantiate(CanvasSpellsBar);
         StatsCanvasGO = Instantiate(StatsCanvas);
         InventoryGO = Instantiate(Inventory);
-        GetComponent<Inventory>().InitSingleton();
-        InventoryGO.GetComponent<InventoryUI>().Initialize_InventoryUI();
         EquipmentGO = Instantiate(Equipment);
         EnchantressGO = Instantiate(Enchantress);
-        EnchantressGO.GetComponent<EnchantressUI>().Initialize_EnchantressUI();
         //HealthGlobeGO = Instantiate(HealthGlobe);
         CanvasRessourceGO = Instantiate(CanvasRessource);
         ForgeronGO = Instantiate(Forgeron);

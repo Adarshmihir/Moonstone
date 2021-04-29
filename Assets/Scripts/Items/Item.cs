@@ -10,7 +10,6 @@ public class Item : ScriptableObject
     public Sprite icon;
     public string desc = "";
     
-    public equipementModifier[] equipementMods;
 
     public EquipmentSlot equipSlot;
 
@@ -20,9 +19,6 @@ public class Item : ScriptableObject
         Debug.Log("Using " + name);
     }
 
-    public void RemoveFromInventory() {
-        Inventory.instance.Remove(this);
-    }
     
     // Inutile tant que l'on ne place pas les items sur le joueur
     public enum EquipmentSlot { Head, Body, Legs, Foot, Weapon, None}
