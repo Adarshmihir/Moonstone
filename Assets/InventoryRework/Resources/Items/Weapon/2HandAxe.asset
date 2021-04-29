@@ -22,11 +22,12 @@ MonoBehaviour:
   type: 0300000006000000
   minFlat: 20
   maxFlat: 35
+  CostGold: 75
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: Hache a deux mains
+    Name: "Hache \xE0 deux mains"
     Id: 0
     valueFlat: 0
     damageBuffStat: 0

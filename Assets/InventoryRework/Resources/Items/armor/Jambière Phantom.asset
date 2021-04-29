@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: "Jambi\xE8re Phanton"
+  m_Name: "Jambi\xE8re Phantom"
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 5f570d689ea3abf48878fb79d9303349, type: 3}
   characterDisplay: {fileID: 5680179102868597033, guid: ba8ee8a73fc4b91418cda0d29beba1c2,
@@ -23,6 +23,7 @@ MonoBehaviour:
   type: 02000000
   minFlat: 0
   maxFlat: 0
+  CostGold: 115
   weaponRadius: 45
   description: 
   recapStats: 

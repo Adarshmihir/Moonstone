@@ -23,6 +23,7 @@ MonoBehaviour:
   type: 01000000
   minFlat: 0
   maxFlat: 0
+  CostGold: 50
   weaponRadius: 45
   description: 
   recapStats: 

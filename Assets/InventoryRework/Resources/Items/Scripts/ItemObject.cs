@@ -36,6 +36,7 @@ public class ItemObject : ScriptableObject {
     public ItemType[] type;
     public int minFlat;
     public int maxFlat;
+    public int CostGold;
     [SerializeField] [Range(0f, 180f)] private float weaponRadius = 45f;
     [TextArea(15, 20)] public string description;
     [TextArea(4, 20)] public string recapStats; 
@@ -57,6 +58,7 @@ public class ItemObject : ScriptableObject {
 public class Item2 {
     public string Name;
     public int Id = -1;
+    
     public int valueFlat;
     public StatTypes damageBuffStat;
     public float damageBuffPercentValue;

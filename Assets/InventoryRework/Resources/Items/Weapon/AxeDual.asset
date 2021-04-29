@@ -23,11 +23,12 @@ MonoBehaviour:
   type: 0300000005000000
   minFlat: 4
   maxFlat: 8
+  CostGold: 75
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: Hache en or
+    Name: Haches en or
     Id: 3
     valueFlat: 0
     damageBuffStat: 0

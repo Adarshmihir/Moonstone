@@ -23,11 +23,12 @@ MonoBehaviour:
   type: 0300000004000000
   minFlat: 5
   maxFlat: 20
+  CostGold: 50
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: Epee en bois
+    Name: "Ep\xE9e "
     Id: 5
     valueFlat: 0
     damageBuffStat: 0

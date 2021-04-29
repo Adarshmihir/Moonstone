@@ -22,11 +22,12 @@ MonoBehaviour:
   type: 0300000006000000
   minFlat: 15
   maxFlat: 25
+  CostGold: 200
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: "\xE9p\xE9e g\xE9ante"
+    Name: "Ep\xE9e g\xE9ante"
     Id: 2
     valueFlat: 0
     damageBuffStat: 0
