@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: f3557a524f5b3af4e9ea62399a652287, type: 3}
+  uiDisplay: {fileID: 21300000, guid: db2a4a838cf008549a40ca9031a3b88a, type: 3}
   characterDisplay: {fileID: 6871013640540792565, guid: 8a8f59c89f16d42b9a836052bd4d1b0d,
     type: 3}
   characterDisplayRight: {fileID: 0}
@@ -23,12 +23,13 @@ MonoBehaviour:
   type: 0300000004000000
   minFlat: 5
   maxFlat: 20
+  CostGold: 50
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: Epee en bois
-    Id: 1
+    Name: "Ep\xE9e "
+    Id: 5
     valueFlat: 0
     damageBuffStat: 0
     damageBuffPercentValue: 0.3

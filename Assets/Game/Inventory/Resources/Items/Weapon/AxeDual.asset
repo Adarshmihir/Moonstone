@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: AxeDual
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 8d7a83afd6d43d341a37eeb84d97e70a, type: 3}
   characterDisplay: {fileID: 0}
   characterDisplayRight: {fileID: 110228, guid: 32268a96a54cc4e49bb2a773c9e63d23,
     type: 3}
@@ -21,17 +21,18 @@ MonoBehaviour:
   weaponRange: 2
   stackable: 0
   type: 0300000005000000
-  minFlat: 10
-  maxFlat: 20
+  minFlat: 4
+  maxFlat: 8
+  CostGold: 75
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: Hache en or
-    Id: 2
+    Name: Haches en or
+    Id: 3
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffPercentValue: 0.2
+    damageBuffPercentValue: 0.25
     buffs:
     - attribute: 0
       value: 0

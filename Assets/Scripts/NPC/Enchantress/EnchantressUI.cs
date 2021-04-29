@@ -215,7 +215,8 @@ public class EnchantressUI : MonoBehaviour {
                     var existingInitVal = existing.value;
                     existing.value += modifiedBuff.value;
 
-                    
+
+                    buffs = newBuffs.ToArray();
                     enchantressSlot.item.buffs = newBuffs.ToArray();
                     var amountAdded = modifiedBuff.value;
                     var finalVal = existingInitVal + amountAdded;

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
+  m_Name: casqueSpartiate
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: 5cbeba7542873fb44a0e4b6cf851564b, type: 3}
+  characterDisplay: {fileID: 1553624269159743233, guid: a7cf8dcbc6234ba4a92eb65703137e67,
+    type: 3}
+  characterDisplayRight: {fileID: 0}
+  characterDisplayLeft: {fileID: 0}
+  animatorOverride: {fileID: 0}
+  weaponRange: 2
+  stackable: 0
+  type: 00000000
+  minFlat: 0
+  maxFlat: 0
+  CostGold: 175
+  weaponRadius: 45
+  description: 
+  recapStats: 
+  data:
+    Name: Casque de Spartiate
+    Id: 14
+    valueFlat: 0
+    damageBuffStat: 0
+    damageBuffPercentValue: 0
+    buffs:
+    - attribute: 0
+      value: 0
+      min: 35
+      max: 40
+  spell: {fileID: 11400000, guid: 80d563388c245411d870fdb8cb83d001, type: 2}

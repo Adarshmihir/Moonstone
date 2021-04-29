@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
   m_Name: sickle
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: ba6a6b8cc803c8747a23dc50681e6b00, type: 3}
+  uiDisplay: {fileID: 21300000, guid: ce37a8149899b8b459ae391de909c888, type: 3}
   characterDisplay: {fileID: 0}
   characterDisplayRight: {fileID: 1560864303442272, guid: 3880933f6aae10a419d7a886df3cccf4,
     type: 3}
@@ -23,16 +23,17 @@ MonoBehaviour:
   stackable: 0
   type: 0300000005000000
   minFlat: 5
-  maxFlat: 20
+  maxFlat: 10
+  CostGold: 100
   weaponRadius: 45
   description: 
   recapStats: 
   data:
     Name: Faux du combattant
-    Id: 6
+    Id: 4
     valueFlat: 0
     damageBuffStat: 0
-    damageBuffPercentValue: 0.25
+    damageBuffPercentValue: 0.2
     buffs:
     - attribute: 0
       value: 0

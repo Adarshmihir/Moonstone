@@ -32,6 +32,7 @@ public abstract class UserInterface : MonoBehaviour {
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
             _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text =
                 _slot.amount == 1 ? "" : _slot.amount.ToString("n0");
+            
         }
         else {
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
@@ -95,6 +96,7 @@ public abstract class UserInterface : MonoBehaviour {
             var img = tempItem.AddComponent<Image>();
             img.sprite = slotsOnInterface[obj].ItemObject.uiDisplay;
             img.raycastTarget = false;
+            
         }
 
         return tempItem;
@@ -127,12 +129,12 @@ public abstract class UserInterface : MonoBehaviour {
         if (inventory.type == InterfaceType.Forgeron) {
             Image icon;
             Text priceText;
-            int price = 30;
+            
 
             var player = GameManager.Instance.player;
 
             var clickedSlot = slotsOnInterface[obj];
-
+            int price = clickedSlot.ItemObject.CostGold;
             if (player.inventory.gold >= price) {
                 player.inventory.gold -= price;
                 Debug.Log(gameObject.name);
