@@ -8,24 +8,12 @@ public class EnergyGlobeControl : MonoBehaviour
     public Slider energySlider;
 
     public int maxEnergy = 100;
-
+    public float energy;
     void Start()
     {
+        energy = maxEnergy;
         energySlider = GetComponent<Slider>();
         energySlider.value = 1;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            UseEnergy(20);
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            RestoreEnergy(10);
-        }
     }
 
     public bool HasEnoughEnergy(float cost)
@@ -45,6 +33,7 @@ public class EnergyGlobeControl : MonoBehaviour
         }
         else
         {
+            energy -= cost;
             energySlider.value -= cost / maxEnergy;
             return true;
         }
@@ -54,10 +43,12 @@ public class EnergyGlobeControl : MonoBehaviour
     {
         if (energySlider.value + regen/maxEnergy > 1)
         {
+            energy = maxEnergy;
             energySlider.value = 1;
         }
         else
         {
+            energy += regen;
             energySlider.value += regen / maxEnergy;
         }
     }
@@ -65,7 +56,10 @@ public class EnergyGlobeControl : MonoBehaviour
     public void addEnergyPlayer(int bonusEnergy)
     {
         maxEnergy += bonusEnergy;
-        this.energySlider.value += bonusEnergy / maxEnergy;
+        energy += bonusEnergy;
+
+        this.energySlider.value = energy / maxEnergy;
+
     }
 
 }

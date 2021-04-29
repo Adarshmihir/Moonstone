@@ -154,11 +154,13 @@ namespace ResourcesHealth
 
         public void addHealthPlayer(float bonusHealth)
         {
+
+            HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
+
             this.maxHealthPoints += bonusHealth;
             this.HealthPoints += bonusHealth;
 
-            HealthGlobeControl healhPlayer = GameObject.FindObjectOfType<HealthGlobeControl>();
-            healhPlayer.healthSlider.value = healhPlayer.healthSlider.value + (bonusHealth / maxHealthPoints);
+            healhPlayer.healthSlider.value = HealthPoints / maxHealthPoints;
         }
 
         private void Die()

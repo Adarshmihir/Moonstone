@@ -10,36 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: "jambi\xE8re en acier"
+  m_Name: Armure en Cuir
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 78718db13730613499b6a8a55db6cdde, type: 3}
-  characterDisplay: {fileID: 5680179102868597033, guid: ba8ee8a73fc4b91418cda0d29beba1c2,
+  uiDisplay: {fileID: 21300000, guid: a3c98b7e33492d443b498feaffacc5f5, type: 3}
+  characterDisplay: {fileID: 7650304240485748797, guid: ef8178d02c157a74ab26b423e8f35898,
     type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
   animatorOverride: {fileID: 0}
   weaponRange: 2
   stackable: 0
-  type: 02000000
+  type: 01000000
   minFlat: 0
   maxFlat: 0
-  CostGold: 75
+  CostGold: 25
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: "Jambi\xE8re en acier"
-    Id: 15
+    Name: Armure en cuir
+    Id: 7
     valueFlat: 0
     damageBuffStat: 0
     damageBuffPercentValue: 0
     buffs:
     - attribute: 1
       value: 0
-      min: 10
-      max: 18
-    - attribute: 2
-      value: 0
-      min: 12
-      max: 19
-  spell: {fileID: 11400000, guid: 80d563388c245411d870fdb8cb83d001, type: 2}
+      min: 5
+      max: 10
+  spell: {fileID: 11400000, guid: 574847a17210f4bbe851777b4a7e019f, type: 2}

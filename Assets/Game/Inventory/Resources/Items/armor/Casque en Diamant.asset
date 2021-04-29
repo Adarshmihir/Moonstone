@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: casque en fer
+  m_Name: Casque en Diamant
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 01bf2509fa6413546b3daec9360057b9, type: 3}
-  characterDisplay: {fileID: 1553624269159743233, guid: a7cf8dcbc6234ba4a92eb65703137e67,
+  uiDisplay: {fileID: 21300000, guid: 54740d7e7fad7974f87cc3ee90ce5aa6, type: 3}
+  characterDisplay: {fileID: 6221894665570413851, guid: e2f07f7934f40e2419c4a29a71dbb9f9,
     type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
@@ -23,19 +23,27 @@ MonoBehaviour:
   type: 00000000
   minFlat: 0
   maxFlat: 0
-  CostGold: 50
+  CostGold: 150
   weaponRadius: 45
   description: 
   recapStats: 
   data:
-    Name: Casque en fer
-    Id: 12
+    Name: Casque en diamant
+    Id: 11
     valueFlat: 0
     damageBuffStat: 0
     damageBuffPercentValue: 0
     buffs:
     - attribute: 1
       value: 0
-      min: 5
-      max: 15
-  spell: {fileID: 11400000, guid: d58d31cccc72743c58d1ef1d40a7dc09, type: 2}
+      min: 20
+      max: 30
+    - attribute: 0
+      value: 0
+      min: 10
+      max: 20
+    - attribute: 3
+      value: 0
+      min: 20
+      max: 30
+  spell: {fileID: 11400000, guid: 2fbec5f20aae04a6d9abcafab6bb7536, type: 2}

@@ -41,4 +41,4 @@ MonoBehaviour:
       value: 0
       min: 15
       max: 25
-  spell: {fileID: 11400000, guid: 1bae6f7d010b84be4b4858e61c16247a, type: 2}
+  spell: {fileID: 11400000, guid: 2fbec5f20aae04a6d9abcafab6bb7536, type: 2}

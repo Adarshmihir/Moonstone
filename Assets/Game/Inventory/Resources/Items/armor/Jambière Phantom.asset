@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
-  m_Name: "Jambi\xE8re Sombre"
+  m_Name: "Jambi\xE8re Phantom"
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 90fdc9b4351b8e545b903c7777ff695a, type: 3}
-  characterDisplay: {fileID: 5680179102868597033, guid: ba8ee8a73fc4b91418cda0d29beba1c2,
+  uiDisplay: {fileID: 21300000, guid: 5f570d689ea3abf48878fb79d9303349, type: 3}
+  characterDisplay: {fileID: 5680179102868597033, guid: 515e237bce93a514a9bb3dc7af115684,
     type: 3}
   characterDisplayRight: {fileID: 0}
   characterDisplayLeft: {fileID: 0}
@@ -28,18 +28,18 @@ MonoBehaviour:
   description: 
   recapStats: 
   data:
-    Name: "Jambi\xE8re sombre"
-    Id: 18
+    Name: "Jambi\xE8re phantom"
+    Id: 17
     valueFlat: 0
     damageBuffStat: 0
     damageBuffPercentValue: 0
     buffs:
+    - attribute: 4
+      value: 0
+      min: 25
+      max: 40
     - attribute: 1
       value: 0
-      min: 20
-      max: 35
-    - attribute: 0
-      value: 0
       min: 10
-      max: 20
-  spell: {fileID: 11400000, guid: 981a724b85885468284c0739a8f1b604, type: 2}
+      max: 24
+  spell: {fileID: 11400000, guid: 88c8e17d26c0841fe842290c507caf1f, type: 2}

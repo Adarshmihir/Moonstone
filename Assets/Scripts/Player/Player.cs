@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
                             }
 
                             break;
-                        case ItemType.Legs:
+                        case ItemType.Legs:// ajouter spell si ajout slot dans ui
                             //Destroy(boots.gameObject);
                             break;
                         case ItemType.Chest:
