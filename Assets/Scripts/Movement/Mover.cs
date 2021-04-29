@@ -26,6 +26,8 @@ namespace Movement
 
         public void StartMoveAction(Vector3 destination)
         {
+            if (MouseData.tempItemBeingDragged != null) return;
+            
             _actionScheduler.StartAction(this);
             MoveTo(destination);
         }
