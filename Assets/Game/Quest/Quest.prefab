@@ -232,6 +232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 8897803909493326793, guid: c55ea869f843a4a90a28ec1595fc87c2, type: 3}
+  isQuest: 1
+  isItem: 0
 --- !u!114 &5402951431470424146
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using DuloGames.UI;
+using DuloGames.UI.Tweens;
+using UnityEngine;
 using UnityEngine.UI;
 using Quests;
-using Resources;
+using ResourcesHealth;
 
 public class FillPlantsBar : MonoBehaviour
 {
-
-
-
     public Image healingBarFront; // frontend value of heal
     public float currentHeal; // computed value of heal
     public float healIncrease;
@@ -21,16 +21,26 @@ public class FillPlantsBar : MonoBehaviour
     public bool isHealing;
     public bool isPickingPlant;
 
+    // Tween controls
+    [NonSerialized] private readonly TweenRunner<FloatTween> m_FloatTweenRunner;
     public Slider healthSlider;
-
+    public UIProgressBar bar;
+    public float Duration = 5f;
+    public TweenEasing Easing = TweenEasing.InOutQuint;
+    public Text m_Text;
+    public Test_UIProgressBar.TextVariant m_TextVariant = Test_UIProgressBar.TextVariant.Percent;
+    public int m_TextValue = 100;
+    public string m_TextValueFormat = "0";
     // Start is called before the first frame update
+    
+    
     void Start()
     {
         healthSlider = GameObject.FindObjectOfType<HealthGlobeControl>().healthSlider;
-        healingBarFront = GameObject.FindGameObjectWithTag("HealFront").GetComponent<Image>();
+        //healingBarFront = GameObject.FindGameObjectWithTag("HealFront").GetComponent<Image>();
     
         currentLife = healthSlider.value; // Compute current life
-        currentHeal = healingBarFront.fillAmount; // Compute current heal
+        currentHeal = bar.fillAmount; // Compute current heal
     }
 
     // Update is called once per frame
@@ -38,16 +48,16 @@ public class FillPlantsBar : MonoBehaviour
     {
         if (isHealing)
         {
-            if (healingBarFront.fillAmount > currentHeal)
+            if (bar.fillAmount > currentHeal)
             {
                 GameManager.Instance.player.GetComponent<Health>().RegenLifePlayer(Time.deltaTime);
                 
-                healingBarFront.fillAmount -= healDecrease * Time.deltaTime;
+                bar.fillAmount -= healDecrease * Time.deltaTime;
                 healthSlider.value += lifeIncrease * Time.deltaTime;
             }
             else
             {
-                healingBarFront.fillAmount = currentHeal;
+                bar.fillAmount = currentHeal;
                 healthSlider.value = currentLife;
                 isHealing = false;
             }
@@ -55,56 +65,55 @@ public class FillPlantsBar : MonoBehaviour
 
         if (isPickingPlant)
         {
-            if (healingBarFront.fillAmount < currentHeal)
+            if (bar.fillAmount < currentHeal)
             {
-                healingBarFront.fillAmount += healIncrease * Time.deltaTime;
+                bar.fillAmount += healIncrease * Time.deltaTime;
             }
             else
             {
-                healingBarFront.fillAmount = currentHeal;
+                bar.fillAmount = currentHeal;
                 isPickingPlant = false;
             }
         }
 
-        if (healthSlider.value <= 0f)
-            Debug.Log("You're dead !");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UsePlant();
+        }
     }
 
     public void UsePlant()
     {
-
-        var player = GameManager.Instance.player;
-        var questList = player.GetComponent<QuestManager>();
-
-        var evaluatedQuest = questList.Evaluate("HasQuest", "PlantQuest");
-        if (evaluatedQuest != null)
-        {
-            questList.CompleteGoal(questList.GetQuestByName("PlantQuest"), "1");
-        }
-
-        player.GetComponent<PlayerFX>().PlayEatPlant();
-
-        Debug.Log("Using plant !");
         missingLife = maxLife - healthSlider.value; // Compute missing life
         healDecrease = Mathf.Min(currentHeal, missingLife);
         lifeIncrease = Mathf.Min(currentHeal, missingLife);
 
         if (missingLife > 0f && currentHeal > 0f)
-        { // If we need to regen
+        {
             currentHeal -= healDecrease;
             currentLife += lifeIncrease;
         }
         else
         {
-            if (currentHeal <= 0f)
-                Debug.Log("Not enough heal to regen your life !"); // No healing available
-            else
-                Debug.Log("You don't need to heal !");
+            GameManager.Instance.FeedbackMessage.SetMessage(currentHeal <= 0f
+                ? "Pas assez de ressource"
+                : "Pas besoin de soin");
 
             isHealing = false;
             return;
         }
         isHealing = true;
+        
+        var player = GameManager.Instance.player;
+        var questList = player.GetComponent<QuestManager>();
+
+        var evaluatedQuest = questList.Evaluate("HasQuest", "Source de vie");
+        if (evaluatedQuest != null)
+        {
+            questList.CompleteGoal(questList.GetQuestByName("Source de vie"), "1");
+        }
+        player.GetComponent<PlayerFX>().PlayEatPlant();
+        
     }
 
     public void TakeDamage(float amount)

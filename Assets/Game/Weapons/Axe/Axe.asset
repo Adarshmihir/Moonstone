@@ -12,11 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6b8a787816a49c6a61430c9421af72, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  name: Axe
-  icon: {fileID: 0}
+  spell: {fileID: 11400000, guid: d58d31cccc72743c58d1ef1d40a7dc09, type: 2}
+  name: Hache foudroyante
+  icon: {fileID: 21300000, guid: b4220007ed73cb84194d903542b4b175, type: 3}
   isDefaultItem: 0
-  equipementMods: []
+  equipementMods:
+  - value: 32
+    modType: 100
+    statType: 0
+  - value: 44
+    modType: 100
+    statType: 1
   equipSlot: 4
+  weaponName: Hache foudroyante
   weaponType: 1
   weaponRange: 2
   attackspeed: 1.1
@@ -33,3 +41,9 @@ MonoBehaviour:
   weaponDamageFlat: 5
   weaponDamagePercent: 0.25
   CurrentStatUsing: 0
+  StatModifiers:
+  - {fileID: 0}
+  - {fileID: 0}
+  ironToBuild: 0
+  copperToBuild: 0
+  silverToBuild: 0

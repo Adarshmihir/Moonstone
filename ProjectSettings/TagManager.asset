@@ -18,6 +18,7 @@ TagManager:
   - mob
   - monster
   - Enemy_mob
+  - Boss
   layers:
   - Default
   - TransparentFX

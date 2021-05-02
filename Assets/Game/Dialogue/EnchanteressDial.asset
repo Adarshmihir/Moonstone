@@ -17,8 +17,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 419
-    y: 158
+    x: 714
+    y: 140
     width: 200
     height: 100
   enterAction: 
@@ -53,11 +53,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameter: FindMaya
+        parameter: Trouver l'enchanteresse
         negate: 0
     - or:
       - name: HasDone
-        parameter: FindMaya
+        parameter: Trouver l'enchanteresse
         negate: 1
 --- !u!114 &-383939656821629389
 MonoBehaviour:
@@ -72,14 +72,14 @@ MonoBehaviour:
   m_Name: 1ddaef6e-b615-42e7-8678-0ac536f05889
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Aaah oui ! Il souhaite que je t'inicie \xE0 l'art de l'enchantement d'arme
-    ? Bien, apporte moi l'or n\xE9c\xE9ssaire et je te montrerai."
+  text: "Aaah oui ! Il souhaite que je t'initie \xE0 l'art de l'enchantement d'arme
+    ? Bien, apporte-moi l'or n\xE9cessaire et je te montrerai."
   children:
   - EnchanteressDial
   rect:
     serializedVersion: 2
-    x: 700
-    y: 18
+    x: 756
+    y: 27
     width: 200
     height: 100
   enterAction: GiveEnchantQuest
@@ -150,8 +150,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 414
-    y: 450
+    x: 381
+    y: 452
     width: 200
     height: 100
   enterAction: 
@@ -171,13 +171,13 @@ MonoBehaviour:
   m_Name: 2da38f36-e7c1-4977-a9d6-62ffbab86f22
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: "Terminer qu\xEAte Enchanteress"
+  text: J'ai ce que tu demandais !
   children:
   - 76fe1dfa-d74e-47e1-b74e-0df7ab4f2092
   rect:
     serializedVersion: 2
-    x: 417
-    y: 256
+    x: 468
+    y: 311
     width: 200
     height: 100
   enterAction: 
@@ -186,8 +186,12 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameter: EnchantQuest
+        parameter: Merlin l'enchanteur
         negate: 0
+    - or:
+      - name: HasDone
+        parameter: Merlin l'enchanteur
+        negate: 1
 --- !u!114 &6861855475285298919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,8 +213,8 @@ MonoBehaviour:
   - aadc85e2-30dd-493e-9ad1-d182594d0436
   rect:
     serializedVersion: 2
-    x: 168
-    y: 157
+    x: 105
+    y: 164
     width: 200
     height: 100
   enterAction: DoneFindMaya0

@@ -7,36 +7,35 @@ public class EnergyGlobeControl : MonoBehaviour
 {
     public Slider energySlider;
 
-    private int maxEnergy = 100;
-
+    public int maxEnergy = 100;
+    public float energy;
     void Start()
     {
+        energy = maxEnergy;
         energySlider = GetComponent<Slider>();
+        energySlider.value = 1;
     }
 
-    // Update is called once per frame
-    private void Update()
+    public bool HasEnoughEnergy(float cost)
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            UseEnergy(20);
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            RestoreEnergy(10);
-        }
+        if (energySlider.value * maxEnergy >= cost) return true;
+        
+        GameManager.Instance.FeedbackMessage.SetMessage("Pas assez de mana");
+        return false;
     }
 
-    public void UseEnergy(float cost)
+    public bool UseEnergy(float cost)
     {
         if (energySlider.value*maxEnergy < cost)
         {
-            //Cannot launch a spell
             Debug.Log("Pas assez de mana");
+            return false;
         }
         else
         {
+            energy -= cost;
             energySlider.value -= cost / maxEnergy;
+            return true;
         }
     }
 
@@ -44,11 +43,23 @@ public class EnergyGlobeControl : MonoBehaviour
     {
         if (energySlider.value + regen/maxEnergy > 1)
         {
+            energy = maxEnergy;
             energySlider.value = 1;
         }
         else
         {
+            energy += regen;
             energySlider.value += regen / maxEnergy;
         }
     }
+
+    public void addEnergyPlayer(int bonusEnergy)
+    {
+        maxEnergy += bonusEnergy;
+        energy += bonusEnergy;
+
+        this.energySlider.value = energy / maxEnergy;
+
+    }
+
 }
