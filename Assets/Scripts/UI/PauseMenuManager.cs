@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    [SerializeField] private bool mainMenu;
+    
+    public static bool gameIsPaused;
 
     public GameObject pauseMenuUI;
 
@@ -14,41 +13,41 @@ public class PauseMenuManager : MonoBehaviour
 
     public GameObject BindingsMenuUI;
 
-    private bool menuActive;
-    // Update is called once per frame
+    public bool IsMenuActive { get; private set; }
 
+    // Update is called once per frame
     private void Start()
     {
-        menuActive = false;
+        IsMenuActive = false;
     }
 
-    void Update()
+    private void Update()
     {
-        if (!Input.GetButtonDown("MainMenu")) return;
+        if (!Input.GetButtonDown("MainMenu") && !mainMenu) return;
+        
         if (!pauseMenuUI.activeSelf)
         {
             if (BindingsMenuUI.activeSelf || ParamsMenuUI.activeSelf)
             {
-                menuActive = true;
+                IsMenuActive = true;
             }
             else
             {
-                menuActive = false;
+                IsMenuActive = false;
             }
         }
         else
         {
-            menuActive = false;
+            IsMenuActive = false;
         }
 
-        if (menuActive) return;
+        if (IsMenuActive) return;
         OpenCloseMainMenu();
-        Debug.Log("Echap pressed");
     }
 
     public void OpenCloseMainMenu()
     {
-        if(gameIsPaused)
+        if (gameIsPaused)
         {
             pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
@@ -60,5 +59,12 @@ public class PauseMenuManager : MonoBehaviour
             Time.timeScale = 0f;
             gameIsPaused = true;
         }
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
+        //Destroy(GameManager.Instance.gameObject);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

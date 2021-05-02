@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Resources;
+using ResourcesHealth;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,7 +12,9 @@ public class Spawner : MonoBehaviour
     [HideInInspector]
     public bool bDelay; //spawn every delay ?
 
-    
+    public bool isInDunguon; 
+
+    public List<GameObject> saveObjectToSpawn;
 
     //SPAWNER SETTINGS
     private SphereCollider m_SpawnCollider;
@@ -60,16 +62,19 @@ public class Spawner : MonoBehaviour
 
     public void SpawnObject()
     {
-        var randObjectSpawn = this.GetRandomObjectToSpawn();
-        var coordSpawn = this.GetRandomVector3Spawn();
-        var objectSpawned = Instantiate(randObjectSpawn, coordSpawn, transform.rotation, this.transform);
-        if (stopSpawning || arrayObjectSpawned.Count >= maxArraySize - 1)
+        if (objectToSpawn.Count != 0)
         {
-            CancelInvoke(nameof(SpawnObject));
-            isSpawning = false;
+            var randObjectSpawn = this.GetRandomObjectToSpawn();
+            var coordSpawn = this.GetRandomVector3Spawn();
+            var objectSpawned = Instantiate(randObjectSpawn, coordSpawn, transform.rotation, this.transform);
+            if (stopSpawning || arrayObjectSpawned.Count >= maxArraySize - 1)
+            {
+                CancelInvoke(nameof(SpawnObject));
+                isSpawning = false;
+            }
+            objectSpawned.GetComponentInChildren<Health>().setSpawner(this);
+            arrayObjectSpawned.Add(objectSpawned);
         }
-        objectSpawned.GetComponentInChildren<Health>().setSpawner(this);
-        arrayObjectSpawned.Add(objectSpawned);
     }
 
 
@@ -89,16 +94,22 @@ public class Spawner : MonoBehaviour
     private Vector3 GetRandomVector3Spawn()
     {
         var randPos = new Vector3(0, 0, 0);
-        var bIsPosValid = true;
-        randPos = Random.insideUnitSphere * spawnerRadius;
-        randPos += transform.position;
+       
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randPos, out hit, 1.0f, NavMesh.GetAreaFromName("Walkable"))) //only check walkable areas
+        var bIsPosValid = true;
+        while(bIsPosValid)
         {
-            randPos = hit.position;
-            Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
+            randPos = Random.insideUnitSphere * spawnerRadius;
+            randPos += transform.position;
+
+
+            if (NavMesh.SamplePosition(randPos, out hit, spawnerRadius, 1)) //only check walkable areas
+            {
+                randPos = hit.position;
+                Debug.DrawRay(hit.position, Vector3.up, Color.blue, 1.0f);
+                bIsPosValid = false;
+            }
         }
-        
         return randPos;
     }
 
@@ -133,5 +144,31 @@ public class Spawner : MonoBehaviour
     public void removeObjectToSpawn(GameObject toRemove)
     {
         objectToSpawn.Remove(toRemove);
+    }
+
+    public void startPurge(List<GameObject> purgeObjectToSpawn)
+    {
+        if (!isInDunguon)
+        {
+            stopSpawning = true;
+            saveObjectToSpawn = new List<GameObject>(objectToSpawn);
+            ClearSpawner();
+            objectToSpawn = new List<GameObject>(purgeObjectToSpawn);
+            stopSpawning = false;
+            InvokeRepeating(nameof(SpawnObject), spawnTime, spawnDelay);
+        }
+    }
+
+    public void stopPurge()
+    {
+        if (!isInDunguon)
+        {
+            stopSpawning = true;
+            ClearSpawner();
+            objectToSpawn = new List<GameObject>(saveObjectToSpawn);
+            saveObjectToSpawn = null;
+            stopSpawning = false;
+            InvokeRepeating(nameof(SpawnObject), spawnTime, spawnDelay);
+        }
     }
 }

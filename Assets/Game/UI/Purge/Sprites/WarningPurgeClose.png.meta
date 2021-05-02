@@ -1,0 +1,2960 @@
+fileFormatVersion: 2
+guid: 4ed9b6103edba5b4f9d4616f7188eb8e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8878444945569261714
+    second: WarningPurgeClose_0
+  - first:
+      213: 8686126848866070411
+    second: WarningPurgeClose_1
+  - first:
+      213: -6278967055508780622
+    second: WarningPurgeClose_2
+  - first:
+      213: 7281743193740295945
+    second: WarningPurgeClose_3
+  - first:
+      213: 3739774016737074364
+    second: WarningPurgeClose_4
+  - first:
+      213: -1991673435658368386
+    second: WarningPurgeClose_5
+  - first:
+      213: -4864292345862807369
+    second: WarningPurgeClose_6
+  - first:
+      213: 8908181819050218486
+    second: WarningPurgeClose_7
+  - first:
+      213: -8627873134515644783
+    second: WarningPurgeClose_8
+  - first:
+      213: 1719054694540942645
+    second: WarningPurgeClose_9
+  - first:
+      213: 742743309672741101
+    second: WarningPurgeClose_10
+  - first:
+      213: -2777358509307013850
+    second: WarningPurgeClose_11
+  - first:
+      213: -2560333146508144793
+    second: WarningPurgeClose_12
+  - first:
+      213: -2500631336991506045
+    second: WarningPurgeClose_13
+  - first:
+      213: -6044388234275463039
+    second: WarningPurgeClose_14
+  - first:
+      213: -4643867890681000324
+    second: WarningPurgeClose_15
+  - first:
+      213: -2422355253590675394
+    second: WarningPurgeClose_16
+  - first:
+      213: 6561727979768897523
+    second: WarningPurgeClose_17
+  - first:
+      213: -1750541150803323864
+    second: WarningPurgeClose_18
+  - first:
+      213: 9107309095221359408
+    second: WarningPurgeClose_19
+  - first:
+      213: 4029995971279505763
+    second: WarningPurgeClose_20
+  - first:
+      213: 4035745579188930857
+    second: WarningPurgeClose_21
+  - first:
+      213: 2124502828353430468
+    second: WarningPurgeClose_22
+  - first:
+      213: 2622310160136542078
+    second: WarningPurgeClose_23
+  - first:
+      213: 2107223923008159322
+    second: WarningPurgeClose_24
+  - first:
+      213: -214900687942472372
+    second: WarningPurgeClose_25
+  - first:
+      213: 7831300038592381735
+    second: WarningPurgeClose_26
+  - first:
+      213: -2237481828500928396
+    second: WarningPurgeClose_27
+  - first:
+      213: 3117042714366549168
+    second: WarningPurgeClose_28
+  - first:
+      213: -6769299898280122598
+    second: WarningPurgeClose_29
+  - first:
+      213: 7062323220557901
+    second: WarningPurgeClose_30
+  - first:
+      213: 7727219640411759597
+    second: WarningPurgeClose_31
+  - first:
+      213: 7595702175489844332
+    second: WarningPurgeClose_32
+  - first:
+      213: -3341372272052789807
+    second: WarningPurgeClose_33
+  - first:
+      213: 8595435706868559435
+    second: WarningPurgeClose_34
+  - first:
+      213: -395692087309623518
+    second: WarningPurgeClose_35
+  - first:
+      213: 2132134467644747265
+    second: WarningPurgeClose_36
+  - first:
+      213: 6079575415956987145
+    second: WarningPurgeClose_37
+  - first:
+      213: -1899139594544762314
+    second: WarningPurgeClose_38
+  - first:
+      213: 7847398888984359929
+    second: WarningPurgeClose_39
+  - first:
+      213: -6354141509254724832
+    second: WarningPurgeClose_40
+  - first:
+      213: 612707883647681088
+    second: WarningPurgeClose_41
+  - first:
+      213: 1090586993120304419
+    second: WarningPurgeClose_42
+  - first:
+      213: 105044257708262297
+    second: WarningPurgeClose_43
+  - first:
+      213: -3889775008574209771
+    second: WarningPurgeClose_44
+  - first:
+      213: -8941111845231832863
+    second: WarningPurgeClose_45
+  - first:
+      213: 3911291993011569818
+    second: WarningPurgeClose_46
+  - first:
+      213: -7994075465192767203
+    second: WarningPurgeClose_47
+  - first:
+      213: 3218738694985471897
+    second: WarningPurgeClose_48
+  - first:
+      213: -7837549209039083894
+    second: WarningPurgeClose_49
+  - first:
+      213: -4566369512563100846
+    second: WarningPurgeClose_50
+  - first:
+      213: -4331659112636862097
+    second: WarningPurgeClose_51
+  - first:
+      213: 8897878710731345286
+    second: WarningPurgeClose_52
+  - first:
+      213: 68160612473363429
+    second: WarningPurgeClose_53
+  - first:
+      213: 730453872110171699
+    second: WarningPurgeClose_54
+  - first:
+      213: -3199289420944144030
+    second: WarningPurgeClose_55
+  - first:
+      213: 7553549474408904557
+    second: WarningPurgeClose_56
+  - first:
+      213: 2675511663434445674
+    second: WarningPurgeClose_57
+  - first:
+      213: 4233347682323424337
+    second: WarningPurgeClose_58
+  - first:
+      213: -3082011467086309288
+    second: WarningPurgeClose_59
+  - first:
+      213: -1947939019963655551
+    second: WarningPurgeClose_60
+  - first:
+      213: 4341785146991490127
+    second: WarningPurgeClose_61
+  - first:
+      213: -5729160015387813565
+    second: WarningPurgeClose_62
+  - first:
+      213: -4880372328946607084
+    second: WarningPurgeClose_63
+  - first:
+      213: 6771645308984504613
+    second: WarningPurgeClose_64
+  - first:
+      213: -4860119129835050639
+    second: WarningPurgeClose_65
+  - first:
+      213: 605950427032635614
+    second: WarningPurgeClose_66
+  - first:
+      213: -2477588682681162380
+    second: WarningPurgeClose_67
+  - first:
+      213: 8042760886756045297
+    second: WarningPurgeClose_68
+  - first:
+      213: -955923169611609973
+    second: WarningPurgeClose_69
+  - first:
+      213: -2863108623482601381
+    second: WarningPurgeClose_70
+  - first:
+      213: 8342897185299472365
+    second: WarningPurgeClose_71
+  - first:
+      213: -2365936823042097976
+    second: WarningPurgeClose_72
+  - first:
+      213: 5550040168314376693
+    second: WarningPurgeClose_73
+  - first:
+      213: 634145662233285685
+    second: WarningPurgeClose_74
+  - first:
+      213: -7480119089982590458
+    second: WarningPurgeClose_75
+  - first:
+      213: -2407313096252066838
+    second: WarningPurgeClose_76
+  - first:
+      213: -6530775960734231025
+    second: WarningPurgeClose_77
+  - first:
+      213: 3312927824369900071
+    second: WarningPurgeClose_78
+  - first:
+      213: -3709756080024816451
+    second: WarningPurgeClose_79
+  - first:
+      213: 9176154734253957599
+    second: WarningPurgeClose_80
+  - first:
+      213: 961886217639623685
+    second: WarningPurgeClose_81
+  - first:
+      213: 7960536788806181471
+    second: WarningPurgeClose_82
+  - first:
+      213: -8641420490843874822
+    second: WarningPurgeClose_83
+  - first:
+      213: -691481106347486786
+    second: WarningPurgeClose_84
+  - first:
+      213: 1901069025416227221
+    second: WarningPurgeClose_85
+  - first:
+      213: -3868704654554710938
+    second: WarningPurgeClose_86
+  - first:
+      213: 6539686057335336589
+    second: WarningPurgeClose_87
+  - first:
+      213: 1581689480446307282
+    second: WarningPurgeClose_88
+  - first:
+      213: -3163518276369377160
+    second: WarningPurgeClose_89
+  - first:
+      213: 7904204620274575833
+    second: WarningPurgeClose_90
+  - first:
+      213: 2584004682975501497
+    second: WarningPurgeClose_91
+  - first:
+      213: -6964214048287629111
+    second: WarningPurgeClose_92
+  - first:
+      213: 6953076625452764626
+    second: WarningPurgeClose_93
+  - first:
+      213: 2270013533189369553
+    second: WarningPurgeClose_94
+  - first:
+      213: 6268026386289741488
+    second: WarningPurgeClose_95
+  - first:
+      213: 5050725219333968841
+    second: WarningPurgeClose_96
+  - first:
+      213: -955963121982415527
+    second: WarningPurgeClose_97
+  - first:
+      213: 7798438294831495999
+    second: WarningPurgeClose_98
+  - first:
+      213: -4190360916893003442
+    second: WarningPurgeClose_99
+  - first:
+      213: 5750235895953222811
+    second: WarningPurgeClose_100
+  - first:
+      213: 5701714566786735339
+    second: WarningPurgeClose_101
+  - first:
+      213: 5981644463178745952
+    second: WarningPurgeClose_102
+  - first:
+      213: 4260798806831917608
+    second: WarningPurgeClose_103
+  - first:
+      213: 958662998180389966
+    second: WarningPurgeClose_104
+  - first:
+      213: -4547368994063995312
+    second: WarningPurgeClose_105
+  - first:
+      213: 5022825012950497054
+    second: WarningPurgeClose_106
+  - first:
+      213: -3110547493636664823
+    second: WarningPurgeClose_107
+  - first:
+      213: 1607695909629087931
+    second: WarningPurgeClose_108
+  - first:
+      213: -5595675658098111676
+    second: WarningPurgeClose_109
+  - first:
+      213: 4377169092728186173
+    second: WarningPurgeClose_110
+  - first:
+      213: -2508515389690030039
+    second: WarningPurgeClose_111
+  - first:
+      213: -8178874099480302458
+    second: WarningPurgeClose_112
+  - first:
+      213: -2605796671378363793
+    second: WarningPurgeClose_113
+  - first:
+      213: -6283853812013101963
+    second: WarningPurgeClose_114
+  - first:
+      213: -6808859739237062908
+    second: WarningPurgeClose_115
+  - first:
+      213: -8658676741570932047
+    second: WarningPurgeClose_116
+  - first:
+      213: 8373992236693067862
+    second: WarningPurgeClose_117
+  - first:
+      213: 524228903033494840
+    second: WarningPurgeClose_118
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WarningPurgeClose_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e675b7dac5d69c480800000000000000
+      internalID: -8878444945569261714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_1
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f25a419525b8870800000000000000
+      internalID: 8686126848866070411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9c40cfab0acd8a0800000000000000
+      internalID: -6278967055508780622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f3288bad2fd0560800000000000000
+      internalID: 7281743193740295945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_4
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc59df67a856e330800000000000000
+      internalID: 3739774016737074364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_5
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a400700972c54e0800000000000000
+      internalID: -1991673435658368386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0223132ef8e7cb0800000000000000
+      internalID: -4864292345862807369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_7
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3d417ba2830ab70800000000000000
+      internalID: 8908181819050218486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_8
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1961f0ab813a34880800000000000000
+      internalID: -8627873134515644783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_9
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d9491032f4bd710800000000000000
+      internalID: 1719054694540942645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_10
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8775cda11ce4a00800000000000000
+      internalID: 742743309672741101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_11
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625d8de9627d479d0800000000000000
+      internalID: -2777358509307013850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_12
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f49b7819ed77cd0800000000000000
+      internalID: -2560333146508144793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_13
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38149644c09fb4dd0800000000000000
+      internalID: -2500631336991506045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_14
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180e57bece40e1ca0800000000000000
+      internalID: -6044388234275463039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_15
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ecd18f1caad8fb0800000000000000
+      internalID: -4643867890681000324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_16
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e303de52bb0126ed0800000000000000
+      internalID: -2422355253590675394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_17
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffddd205d0ff0b50800000000000000
+      internalID: 6561727979768897523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_18
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 1838
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8241aad1914d4b7e0800000000000000
+      internalID: -1750541150803323864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0337a589e59a36e70800000000000000
+      internalID: 9107309095221359408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_20
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369ce5aebfb6de730800000000000000
+      internalID: 4029995971279505763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_21
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929c863d839d10830800000000000000
+      internalID: 4035745579188930857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_22
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3a158f010cb7d10800000000000000
+      internalID: 2124502828353430468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_23
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7716d17231546420800000000000000
+      internalID: 2622310160136542078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_24
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e3b115efc5e3d10800000000000000
+      internalID: 2107223923008159322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_25
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4da33186f4840df0800000000000000
+      internalID: -214900687942472372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_26
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7234dc1a4ed5eac60800000000000000
+      internalID: 7831300038592381735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_27
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4788fc4b12ed2f0e0800000000000000
+      internalID: -2237481828500928396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_28
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc998b75d5f14b20800000000000000
+      internalID: 3117042714366549168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_29
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a17ece89b9d9e02a0800000000000000
+      internalID: -6769299898280122598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_30
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40b9d24527191000800000000000000
+      internalID: 7062323220557901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_31
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de32a2882599c3b60800000000000000
+      internalID: 7727219640411759597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_32
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c64ebb582ea596960800000000000000
+      internalID: 7595702175489844332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_33
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd14f53f9f01a1d0800000000000000
+      internalID: -3341372272052789807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_34
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4eeb9d1c3f194770800000000000000
+      internalID: 8595435706868559435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_35
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f1a7f9428328af0800000000000000
+      internalID: -395692087309623518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_36
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ee455700dd69d10800000000000000
+      internalID: 2132134467644747265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_37
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 1628
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d505d31adfe5450800000000000000
+      internalID: 6079575415956987145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 632b740d996e4a5e0800000000000000
+      internalID: -1899139594544762314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_39
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f335b456bf87ec60800000000000000
+      internalID: 7847398888984359929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_40
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 023ce4886fd81d7a0800000000000000
+      internalID: -6354141509254724832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_41
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042c6ebe296c08800800000000000000
+      internalID: 612707883647681088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_42
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dd891971b822f00800000000000000
+      internalID: 1090586993120304419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_43
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99345622231357100800000000000000
+      internalID: 105044257708262297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_44
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5110eb51d3eb40ac0800000000000000
+      internalID: -3889775008574209771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_45
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e05be7162acae380800000000000000
+      internalID: -8941111845231832863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_46
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94c8404853b74630800000000000000
+      internalID: 3911291993011569818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_47
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11058508b65f0190800000000000000
+      internalID: -7994075465192767203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_48
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997d96b1ac14bac20800000000000000
+      internalID: 3218738694985471897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_49
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a86e49df48e6b3390800000000000000
+      internalID: -7837549209039083894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_50
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253b08a3f1ff0a0c0800000000000000
+      internalID: -4566369512563100846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_51
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f613237bcfad2e3c0800000000000000
+      internalID: -4331659112636862097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_52
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d07af5b8d9b7b70800000000000000
+      internalID: 8897878710731345286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_53
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebd52647b722f000800000000000000
+      internalID: 68160612473363429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_54
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3367fe33de7132a00800000000000000
+      internalID: 730453872110171699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_55
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26985f2e837d993d0800000000000000
+      internalID: -3199289420944144030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_56
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 1418
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d673b7ff93993d860800000000000000
+      internalID: 7553549474408904557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a63bc63bea3512520800000000000000
+      internalID: 2675511663434445674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_58
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1546c9fa94fdfba30800000000000000
+      internalID: 4233347682323424337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_59
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858d3ae56ee7a35d0800000000000000
+      internalID: -3082011467086309288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_60
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18a91fe28c787f4e0800000000000000
+      internalID: -1947939019963655551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_61
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44be71669e114c30800000000000000
+      internalID: 4341785146991490127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_62
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3491075025fed70b0800000000000000
+      internalID: -5729160015387813565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_63
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41cdd71693f654cb0800000000000000
+      internalID: -4880372328946607084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_64
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52136f2e787b9fd50800000000000000
+      internalID: 6771645308984504613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_65
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179e914c6636d8cb0800000000000000
+      internalID: -4860119129835050639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_66
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8c6c2f3b4c86800800000000000000
+      internalID: 605950427032635614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_67
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475e24d4836dd9dd0800000000000000
+      internalID: -2477588682681162380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_68
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f1ff740a60ad9f60800000000000000
+      internalID: 8042760886756045297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_69
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b880cb221f0ebb2f0800000000000000
+      internalID: -955923169611609973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_70
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5046f750e13448d0800000000000000
+      internalID: -2863108623482601381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_71
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def916799cce7c370800000000000000
+      internalID: 8342897185299472365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_72
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc3f85aef08a2fd0800000000000000
+      internalID: -2365936823042097976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_73
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f11781b024b50d40800000000000000
+      internalID: 5550040168314376693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_74
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5341545be10fcc800800000000000000
+      internalID: 634145662233285685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_75
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 1208
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60238fba157413890800000000000000
+      internalID: -7480119089982590458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3ffb25e71879ed0800000000000000
+      internalID: -2407313096252066838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_77
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0696c08dd50e55a0800000000000000
+      internalID: -6530775960734231025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_78
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a531abd42e9fd20800000000000000
+      internalID: 3312927824369900071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_79
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db476c6108c448cc0800000000000000
+      internalID: -3709756080024816451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_80
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1e93b0d10485f70800000000000000
+      internalID: 9176154734253957599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_81
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50cf0cc2b6e495d00800000000000000
+      internalID: 961886217639623685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_82
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52a83e5802897e60800000000000000
+      internalID: 7960536788806181471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_83
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9187809d1831880800000000000000
+      internalID: -8641420490843874822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_84
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1934fe89d5766f0800000000000000
+      internalID: -691481106347486786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_85
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599ae61d434f16a10800000000000000
+      internalID: 1901069025416227221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_86
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66cbd5c2d999f4ac0800000000000000
+      internalID: -3868704654554710938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_87
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e2c0602d1a1ca50800000000000000
+      internalID: 6539686057335336589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_88
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db69fac33a43f510800000000000000
+      internalID: 1581689480446307282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_89
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8781c8083ece814d0800000000000000
+      internalID: -3163518276369377160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_90
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9a77f493061bd60800000000000000
+      internalID: 7904204620274575833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_91
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc53ba819a3cd320800000000000000
+      internalID: 2584004682975501497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_92
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c0e70898342a5f90800000000000000
+      internalID: -6964214048287629111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_93
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd0f241a5a4e7060800000000000000
+      internalID: 6953076625452764626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_94
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 998
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dee4190845b08f10800000000000000
+      internalID: 2270013533189369553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_95
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be4395f9c08cf650800000000000000
+      internalID: 6268026386289741488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_96
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c3128cb3d7c71640800000000000000
+      internalID: 5050725219333968841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_97
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d5ddffa9cbbb2f0800000000000000
+      internalID: -955963121982415527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_98
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3bfb3eaf4e993c60800000000000000
+      internalID: 7798438294831495999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_99
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4199e392f8d8d5c0800000000000000
+      internalID: -4190360916893003442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_100
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9cedf0d411fccf40800000000000000
+      internalID: 5750235895953222811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_101
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec5ef3803f802f40800000000000000
+      internalID: 5701714566786735339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_102
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068837872f1130350800000000000000
+      internalID: 5981644463178745952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_103
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82aef9ca0f5612b30800000000000000
+      internalID: 4260798806831917608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_104
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e446ad9eaeadd4d00800000000000000
+      internalID: 958662998180389966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_105
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ea03e2eff74e0c0800000000000000
+      internalID: -4547368994063995312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_106
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e177cd9bcb8a4b540800000000000000
+      internalID: 5022825012950497054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_107
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9021ec0f88d15d4d0800000000000000
+      internalID: -3110547493636664823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_108
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb05a4079eeaf4610800000000000000
+      internalID: 1607695909629087931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_109
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44b03c8d2aa2852b0800000000000000
+      internalID: -5595675658098111676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_110
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35e1ed3914debc30800000000000000
+      internalID: 4377169092728186173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_111
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928dce33b86ff2dd0800000000000000
+      internalID: -2508515389690030039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_112
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c65dd075dce7e80800000000000000
+      internalID: -8178874099480302458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_113
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 788
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ae895cbb956dbd0800000000000000
+      internalID: -2605796671378363793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_114
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 578
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c897250444bc8a0800000000000000
+      internalID: -6283853812013101963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_115
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 578
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407e05d54221281a0800000000000000
+      internalID: -6808859739237062908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_116
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 578
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b25ab1116336d780800000000000000
+      internalID: -8658676741570932047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_117
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 578
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65818fb6295663470800000000000000
+      internalID: 8373992236693067862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningPurgeClose_118
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 578
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ddd4ae86f664700800000000000000
+      internalID: 524228903033494840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e9aef4497ae1e294ab3b943c2bea0c63
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

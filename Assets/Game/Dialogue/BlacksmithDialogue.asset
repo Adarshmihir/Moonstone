@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7df88918-b1cc-405c-8626-5712e3df9839
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Oh je vois ! Je dois te former alors ? Bien je vais t'apprendre \xE0 forger
+  text: "Oh, je vois ! Je dois te former alors ? Bien je vais t'apprendre \xE0 forger
     !"
   children:
   - bab41d27-e9d8-4ee7-8265-b036a04b53a7
@@ -45,7 +45,7 @@ MonoBehaviour:
   - 7df88918-b1cc-405c-8626-5712e3df9839
   rect:
     serializedVersion: 2
-    x: 271
+    x: 270
     y: 119
     width: 200
     height: 100
@@ -55,11 +55,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasQuest
-        parameter: FindOlaf
+        parameter: Trouver le forgeron
         negate: 0
     - or:
       - name: HasDone
-        parameter: FindOlaf
+        parameter: Trouver le forgeron
         negate: 1
 --- !u!114 &-4277394460337209796
 MonoBehaviour:
@@ -78,8 +78,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 531
-    y: 440
+    x: 475
+    y: 443
     width: 200
     height: 100
   enterAction: 
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 85d2638e-c741-4b98-b55b-5d92b558d9c9
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: Salut jeune Elu ! Que puis-je pour toi ?
+  text: "Salut jeune \xC9lu ! Que puis-je pour toi ?"
   children:
   - ce23ea84-7c5d-4803-9733-3fbfdad043bb
   - febbf90b-d4db-45aa-810a-60b9eae97596
@@ -107,8 +107,8 @@ MonoBehaviour:
   - 33f9ea1c-db5d-4578-8dbf-1350d85a8b32
   rect:
     serializedVersion: 2
-    x: 12
-    y: 208
+    x: 43
+    y: 197
     width: 200
     height: 100
   enterAction: DoneFindOlaf0
@@ -151,13 +151,13 @@ MonoBehaviour:
   m_Name: dd872429-3920-42ac-9693-4f3c15c8fd17
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
-  text: "Achever Qu\xEAte Forge"
+  text: "J'ai r\xE9ussi \xE0 forger mon \xE9quipement !"
   children:
   - 912d14ca-abbe-4166-81bd-8e11de3a9ca5
   rect:
     serializedVersion: 2
-    x: 278
-    y: 434
+    x: 203
+    y: 450
     width: 200
     height: 100
   enterAction: 
@@ -166,11 +166,11 @@ MonoBehaviour:
     and:
     - or:
       - name: HasCompleted
-        parameter: ForgeQuest
+        parameter: "Premier \xE9quipement"
         negate: 0
     - or:
       - name: HasDone
-        parameter: ForgeQuest
+        parameter: "Premier \xE9quipement"
         negate: 1
 --- !u!114 &1390278180377761653
 MonoBehaviour:
@@ -210,13 +210,14 @@ MonoBehaviour:
   m_Name: bab41d27-e9d8-4ee7-8265-b036a04b53a7
   m_EditorClassIdentifier: 
   isPlayerTurn: 0
-  text: "Va donc me r\xE9cuperer quelques ressources pour ta premi\xE8re arme !"
+  text: "Va donc me r\xE9cup\xE9rer quelques ressources pour ta premi\xE8re arme
+    !"
   children:
   - 85d2638e-c741-4b98-b55b-5d92b558d9c9
   rect:
     serializedVersion: 2
-    x: 795
-    y: 118
+    x: 833
+    y: 178
     width: 200
     height: 100
   enterAction: GiveForgeQuest

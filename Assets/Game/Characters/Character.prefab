@@ -141,6 +141,8 @@ MonoBehaviour:
   weapon: {fileID: 0}
   rightHandTransform: {fileID: 0}
   leftHandTransform: {fileID: 0}
+  rightClone: {fileID: 0}
+  leftClone: {fileID: 0}
 --- !u!95 &9212038636882866353
 Animator:
   serializedVersion: 3
@@ -174,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   destroyTime: 5
+  destroyTimeWithLoot: 30
 --- !u!136 &-8190227864632420810
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class CheckGold : MonoBehaviour
         var evaluatedQuest = questList.Evaluate("HasQuest", quest.Name);
         var questStatus = questList.GetQuestStatusByName(quest.Name);
 
-        if (evaluatedQuest != null && gm.GetComponent<Inventory>().gold >= goldNeeded && questStatus!=null && !questStatus.Status.Contains(idGoal))
+        if (evaluatedQuest != null && GameManager.Instance.player.inventory.gold >= goldNeeded && questStatus!=null && !questStatus.Status.Contains(idGoal))
         {
             questList.CompleteGoal(questStatus.Quest, idGoal);
         }

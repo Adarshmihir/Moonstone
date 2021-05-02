@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0920a0d29112a4cb9baa16de8411d3, type: 3}
+  m_Name: 2HandAxe
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: 783c336d32f713a428f9cc9de51c178c, type: 3}
+  characterDisplay: {fileID: 168620, guid: b14df74153f401b47ae9629ec7b86dfb, type: 3}
+  characterDisplayRight: {fileID: 0}
+  characterDisplayLeft: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 30805edfa89477d42a525999840052e0, type: 2}
+  weaponRange: 2
+  stackable: 0
+  type: 0300000006000000
+  minFlat: 20
+  maxFlat: 35
+  CostGold: 75
+  weaponRadius: 45
+  description: 
+  recapStats: 
+  data:
+    Name: "Hache \xE0 deux mains"
+    Id: 0
+    valueFlat: 0
+    damageBuffStat: 0
+    damageBuffPercentValue: 0.35
+    buffs:
+    - attribute: 1
+      value: 0
+      min: 15
+      max: 25
+    - attribute: 0
+      value: 0
+      min: 18
+      max: 28
+  spell: {fileID: 11400000, guid: 88c8e17d26c0841fe842290c507caf1f, type: 2}

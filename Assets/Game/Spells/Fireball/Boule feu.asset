@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f0d8b20788f4a94b216a0b90f96f11, type: 3}
+  m_Name: Boule feu
+  m_EditorClassIdentifier: 
+  spellType: 0
+  spellEffect: 0
+  projectile: {fileID: 504654947311720274, guid: f3c4f28e42fcb4a4ca3c8823b542ae5a,
+    type: 3}
+  spellDamage: 35
+  spellCost: 25
+  dotDamage: 2
+  dotCount: 4
+  dotTick: 1
+  cooldown: 5
+  canalisationTimer: 1
+  isAnimated: 1
+  particleEffect: {fileID: 1392961458021664, guid: 7c2d45330a7b1894ca1aacb0ebd30599,
+    type: 3}
+  particleEffectImpact: {fileID: 1809022330002312, guid: ed511b7776af6174e9b1255c7a81e59c,
+    type: 3}
+  spellIcon: {fileID: 2800000, guid: 59676c35544f54f48a386b3595683464, type: 3}
+  spellRange: 25
+  spellZoneArea: 2
+  damageRadius: 45

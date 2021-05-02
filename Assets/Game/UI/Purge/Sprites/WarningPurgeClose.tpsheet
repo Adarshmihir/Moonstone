@@ -1,0 +1,135 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:bc6e906b70e68a923d1f2b217508d49f:def03d11865c922636266d83a7884568:dcd8255863b7b45488e4d78cd10e8160$
+#
+:format=40300
+:texture=WarningPurgeClose.png
+:size=4096x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+WarningPurgeClose_00000;0;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00001;210;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00002;420;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00003;630;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00004;840;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00005;1050;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00006;1260;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00007;1470;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00008;1680;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00009;1890;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00010;2100;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00011;2310;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00012;2520;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00013;2730;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00014;2940;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00015;3150;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00016;3360;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00017;3570;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00018;3780;1838;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00019;0;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00020;210;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00021;420;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00022;630;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00023;840;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00024;1050;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00025;1260;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00026;1470;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00027;1680;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00028;1890;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00029;2100;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00030;2310;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00031;2520;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00032;2730;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00033;2940;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00034;3150;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00035;3360;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00036;3570;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00037;3780;1628;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00038;0;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00039;210;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00040;420;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00041;630;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00042;840;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00043;1050;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00044;1260;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00045;1470;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00046;1680;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00047;1890;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00048;2100;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00049;2310;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00050;2520;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00051;2730;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00052;2940;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00053;3150;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00054;3360;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00055;3570;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00056;3780;1418;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00057;0;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00058;210;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00059;420;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00060;630;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00061;840;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00062;1050;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00063;1260;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00064;1470;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00065;1680;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00066;1890;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00067;2100;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00068;2310;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00069;2520;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00070;2730;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00071;2940;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00072;3150;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00073;3360;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00074;3570;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00075;3780;1208;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00076;0;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00077;210;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00078;420;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00079;630;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00080;840;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00081;1050;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00082;1260;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00083;1470;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00084;1680;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00085;1890;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00086;2100;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00087;2310;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00088;2520;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00089;2730;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00090;2940;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00091;3150;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00092;3360;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00093;3570;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00094;3780;998;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00095;0;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00096;210;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00097;420;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00098;630;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00099;840;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00100;1050;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00101;1260;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00102;1470;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00103;1680;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00104;1890;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00105;2100;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00106;2310;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00107;2520;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00108;2730;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00109;2940;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00110;3150;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00111;3360;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00112;3570;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00113;3780;788;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00114;0;578;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00115;210;578;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00116;420;578;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00117;630;578;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00118;840;578;210;210; 0.5;0.5; 0;0;0;0
+WarningPurgeClose_00119;1050;578;210;210; 0.5;0.5; 0;0;0;0

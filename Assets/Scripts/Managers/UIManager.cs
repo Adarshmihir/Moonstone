@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject CanvasSpellsBar;
     public GameObject StatsCanvas;
     public GameObject Inventory;
+    public GameObject Equipment;
     public GameObject HealthGlobe;
     public GameObject EnergyGlobe;
     public GameObject CanvasRessource;
@@ -31,6 +32,8 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public GameObject InventoryGO;
     [HideInInspector]
+    public GameObject EquipmentGO;
+    [HideInInspector]
     public GameObject HealthGlobeGO;
     [HideInInspector]
     public GameObject EnergyGlobeGO;
@@ -48,6 +51,7 @@ public class UIManager : MonoBehaviour
     public GameObject PurgeMenuGO;
     [HideInInspector]
     public GameObject DeathGO;
+    public GameObject QuestGO;
 
     public void InitializeUIManager()
     {
@@ -55,11 +59,10 @@ public class UIManager : MonoBehaviour
         //CanvasSpellsBarGO = Instantiate(CanvasSpellsBar);
         StatsCanvasGO = Instantiate(StatsCanvas);
         InventoryGO = Instantiate(Inventory);
-        InventoryGO.GetComponent<InventoryUI>().Initialize_InventoryUI();
+        EquipmentGO = Instantiate(Equipment);
         EnchantressGO = Instantiate(Enchantress);
-        EnchantressGO.GetComponent<EnchantressUI>().Initialize_EnchantressUI();
         //HealthGlobeGO = Instantiate(HealthGlobe);
-        //CanvasRessourceGO = Instantiate(CanvasRessource);
+        CanvasRessourceGO = Instantiate(CanvasRessource);
         ForgeronGO = Instantiate(Forgeron);
         LootBagGO = Instantiate(LootBag);
         LevelManagerGO = Instantiate(LevelManager);
@@ -71,13 +74,26 @@ public class UIManager : MonoBehaviour
     public void HideUIAtLaunch() {
         StatsCanvasGO.SetActive(false);
         InventoryGO.SetActive(false);
+        EquipmentGO.SetActive(false);
         //MiniMapCanvasGO.SetActive(false);
         //HealthGlobeGO.SetActive(false);
         //CanvasRessourceGO.SetActive(false);
         EnchantressGO.SetActive(false);
         ForgeronGO.SetActive(false);
         LootBagGO.SetActive(false);
-        PurgeMenuGO.SetActive(false);
+        PurgeMenuGO.SetActive(true);
         DeathGO.SetActive(false);
     }
+
+    public void HideInventory()
+    {
+        InventoryGO.SetActive(!InventoryGO.activeSelf);
+    }
+    
+    public void HideStats()
+    {
+        StatsCanvasGO.SetActive(!StatsCanvasGO.activeSelf);
+    }
+    
+    
 }

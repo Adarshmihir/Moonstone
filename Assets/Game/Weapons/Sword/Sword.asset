@@ -11,15 +11,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe6b8a787816a49c6a61430c9421af72, type: 3}
   m_Name: Sword
-  m_EditorClassIdentifier:
-  weaponName: Sword
+  m_EditorClassIdentifier: 
+  spell: {fileID: 11400000, guid: 1bae6f7d010b84be4b4858e61c16247a, type: 2}
+  name: "\xC9p\xE9e de soin"
   icon: {fileID: 21300000, guid: f3557a524f5b3af4e9ea62399a652287, type: 3}
   isDefaultItem: 0
   equipementMods:
-  - value: 10
+  - value: 23
     modType: 100
     statType: 0
   equipSlot: 4
+  weaponName: "\xC9p\xE9e de soin"
   weaponType: 1
   weaponRange: 1
   attackspeed: 1.2
@@ -37,6 +39,8 @@ MonoBehaviour:
   weaponDamageFlat: 5
   weaponDamagePercent: 0.3
   CurrentStatUsing: 0
+  StatModifiers:
+  - {fileID: 0}
   ironToBuild: 2
   copperToBuild: 1
   silverToBuild: 0
